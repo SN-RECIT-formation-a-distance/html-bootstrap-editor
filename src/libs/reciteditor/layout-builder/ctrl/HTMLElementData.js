@@ -36,7 +36,8 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class HTMLElementData{
-    static propertyList = {
+    constructor(){
+    this.propertyList = {
         bootstrap: [
             {
                 name: 'bs-background', description: i18n.get_string('background'), 
@@ -238,7 +239,7 @@ export class HTMLElementData{
         bookmark: []
     };  
 
-    static elementList = [
+    this.elementList = [
         {
             name: i18n.get_string('layout'), 
             children: [
@@ -321,26 +322,27 @@ export class HTMLElementData{
             ]
         },
     ];
+}
 
-    static elementListSortByName = function(){
-        HTMLElementData.elementList.sort((a,b) =>{
+    elementListSortByName(){
+        this.elementList.sort((a,b) =>{
             return a.name.toString().localeCompare(b.name.toString());
         })
  
-        for(let item of HTMLElementData.elementList){
+        for(let item of this.elementList){
             item.children.sort((a,b) =>{
                 return a.name.toString().localeCompare(b.name.toString());
             })
         }
     }
 
-    static elementListSortbyType = function(){
-        if (HTMLElementData.elementListSortedbyType){
-            return HTMLElementData.elementListSortedbyType;
+    elementListSortbyType(){
+        if (this.elementListSortedbyType){
+            return this.elementListSortedbyType;
         }
 
         let list = [];
-        for(let cat of HTMLElementData.elementList){
+        for(let cat of this.elementList){
             if (cat.name == i18n.get_string('nativecomponents')){
                 for (let item of cat.children){
                     list.push(item);
@@ -349,7 +351,7 @@ export class HTMLElementData{
         }
 
         let list2 = [];
-        for(let cat of HTMLElementData.elementList){
+        for(let cat of this.elementList){
             if (cat.name != i18n.get_string('nativecomponents')){
                 for (let item of cat.children){
                     list2.push(item);
@@ -361,16 +363,16 @@ export class HTMLElementData{
             return a.type.toString().localeCompare(b.type.toString());
         })
 
-        HTMLElementData.elementListSortedbyType = [...list, ...list2];
-        return HTMLElementData.elementListSortedbyType;
+        this.elementListSortedbyType = [...list, ...list2];
+        return this.elementListSortedbyType;
     }
 
-    static getElementClass(data, el){
+    getElementClass(data, el){
         data = data || null;
         el = el || null;
         
         // it gives priority to bootstrap
-        let list = HTMLElementData.elementListSortbyType();
+        let list = this.elementListSortbyType();
 
         for(let item of list){
             if(item.equal(el)){
@@ -384,11 +386,11 @@ export class HTMLElementData{
         return null;
     }
 
-    static createElement(componentData){
+    createElement(componentData){
         let el = null;
 
         if(componentData.type === 'native' || componentData.type === 'bootstrap' || componentData.type == 'nativecomponent'){
-            let component = HTMLElementData.getElementClass(componentData);
+            let component = this.getElementClass(componentData);
             el = component.create();
         }
         else if((componentData.type === 'c') || (componentData.type === 'l')){
@@ -411,5 +413,13 @@ export class HTMLElementData{
         }
 
         return el;
+    }
+
+    static instance = null;
+    static getInstance(){
+        if (!HTMLElementData.instance){
+            HTMLElementData.instance = new HTMLElementData();
+        }
+        return HTMLElementData.instance;
     }
 }

@@ -162,7 +162,7 @@ export class TreeView extends Component{
     }
 
     getNodeDesc(node){
-        let elClass = HTMLElementData.getElementClass(null, node);
+        let elClass = HTMLElementData.getInstance().getElementClass(null, node);
 
         return (elClass ? elClass.getDesc(node) : UtilsString.capitalizeFirstLetter(node.tagName.toLowerCase()));
     }

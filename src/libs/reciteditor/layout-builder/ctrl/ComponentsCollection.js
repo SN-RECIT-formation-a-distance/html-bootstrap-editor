@@ -83,13 +83,13 @@ export class ComponentProperties extends Component{
             bm: [],
         };
         
-        let elClass = HTMLElementData.getElementClass(null, this.props.element);
+        let elClass = HTMLElementData.getInstance().getElementClass(null, this.props.element);
 
         if(elClass === null){ return result;}
         
-        result.bootstrap = HTMLElementData.propertyList.bootstrap.filter(item => elClass.properties.all.includes(item.name));
-        result.html =  HTMLElementData.propertyList.html.filter(item => elClass.properties.all.includes(item.name));
-        result.bookmark =  result.bootstrap.concat(result.html).filter(item => elClass.properties.min.includes(item.name));
+        result.bootstrap = HTMLElementData.getInstance().propertyList.bootstrap.filter(item => elClass.properties.all.includes(item.name));
+        result.html = HTMLElementData.getInstance().propertyList.html.filter(item => elClass.properties.all.includes(item.name));
+        result.bookmark = result.bootstrap.concat(result.html).filter(item => elClass.properties.min.includes(item.name));
 
         result.bootstrap.sort((el1, el2) => { 
             return elClass.properties.all.indexOf(el1.name) - elClass.properties.all.indexOf(el2.name)
@@ -308,7 +308,7 @@ export class VisualComponentList extends Component{
                         <h5 className="m-0 p-2"><FontAwesomeIcon icon={faPuzzlePiece}/> {i18n.get_string('components')}</h5>
                         <hr className='mt-0'/>
                         
-                        <TokenList dataProvider={HTMLElementData.elementList} onDragEnd={this.props.onDragEnd}/>
+                        <TokenList dataProvider={HTMLElementData.getInstance().elementList} onDragEnd={this.props.onDragEnd}/>
                     </div>
 
                 }

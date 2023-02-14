@@ -149,7 +149,7 @@ export class CanvasElement{
         let el = null;
         if(eventData.length > 0){
             let componentData = JSON.parse(eventData);
-            el = HTMLElementData.createElement(componentData);
+            el = HTMLElementData.getInstance().createElement(componentData);
             if (el){
                 CanvasElement.create(el, this.onSelectCallback, this.onDropCallback, this.onEditNodeText);
             }
@@ -230,7 +230,7 @@ export class CanvasElement{
             
             cleanUp();           
 
-            let elClass = HTMLElementData.getElementClass(null, that.dom);
+            let elClass = HTMLElementData.getInstance().getElementClass(null, that.dom);
             
             if(elClass){
                 elClass.prepareDroppingZones(that.dom);
@@ -294,7 +294,7 @@ export class FloatingMenu extends Component{
         let isEditable = true;//TextEditorModal.isTagEditable(this.props.selectedElement.tagName);
         let name = '';
         let help = null;
-        let cl = HTMLElementData.getElementClass(null, this.props.selectedElement);
+        let cl = HTMLElementData.getInstance().getElementClass(null, this.props.selectedElement);
         if (cl){
             name = cl.getDesc(this.props.selectedElement);
             help = cl.getHelpText(this.props.selectedElement);

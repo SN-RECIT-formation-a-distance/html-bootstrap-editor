@@ -323,7 +323,7 @@ export class DesignerState extends CanvasState{
                     result.el.setAttribute('data-selected', '1');
                     result.el.setAttribute('draggable', 'true');
     
-                    let elClass = HTMLElementData.getElementClass(null, result.el);
+                    let elClass = HTMLElementData.getInstance().getElementClass(null, result.el);
                     if (elClass && elClass.onSelect){
                         elClass.onSelect(result.el);
                     }

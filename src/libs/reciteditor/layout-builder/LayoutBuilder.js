@@ -371,7 +371,7 @@ class MainView extends Component{
 
     onDrop(dom, newEl){
         if (newEl){
-            let cl = HTMLElementData.getElementClass(null, newEl);
+            let cl = HTMLElementData.getInstance().getElementClass(null, newEl);
             if (cl && cl.modalCreation){
                 this.onSelectElement(newEl);
             }else{

@@ -585,14 +585,14 @@ export class BsBackgroundProperty extends HTMLProperty{
     }
 
     getFlags(el){
-        let elClass = HTMLElementData.getElementClass(null, el);
+        let elClass = HTMLElementData.getInstance().getElementClass(null, el);
         let prefix = (elClass ? `${elClass.cssProp.prefix}` : 'bg');
         return {fetchFromTheme: true, prefix: `${prefix}-`};
     }
 
     getValue(el, data){
         let result = "";
-        let elClass = HTMLElementData.getElementClass(null, el);
+        let elClass = HTMLElementData.getInstance().getElementClass(null, el);
         let prefix = (elClass ? `${elClass.cssProp.prefix}` : 'bg');
 
         let classList = [...el.classList]
@@ -612,7 +612,7 @@ export class BsBackgroundProperty extends HTMLProperty{
     }
 
     onChange(el, value, data){
-        let elClass = HTMLElementData.getElementClass(null, el);
+        let elClass = HTMLElementData.getInstance().getElementClass(null, el);
         let prefix = (elClass ? `${elClass.cssProp.prefix}` : 'bg');
         let middlefix = '';
 
