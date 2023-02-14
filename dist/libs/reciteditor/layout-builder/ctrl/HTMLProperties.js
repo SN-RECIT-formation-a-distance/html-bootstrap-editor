@@ -862,7 +862,7 @@ var BsBackgroundProperty = /*#__PURE__*/function (_HTMLProperty20) {
   (0, _createClass2["default"])(BsBackgroundProperty, [{
     key: "getFlags",
     value: function getFlags(el) {
-      var elClass = _HTMLElementData.HTMLElementData.getElementClass(null, el);
+      var elClass = _HTMLElementData.HTMLElementData.getInstance().getElementClass(null, el);
       var prefix = elClass ? "".concat(elClass.cssProp.prefix) : 'bg';
       return {
         fetchFromTheme: true,
@@ -873,7 +873,7 @@ var BsBackgroundProperty = /*#__PURE__*/function (_HTMLProperty20) {
     key: "getValue",
     value: function getValue(el, data) {
       var result = "";
-      var elClass = _HTMLElementData.HTMLElementData.getElementClass(null, el);
+      var elClass = _HTMLElementData.HTMLElementData.getInstance().getElementClass(null, el);
       var prefix = elClass ? "".concat(elClass.cssProp.prefix) : 'bg';
       var classList = (0, _toConsumableArray2["default"])(el.classList);
       var _iterator4 = _createForOfIteratorHelper(data.input.options),
@@ -900,7 +900,7 @@ var BsBackgroundProperty = /*#__PURE__*/function (_HTMLProperty20) {
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var elClass = _HTMLElementData.HTMLElementData.getElementClass(null, el);
+      var elClass = _HTMLElementData.HTMLElementData.getInstance().getElementClass(null, el);
       var prefix = elClass ? "".concat(elClass.cssProp.prefix) : 'bg';
       var middlefix = '';
       var _iterator5 = _createForOfIteratorHelper(data.input.options),

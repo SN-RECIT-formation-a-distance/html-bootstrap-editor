@@ -4,10 +4,10 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.i18n = exports.UtilsTreeStruct = exports.UtilsString = exports.UtilsMoodle = exports.UtilsHTML = exports.UtilsDateTime = exports.Utils = exports.Storage = exports.MoodleUploadFile = exports.JsNx = exports.Cookies = void 0;
+exports.i18n = exports.UtilsTreeStruct = exports.UtilsString = exports.UtilsHTML = exports.UtilsDateTime = exports.Utils = exports.UploadFile = exports.Storage = exports.JsNx = exports.IWrapper = exports.Cookies = void 0;
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 var _RecitEditor = require("../RecitEditor");
@@ -394,126 +394,128 @@ var Utils = /*#__PURE__*/function () {
 }();
 exports.Utils = Utils;
 Utils.version = 1.0;
-var UtilsMoodle = /*#__PURE__*/function () {
-  function UtilsMoodle() {
-    (0, _classCallCheck2["default"])(this, UtilsMoodle);
+var IWrapper = /*#__PURE__*/function () {
+  function IWrapper() {
+    (0, _classCallCheck2["default"])(this, IWrapper);
   }
-  (0, _createClass2["default"])(UtilsMoodle, null, [{
-    key: "checkRoles",
-    value: function checkRoles(roles, r1) {
-      var r2 = roles;
-      var a = new Set(r1);
-      var b = new Set(r2);
-      var intersection = new Set((0, _toConsumableArray2["default"])(a).filter(function (x) {
-        return b.has(x);
-      }));
-      return intersection.size > 0;
-    }
-  }, {
-    key: "getAttoInterface",
-    value: function getAttoInterface() {
-      var result = {
-        setContent: function setContent() {
-          console.log('Atto interface not defined.');
-        },
-        getContent: function getContent() {
-          console.log('Atto interface not defined.');
-          return null;
-        },
-        getSettings: function getSettings() {
-          console.log('Atto interface not defined.');
-          return null;
-        },
-        getThemeCssRules: function getThemeCssRules() {
-          console.log('Atto interface not defined.');
-          return null;
-        },
-        getThemeUrl: function getThemeUrl() {
-          console.log('Atto interface not defined.');
-          return null;
-        },
-        getFileTransferData: function getFileTransferData() {
-          console.log('Atto interface not defined.');
-          return null;
-        }
-      };
-      if (window.attoInterface) {
-        result.getContent = window.attoInterface.getContent || window.parent.attoInterface.getContent; // the editor content here is text and not html
-        result.setContent = window.attoInterface.setContent || window.parent.attoInterface.setContent;
-        result.getSettings = window.attoInterface.getSettings || window.parent.attoInterface.getSettings;
-        result.getThemeCssRules = window.attoInterface.getThemeCssRules || window.parent.attoInterface.getThemeCssRules;
-        result.getThemeUrl = window.attoInterface.getThemeUrl || window.parent.attoInterface.getThemeUrl;
-        result.getFileTransferData = window.attoInterface.getFileTransferData || window.parent.attoInterface.getFileTransferData;
-        return result;
-      } else if (typeof M !== 'undefined' && M.cfg) {
-        result.getSettings = function () {
-          return M.cfg;
-        };
-        return result;
-      } else {
-        if (process.env.NODE_ENV !== "development") {
-          alert('Atto interface not defined. Unable to transfer content.');
-          window.close();
-        } else {
-          console.log('Atto interface not defined. Unable to transfer content.');
-        }
-        return result;
-      }
-    }
-  }, {
-    key: "getThemeMoodleCssRules",
-    value: function getThemeMoodleCssRules(returnAllRules) {
-      var attoInterface = UtilsMoodle.getAttoInterface();
-      if (attoInterface !== null) {
-        return attoInterface.getThemeCssRules(returnAllRules);
-      }
-      return {};
-    }
-  }, {
-    key: "getThemeMoodleUrl",
-    value: function getThemeMoodleUrl() {
-      var attoInterface = UtilsMoodle.getAttoInterface();
-      if (attoInterface !== null) {
-        return attoInterface.getThemeUrl();
-      }
-      console.log("Loading theme Bootstrap on ".concat(this.constructor.name));
-      return _RecitEditor.Assets.Bootstrap;
-    }
-  }, {
+  (0, _createClass2["default"])(IWrapper, null, [{
     key: "get_string",
     value: function get_string(str, resource) {
-      if (typeof M == 'undefined') return str;
-      var moodle = M || window.parent.M;
-      return moodle.util.get_string(str, resource);
+      if (!IWrapper.wrapper.get_string) {
+        throw new Error('get_string undefined');
+      }
+      return IWrapper.wrapper.get_string(str, resource);
+    }
+  }, {
+    key: "getThemeUrl",
+    value: function getThemeUrl() {
+      if (!IWrapper.wrapper.getThemeUrl) {
+        throw new Error('getThemeUrl undefined');
+      }
+      return IWrapper.wrapper.getThemeUrl();
+    }
+  }, {
+    key: "getThemeCssRules",
+    value: function getThemeCssRules(returnAllRules) {
+      if (!IWrapper.wrapper.getThemeCssRules) {
+        throw new Error('getThemeCssRules undefined');
+      }
+      return IWrapper.wrapper.getThemeCssRules(returnAllRules);
+    }
+  }, {
+    key: "getContent",
+    value: function getContent() {
+      if (!IWrapper.wrapper.getContent) {
+        throw new Error('getContent undefined');
+      }
+      return IWrapper.wrapper.getContent();
+    }
+  }, {
+    key: "getSettings",
+    value: function getSettings() {
+      if (!IWrapper.wrapper.getSettings) {
+        throw new Error('getSettings undefined');
+      }
+      return IWrapper.wrapper.getSettings();
+    }
+  }, {
+    key: "getFileTransferData",
+    value: function getFileTransferData() {
+      if (!IWrapper.wrapper.getFileTransferData) {
+        throw new Error('getFileTransferData undefined');
+      }
+      return IWrapper.wrapper.getFileTransferData();
+    }
+  }, {
+    key: "saveTemplate",
+    value: function saveTemplate(data) {
+      if (!IWrapper.wrapper.saveTemplate) {
+        throw new Error('Api undefined');
+      }
+      return IWrapper.wrapper.saveTemplate(data);
+    }
+  }, {
+    key: "deleteTemplate",
+    value: function deleteTemplate(data) {
+      if (!IWrapper.wrapper.deleteTemplate) {
+        throw new Error('Api undefined');
+      }
+      return IWrapper.wrapper.deleteTemplate(data);
+    }
+  }, {
+    key: "importTemplates",
+    value: function importTemplates(data) {
+      if (!IWrapper.wrapper.importTemplates) {
+        throw new Error('Api undefined');
+      }
+      return IWrapper.wrapper.importTemplates(data);
+    }
+  }, {
+    key: "getTemplateList",
+    value: function getTemplateList(data) {
+      if (!IWrapper.wrapper.getTemplateList) {
+        throw new Error('Api undefined');
+      }
+      return IWrapper.wrapper.getTemplateList(data);
+    }
+  }, {
+    key: "setContent",
+    value: function setContent(content) {
+      if (!IWrapper.wrapper.setContent) {
+        throw new Error('setContent undefined');
+      }
+      return IWrapper.wrapper.setContent(content);
+    }
+  }, {
+    key: "uploadFile",
+    value: function uploadFile(name, content, cb) {
+      if (!IWrapper.wrapper.uploadFile) {
+        throw new Error('uploadFile undefined');
+      }
+      return IWrapper.wrapper.uploadFile(name, content, cb);
     }
   }]);
-  return UtilsMoodle;
+  return IWrapper;
 }();
-exports.UtilsMoodle = UtilsMoodle;
-UtilsMoodle.rolesL1 = ['ad', 'mg', 'cc', 'et'];
-UtilsMoodle.rolesL2 = ['ad', 'mg', 'cc', 'et', 'tc'];
-UtilsMoodle.rolesL3 = ['sd', 'gu', 'fp'];
-var MoodleUploadFile = /*#__PURE__*/function () {
-  function MoodleUploadFile() {
-    (0, _classCallCheck2["default"])(this, MoodleUploadFile);
+exports.IWrapper = IWrapper;
+IWrapper.wrapper = null;
+var UploadFile = /*#__PURE__*/function () {
+  function UploadFile() {
+    (0, _classCallCheck2["default"])(this, UploadFile);
     this.onReadyStateChange = this.onReadyStateChange.bind(this);
-    this.xhr = new XMLHttpRequest();
-    this.xhr.onreadystatechange = this.onReadyStateChange;
-    // this.M = window.opener.M;
     this.onUploadDone = null;
   }
-  (0, _createClass2["default"])(MoodleUploadFile, [{
+  (0, _createClass2["default"])(UploadFile, [{
     key: "onReadyStateChange",
-    value: function onReadyStateChange() {
+    value: function onReadyStateChange(xhr) {
       var that = this;
-      if (this.xhr.readyState === 4) {
-        if (this.xhr.status === 200) {
-          var result = JSON.parse(this.xhr.responseText);
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var result = JSON.parse(xhr.responseText);
           if (result) {
             if (result.error) {
-              //return new this.M.core.ajaxException(result);
-              alert("error");
               console.log(result);
+              return;
             }
             var file = result;
             if (result.event && result.event === 'fileexists') {
@@ -522,27 +524,11 @@ var MoodleUploadFile = /*#__PURE__*/function () {
               // If the user wants to reuse an existing image, they can copy/paste it within the editor.
               file = result.newfile;
             }
-
-            // Replace placeholder with actual image.
-            /*newhtml = template({
-                url: file.url,
-                presentation: true
-            });
-            newimage = Y.Node.create(newhtml);
-            if (placeholder) {
-                placeholder.replace(newimage);
-            } else {
-                self.editor.appendChild(newimage);
-            }
-            self.markUpdated();*/
             if (this.onUploadDone) {
               this.onUploadDone(file.url);
             }
           }
         } else {
-          /* Y.use('moodle-core-notification-alert', function() {
-               new that.M.core.alert({message: this.M.util.get_string('servererror', 'moodle')});
-           });*/
           alert("server error");
         }
       }
@@ -551,6 +537,7 @@ var MoodleUploadFile = /*#__PURE__*/function () {
   }, {
     key: "onSelectFileToUpload",
     value: function onSelectFileToUpload(event, callback) {
+      var _this = this;
       var reader = new FileReader();
       var file = event.target.files[0];
       var that = this;
@@ -560,28 +547,22 @@ var MoodleUploadFile = /*#__PURE__*/function () {
         if (file.type.match('image.*')) {
           var _callback = function _callback(dataURL) {
             var fileContent = that.convertbase64ToBin(dataURL);
-            that.upload(file.name, fileContent);
+            IWrapper.uploadFile(that.slugify(file.name), fileContent, that.onReadyStateChange);
           };
           that.resizeImage(reader.result, file.type, _callback);
           return;
         }
-
-        /*let fileInMB = file.size / 1024 / 1024;
-        let maxFileSize = 5;
-        if(fileInMB > maxFileSize){
-            alert(`Le fichier est trop grand pour le dossier de destination. La taille maximale du fichier est de ${maxFileSize} mégaoctets.`);
-            return;
-        }*/
-
         var fileContent = that.convertbase64ToBin(reader.result);
-        that.upload(file.name, fileContent);
+        IWrapper.uploadFile(that.slugify(file.name), fileContent, _this.onReadyStateChange);
       };
     }
-
-    /**
-     * An Javascript function to remove accents, spaces and set lower case from an input string.
-     * @param {string} str 
-     */
+  }, {
+    key: "resizeImage",
+    value: function resizeImage(imgBase64, fileType, callback) {
+      var MAX_WIDTH = 1500;
+      var MAX_HEIGHT = 1300;
+      return this.resizeImageFromSize(imgBase64, MAX_WIDTH, MAX_HEIGHT, fileType, callback);
+    }
   }, {
     key: "slugify",
     value: function slugify(str) {
@@ -594,13 +575,6 @@ var MoodleUploadFile = /*#__PURE__*/function () {
       }
       ;
       return str;
-    }
-  }, {
-    key: "resizeImage",
-    value: function resizeImage(imgBase64, fileType, callback) {
-      var MAX_WIDTH = 1500;
-      var MAX_HEIGHT = 1300;
-      return this.resizeImageFromSize(imgBase64, MAX_WIDTH, MAX_HEIGHT, fileType, callback);
     }
   }, {
     key: "resizeImageFromSize",
@@ -628,32 +602,6 @@ var MoodleUploadFile = /*#__PURE__*/function () {
         ctx.drawImage(img, 0, 0, width, height);
         callback(canvas.toDataURL(fileType));
       };
-    }
-  }, {
-    key: "upload",
-    value: function upload(filename, binFile) {
-      var atto = UtilsMoodle.getAttoInterface();
-      if (atto === null) {
-        return;
-      }
-      var fileTransferData = atto.getFileTransferData();
-      var settings = atto.getSettings();
-      var formData = new FormData();
-      formData.append('repo_upload_file', binFile);
-      formData.append('itemid', fileTransferData.itemid);
-      formData.append('env', fileTransferData.env);
-      formData.append('repo_id', fileTransferData.repo_id);
-      formData.append('sesskey', settings.sesskey);
-      formData.append('client_id', fileTransferData.client_id);
-      formData.append('savepath', "/"); //(options.savepath === undefined) ? '/' : options.savepath,
-      formData.append('ctx_id', settings.contextid);
-      formData.append('license', fileTransferData.license);
-      formData.append('author', fileTransferData.author);
-      var tmp = this.slugify(filename).split(".");
-      filename = [tmp[0] || "", tmp[1] || ""];
-      formData.append('title', "".concat(filename[0].substr(0, 255), ".").concat(filename[1]));
-      this.xhr.open("POST", settings.wwwroot + '/repository/repository_ajax.php?action=upload', true);
-      this.xhr.send(formData);
     }
 
     /**
@@ -683,10 +631,10 @@ var MoodleUploadFile = /*#__PURE__*/function () {
       });
     }
   }]);
-  return MoodleUploadFile;
+  return UploadFile;
 }();
-exports.MoodleUploadFile = MoodleUploadFile;
-MoodleUploadFile.instance = null;
+exports.UploadFile = UploadFile;
+UploadFile.instance = null;
 var UtilsString = /*#__PURE__*/function () {
   function UtilsString() {
     (0, _classCallCheck2["default"])(this, UtilsString);
@@ -1196,7 +1144,12 @@ var i18n = /*#__PURE__*/function () {
     key: "get_string",
     value: function get_string(str) {
       //if (!document.lang) document.lang = ""
-      var res = UtilsMoodle.get_string(str, 'atto_reciteditor');
+      var res = "";
+      try {
+        res = IWrapper.get_string(str);
+      } catch (e) {
+        throw new Error("Try to get string before wrapper initialized: " + str);
+      }
       //if (res.startsWith('[[')) document.lang += "'"+str+"',"+'\n'
       //if (res.startsWith('[[')) document.lang += "$string['"+str+"'] = '';"+'\n'
       return res;

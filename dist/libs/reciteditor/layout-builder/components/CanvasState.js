@@ -297,7 +297,7 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
       var head = this.window.document.head;
       var doc = this.window.document;
       var body = this.window.document.body;
-      var style = _RecitEditor.UtilsMoodle.getThemeMoodleCssRules();
+      var style = _RecitEditor.IWrapper.getThemeCssRules();
       var el = null;
       if (style.url.length > 0) {
         var _iterator = _createForOfIteratorHelper(style.url),
@@ -404,7 +404,7 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
           } else {
             result.el.setAttribute('data-selected', '1');
             result.el.setAttribute('draggable', 'true');
-            var elClass = _RecitEditor.HTMLElementData.getElementClass(null, result.el);
+            var elClass = _RecitEditor.HTMLElementData.getInstance().getElementClass(null, result.el);
             if (elClass && elClass.onSelect) {
               elClass.onSelect(result.el);
             }
@@ -750,7 +750,7 @@ var PreviewState = /*#__PURE__*/function (_CanvasState4) {
       this.iFrame = iframe.contentWindow || iframe.contentDocument;
       var head = this.iFrame.document.head;
       var doc = this.iFrame.document;
-      var style = _RecitEditor.UtilsMoodle.getThemeMoodleCssRules();
+      var style = _RecitEditor.IWrapper.getThemeCssRules();
       var el = null;
       if (style.rules.length > 0) {
         el = doc.createElement("style");

@@ -21,12 +21,12 @@
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
 
-import { i18n, Assets, WebApi } from '../../RecitEditor';
+import { i18n, Assets, IWrapper } from '../../RecitEditor';
 
 export class Templates{
     static layoutList = [];
 
-    static webApi = new WebApi();
+    static webApi = IWrapper;
 
     static onLoad(){
         let p = Templates.webApi.getTemplateList();

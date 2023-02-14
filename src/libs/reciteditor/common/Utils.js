@@ -21,7 +21,7 @@
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
 
-import {Assets} from '../RecitEditor';
+import {$glVars, Assets} from '../RecitEditor';
 
 export class JsNx{
     /**
@@ -417,104 +417,113 @@ export class Utils{
     }
 }
 
-export class UtilsMoodle
-{
-    static rolesL1 = ['ad', 'mg', 'cc', 'et'];
-    static rolesL2 = ['ad', 'mg', 'cc', 'et', 'tc'];
-    static rolesL3 = ['sd', 'gu', 'fp'];
-
-    static checkRoles(roles, r1){
-        let r2 = roles;
-        let a = new Set(r1);
-        let b = new Set(r2);
-        let intersection = new Set([...a].filter(x => b.has(x)));
-        return intersection.size > 0;
-    }
-
-    static getAttoInterface(){
-        let result = {
-            setContent: function(){console.log('Atto interface not defined.'); }, 
-            getContent: function(){console.log('Atto interface not defined.'); return null;}, 
-            getSettings: function(){console.log('Atto interface not defined.'); return null; },
-            getThemeCssRules: function(){console.log('Atto interface not defined.'); return null; },
-            getThemeUrl: function(){console.log('Atto interface not defined.'); return null; },
-            getFileTransferData: function(){console.log('Atto interface not defined.'); return null;}
-        };
-
-        if(window.attoInterface){
-            result.getContent = window.attoInterface.getContent || window.parent.attoInterface.getContent; // the editor content here is text and not html
-            result.setContent = window.attoInterface.setContent || window.parent.attoInterface.setContent;
-            result.getSettings = window.attoInterface.getSettings || window.parent.attoInterface.getSettings;
-            result.getThemeCssRules = window.attoInterface.getThemeCssRules || window.parent.attoInterface.getThemeCssRules;
-            result.getThemeUrl = window.attoInterface.getThemeUrl || window.parent.attoInterface.getThemeUrl;
-            result.getFileTransferData = window.attoInterface.getFileTransferData || window.parent.attoInterface.getFileTransferData;
-            return result;
-        }else if (typeof M !== 'undefined' && M.cfg){
-            result.getSettings = function(){ return M.cfg};
-            return result;
-        }
-        else{
-            if(process.env.NODE_ENV !== "development"){  
-                alert('Atto interface not defined. Unable to transfer content.');
-                window.close();
-            }
-            else{
-                console.log('Atto interface not defined. Unable to transfer content.');
-            }
-
-            return result;
-        }
-    }
-
-    static getThemeMoodleCssRules(returnAllRules){
-        let attoInterface = UtilsMoodle.getAttoInterface();
-
-        if(attoInterface !== null){
-            return attoInterface.getThemeCssRules(returnAllRules);
-        }
-        return {};
-    }
-
-    static getThemeMoodleUrl(){
-        let attoInterface = UtilsMoodle.getAttoInterface();
-
-        if(attoInterface !== null){
-            return attoInterface.getThemeUrl();
-        }
-        console.log(`Loading theme Bootstrap on ${this.constructor.name}`);
-        return Assets.Bootstrap;
-    }
+export class IWrapper {
+    static wrapper = null;
 
     static get_string(str, resource){
-        if (typeof M == 'undefined') return str;
-        let moodle = M || window.parent.M;
-        return moodle.util.get_string(str, resource);
+        if(!IWrapper.wrapper.get_string){
+            throw new Error('get_string undefined');
+        }
+        return IWrapper.wrapper.get_string(str, resource);
+    }
+
+    static getThemeUrl(){
+        if(!IWrapper.wrapper.getThemeUrl){
+            throw new Error('getThemeUrl undefined');
+        }
+        return IWrapper.wrapper.getThemeUrl();
+    }
+
+    static getThemeCssRules(returnAllRules){
+        if(!IWrapper.wrapper.getThemeCssRules){
+            throw new Error('getThemeCssRules undefined');
+        }
+        return IWrapper.wrapper.getThemeCssRules(returnAllRules);
+    }
+
+    static getContent(){
+        if(!IWrapper.wrapper.getContent){
+            throw new Error('getContent undefined');
+        }
+        return IWrapper.wrapper.getContent();
+    }
+
+    static getSettings(){
+        if(!IWrapper.wrapper.getSettings){
+            throw new Error('getSettings undefined');
+        }
+        return IWrapper.wrapper.getSettings();
+    }
+
+    static getFileTransferData(){
+        if(!IWrapper.wrapper.getFileTransferData){
+            throw new Error('getFileTransferData undefined');
+        }
+        return IWrapper.wrapper.getFileTransferData();
+    }
+
+    static saveTemplate(data){
+        if(!IWrapper.wrapper.saveTemplate){
+            throw new Error('Api undefined');
+        }
+        return IWrapper.wrapper.saveTemplate(data);
+    }
+
+    static deleteTemplate(data){
+        if(!IWrapper.wrapper.deleteTemplate){
+            throw new Error('Api undefined');
+        }
+        return IWrapper.wrapper.deleteTemplate(data);
+    }
+
+    static importTemplates(data){
+        if(!IWrapper.wrapper.importTemplates){
+            throw new Error('Api undefined');
+        }
+        return IWrapper.wrapper.importTemplates(data);
+    }
+
+    static getTemplateList(data){
+        if(!IWrapper.wrapper.getTemplateList){
+            throw new Error('Api undefined');
+        }
+        return IWrapper.wrapper.getTemplateList(data);
+    }
+
+    static setContent(content){
+        if(!IWrapper.wrapper.setContent){
+            throw new Error('setContent undefined');
+        }
+        return IWrapper.wrapper.setContent(content);
+    }
+
+    static uploadFile(name, content, cb){
+        if(!IWrapper.wrapper.uploadFile){
+            throw new Error('uploadFile undefined');
+        }
+        return IWrapper.wrapper.uploadFile(name, content, cb);
     }
 }
 
-export class MoodleUploadFile{
+export class UploadFile{
     static instance = null;
 
     constructor(){
         this.onReadyStateChange = this.onReadyStateChange.bind(this);
 
-        this.xhr = new XMLHttpRequest();
-        this.xhr.onreadystatechange = this.onReadyStateChange;
-       // this.M = window.opener.M;
         this.onUploadDone = null;
     }
 
-    onReadyStateChange(){
+    onReadyStateChange(xhr){
         let that = this;
 
-        if (this.xhr.readyState === 4) {
-            if (this.xhr.status === 200) {
-                let result = JSON.parse(this.xhr.responseText);
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let result = JSON.parse(xhr.responseText);
                 if (result) {
                     if (result.error) {
-                        //return new this.M.core.ajaxException(result);
-                        alert("error");
                         console.log(result);
+                        return;
                     }
 
                     let file = result;
@@ -525,26 +534,11 @@ export class MoodleUploadFile{
                         file = result.newfile;
                     }
 
-                    // Replace placeholder with actual image.
-                    /*newhtml = template({
-                        url: file.url,
-                        presentation: true
-                    });
-                    newimage = Y.Node.create(newhtml);
-                    if (placeholder) {
-                        placeholder.replace(newimage);
-                    } else {
-                        self.editor.appendChild(newimage);
-                    }
-                    self.markUpdated();*/
                     if(this.onUploadDone){
                         this.onUploadDone(file.url);
                     }
                 }
             } else {
-               /* Y.use('moodle-core-notification-alert', function() {
-                    new that.M.core.alert({message: this.M.util.get_string('servererror', 'moodle')});
-                });*/
                 alert("server error");
             }
         }
@@ -564,31 +558,27 @@ export class MoodleUploadFile{
             if (file.type.match('image.*')){
                 let callback = function(dataURL){
                     let fileContent = that.convertbase64ToBin(dataURL);
-                    that.upload(file.name, fileContent);
+                    IWrapper.uploadFile(that.slugify(file.name), fileContent, that.onReadyStateChange);
                 }
                 
                 that.resizeImage(reader.result, file.type, callback);
 
                 return;
             }
-
-            /*let fileInMB = file.size / 1024 / 1024;
-            let maxFileSize = 5;
-            if(fileInMB > maxFileSize){
-                alert(`Le fichier est trop grand pour le dossier de destination. La taille maximale du fichier est de ${maxFileSize} mégaoctets.`);
-                return;
-            }*/
             
             let fileContent = that.convertbase64ToBin(reader.result);
 
-            that.upload(file.name, fileContent);
+            IWrapper.uploadFile(that.slugify(file.name), fileContent, this.onReadyStateChange);
         };
     }
 
-    /**
-     * An Javascript function to remove accents, spaces and set lower case from an input string.
-     * @param {string} str 
-     */
+    resizeImage(imgBase64, fileType, callback){
+        let MAX_WIDTH = 1500;
+        let MAX_HEIGHT = 1300;
+        return this.resizeImageFromSize(imgBase64, MAX_WIDTH, MAX_HEIGHT, fileType, callback)
+    }
+
+    
     slugify(str) {
         var map = {
             '-' : ' ',
@@ -607,12 +597,6 @@ export class MoodleUploadFile{
         };
     
         return str;
-    };
-
-    resizeImage(imgBase64, fileType, callback){
-            let MAX_WIDTH = 1500;
-            let MAX_HEIGHT = 1300;
-            return this.resizeImageFromSize(imgBase64, MAX_WIDTH, MAX_HEIGHT, fileType, callback)
     }
 
     resizeImageFromSize(imgBase64, maxWidth, maxHeight, fileType, callback){
@@ -644,34 +628,6 @@ export class MoodleUploadFile{
     
             callback(canvas.toDataURL(fileType));
         };
-    }
-
-    upload(filename, binFile){
-        let atto = UtilsMoodle.getAttoInterface();
-        
-        if(atto === null){ return; }
-
-        let fileTransferData = atto.getFileTransferData();
-        let settings = atto.getSettings();
-
-        let formData = new FormData();
-        formData.append('repo_upload_file', binFile);
-        formData.append('itemid', fileTransferData.itemid);
-        formData.append('env', fileTransferData.env);
-        formData.append('repo_id', fileTransferData.repo_id); 
-        formData.append('sesskey', settings.sesskey);
-        formData.append('client_id', fileTransferData.client_id);
-        formData.append('savepath', "/"); //(options.savepath === undefined) ? '/' : options.savepath,
-        formData.append('ctx_id', settings.contextid);
-        formData.append('license', fileTransferData.license);
-        formData.append('author', fileTransferData.author);
-
-        let tmp = this.slugify(filename).split(".");
-        filename = [(tmp[0] || ""), (tmp[1] || "")];
-        formData.append('title', `${filename[0].substr(0,255)}.${filename[1]}`);
-    
-        this.xhr.open("POST", settings.wwwroot + '/repository/repository_ajax.php?action=upload', true);
-        this.xhr.send(formData);
     }
 
     /**
@@ -1171,7 +1127,12 @@ export class UtilsHTML{
 export class i18n {
     static get_string(str){
         //if (!document.lang) document.lang = ""
-        let res = UtilsMoodle.get_string(str, 'atto_reciteditor');
+        let res = "";
+        try {
+            res = IWrapper.get_string(str);
+        }catch(e){
+            throw new Error("Try to get string before wrapper initialized: "+str)
+        }
         //if (res.startsWith('[[')) document.lang += "'"+str+"',"+'\n'
         //if (res.startsWith('[[')) document.lang += "$string['"+str+"'] = '';"+'\n'
         return res;

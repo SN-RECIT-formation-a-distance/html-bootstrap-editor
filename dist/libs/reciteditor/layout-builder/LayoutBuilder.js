@@ -550,7 +550,7 @@ var MainView = /*#__PURE__*/function (_Component2) {
     key: "onDrop",
     value: function onDrop(dom, newEl) {
       if (newEl) {
-        var cl = _RecitEditor.HTMLElementData.getElementClass(null, newEl);
+        var cl = _RecitEditor.HTMLElementData.getInstance().getElementClass(null, newEl);
         if (cl && cl.modalCreation) {
           this.onSelectElement(newEl);
         } else {

@@ -34,18 +34,6 @@ var _Options = require("../../Options");
 require("./assets/css/components.scss");
 require("bootstrap/dist/css/bootstrap.min.css");
 var _Feedback = require("./common/Feedback");
-var _Assets = require("./assets/Assets");
-Object.keys(_Assets).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _Assets[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _Assets[key];
-    }
-  });
-});
 var _Utils = require("./common/Utils");
 Object.keys(_Utils).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -55,6 +43,18 @@ Object.keys(_Utils).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _Utils[key];
+    }
+  });
+});
+var _Assets = require("./assets/Assets");
+Object.keys(_Assets).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  if (key in exports && exports[key] === _Assets[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Assets[key];
     }
   });
 });
@@ -223,18 +223,6 @@ Object.keys(_Iframe).forEach(function (key) {
     enumerable: true,
     get: function get() {
       return _Iframe[key];
-    }
-  });
-});
-var _WebApi = require("./common/WebApi");
-Object.keys(_WebApi).forEach(function (key) {
-  if (key === "default" || key === "__esModule") return;
-  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
-  if (key in exports && exports[key] === _WebApi[key]) return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _WebApi[key];
     }
   });
 });
@@ -412,21 +400,23 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
     _this.onSelectBuilder = _this.onSelectBuilder.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onChange = _this.onChange.bind((0, _assertThisInitialized2["default"])(_this));
     _this.state = {
-      builder: _this.props.builder
+      builder: props.builder
     };
 
     // the content is not in the state because we don't want to refresh the component every time the user types something. This moves the caret to the beginning of the content.
-    _this.content = props.content;
+    _Utils.IWrapper.wrapper = props.wrapper;
     return _this;
   }
   (0, _createClass2["default"])(RecitEditor, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
+      this.content = _Utils.IWrapper.getContent();
       window.document.title = _Options.Options.appTitle();
       $glVars.feedback.addObserver("App", function () {
         return _this2.onFeedback();
       });
+      this.forceUpdate();
     }
   }, {
     key: "render",
@@ -440,7 +430,7 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
         content: this.content,
         onSelectBuilder: this.onSelectBuilder,
         onChange: this.onChange,
-        onSaveAndClose: this.props.onSaveAndClose,
+        onSaveAndClose: this.onSaveAndClose,
         options: this.props.options
       }), $glVars.feedback.msg.map(function (item, index) {
         return /*#__PURE__*/_react["default"].createElement(_Feedback.VisualFeedback, {
@@ -474,15 +464,19 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
         builder: option
       });
     }
+  }, {
+    key: "onSaveAndClose",
+    value: function onSaveAndClose(content) {
+      _Utils.IWrapper.setContent(content);
+    }
   }]);
   return RecitEditor;
 }(_react.Component);
 exports.RecitEditor = RecitEditor;
 RecitEditor.defaultProps = {
   name: "",
-  content: "",
   builder: "layout",
-  onSaveAndClose: null,
+  wrapper: null,
   options: {
     wordProcessor: false,
     layoutBuilder: true

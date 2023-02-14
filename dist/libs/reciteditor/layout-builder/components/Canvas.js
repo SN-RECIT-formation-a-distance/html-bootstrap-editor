@@ -132,7 +132,7 @@ var CanvasElement = /*#__PURE__*/function () {
       var el = null;
       if (eventData.length > 0) {
         var componentData = JSON.parse(eventData);
-        el = _RecitEditor.HTMLElementData.createElement(componentData);
+        el = _RecitEditor.HTMLElementData.getInstance().createElement(componentData);
         if (el) {
           CanvasElement.create(el, this.onSelectCallback, this.onDropCallback, this.onEditNodeText);
         }
@@ -201,7 +201,7 @@ var CanvasElement = /*#__PURE__*/function () {
         }
         that.state.onDragging = true;
         cleanUp();
-        var elClass = _RecitEditor.HTMLElementData.getElementClass(null, that.dom);
+        var elClass = _RecitEditor.HTMLElementData.getInstance().getElementClass(null, that.dom);
         if (elClass) {
           elClass.prepareDroppingZones(that.dom);
         }
@@ -312,7 +312,7 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
       var isEditable = true; //TextEditorModal.isTagEditable(this.props.selectedElement.tagName);
       var name = '';
       var help = null;
-      var cl = _RecitEditor.HTMLElementData.getElementClass(null, this.props.selectedElement);
+      var cl = _RecitEditor.HTMLElementData.getInstance().getElementClass(null, this.props.selectedElement);
       if (cl) {
         name = cl.getDesc(this.props.selectedElement);
         help = cl.getHelpText(this.props.selectedElement);

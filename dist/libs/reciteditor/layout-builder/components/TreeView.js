@@ -216,7 +216,7 @@ var TreeView = /*#__PURE__*/function (_Component) {
   }, {
     key: "getNodeDesc",
     value: function getNodeDesc(node) {
-      var elClass = _RecitEditor.HTMLElementData.getElementClass(null, node);
+      var elClass = _RecitEditor.HTMLElementData.getInstance().getElementClass(null, node);
       return elClass ? elClass.getDesc(node) : _RecitEditor.UtilsString.capitalizeFirstLetter(node.tagName.toLowerCase());
     }
   }, {

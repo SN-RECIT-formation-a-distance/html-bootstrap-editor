@@ -39,13 +39,7 @@ var WebApi = /*#__PURE__*/function () {
   (0, _createClass2["default"])(WebApi, [{
     key: "getGateway",
     value: function getGateway() {
-      var atto = _RecitEditor.UtilsMoodle.getAttoInterface();
-      var settings = atto.getSettings();
-      if (settings) {
-        return M.cfg.wwwroot + "/lib/ajax/service.php?sesskey=" + M.cfg.sesskey;
-      } else {
-        return "Unknown gateway.";
-      }
+      return "127.0.0.1"; //IWrapper.getApiUrl();
     }
   }, {
     key: "post",

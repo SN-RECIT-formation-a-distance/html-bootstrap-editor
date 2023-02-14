@@ -23,7 +23,7 @@
 
 import React, { Component } from 'react';
 import { InputGroup } from 'react-bootstrap';
-import { InputText, BtnUpload, MoodleUploadFile } from '../RecitEditor';
+import { InputText, BtnUpload, UploadFile } from '../RecitEditor';
 
 export class ImageSrc extends Component {
     static defaultProps = {
@@ -46,7 +46,7 @@ export class ImageSrc extends Component {
         this.onUpload = this.onUpload.bind(this);
         this.onUploadDone = this.onUploadDone.bind(this);
 
-        this.moodleUpload = new MoodleUploadFile();
+        this.Upload = new UploadFile();
     }
 
     render() {       
@@ -63,7 +63,7 @@ export class ImageSrc extends Component {
     }   
 
     onUpload(event){
-        this.moodleUpload.onSelectFileToUpload(event, this.onUploadDone);
+        this.Upload.onSelectFileToUpload(event, this.onUploadDone);
     }
 
     onUploadDone(url){

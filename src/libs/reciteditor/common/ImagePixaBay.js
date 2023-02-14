@@ -25,7 +25,7 @@ import { faImage, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import { Button, Col, Form, FormControl, InputGroup, Modal } from 'react-bootstrap';
-import { i18n, ComboBox, MoodleUploadFile } from '../RecitEditor';
+import { i18n, ComboBox, UploadFile, IWrapper } from '../RecitEditor';
 import { Pagination } from './Pagination';
 
 export class ImagePixaBay extends Component {
@@ -44,7 +44,8 @@ export class ImagePixaBay extends Component {
     
     constructor(props){
         super(props);
-        this.api_key = M.recit.reciteditor.settings.pixabaykey || '';
+        let settings = IWrapper.getSettings();
+        this.api_key = settings.pixabaykey || '';
         this.per_page = 50;
         this.categories = [
             {"text": i18n.get_string('none'), "value": ''},
@@ -92,7 +93,7 @@ export class ImagePixaBay extends Component {
         ]
     
         this.state = {modal: false, data: [], pagination: {}, category: ''}
-        this.moodleUpload = new MoodleUploadFile();
+        this.Upload = new UploadFile();
     }
 
 
@@ -174,11 +175,11 @@ export class ImagePixaBay extends Component {
 
     onUpload(url){
         this.handleClose();
-        this.moodleUpload.onUploadDone = (url) => this.onAdd(url);
+        this.Upload.onUploadDone = (url) => this.onAdd(url);
         fetch(url)
         .then(res => res.blob())
         .then(blob => {
-            this.moodleUpload.upload(this.generateFileName(), blob)
+            this.Upload.upload(this.generateFileName(), blob)
         });
     }
 

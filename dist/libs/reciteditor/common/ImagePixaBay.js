@@ -28,7 +28,8 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
     var _this;
     (0, _classCallCheck2["default"])(this, ImagePixaBay);
     _this = _super.call(this, props);
-    _this.api_key = M.recit.reciteditor.settings.pixabaykey || '';
+    var settings = _RecitEditor.IWrapper.getSettings();
+    _this.api_key = settings.pixabaykey || '';
     _this.per_page = 50;
     _this.categories = [{
       "text": _RecitEditor.i18n.get_string('none'),
@@ -100,7 +101,7 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
       pagination: {},
       category: ''
     };
-    _this.moodleUpload = new _RecitEditor.MoodleUploadFile();
+    _this.Upload = new _RecitEditor.UploadFile();
     return _this;
   }
   (0, _createClass2["default"])(ImagePixaBay, [{
@@ -265,13 +266,13 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
     value: function onUpload(url) {
       var _this4 = this;
       this.handleClose();
-      this.moodleUpload.onUploadDone = function (url) {
+      this.Upload.onUploadDone = function (url) {
         return _this4.onAdd(url);
       };
       fetch(url).then(function (res) {
         return res.blob();
       }).then(function (blob) {
-        _this4.moodleUpload.upload(_this4.generateFileName(), blob);
+        _this4.Upload.upload(_this4.generateFileName(), blob);
       });
     }
   }, {

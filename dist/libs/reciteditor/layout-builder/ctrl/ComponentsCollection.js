@@ -92,14 +92,14 @@ var ComponentProperties = /*#__PURE__*/function (_Component) {
         html: [],
         bm: []
       };
-      var elClass = _HTMLElementData.HTMLElementData.getElementClass(null, this.props.element);
+      var elClass = _HTMLElementData.HTMLElementData.getInstance().getElementClass(null, this.props.element);
       if (elClass === null) {
         return result;
       }
-      result.bootstrap = _HTMLElementData.HTMLElementData.propertyList.bootstrap.filter(function (item) {
+      result.bootstrap = _HTMLElementData.HTMLElementData.getInstance().propertyList.bootstrap.filter(function (item) {
         return elClass.properties.all.includes(item.name);
       });
-      result.html = _HTMLElementData.HTMLElementData.propertyList.html.filter(function (item) {
+      result.html = _HTMLElementData.HTMLElementData.getInstance().propertyList.html.filter(function (item) {
         return elClass.properties.all.includes(item.name);
       });
       result.bookmark = result.bootstrap.concat(result.html).filter(function (item) {
@@ -433,7 +433,7 @@ var VisualComponentList = /*#__PURE__*/function (_Component3) {
       }), " ", _RecitEditor.i18n.get_string('components')), /*#__PURE__*/_react["default"].createElement("hr", {
         className: "mt-0"
       }), /*#__PURE__*/_react["default"].createElement(TokenList, {
-        dataProvider: _HTMLElementData.HTMLElementData.elementList,
+        dataProvider: _HTMLElementData.HTMLElementData.getInstance().elementList,
         onDragEnd: this.props.onDragEnd
       })), this.props.tab === "tpl" && /*#__PURE__*/_react["default"].createElement("div", {
         className: "panel"
@@ -561,8 +561,9 @@ var TemplateList = /*#__PURE__*/function (_Component5) {
     _this7.showModal = _this7.showModal.bind((0, _assertThisInitialized2["default"])(_this7));
     _this7.onSaveTemplate = _this7.onSaveTemplate.bind((0, _assertThisInitialized2["default"])(_this7));
     var url = false;
-    if (typeof M != 'undefined' && M.recit && M.recit.reciteditor && M.recit.reciteditor.settings.showcase_url && M.recit.reciteditor.settings.showcase_url.length > 0) {
-      url = M.recit.reciteditor.settings.showcase_url;
+    var settings = _RecitEditor.IWrapper.getSettings();
+    if (settings.showcase_url && settings.showcase_url.length > 0) {
+      url = settings.showcase_url;
     }
     _this7.state = {
       showModal: false,

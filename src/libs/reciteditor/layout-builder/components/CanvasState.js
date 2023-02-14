@@ -21,9 +21,9 @@
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
 
- import React from 'react';
+import React from 'react';
 import { TextEditorModal } from '../../common/TextEditor';
- import {LayoutBuilder, Canvas, CanvasElement, FloatingMenu, NodeTextEditing, SourceCodeEditor, Assets, HTMLElementData, UtilsHTML, UtilsMoodle, UtilsString} from '../../RecitEditor';
+import {LayoutBuilder, Canvas, CanvasElement, FloatingMenu, NodeTextEditing, SourceCodeEditor, Assets, HTMLElementData, UtilsHTML, IWrapper, UtilsString} from '../../RecitEditor';
 
 class CanvasState{
     constructor(mainView){
@@ -243,7 +243,7 @@ export class DesignerState extends CanvasState{
         let head = this.window.document.head;
         let doc = this.window.document;
         let body = this.window.document.body;
-        let style = UtilsMoodle.getThemeMoodleCssRules();
+        let style = IWrapper.getThemeCssRules();
         let el = null;
         
         if (style.url.length > 0){
@@ -632,7 +632,7 @@ export class PreviewState extends CanvasState{
         this.iFrame =  iframe.contentWindow || iframe.contentDocument;
         let head = this.iFrame.document.head;
         let doc = this.iFrame.document;
-        let style = UtilsMoodle.getThemeMoodleCssRules();
+        let style = IWrapper.getThemeCssRules();
         let el = null
 
         if (style.rules.length > 0){

@@ -25,7 +25,7 @@ import React, { Component } from 'react';
 import { Form, Row, Col, Nav, ButtonToolbar, ButtonGroup, Button, Modal  } from 'react-bootstrap';
 import { faSave, faTrashAlt, faAngleRight, faAngleDown, faCubes, faCloud, faTimes, faCloudDownloadAlt, faCog, faPuzzlePiece, faArrowUp, faArrowDown} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { LayoutSpacingEditor, LayoutSpacing, MultipleSelect, $glVars, Assets, ToggleButtons, InputColor, InputText, InputTextArea, MinValueMax, ComboBox, ImageSrc, BtnUpload,  
+import { LayoutSpacingEditor, LayoutSpacing, MultipleSelect, $glVars, Assets, ToggleButtons, InputColor, InputText, InputTextArea, MinValueMax, ComboBox, ImageSrc, BtnUpload, IWrapper,
     IconSelector, ColorSelector, Templates, i18n } from '../../RecitEditor';
 import { HTMLElementData } from './HTMLElementData';
 import { GridBuilder } from '../components/GridBuilder';
@@ -417,8 +417,9 @@ class TemplateList extends Component{
         this.onSaveTemplate = this.onSaveTemplate.bind(this);
 
         let url = false;
-        if (typeof M != 'undefined' && M.recit && M.recit.reciteditor && M.recit.reciteditor.settings.showcase_url && M.recit.reciteditor.settings.showcase_url.length > 0){
-            url = M.recit.reciteditor.settings.showcase_url;
+        let settings = IWrapper.getSettings();
+        if (settings.showcase_url && settings.showcase_url.length > 0){
+            url = settings.showcase_url;
         }
         this.state = {showModal: false, showMenu: false, showImport: false, showShowcase: false, UrlShowcase: url, collapse: {}, hoverimg: false};
     }    

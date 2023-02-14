@@ -107,4 +107,4 @@ var Templates = /*#__PURE__*/function () {
 }();
 exports.Templates = Templates;
 Templates.layoutList = [];
-Templates.webApi = new _RecitEditor.WebApi();
+Templates.webApi = _RecitEditor.IWrapper;

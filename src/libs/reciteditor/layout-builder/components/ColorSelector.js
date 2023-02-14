@@ -25,7 +25,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { faCheck} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {UtilsMoodle} from '../../RecitEditor';
+import {IWrapper} from '../../RecitEditor';
 
 export class ColorSelector extends Component {
     static defaultProps = {
@@ -44,7 +44,7 @@ export class ColorSelector extends Component {
 
         // set Bootstrap variant colors according to the theme
         if (this.props.flags && this.props.flags.fetchFromTheme){
-            let cssRules = UtilsMoodle.getThemeMoodleCssRules(true);
+            let cssRules = IWrapper.getThemeCssRules(true);
 
             for (let c of cssRules.rules){
                 for (let i in this.options){

@@ -25,7 +25,7 @@ import React, { Component } from 'react';
 import { Button, Modal, FormControl } from 'react-bootstrap';
 import { faIcons} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {UtilsMoodle,IFrame, i18n } from '../RecitEditor';
+import {IWrapper,IFrame, i18n } from '../RecitEditor';
 
 export class IconSelector extends Component {
     static defaultProps = {
@@ -45,12 +45,13 @@ export class IconSelector extends Component {
         this.handleClose = this.handleClose.bind(this);
         this.state = {modal:false, search: '', collapsed: {}}; 
 
-        this.cssRules = UtilsMoodle.getThemeMoodleCssRules(true);
+        this.cssRules = IWrapper.getThemeCssRules(true);
         this.icons = {};
 
         this.config = {};
-        if (typeof M != 'undefined' && M.recit && M.recit.reciteditor && M.recit.reciteditor.settings.iconclass){
-            let config = M.recit.reciteditor.settings.iconclass;
+        let settings = IWrapper.getSettings();
+        if (settings.iconclass){
+            let config = settings.iconclass;
             config = config.split(',');
             for (let c of config){
                 let data = c.split('=');

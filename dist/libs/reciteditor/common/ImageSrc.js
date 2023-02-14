@@ -28,7 +28,7 @@ var ImageSrc = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.onUpload = _this.onUpload.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onUploadDone = _this.onUploadDone.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.moodleUpload = new _RecitEditor.MoodleUploadFile();
+    _this.Upload = new _RecitEditor.UploadFile();
     return _this;
   }
   (0, _createClass2["default"])(ImageSrc, [{
@@ -58,7 +58,7 @@ var ImageSrc = /*#__PURE__*/function (_Component) {
   }, {
     key: "onUpload",
     value: function onUpload(event) {
-      this.moodleUpload.onSelectFileToUpload(event, this.onUploadDone);
+      this.Upload.onSelectFileToUpload(event, this.onUploadDone);
     }
   }, {
     key: "onUploadDone",

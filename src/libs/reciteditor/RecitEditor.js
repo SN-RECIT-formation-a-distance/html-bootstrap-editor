@@ -28,6 +28,7 @@ import { Options } from '../../Options';
 import "./assets/css/components.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FeedbackCtrl, VisualFeedback } from './common/Feedback';
+import { IWrapper } from './common/Utils';
 
 //////////////////////////////////////////////////
 // Note: the "export *" will only export the classes marked with "export" in their definition
@@ -48,7 +49,6 @@ export * from './common/IconSelector';
 export * from './common/BtnUpload';
 export * from './common/ButtonsBar';
 export * from './common/Iframe';
-export * from './common/WebApi';
 export * from './layout-builder/components/TableActions'
 export * from './layout-builder/components/LayoutSpacingEditor';
 export * from './layout-builder/components/LayoutSpacing';
@@ -65,15 +65,14 @@ export * from './layout-builder/ctrl/HTMLProperties';
 export * from './layout-builder/LayoutBuilder';
 
 export const $glVars = {
-    feedback: new FeedbackCtrl()
+    feedback: new FeedbackCtrl(),
 }
 
 export class RecitEditor extends Component{
     static defaultProps = {
         name: "",
-        content: "",
         builder: "layout",
-        onSaveAndClose: null,
+        wrapper: null,
         options: {wordProcessor: false, layoutBuilder: true}
     };
 
@@ -83,15 +82,17 @@ export class RecitEditor extends Component{
         this.onSelectBuilder = this.onSelectBuilder.bind(this);
         this.onChange = this.onChange.bind(this);
 
-        this.state = {builder: this.props.builder};
+        this.state = {builder: props.builder};
 
         // the content is not in the state because we don't want to refresh the component every time the user types something. This moves the caret to the beginning of the content.
-        this.content = props.content;
+        IWrapper.wrapper = props.wrapper;
     }
 
     componentDidMount(){
+        this.content = IWrapper.getContent();
         window.document.title = Options.appTitle(); 
         $glVars.feedback.addObserver("App", () => this.onFeedback()); 
+        this.forceUpdate();
     }
 
 	render(){
@@ -99,7 +100,7 @@ export class RecitEditor extends Component{
                 {this.state.builder === "word" ? 
                     <WordProcessor content={this.content} onSelectBuilder={this.onSelectBuilder} onChange={this.onChange} options={this.props.options}/> 
                     : 
-                    <LayoutBuilder content={this.content} onSelectBuilder={this.onSelectBuilder} onChange={this.onChange} onSaveAndClose={this.props.onSaveAndClose} options={this.props.options}/>}
+                    <LayoutBuilder content={this.content} onSelectBuilder={this.onSelectBuilder} onChange={this.onChange} onSaveAndClose={this.onSaveAndClose} options={this.props.options}/>}
         
             {$glVars.feedback.msg.map((item, index) => {  
                 return (<VisualFeedback key={index} id={index} msg={item.msg} type={item.type} title={item.title} timeout={item.timeout}/>);
@@ -122,5 +123,9 @@ export class RecitEditor extends Component{
 
     onSelectBuilder(option){
         this.setState({builder: option});
+    }
+
+    onSaveAndClose(content){
+        IWrapper.setContent(content);
     }
 }

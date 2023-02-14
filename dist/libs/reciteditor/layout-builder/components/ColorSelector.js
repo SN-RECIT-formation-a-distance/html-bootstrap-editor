@@ -37,7 +37,7 @@ var ColorSelector = /*#__PURE__*/function (_Component) {
 
     // set Bootstrap variant colors according to the theme
     if (_this.props.flags && _this.props.flags.fetchFromTheme) {
-      var cssRules = _RecitEditor.UtilsMoodle.getThemeMoodleCssRules(true);
+      var cssRules = _RecitEditor.IWrapper.getThemeCssRules(true);
       var _iterator = _createForOfIteratorHelper(cssRules.rules),
         _step;
       try {

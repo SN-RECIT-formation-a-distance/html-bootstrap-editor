@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "RecitEditor", {
+Object.defineProperty(exports, "HTMLBootstrapEditor", {
   enumerable: true,
   get: function get() {
     return _RecitEditor.RecitEditor;

@@ -40,11 +40,12 @@ var IconSelector = /*#__PURE__*/function (_Component) {
       search: '',
       collapsed: {}
     };
-    _this.cssRules = _RecitEditor.UtilsMoodle.getThemeMoodleCssRules(true);
+    _this.cssRules = _RecitEditor.IWrapper.getThemeCssRules(true);
     _this.icons = {};
     _this.config = {};
-    if (typeof M != 'undefined' && M.recit && M.recit.reciteditor && M.recit.reciteditor.settings.iconclass) {
-      var config = M.recit.reciteditor.settings.iconclass;
+    var settings = _RecitEditor.IWrapper.getSettings();
+    if (settings.iconclass) {
+      var config = settings.iconclass;
       config = config.split(',');
       var _iterator = _createForOfIteratorHelper(config),
         _step;

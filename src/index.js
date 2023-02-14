@@ -1,1 +1,1 @@
-export {RecitEditor} from './libs/reciteditor/RecitEditor';
+export {RecitEditor as HTMLBootstrapEditor} from './libs/reciteditor/RecitEditor';
