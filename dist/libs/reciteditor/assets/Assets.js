@@ -33,15 +33,14 @@ var Assets = /*#__PURE__*/(0, _createClass2["default"])(function Assets() {
   (0, _classCallCheck2["default"])(this, Assets);
 });
 exports.Assets = Assets;
-Assets.RecitLogo = './react/build/assets/images/recit.png';
+Assets.RecitLogo = require('./images/recit.png');
 Assets.ImageEmpty = 'https://raw.githubusercontent.com/SN-RECIT-formation-a-distance/moodle-atto_reciteditor/master/src/react/build/assets/images/header4.jpg';
 Assets.ImageEmptyHD = Assets.ImageEmpty;
 Assets.ImageAvatar = 'https://sn-recit-formation-a-distance.github.io/html-bootstrap-editor-showcase/img/avatar.jpg';
-Assets.CanvasCSS = './react/build/assets/css/canvas.css';
-Assets.CanvasDesignerCSS = './react/build/assets/css/designer-canvas.css?v=5';
-Assets.Bootstrap = './react/build/assets/bootstrap/css/bootstrap.min.css';
-Assets.BootstrapJS = './react/build/assets/bootstrap/js/bootstrap.bundle.min.js';
-Assets.JqueryJS = './react/build/assets/bootstrap/js/jquery.min.js';
+Assets.CanvasCSS = require('./css/canvas.css.asset');
+Assets.CanvasDesignerCSS = require('./css/designer-canvas.css.asset');
+Assets.BootstrapJS = require('./bootstrap/js/bootstrap.bundle.min.js.asset');
+Assets.JqueryJS = require('./bootstrap/js/jquery.min.js.asset');
 Assets.faBootstrap = /*#__PURE__*/_react["default"].createElement("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   className: "svg-inline--fa fa-w-20",

@@ -27,7 +27,8 @@ import {faFont, faCode, faFileCode, faBold, faItalic, faAlignLeft, faAlignRight,
         faOutdent, faIndent, faUnderline, faStrikethrough, faListUl, faListOl, faRemoveFormat, faLink, faUnlink, faUndo, faRedo,
         faFillDrip, faHighlighter, faCamera, faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {ScreenCapture, UtilsHTML,Utils, ImageSrc, i18n} from '../RecitEditor';
+import {UtilsHTML,Utils, ImageSrc, i18n} from '../RecitEditor';
+import {ScreenCapture} from '../word-processor/ScreenCapture';
 
 export class ButtonsBar extends Component{
     static defaultProps = {
@@ -52,7 +53,7 @@ export class ButtonsBar extends Component{
 
     constructor(props){
         super(props);  
-        
+
         this.onAddLink = this.onAddLink.bind(this);
         this.onAddImage = this.onAddImage.bind(this);
         this.onAddImageModal = this.onAddImageModal.bind(this);
