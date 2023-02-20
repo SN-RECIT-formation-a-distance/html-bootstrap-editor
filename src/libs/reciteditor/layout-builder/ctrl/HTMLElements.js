@@ -231,7 +231,11 @@ class HTMLElement{
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('attoreciteditor_videobtn') || el.classList.contains('videobtn'));//Videobtn is legacy class
+         return (el.classList.contains('htmlbootstrapeditor_videobtn') || this.equalLegacy(el));//Videobtn is legacy class
+     }
+
+     equalLegacy(el){
+        return (el.classList.contains('attoreciteditor_videobtn') || el.classList.contains('videobtn'));//Videobtn is legacy class
      }
  
      create(){ 
@@ -239,7 +243,7 @@ class HTMLElement{
          el.innerHTML = i18n.get_string('videobutton');
          el.classList.add('btn');
          el.classList.add('btn-primary');
-         el.classList.add('attoreciteditor_videobtn');
+         el.classList.add('htmlbootstrapeditor_videobtn');
          el.setAttribute('data-videourl', 'https://www.youtube.com/embed/WvljI0VIq-E?rel=0');
          return el;
      }
@@ -404,7 +408,11 @@ class HTMLElement{
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('row') || el.classList.contains('attoreciteditor_row-fluid'));
+         return (el.classList.contains('row') || this.equalLegacy(el));
+     }
+
+     equalLegacy(el){
+        return (el.classList.contains('htmlbootstrapeditor_row-fluid') || el.classList.contains('attoreciteditor_row-fluid'));
      }
  
      create(){
@@ -737,13 +745,17 @@ class HTMLElement{
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('attoreciteditor_flipcard2'));
+         return (el.classList.contains('htmlbootstrapeditor_flipcard2') || this.equalLegacy(el));
+     }
+
+     equalLegacy(el){
+        return (el.classList.contains('attoreciteditor_flipcard2'));        
      }
  
      create(){
          let card = document.createElement("div");
          card.classList.add("card");
-         card.classList.add("attoreciteditor_flipcard2");
+         card.classList.add("htmlbootstrapeditor_flipcard2");
          card.classList.add("manual-flip-click");
          card.style.marginTop = '60px';
 
@@ -1225,7 +1237,11 @@ class HTMLElement{
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('attoreciteditor_img-popup'));
+         return (el.classList.contains('htmlbootstrapeditor_img-popup') || this.equalLegacy(el));
+     }
+
+     equalLegacy(el){
+        return (el.classList.contains('attoreciteditor_img-popup'));
      }
  
      create(){
@@ -1237,7 +1253,7 @@ class HTMLElement{
          let el = document.createElement("img");
          el.setAttribute('src', `${Assets.ImageEmpty}`);
          el.classList.add("img-fluid");
-         el.classList.add("attoreciteditor_img-popup");
+         el.classList.add("htmlbootstrapeditor_img-popup");
          div.appendChild(el);
  
          el = document.createElement("figcaption");
@@ -1256,12 +1272,16 @@ class HTMLElement{
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('attoreciteditor_imgclick'));
+         return (el.classList.contains('htmlbootstrapeditor_imgclick') || this.equalLegacy(el));
+     }
+
+     equalLegacy(el){
+        return (el.classList.contains('attoreciteditor_imgclick'));
      }
  
      create(){
          let div = document.createElement("div");
-         div.classList.add('attoreciteditor_imgclick');
+         div.classList.add('htmlbootstrapeditor_imgclick');
          
          let el = document.createElement("img");
          el.setAttribute('src', `${Assets.ImageEmpty}`);
