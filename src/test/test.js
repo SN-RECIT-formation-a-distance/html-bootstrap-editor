@@ -14,6 +14,10 @@ let IWrapper = {
     saveTemplate: null
 };
 
+/**
+ * 
+ * @returns An object with settings. All keys are defined as below.
+ */
 IWrapper.getSettings = function(){
     var result = {};
     result.wwwroot = '/';
@@ -23,30 +27,51 @@ IWrapper.getSettings = function(){
     return result;
 }
 
-
+/**
+ * This function will upload images to a public server
+ * @param {String} filename 
+ * @param {Binary} binFile 
+ * @param {Function} cb Callback to call when the file has been uploaded. The request must return the file url.
+ */
 IWrapper.uploadFile = function(filename, binFile, cb){
     let xhr = new XMLHttpRequest();
     cb(xhr);
 }
 
+/**
+ * This function will return all CSS rules used on the website.
+ */
 IWrapper.getThemeCssRules = function(returnAllRules){
     var cssRulesBuffer = {rules: [], url: [IWrapper.getThemeUrl()]};
 
     return cssRulesBuffer;
 }
 
+/**
+ * This function will return the CSS file used on the website.
+ */
 IWrapper.getThemeUrl = function(){
     return 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css'
 }
 
+/**
+ * This function will an associative array containing all strings for current languages i.e strings['errormsg'] = 'An error has occured'
+ */
 IWrapper.get_string = function(str, resource){
     return str;
 }
 
+/**
+ * 
+ * @returns A string containing HTML to edit
+ */
 IWrapper.getContent = function(){
     return '';
 };
 
+/**
+ * This function will be called when user press 'save' with a string containing the edited HTML
+ */
 IWrapper.setContent = function(htmlStr){
     document.body.innerHTML = htmlStr;
 };
