@@ -23,7 +23,7 @@
 
 import React, { Component } from 'react';
 import { ButtonToolbar, ButtonGroup, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import {faArrowsAlt, faEdit, faBold, faArrowUp,faArrowDown, faTrashAlt, faClone, faItalic, faUnderline, faStrikethrough, faPuzzlePiece, faParagraph, faInfoCircle} from '@fortawesome/free-solid-svg-icons';
+import {faArrowsAlt, faEdit, faBold, faArrowUp,faArrowDown, faTrashAlt, faClone, faItalic, faUnderline, faStrikethrough, faPuzzlePiece, faParagraph, faInfoCircle, faSave} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {HTMLElementData, BtnSetCssProp, TemplateForm, UtilsHTML, i18n} from '../../RecitEditor';
 import { TextEditorModal } from '../../common/TextEditor';
@@ -272,11 +272,13 @@ export class FloatingMenu extends Component{
         onMoveNodeDown: null,
         onDeleteElement: null,
         onCloneNode: null,
+        onSaveElement: null,
         device: null,
     };
 
     constructor(props){
         super(props);
+        this.state = {saveElement: false};
     }
 
     render(){
@@ -310,6 +312,7 @@ export class FloatingMenu extends Component{
                     <ButtonGroup size="sm">
                         <Button onDragStart={this.props.onDragElement} draggable="true" style={{cursor: 'grab'}}><FontAwesomeIcon  icon={faArrowsAlt} title={i18n.get_string('drag')}/> {name}</Button>
                         {isEditable && <Button onClick={this.props.onEdit}><FontAwesomeIcon icon={faEdit} title={i18n.get_string('edit')}/></Button>}
+                        <Button onClick={() => this.setState({saveElement:true})}><FontAwesomeIcon icon={faSave} title={i18n.get_string('save')}/></Button>
                         <Button onClick={() => this.props.onMoveNodeUp(null)}  ><FontAwesomeIcon icon={faArrowUp} title={i18n.get_string('moveelementup')}/></Button>
                         <Button onClick={() => this.props.onMoveNodeDown(null)}><FontAwesomeIcon icon={faArrowDown} title={i18n.get_string('moveelementdown')}/></Button>
                         <Button onClick={this.props.onCloneNode}><FontAwesomeIcon icon={faClone} title={i18n.get_string('clone')}/></Button>
@@ -317,7 +320,13 @@ export class FloatingMenu extends Component{
                         {help && <OverlayTrigger overlay={<Tooltip>{help}</Tooltip>}><Button><FontAwesomeIcon icon={faInfoCircle}/> </Button></OverlayTrigger>}
                     </ButtonGroup>
                 </ButtonToolbar>
+                {this.state.saveElement && <TemplateForm onClose={() => this.setState({saveElement:false})} onSave={this.onSaveTemplate.bind(this)} title={i18n.get_string('createtemplate')} description={i18n.get_string('addcomponentdesc')}/>}
             </div>
         return main;
+    }
+
+    onSaveTemplate(data){
+        this.props.onSaveElement(data.name, 'l', this.props.selectedElement);
+        this.setState({saveElement:false});
     }
 }
