@@ -25,7 +25,7 @@ export class TextEditorModal extends React.Component {
         'th': {content: 'innerHTML', stripPTags: true},
         'ul': {content: 'outerHTML'},
         'ol': {content: 'outerHTML'},
-        'a': {content: 'innerHTML', stripPTags: true},
+        //'a': {content: 'innerHTML', stripPTags: true},
         'em': {content: 'outerHTML'},
         'pre': {content: 'outerHTML'},
         'q': {content: 'outerHTML'},

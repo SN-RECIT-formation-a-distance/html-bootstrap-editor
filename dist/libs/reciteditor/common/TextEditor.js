@@ -292,10 +292,7 @@ TextEditorModal.allowedTags = {
   'ol': {
     content: 'outerHTML'
   },
-  'a': {
-    content: 'innerHTML',
-    stripPTags: true
-  },
+  //'a': {content: 'innerHTML', stripPTags: true},
   'em': {
     content: 'outerHTML'
   },
