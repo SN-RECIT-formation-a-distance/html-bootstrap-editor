@@ -4,6 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 var _react = _interopRequireDefault(require("react"));
 var _index = require("../index.js");
 var _client = require("react-dom/client");
+var _templates = require("./templates");
 var IWrapper = {
   getSettings: null,
   uploadFile: null,
@@ -14,6 +15,11 @@ var IWrapper = {
   getTemplateList: null,
   saveTemplate: null
 };
+
+/**
+ * 
+ * @returns An object with settings. All keys are defined as below.
+ */
 IWrapper.getSettings = function () {
   var result = {};
   result.wwwroot = '/';
@@ -22,26 +28,54 @@ IWrapper.getSettings = function () {
   result.pixabaykey = 'key';
   return result;
 };
+
+/**
+ * This function will upload images to a public server
+ * @param {String} filename 
+ * @param {Binary} binFile 
+ * @param {Function} cb Callback to call when the file has been uploaded. The request must return the file url.
+ */
 IWrapper.uploadFile = function (filename, binFile, cb) {
   var xhr = new XMLHttpRequest();
   cb(xhr);
 };
+
+/**
+ * This function will return all CSS rules used on the website.
+ */
 IWrapper.getThemeCssRules = function (returnAllRules) {
   var cssRulesBuffer = {
     rules: [],
-    url: []
+    url: [IWrapper.getThemeUrl()]
   };
   return cssRulesBuffer;
 };
+
+/**
+ * This function will return the CSS file used on the website.
+ */
 IWrapper.getThemeUrl = function () {
-  return 'https://github.com/moodle/moodle/raw/12e9d9e1bf1291700fa0765116376ad2d02bf06b/theme/boost/style/moodle.css';
+  return 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css';
 };
+
+/**
+ * This function will an associative array containing all strings for current languages i.e strings['errormsg'] = 'An error has occured'
+ */
 IWrapper.get_string = function (str, resource) {
   return str;
 };
+
+/**
+ * 
+ * @returns A string containing HTML to edit
+ */
 IWrapper.getContent = function () {
   return '';
 };
+
+/**
+ * This function will be called when user press 'save' with a string containing the edited HTML
+ */
 IWrapper.setContent = function (htmlStr) {
   document.body.innerHTML = htmlStr;
 };
@@ -54,9 +88,7 @@ IWrapper.saveTemplate = function (data) {
 };
 IWrapper.getTemplateList = function (type) {
   return new Promise(function (resolve, reject) {
-    resolve([{
-      data: []
-    }]);
+    resolve(_templates.TestTemplates);
   });
 };
 IWrapper.deleteTemplate = function (id) {

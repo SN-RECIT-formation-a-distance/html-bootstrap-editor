@@ -298,6 +298,11 @@ var HTMLButtonVideoElement = /*#__PURE__*/function (_HTMLElement7) {
       if (el === null) {
         return false;
       }
+      return el.classList.contains('htmlbootstrapeditor_videobtn') || this.equalLegacy(el); //Videobtn is legacy class
+    }
+  }, {
+    key: "equalLegacy",
+    value: function equalLegacy(el) {
       return el.classList.contains('attoreciteditor_videobtn') || el.classList.contains('videobtn'); //Videobtn is legacy class
     }
   }, {
@@ -307,7 +312,7 @@ var HTMLButtonVideoElement = /*#__PURE__*/function (_HTMLElement7) {
       el.innerHTML = _RecitEditor.i18n.get_string('videobutton');
       el.classList.add('btn');
       el.classList.add('btn-primary');
-      el.classList.add('attoreciteditor_videobtn');
+      el.classList.add('htmlbootstrapeditor_videobtn');
       el.setAttribute('data-videourl', 'https://www.youtube.com/embed/WvljI0VIq-E?rel=0');
       return el;
     }
@@ -546,7 +551,12 @@ var HTMLRowElement = /*#__PURE__*/function (_HTMLElement15) {
       if (el === null) {
         return false;
       }
-      return el.classList.contains('row') || el.classList.contains('attoreciteditor_row-fluid');
+      return el.classList.contains('row') || this.equalLegacy(el);
+    }
+  }, {
+    key: "equalLegacy",
+    value: function equalLegacy(el) {
+      return el.classList.contains('htmlbootstrapeditor_row-fluid') || el.classList.contains('attoreciteditor_row-fluid');
     }
   }, {
     key: "create",
@@ -1008,6 +1018,11 @@ var HTMLFlipCardElement = /*#__PURE__*/function (_HTMLDivElement7) {
       if (el === null) {
         return false;
       }
+      return el.classList.contains('htmlbootstrapeditor_flipcard2') || this.equalLegacy(el);
+    }
+  }, {
+    key: "equalLegacy",
+    value: function equalLegacy(el) {
       return el.classList.contains('attoreciteditor_flipcard2');
     }
   }, {
@@ -1015,7 +1030,7 @@ var HTMLFlipCardElement = /*#__PURE__*/function (_HTMLDivElement7) {
     value: function create() {
       var card = document.createElement("div");
       card.classList.add("card");
-      card.classList.add("attoreciteditor_flipcard2");
+      card.classList.add("htmlbootstrapeditor_flipcard2");
       card.classList.add("manual-flip-click");
       card.style.marginTop = '60px';
       var cardinner = document.createElement("div");
@@ -1568,6 +1583,11 @@ var HTMLImageWithCaptionElement = /*#__PURE__*/function (_HTMLElement31) {
       if (el === null) {
         return false;
       }
+      return el.classList.contains('htmlbootstrapeditor_img-popup') || this.equalLegacy(el);
+    }
+  }, {
+    key: "equalLegacy",
+    value: function equalLegacy(el) {
       return el.classList.contains('attoreciteditor_img-popup');
     }
   }, {
@@ -1580,7 +1600,7 @@ var HTMLImageWithCaptionElement = /*#__PURE__*/function (_HTMLElement31) {
       var el = document.createElement("img");
       el.setAttribute('src', "".concat(_RecitEditor.Assets.ImageEmpty));
       el.classList.add("img-fluid");
-      el.classList.add("attoreciteditor_img-popup");
+      el.classList.add("htmlbootstrapeditor_img-popup");
       div.appendChild(el);
       el = document.createElement("figcaption");
       el.innerHTML = "Source : Nom de l'auteur, <em>titre de la photo ou de l'oeuvre</em> (année), nom de l'institution qui possède l'œuvre.";
@@ -1604,13 +1624,18 @@ var HTMLClickableImageElement = /*#__PURE__*/function (_HTMLElement32) {
       if (el === null) {
         return false;
       }
+      return el.classList.contains('htmlbootstrapeditor_imgclick') || this.equalLegacy(el);
+    }
+  }, {
+    key: "equalLegacy",
+    value: function equalLegacy(el) {
       return el.classList.contains('attoreciteditor_imgclick');
     }
   }, {
     key: "create",
     value: function create() {
       var div = document.createElement("div");
-      div.classList.add('attoreciteditor_imgclick');
+      div.classList.add('htmlbootstrapeditor_imgclick');
       var el = document.createElement("img");
       el.setAttribute('src', "".concat(_RecitEditor.Assets.ImageEmpty));
       el.classList.add("img-fluid");

@@ -280,13 +280,18 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
   (0, _inherits2["default"])(FloatingMenu, _Component2);
   var _super2 = _createSuper(FloatingMenu);
   function FloatingMenu(props) {
+    var _this;
     (0, _classCallCheck2["default"])(this, FloatingMenu);
-    return _super2.call(this, props);
+    _this = _super2.call(this, props);
+    _this.state = {
+      saveElement: false
+    };
+    return _this;
   }
   (0, _createClass2["default"])(FloatingMenu, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
       if (this.props.posCanvas === null) {
         return null;
       }
@@ -342,14 +347,23 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
         title: _RecitEditor.i18n.get_string('edit')
       })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
-          return _this.props.onMoveNodeUp(null);
+          return _this2.setState({
+            saveElement: true
+          });
+        }
+      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+        icon: _freeSolidSvgIcons.faSave,
+        title: _RecitEditor.i18n.get_string('save')
+      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+        onClick: function onClick() {
+          return _this2.props.onMoveNodeUp(null);
         }
       }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowUp,
         title: _RecitEditor.i18n.get_string('moveelementup')
       })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
-          return _this.props.onMoveNodeDown(null);
+          return _this2.props.onMoveNodeDown(null);
         }
       }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowDown,
@@ -361,7 +375,7 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
         title: _RecitEditor.i18n.get_string('clone')
       })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
-          return _this.props.onDeleteElement(null);
+          return _this2.props.onDeleteElement(null);
         }
       }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTrashAlt,
@@ -370,8 +384,25 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
         overlay: /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Tooltip, null, help)
       }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faInfoCircle
-      }), " ")))));
+      }), " ")))), this.state.saveElement && /*#__PURE__*/_react["default"].createElement(_RecitEditor.TemplateForm, {
+        onClose: function onClose() {
+          return _this2.setState({
+            saveElement: false
+          });
+        },
+        onSave: this.onSaveTemplate.bind(this),
+        title: _RecitEditor.i18n.get_string('createtemplate'),
+        description: _RecitEditor.i18n.get_string('addcomponentdesc')
+      }));
       return main;
+    }
+  }, {
+    key: "onSaveTemplate",
+    value: function onSaveTemplate(data) {
+      this.props.onSaveElement(data.name, 'l', this.props.selectedElement);
+      this.setState({
+        saveElement: false
+      });
     }
   }]);
   return FloatingMenu;
@@ -386,5 +417,6 @@ FloatingMenu.defaultProps = {
   onMoveNodeDown: null,
   onDeleteElement: null,
   onCloneNode: null,
+  onSaveElement: null,
   device: null
 };

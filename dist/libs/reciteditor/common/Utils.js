@@ -507,30 +507,13 @@ var UploadFile = /*#__PURE__*/function () {
   }
   (0, _createClass2["default"])(UploadFile, [{
     key: "onReadyStateChange",
-    value: function onReadyStateChange(xhr) {
-      var that = this;
-      if (xhr.readyState === 4) {
-        if (xhr.status === 200) {
-          var result = JSON.parse(xhr.responseText);
-          if (result) {
-            if (result.error) {
-              console.log(result);
-              return;
-            }
-            var file = result;
-            if (result.event && result.event === 'fileexists') {
-              // A file with this name is already in use here - rename to avoid conflict.
-              // Chances are, it's a different image (stored in a different folder on the user's computer).
-              // If the user wants to reuse an existing image, they can copy/paste it within the editor.
-              file = result.newfile;
-            }
-            if (this.onUploadDone) {
-              this.onUploadDone(file.url);
-            }
-          }
-        } else {
-          alert("server error");
+    value: function onReadyStateChange(file) {
+      if (file) {
+        if (this.onUploadDone) {
+          this.onUploadDone(file.url);
         }
+      } else {
+        alert("server error");
       }
       return true;
     }

@@ -514,33 +514,13 @@ export class UploadFile{
         this.onUploadDone = null;
     }
 
-    onReadyStateChange(xhr){
-        let that = this;
-
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                let result = JSON.parse(xhr.responseText);
-                if (result) {
-                    if (result.error) {
-                        console.log(result);
-                        return;
-                    }
-
-                    let file = result;
-                    if (result.event && result.event === 'fileexists') {
-                        // A file with this name is already in use here - rename to avoid conflict.
-                        // Chances are, it's a different image (stored in a different folder on the user's computer).
-                        // If the user wants to reuse an existing image, they can copy/paste it within the editor.
-                        file = result.newfile;
-                    }
-
-                    if(this.onUploadDone){
-                        this.onUploadDone(file.url);
-                    }
-                }
-            } else {
-                alert("server error");
+    onReadyStateChange(file){
+        if (file){
+            if(this.onUploadDone){
+                this.onUploadDone(file.url);
             }
+        } else {
+            alert("server error");
         }
         return true;
     }
