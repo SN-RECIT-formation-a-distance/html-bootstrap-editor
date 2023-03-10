@@ -23,7 +23,7 @@
 
 import React, { Component  } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
-import MathJax from 'react-mathjax';
+//import MathJax from 'react-mathjax';
 import {ButtonsBar, UtilsHTML, JsNx} from '../RecitEditor';
 
 import 'codemirror/lib/codemirror.css';
@@ -74,7 +74,7 @@ export class WordProcessor extends Component
     render(){        
         //const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`;
  
-        let main = <EditorFrame flags={this.state.flags} 
+        /*let main = <EditorFrame flags={this.state.flags} 
                         buttonsBar={<ButtonsBar selection={this.state.selection} history={this.state.history} onUndo={this.undoHistory} onRedo={this.redoHistory}
                                 flags={this.state.flags} onHighlighter={() => this.onSetFlag('highlighter')} onCodeSource={this.onCodeSource}
                                 onMathFormula={() => this.onSetFlag('mathFormula')} onScreenCapture={this.onAddImage} onAddImage={this.onAddImage}
@@ -89,8 +89,8 @@ export class WordProcessor extends Component
                             </MathJax.Provider>
                         }                      
                         
-                    </EditorFrame>;            
-        return main;
+                    </EditorFrame>;            */
+        return null;
     }
 
     onAddImage(src){

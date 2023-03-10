@@ -14,7 +14,6 @@ var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 var _react = _interopRequireWildcard(require("react"));
 var _reactCodemirror = _interopRequireDefault(require("@uiw/react-codemirror"));
-var _reactMathjax = _interopRequireDefault(require("react-mathjax"));
 var _RecitEditor = require("../RecitEditor");
 require("codemirror/lib/codemirror.css");
 var _langHtml = require("@codemirror/lang-html");
@@ -65,39 +64,25 @@ var WordProcessor = /*#__PURE__*/function (_Component) {
   (0, _createClass2["default"])(WordProcessor, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
       //const tex = `f(x) = \\int_{-\\infty}^\\infty\\hat f(\\xi)\\,e^{2 \\pi i \\xi x}\\,d\\xi`;
 
-      var main = /*#__PURE__*/_react["default"].createElement(EditorFrame, {
-        flags: this.state.flags,
-        buttonsBar: /*#__PURE__*/_react["default"].createElement(_RecitEditor.ButtonsBar, {
-          selection: this.state.selection,
-          history: this.state.history,
-          onUndo: this.undoHistory,
-          onRedo: this.redoHistory,
-          flags: this.state.flags,
-          onHighlighter: function onHighlighter() {
-            return _this2.onSetFlag('highlighter');
-          },
-          onCodeSource: this.onCodeSource,
-          onMathFormula: function onMathFormula() {
-            return _this2.onSetFlag('mathFormula');
-          },
-          onScreenCapture: this.onAddImage,
-          onAddImage: this.onAddImage,
-          onShowHtmlEditor: function onShowHtmlEditor() {
-            return _this2.props.onSelectBuilder('layout', _this2.state.tmpContent);
-          },
-          options: this.props.options
-        }),
-        workArea: this.getWorkArea(),
-        footerBar: /*#__PURE__*/_react["default"].createElement(StatusBar, {
-          selection: this.state.selection
-        })
-      }, this.state.flags.mathFormula && this.state.selection !== null && /*#__PURE__*/_react["default"].createElement(_reactMathjax["default"].Provider, null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactMathjax["default"].Node, {
-        formula: this.state.selection.selectedText
-      }))));
-      return main;
+      /*let main = <EditorFrame flags={this.state.flags} 
+                      buttonsBar={<ButtonsBar selection={this.state.selection} history={this.state.history} onUndo={this.undoHistory} onRedo={this.redoHistory}
+                              flags={this.state.flags} onHighlighter={() => this.onSetFlag('highlighter')} onCodeSource={this.onCodeSource}
+                              onMathFormula={() => this.onSetFlag('mathFormula')} onScreenCapture={this.onAddImage} onAddImage={this.onAddImage}
+                                  onShowHtmlEditor={() => this.props.onSelectBuilder('layout', this.state.tmpContent)}  options={this.props.options} />} 
+                      workArea={this.getWorkArea()}
+                      footerBar={<StatusBar selection={this.state.selection} />}>
+                      {this.state.flags.mathFormula && (this.state.selection !== null) &&
+                          <MathJax.Provider>
+                              <div>
+                                  <MathJax.Node formula={this.state.selection.selectedText} />
+                              </div>
+                          </MathJax.Provider>
+                      }                      
+                      
+                  </EditorFrame>;            */
+      return null;
     }
   }, {
     key: "onAddImage",
@@ -303,7 +288,7 @@ var WordProcessor = /*#__PURE__*/function (_Component) {
   }, {
     key: "onCodeSource",
     value: function onCodeSource() {
-      var _this3 = this;
+      var _this2 = this;
       if (this.state.flags.codeSource) {
         // let parser = new DOMParser();
         //let document = parser.parseFromString(this.state.tmpContent, 'text/html');
@@ -312,7 +297,7 @@ var WordProcessor = /*#__PURE__*/function (_Component) {
         this.setState({
           flags: tmp
         }, function () {
-          return _this3.onChange(_this3.state.tmpContent, true);
+          return _this2.onChange(_this2.state.tmpContent, true);
         });
       } else {
         var tmpContent = this.editorRef.current.innerHTML;
@@ -330,7 +315,7 @@ var WordProcessor = /*#__PURE__*/function (_Component) {
   }, {
     key: "getWorkArea",
     value: function getWorkArea() {
-      var _this4 = this;
+      var _this3 = this;
       var result = null;
       var textArea = /*#__PURE__*/_react["default"].createElement(TextArea, {
         onComponentDidMount: this.onTextAreaDidMount,
@@ -350,7 +335,7 @@ var WordProcessor = /*#__PURE__*/function (_Component) {
           extensions: [(0, _langHtml.html)()],
           maxHeight: "80vh",
           onChange: function onChange(editor, data, value) {
-            return _this4.onChangeTmpContent(value);
+            return _this3.onChangeTmpContent(value);
           }
         }));
       } else {
@@ -417,18 +402,18 @@ var TextArea = /*#__PURE__*/function (_Component3) {
   (0, _inherits2["default"])(TextArea, _Component3);
   var _super3 = _createSuper(TextArea);
   function TextArea(props) {
-    var _this5;
+    var _this4;
     (0, _classCallCheck2["default"])(this, TextArea);
-    _this5 = _super3.call(this, props);
-    _this5.onMouseMove = _this5.onMouseMove.bind((0, _assertThisInitialized2["default"])(_this5));
-    _this5.onKeyUp = _this5.onKeyUp.bind((0, _assertThisInitialized2["default"])(_this5));
-    _this5.onClick = _this5.onClick.bind((0, _assertThisInitialized2["default"])(_this5));
-    _this5.setCurrentSelection = _this5.setCurrentSelection.bind((0, _assertThisInitialized2["default"])(_this5));
-    _this5.editorRef = /*#__PURE__*/_react["default"].createRef();
-    _this5.state = {
+    _this4 = _super3.call(this, props);
+    _this4.onMouseMove = _this4.onMouseMove.bind((0, _assertThisInitialized2["default"])(_this4));
+    _this4.onKeyUp = _this4.onKeyUp.bind((0, _assertThisInitialized2["default"])(_this4));
+    _this4.onClick = _this4.onClick.bind((0, _assertThisInitialized2["default"])(_this4));
+    _this4.setCurrentSelection = _this4.setCurrentSelection.bind((0, _assertThisInitialized2["default"])(_this4));
+    _this4.editorRef = /*#__PURE__*/_react["default"].createRef();
+    _this4.state = {
       selection: null
     };
-    return _this5;
+    return _this4;
   }
   (0, _createClass2["default"])(TextArea, [{
     key: "componentDidMount",
@@ -500,13 +485,13 @@ var TextArea = /*#__PURE__*/function (_Component3) {
   }, {
     key: "setCurrentSelection",
     value: function setCurrentSelection(event) {
-      var _this6 = this;
+      var _this5 = this;
       var result = _RecitEditor.UtilsHTML.getCurrentSelection(this.editorRef, this.setCurrentSelection);
       if (!_RecitEditor.JsNx.compare(result, this.state.selection)) {
         this.setState({
           selection: result
         }, function () {
-          return _this6.props.onSelect(result);
+          return _this5.props.onSelect(result);
         });
       }
     }
@@ -523,14 +508,14 @@ var StatusBar = /*#__PURE__*/function (_Component4) {
   (0, _inherits2["default"])(StatusBar, _Component4);
   var _super4 = _createSuper(StatusBar);
   function StatusBar(props) {
-    var _this7;
+    var _this6;
     (0, _classCallCheck2["default"])(this, StatusBar);
-    _this7 = _super4.call(this, props);
-    _this7.getStatusDesc = _this7.getStatusDesc.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.state = {
+    _this6 = _super4.call(this, props);
+    _this6.getStatusDesc = _this6.getStatusDesc.bind((0, _assertThisInitialized2["default"])(_this6));
+    _this6.state = {
       statusBar: ""
     };
-    return _this7;
+    return _this6;
   }
   (0, _createClass2["default"])(StatusBar, [{
     key: "render",

@@ -96,7 +96,7 @@ export class RecitEditor extends Component{
     }
 
 	render(){
-		let main = <div>
+		let main = <div className="htmlbootstrapeditor">
                 {this.state.builder === "word" ? 
                     <WordProcessor content={this.content} onSelectBuilder={this.onSelectBuilder} onChange={this.onChange} options={this.props.options}/> 
                     : 

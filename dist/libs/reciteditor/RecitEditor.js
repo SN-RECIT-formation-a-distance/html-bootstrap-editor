@@ -421,7 +421,9 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var main = /*#__PURE__*/_react["default"].createElement("div", null, this.state.builder === "word" ? /*#__PURE__*/_react["default"].createElement(_WordProcessor.WordProcessor, {
+      var main = /*#__PURE__*/_react["default"].createElement("div", {
+        className: "htmlbootstrapeditor"
+      }, this.state.builder === "word" ? /*#__PURE__*/_react["default"].createElement(_WordProcessor.WordProcessor, {
         content: this.content,
         onSelectBuilder: this.onSelectBuilder,
         onChange: this.onChange,
