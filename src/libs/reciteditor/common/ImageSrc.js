@@ -22,8 +22,10 @@
  */
 
 import React, { Component } from 'react';
-import { InputGroup } from 'react-bootstrap';
-import { InputText, BtnUpload, UploadFile } from '../RecitEditor';
+import { Button, InputGroup } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faRandom} from '@fortawesome/free-solid-svg-icons';
+import { InputText, BtnUpload, UploadFile, IWrapper } from '../RecitEditor';
 
 export class ImageSrc extends Component {
     static defaultProps = {
@@ -46,7 +48,9 @@ export class ImageSrc extends Component {
         this.onUpload = this.onUpload.bind(this);
         this.onUploadDone = this.onUploadDone.bind(this);
 
-        this.Upload = new UploadFile();
+        if (IWrapper.isUploadImplemented()) {
+            this.Upload = new UploadFile();
+        }
     }
 
     render() {       
@@ -56,7 +60,8 @@ export class ImageSrc extends Component {
                             onKeyDown={this.props.onKeyDown} autoFocus={this.props.autoFocus} autoSelect={this.props.autoSelect} onCommit={this.props.onCommit} disabled={this.props.disabled}
                             size={this.props.size}/>
                     <InputGroup.Append>
-                        <BtnUpload id="file-upload" size="btn-sm" accept={this.props.accept} onChange={this.onUpload}/>
+                        {this.Upload && <BtnUpload id="file-upload" size="btn-sm" accept={this.props.accept} onChange={this.onUpload}/>}
+                        <Button size='sm' onClick={() => this.randomizeImage()}><FontAwesomeIcon icon={faRandom}/></Button>
                     </InputGroup.Append>
                 </InputGroup>
         return (main);
@@ -64,6 +69,10 @@ export class ImageSrc extends Component {
 
     onUpload(event){
         this.Upload.onSelectFileToUpload(event, this.onUploadDone);
+    }
+
+    randomizeImage(){
+        this.onUploadDone('https://picsum.photos/1600/900');
     }
 
     onUploadDone(url){

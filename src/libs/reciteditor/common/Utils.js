@@ -427,13 +427,6 @@ export class IWrapper {
         return IWrapper.wrapper.get_string(str, resource);
     }
 
-    static getThemeUrl(){
-        if(!IWrapper.wrapper.getThemeUrl){
-            throw new Error('getThemeUrl undefined');
-        }
-        return IWrapper.wrapper.getThemeUrl();
-    }
-
     static getThemeCssRules(returnAllRules){
         if(!IWrapper.wrapper.getThemeCssRules){
             throw new Error('getThemeCssRules undefined');
@@ -502,6 +495,13 @@ export class IWrapper {
             throw new Error('uploadFile undefined');
         }
         return IWrapper.wrapper.uploadFile(name, content, cb);
+    }
+
+    static isUploadImplemented(){
+        if(!IWrapper.wrapper.uploadFile){
+            return false;
+        }
+        return true;
     }
 }
 

@@ -25,7 +25,7 @@ import { faImage, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
 import { Button, Col, Form, FormControl, InputGroup, Modal } from 'react-bootstrap';
-import { i18n, ComboBox, UploadFile, IWrapper } from '../RecitEditor';
+import { i18n, ComboBox, UploadFile, IWrapper, Utils } from '../RecitEditor';
 import { Pagination } from './Pagination';
 
 export class ImagePixaBay extends Component {
@@ -98,6 +98,7 @@ export class ImagePixaBay extends Component {
 
 
     render() {
+        if (!IWrapper.isUploadImplemented()) return null;
         if (this.api_key.length == 0) return null;
 
         let main = 

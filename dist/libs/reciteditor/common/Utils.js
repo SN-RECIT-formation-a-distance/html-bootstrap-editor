@@ -407,14 +407,6 @@ var IWrapper = /*#__PURE__*/function () {
       return IWrapper.wrapper.get_string(str, resource);
     }
   }, {
-    key: "getThemeUrl",
-    value: function getThemeUrl() {
-      if (!IWrapper.wrapper.getThemeUrl) {
-        throw new Error('getThemeUrl undefined');
-      }
-      return IWrapper.wrapper.getThemeUrl();
-    }
-  }, {
     key: "getThemeCssRules",
     value: function getThemeCssRules(returnAllRules) {
       if (!IWrapper.wrapper.getThemeCssRules) {
@@ -493,6 +485,14 @@ var IWrapper = /*#__PURE__*/function () {
         throw new Error('uploadFile undefined');
       }
       return IWrapper.wrapper.uploadFile(name, content, cb);
+    }
+  }, {
+    key: "isUploadImplemented",
+    value: function isUploadImplemented() {
+      if (!IWrapper.wrapper.uploadFile) {
+        return false;
+      }
+      return true;
     }
   }]);
   return IWrapper;

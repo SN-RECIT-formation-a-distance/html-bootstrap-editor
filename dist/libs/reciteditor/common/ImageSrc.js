@@ -14,6 +14,8 @@ var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 var _react = _interopRequireWildcard(require("react"));
 var _reactBootstrap = require("react-bootstrap");
+var _reactFontawesome = require("@fortawesome/react-fontawesome");
+var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _RecitEditor = require("../RecitEditor");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -28,12 +30,15 @@ var ImageSrc = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.onUpload = _this.onUpload.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onUploadDone = _this.onUploadDone.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.Upload = new _RecitEditor.UploadFile();
+    if (_RecitEditor.IWrapper.isUploadImplemented()) {
+      _this.Upload = new _RecitEditor.UploadFile();
+    }
     return _this;
   }
   (0, _createClass2["default"])(ImageSrc, [{
     key: "render",
     value: function render() {
+      var _this2 = this;
       var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.InputGroup, {
         className: "mb-3"
       }, /*#__PURE__*/_react["default"].createElement(_RecitEditor.InputText, {
@@ -47,18 +52,30 @@ var ImageSrc = /*#__PURE__*/function (_Component) {
         onCommit: this.props.onCommit,
         disabled: this.props.disabled,
         size: this.props.size
-      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.InputGroup.Append, null, /*#__PURE__*/_react["default"].createElement(_RecitEditor.BtnUpload, {
+      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.InputGroup.Append, null, this.Upload && /*#__PURE__*/_react["default"].createElement(_RecitEditor.BtnUpload, {
         id: "file-upload",
         size: "btn-sm",
         accept: this.props.accept,
         onChange: this.onUpload
-      })));
+      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+        size: "sm",
+        onClick: function onClick() {
+          return _this2.randomizeImage();
+        }
+      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+        icon: _freeSolidSvgIcons.faRandom
+      }))));
       return main;
     }
   }, {
     key: "onUpload",
     value: function onUpload(event) {
       this.Upload.onSelectFileToUpload(event, this.onUploadDone);
+    }
+  }, {
+    key: "randomizeImage",
+    value: function randomizeImage() {
+      this.onUploadDone('https://picsum.photos/1600/900');
     }
   }, {
     key: "onUploadDone",

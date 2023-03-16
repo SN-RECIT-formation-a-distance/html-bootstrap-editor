@@ -108,6 +108,7 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var _this2 = this;
+      if (!_RecitEditor.IWrapper.isUploadImplemented()) return null;
       if (this.api_key.length == 0) return null;
       var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
         key: "1",
