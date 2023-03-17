@@ -46,16 +46,9 @@ IWrapper.uploadFile = function (filename, binFile, cb) {
 IWrapper.getThemeCssRules = function (returnAllRules) {
   var cssRulesBuffer = {
     rules: [],
-    url: [IWrapper.getThemeUrl()]
+    url: ['https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css']
   };
   return cssRulesBuffer;
-};
-
-/**
- * This function will return the CSS file used on the website.
- */
-IWrapper.getThemeUrl = function () {
-  return 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css';
 };
 
 /**

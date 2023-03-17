@@ -81,11 +81,13 @@ export class RecitEditor extends Component{
 
         this.onSelectBuilder = this.onSelectBuilder.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.onSaveAndClose = this.onSaveAndClose.bind(this);
 
         this.state = {builder: props.builder};
 
         // the content is not in the state because we don't want to refresh the component every time the user types something. This moves the caret to the beginning of the content.
         IWrapper.wrapper = props.wrapper;
+        this.mainViewRef = React.createRef();
     }
 
     componentDidMount(){
@@ -100,13 +102,17 @@ export class RecitEditor extends Component{
                 {this.state.builder === "word" ? 
                     <WordProcessor content={this.content} onSelectBuilder={this.onSelectBuilder} onChange={this.onChange} options={this.props.options}/> 
                     : 
-                    <LayoutBuilder content={this.content} onSelectBuilder={this.onSelectBuilder} onChange={this.onChange} onSaveAndClose={this.onSaveAndClose} options={this.props.options}/>}
+                    <LayoutBuilder ref={this.mainViewRef} content={this.content} onSelectBuilder={this.onSelectBuilder} onChange={this.onChange} onSaveAndClose={this.onSaveAndClose} options={this.props.options}/>}
         
             {$glVars.feedback.msg.map((item, index) => {  
                 return (<VisualFeedback key={index} id={index} msg={item.msg} type={item.type} title={item.title} timeout={item.timeout}/>);
             })}
         </div>
 		return main;
+    }
+
+    onScreenshot(){
+        return this.mainViewRef.current.onScreenshot()
     }
     
     onChange(content, forceUpdate){

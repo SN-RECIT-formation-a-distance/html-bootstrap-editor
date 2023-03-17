@@ -144,6 +144,13 @@ export class LayoutBuilder extends Component
         }
     }
 
+    onScreenshot(){
+        return new Promise((resolve, reject) => {
+            this.mainViewRef.current.screenshot(resolve)
+            //this.setState({view: 'preview'}, () => this.mainViewRef.current.screenshot(resolve));
+        });
+    }
+
     windowResizeTo(){
         let device = this.getDeviceDimension();
         let width = device.width + LayoutBuilder.properties.leftPanel.width + 15 + (this.state.view === 'sourceCodeDesigner' ? 780 : 0);
@@ -463,6 +470,24 @@ class MainView extends Component{
     onFinishEditingNodeText(html){
         this.canvasState[this.state.canvasState].onFinishEditingNodeText(html);
         this.forceUpdate();
+    }
+
+    screenshot(resolve, ele){
+        let el = ele || this.canvasState[this.state.canvasState].getBody() || null;
+        if(el === null){ return; }
+
+        html2canvas(el, {useCORS: true}).then((canvas) => {
+            let data = canvas.toDataURL();
+            let MAX_WIDTH = 600;
+            let MAX_HEIGHT = 600;
+            let fileType = "png"
+            let p2 = Utils.resizeImageFromSize(data, MAX_WIDTH, MAX_HEIGHT, fileType);
+           
+            return p2.then((img) => {
+                resolve(img);
+            });
+        });
+
     }
 
     onSaveTemplate(name, type, ele){

@@ -399,12 +399,14 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.onSelectBuilder = _this.onSelectBuilder.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onChange = _this.onChange.bind((0, _assertThisInitialized2["default"])(_this));
+    _this.onSaveAndClose = _this.onSaveAndClose.bind((0, _assertThisInitialized2["default"])(_this));
     _this.state = {
       builder: props.builder
     };
 
     // the content is not in the state because we don't want to refresh the component every time the user types something. This moves the caret to the beginning of the content.
     _Utils.IWrapper.wrapper = props.wrapper;
+    _this.mainViewRef = /*#__PURE__*/_react["default"].createRef();
     return _this;
   }
   (0, _createClass2["default"])(RecitEditor, [{
@@ -429,6 +431,7 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
         onChange: this.onChange,
         options: this.props.options
       }) : /*#__PURE__*/_react["default"].createElement(_LayoutBuilder.LayoutBuilder, {
+        ref: this.mainViewRef,
         content: this.content,
         onSelectBuilder: this.onSelectBuilder,
         onChange: this.onChange,
@@ -445,6 +448,11 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
         });
       }));
       return main;
+    }
+  }, {
+    key: "onScreenshot",
+    value: function onScreenshot() {
+      return this.mainViewRef.current.onScreenshot();
     }
   }, {
     key: "onChange",

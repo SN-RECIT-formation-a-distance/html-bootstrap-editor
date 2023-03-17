@@ -191,6 +191,15 @@ var LayoutBuilder = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
+    key: "onScreenshot",
+    value: function onScreenshot() {
+      var _this2 = this;
+      return new Promise(function (resolve, reject) {
+        _this2.mainViewRef.current.screenshot(resolve);
+        //this.setState({view: 'preview'}, () => this.mainViewRef.current.screenshot(resolve));
+      });
+    }
+  }, {
     key: "windowResizeTo",
     value: function windowResizeTo() {
       var device = this.getDeviceDimension();
@@ -290,38 +299,38 @@ var MainView = /*#__PURE__*/function (_Component2) {
   (0, _inherits2["default"])(MainView, _Component2);
   var _super2 = _createSuper(MainView);
   function MainView(props) {
-    var _this2;
+    var _this3;
     (0, _classCallCheck2["default"])(this, MainView);
-    _this2 = _super2.call(this, props);
-    _this2.onSelectElement = _this2.onSelectElement.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onUnselectElement = _this2.onUnselectElement.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onDeleteElement = _this2.onDeleteElement.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onMoveNodeUp = _this2.onMoveNodeUp.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onMoveNodeDown = _this2.onMoveNodeDown.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onCloneNode = _this2.onCloneNode.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onAfterInsertNode = _this2.onAfterInsertNode.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onAfterReplaceNode = _this2.onAfterReplaceNode.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onAfterAssignProperty = _this2.onAfterAssignProperty.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onStartEditingNodeText = _this2.onStartEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onFinishEditingNodeText = _this2.onFinishEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onInsertTemplate = _this2.onInsertTemplate.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onSaveTemplate = _this2.onSaveTemplate.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onDragStart = _this2.onDragStart.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onDragEnd = _this2.onDragEnd.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onDrop = _this2.onDrop.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.getData = _this2.getData.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.setData = _this2.setData.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onKey = _this2.onKey.bind((0, _assertThisInitialized2["default"])(_this2));
-    _this2.onPanelChange = _this2.onPanelChange.bind((0, _assertThisInitialized2["default"])(_this2));
-    var designer = new _RecitEditor.DesignerState((0, _assertThisInitialized2["default"])(_this2), _this2.props.historyManager);
-    var sourceCode = new _RecitEditor.SourceCodeState((0, _assertThisInitialized2["default"])(_this2));
-    _this2.canvasState = {
+    _this3 = _super2.call(this, props);
+    _this3.onSelectElement = _this3.onSelectElement.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onUnselectElement = _this3.onUnselectElement.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onDeleteElement = _this3.onDeleteElement.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onMoveNodeUp = _this3.onMoveNodeUp.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onMoveNodeDown = _this3.onMoveNodeDown.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onCloneNode = _this3.onCloneNode.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onAfterInsertNode = _this3.onAfterInsertNode.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onAfterReplaceNode = _this3.onAfterReplaceNode.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onAfterAssignProperty = _this3.onAfterAssignProperty.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onStartEditingNodeText = _this3.onStartEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onFinishEditingNodeText = _this3.onFinishEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onInsertTemplate = _this3.onInsertTemplate.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onSaveTemplate = _this3.onSaveTemplate.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onDragStart = _this3.onDragStart.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onDragEnd = _this3.onDragEnd.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onDrop = _this3.onDrop.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.getData = _this3.getData.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.setData = _this3.setData.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onKey = _this3.onKey.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onPanelChange = _this3.onPanelChange.bind((0, _assertThisInitialized2["default"])(_this3));
+    var designer = new _RecitEditor.DesignerState((0, _assertThisInitialized2["default"])(_this3), _this3.props.historyManager);
+    var sourceCode = new _RecitEditor.SourceCodeState((0, _assertThisInitialized2["default"])(_this3));
+    _this3.canvasState = {
       designer: designer,
-      preview: new _RecitEditor.PreviewState((0, _assertThisInitialized2["default"])(_this2)),
+      preview: new _RecitEditor.PreviewState((0, _assertThisInitialized2["default"])(_this3)),
       sourceCode: sourceCode,
-      sourceCodeDesigner: new _RecitEditor.SourceCodeDesignerState((0, _assertThisInitialized2["default"])(_this2), designer, sourceCode)
+      sourceCodeDesigner: new _RecitEditor.SourceCodeDesignerState((0, _assertThisInitialized2["default"])(_this3), designer, sourceCode)
     };
-    _this2.state = {
+    _this3.state = {
       canvasState: 'designer',
       selectedElement: null,
       panels: {
@@ -330,7 +339,7 @@ var MainView = /*#__PURE__*/function (_Component2) {
         treeView: 0
       }
     };
-    return _this2;
+    return _this3;
   }
   (0, _createClass2["default"])(MainView, [{
     key: "componentDidMount",
@@ -669,6 +678,26 @@ var MainView = /*#__PURE__*/function (_Component2) {
       this.forceUpdate();
     }
   }, {
+    key: "screenshot",
+    value: function screenshot(resolve, ele) {
+      var el = ele || this.canvasState[this.state.canvasState].getBody() || null;
+      if (el === null) {
+        return;
+      }
+      (0, _html2canvas["default"])(el, {
+        useCORS: true
+      }).then(function (canvas) {
+        var data = canvas.toDataURL();
+        var MAX_WIDTH = 600;
+        var MAX_HEIGHT = 600;
+        var fileType = "png";
+        var p2 = _RecitEditor.Utils.resizeImageFromSize(data, MAX_WIDTH, MAX_HEIGHT, fileType);
+        return p2.then(function (img) {
+          resolve(img);
+        });
+      });
+    }
+  }, {
     key: "onSaveTemplate",
     value: function onSaveTemplate(name, type, ele) {
       var p = null;
@@ -719,12 +748,12 @@ var LeftPanelButton = /*#__PURE__*/function (_Component3) {
   (0, _createClass2["default"])(LeftPanelButton, [{
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
       var fontSize = this.props.text ? '1rem' : '2rem';
       var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
         variant: this.props.checked ? 'success' : 'secondary',
         onClick: function onClick(e) {
-          return _this3.props.onClick(_this3.props.value);
+          return _this4.props.onClick(_this4.props.value);
         },
         style: {
           fontSize: fontSize,
