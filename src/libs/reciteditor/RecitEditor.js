@@ -28,7 +28,7 @@ import { Options } from '../../Options';
 import "./assets/css/components.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FeedbackCtrl, VisualFeedback } from './common/Feedback';
-import { IWrapper } from './common/Utils';
+import { IWrapper, UtilsHTML } from './common/Utils';
 
 //////////////////////////////////////////////////
 // Note: the "export *" will only export the classes marked with "export" in their definition
@@ -66,6 +66,7 @@ export * from './layout-builder/LayoutBuilder';
 
 export const $glVars = {
     feedback: new FeedbackCtrl(),
+    recitEditor: null
 }
 
 export class RecitEditor extends Component{
@@ -88,6 +89,12 @@ export class RecitEditor extends Component{
         // the content is not in the state because we don't want to refresh the component every time the user types something. This moves the caret to the beginning of the content.
         IWrapper.wrapper = props.wrapper;
         this.mainViewRef = React.createRef();
+        $glVars.recitEditor = this;
+        
+        let cssFiles = IWrapper.getThemeCssRules().url;
+        UtilsHTML.getStylesheetRules(cssFiles).then((rules) => {
+            $glVars.cssRules = rules;
+        });
     }
 
     componentDidMount(){

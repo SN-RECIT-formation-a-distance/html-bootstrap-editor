@@ -891,6 +891,44 @@ export class UtilsHTML{
         return result;
     }
 
+    static cssStr2Rules(cssString){
+        const cssRules = [];
+        const cssArray = cssString.split('}');
+        for (let i = 0; i < cssArray.length; i++) {
+            const rule = cssArray[i].trim();
+            if (rule.length > 0) {
+                const parts = rule.split('{');
+                const selector = parts[0].trim();
+                const style = parts[1].trim();
+                const css = UtilsHTML.parseCSS(style)
+                cssRules.push({
+                    selectorText: selector,
+                    cssText: style,
+                    style: css
+                });
+            }
+        }
+        return cssRules;
+    }
+
+    static parseCSS(css){
+        let style = {};
+        let rules = css.split(';');
+        for (let rule of rules){
+            let parts = rule.split(':');
+            if (parts[1]){
+                style[parts[0].trim()] = parts[1].trim();
+            }
+        }
+        return style;
+    }
+
+    static async getStylesheetRules(urls){
+        const promises = urls.map(url => fetch(url).then(response => response.text()));
+        const contents = await Promise.all(promises);
+        return UtilsHTML.cssStr2Rules(contents.join(''));
+    }
+
     static getAvailableFonts(){
         let { fonts } = document;
         const it = fonts.entries();

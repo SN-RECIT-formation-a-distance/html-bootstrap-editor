@@ -61,6 +61,7 @@ class CanvasState{
     onStartEditingNodeText(selectedElement){}
     onFinishEditingNodeText(html){}
     onKey(e, editingElement){}
+    getCSSRules(){}
 
     onPanelChange(panels){ 
         return panels;

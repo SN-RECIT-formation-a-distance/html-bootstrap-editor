@@ -5,8 +5,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.i18n = exports.UtilsTreeStruct = exports.UtilsString = exports.UtilsHTML = exports.UtilsDateTime = exports.Utils = exports.UploadFile = exports.Storage = exports.JsNx = exports.IWrapper = exports.Cookies = void 0;
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
@@ -151,17 +153,17 @@ JsNx.copy = function (arr, level) {
     case 2:
       //return jQuery.extend(this); // Array of prototype-objects (function). The jQuery technique can be used to deep-copy all array-types. ex: [function () {}, function () {}];
       var result = [];
-      var _iterator7 = _createForOfIteratorHelper(arr),
-        _step7;
+      var _iterator8 = _createForOfIteratorHelper(arr),
+        _step8;
       try {
-        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-          var item = _step7.value;
+        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+          var item = _step8.value;
           result.push(item !== null ? JsNx.clone(item) : null);
         }
       } catch (err) {
-        _iterator7.e(err);
+        _iterator8.e(err);
       } finally {
-        _iterator7.f();
+        _iterator8.f();
       }
       return result;
     default:
@@ -901,6 +903,79 @@ var UtilsHTML = /*#__PURE__*/function () {
       return result;
     }
   }, {
+    key: "cssStr2Rules",
+    value: function cssStr2Rules(cssString) {
+      var cssRules = [];
+      var cssArray = cssString.split('}');
+      for (var i = 0; i < cssArray.length; i++) {
+        var rule = cssArray[i].trim();
+        if (rule.length > 0) {
+          var parts = rule.split('{');
+          var selector = parts[0].trim();
+          var style = parts[1].trim();
+          var css = UtilsHTML.parseCSS(style);
+          cssRules.push({
+            selectorText: selector,
+            cssText: style,
+            style: css
+          });
+        }
+      }
+      return cssRules;
+    }
+  }, {
+    key: "parseCSS",
+    value: function parseCSS(css) {
+      var style = {};
+      var rules = css.split(';');
+      var _iterator4 = _createForOfIteratorHelper(rules),
+        _step4;
+      try {
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var rule = _step4.value;
+          var parts = rule.split(':');
+          if (parts[1]) {
+            style[parts[0].trim()] = parts[1].trim();
+          }
+        }
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+      console.log(style);
+      return style;
+    }
+  }, {
+    key: "getStylesheetRules",
+    value: function () {
+      var _getStylesheetRules = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(urls) {
+        var promises, contents;
+        return _regenerator["default"].wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              promises = urls.map(function (url) {
+                return fetch(url).then(function (response) {
+                  return response.text();
+                });
+              });
+              _context.next = 3;
+              return Promise.all(promises);
+            case 3:
+              contents = _context.sent;
+              return _context.abrupt("return", UtilsHTML.cssStr2Rules(contents.join('')));
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }));
+      function getStylesheetRules(_x) {
+        return _getStylesheetRules.apply(this, arguments);
+      }
+      return getStylesheetRules;
+    }()
+  }, {
     key: "getAvailableFonts",
     value: function getAvailableFonts() {
       var _document = document,
@@ -920,20 +995,20 @@ var UtilsHTML = /*#__PURE__*/function () {
       // converted to set then arr to filter repetitive values
       var fontlist = (0, _toConsumableArray2["default"])(new Set(arr));
       var list = [];
-      var _iterator4 = _createForOfIteratorHelper(fontlist),
-        _step4;
+      var _iterator5 = _createForOfIteratorHelper(fontlist),
+        _step5;
       try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var f = _step4.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var f = _step5.value;
           list.push({
             text: f,
             value: f
           });
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator4.f();
+        _iterator5.f();
       }
       return list;
     }
@@ -952,11 +1027,11 @@ var UtilsHTML = /*#__PURE__*/function () {
     key: "tableAddCol",
     value: function tableAddCol(table) {
       var result = [];
-      var _iterator5 = _createForOfIteratorHelper(table.rows),
-        _step5;
+      var _iterator6 = _createForOfIteratorHelper(table.rows),
+        _step6;
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var row = _step5.value;
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var row = _step6.value;
           var tag = 'td';
           if (row.children[0] && row.children[0].tagName == 'TH') {
             tag = 'th';
@@ -966,9 +1041,9 @@ var UtilsHTML = /*#__PURE__*/function () {
           row.appendChild(td);
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator5.f();
+        _iterator6.f();
       }
       return result;
     }
@@ -1008,11 +1083,11 @@ var UtilsHTML = /*#__PURE__*/function () {
       var id = 1;
       var funcRec = function funcRec(node) {
         node.setAttribute("data-tag-id", id++);
-        var _iterator6 = _createForOfIteratorHelper(node.children),
-          _step6;
+        var _iterator7 = _createForOfIteratorHelper(node.children),
+          _step7;
         try {
-          for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-            var child = _step6.value;
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var child = _step7.value;
             if (child.children.length > 0) {
               funcRec(child);
             } else {
@@ -1020,9 +1095,9 @@ var UtilsHTML = /*#__PURE__*/function () {
             }
           }
         } catch (err) {
-          _iterator6.e(err);
+          _iterator7.e(err);
         } finally {
-          _iterator6.f();
+          _iterator7.f();
         }
       };
       funcRec(node);

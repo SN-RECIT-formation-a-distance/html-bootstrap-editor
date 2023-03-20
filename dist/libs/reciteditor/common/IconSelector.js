@@ -40,8 +40,6 @@ var IconSelector = /*#__PURE__*/function (_Component) {
       search: '',
       collapsed: {}
     };
-    _this.cssRules = _RecitEditor.IWrapper.getThemeCssRules(true);
-    _this.icons = {};
     _this.config = {};
     var settings = _RecitEditor.IWrapper.getSettings();
     if (settings.iconclass) {
@@ -61,7 +59,10 @@ var IconSelector = /*#__PURE__*/function (_Component) {
         _iterator.f();
       }
     }
+    _this.cssFiles = _RecitEditor.IWrapper.getThemeCssRules().url;
+    _this.cssRules = _RecitEditor.$glVars.cssRules;
     _this.buildIconList();
+    _this.icons = {};
     return _this;
   }
   (0, _createClass2["default"])(IconSelector, [{
@@ -71,7 +72,7 @@ var IconSelector = /*#__PURE__*/function (_Component) {
       for (var name in this.config) {
         this.icons[name] = [];
       }
-      var _iterator2 = _createForOfIteratorHelper(this.cssRules.rules),
+      var _iterator2 = _createForOfIteratorHelper(this.cssRules),
         _step2;
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
@@ -137,9 +138,12 @@ var IconSelector = /*#__PURE__*/function (_Component) {
           height: '100%',
           backgroundColor: '#fff'
         }
-      }, this.cssRules.url && /*#__PURE__*/_react["default"].createElement("link", {
-        rel: "stylesheet",
-        href: this.cssRules.url[0]
+      }, this.cssFiles.map(function (file, k) {
+        return /*#__PURE__*/_react["default"].createElement("link", {
+          key: k,
+          rel: "stylesheet",
+          href: file
+        });
       }), /*#__PURE__*/_react["default"].createElement("div", {
         style: {
           backgroundColor: '#fff'

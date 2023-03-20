@@ -25,7 +25,7 @@ import React, { Component } from 'react';
 import { Button, Modal, FormControl } from 'react-bootstrap';
 import { faIcons} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {IWrapper,IFrame, i18n } from '../RecitEditor';
+import {IWrapper,IFrame, i18n, $glVars, UtilsHTML } from '../RecitEditor';
 
 export class IconSelector extends Component {
     static defaultProps = {
@@ -45,9 +45,6 @@ export class IconSelector extends Component {
         this.handleClose = this.handleClose.bind(this);
         this.state = {modal:false, search: '', collapsed: {}}; 
 
-        this.cssRules = IWrapper.getThemeCssRules(true);
-        this.icons = {};
-
         this.config = {};
         let settings = IWrapper.getSettings();
         if (settings.iconclass){
@@ -59,7 +56,10 @@ export class IconSelector extends Component {
             }
         }
 
+        this.cssFiles = IWrapper.getThemeCssRules().url;
+        this.cssRules = $glVars.cssRules;
         this.buildIconList();
+        this.icons = {};
     }
 
     buildIconList(){
@@ -68,7 +68,7 @@ export class IconSelector extends Component {
             this.icons[name] = [];
         }
 
-        for (let c of this.cssRules.rules){
+        for (let c of this.cssRules){
             if (c.cssText.includes('content:') && c.selectorText && !c.selectorText.includes(',')){
                 for (let name in this.config){
                     let csscl = this.config[name].replace('.', '');
@@ -100,7 +100,7 @@ export class IconSelector extends Component {
             <FormControl className={"InputText mb-3"} type="text" value={this.state.search} onChange={this.onSearch} placeholder={i18n.get_string('search')} />
             <IFrame style={{width: '100%', height: '70vh', border: '0'}}>
                 <div style={{width: '100%', height: '100%', backgroundColor: '#fff'}}>
-                    {this.cssRules.url && <link rel="stylesheet" href={this.cssRules.url[0]}/>}
+                    {this.cssFiles.map((file, k) => {return <link key={k} rel="stylesheet" href={file}/>})}
                     <div style={{backgroundColor: '#fff'}}>
                         {items}
                     </div>

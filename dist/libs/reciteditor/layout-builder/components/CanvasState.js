@@ -91,6 +91,9 @@ var CanvasState = /*#__PURE__*/function () {
     key: "onKey",
     value: function onKey(e, editingElement) {}
   }, {
+    key: "getCSSRules",
+    value: function getCSSRules() {}
+  }, {
     key: "onPanelChange",
     value: function onPanelChange(panels) {
       return panels;

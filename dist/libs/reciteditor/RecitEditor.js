@@ -387,7 +387,8 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 var $glVars = {
-  feedback: new _Feedback.FeedbackCtrl()
+  feedback: new _Feedback.FeedbackCtrl(),
+  recitEditor: null
 };
 exports.$glVars = $glVars;
 var RecitEditor = /*#__PURE__*/function (_Component) {
@@ -407,6 +408,11 @@ var RecitEditor = /*#__PURE__*/function (_Component) {
     // the content is not in the state because we don't want to refresh the component every time the user types something. This moves the caret to the beginning of the content.
     _Utils.IWrapper.wrapper = props.wrapper;
     _this.mainViewRef = /*#__PURE__*/_react["default"].createRef();
+    $glVars.recitEditor = (0, _assertThisInitialized2["default"])(_this);
+    var cssFiles = _Utils.IWrapper.getThemeCssRules().url;
+    _Utils.UtilsHTML.getStylesheetRules(cssFiles).then(function (rules) {
+      $glVars.cssRules = rules;
+    });
     return _this;
   }
   (0, _createClass2["default"])(RecitEditor, [{

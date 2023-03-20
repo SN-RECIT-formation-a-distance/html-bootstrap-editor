@@ -487,7 +487,6 @@ class MainView extends Component{
                 resolve(img);
             });
         });
-
     }
 
     onSaveTemplate(name, type, ele){

@@ -37,8 +37,8 @@ var ColorSelector = /*#__PURE__*/function (_Component) {
 
     // set Bootstrap variant colors according to the theme
     if (_this.props.flags && _this.props.flags.fetchFromTheme) {
-      var cssRules = _RecitEditor.IWrapper.getThemeCssRules(true);
-      var _iterator = _createForOfIteratorHelper(cssRules.rules),
+      var cssRules = _RecitEditor.$glVars.cssRules;
+      var _iterator = _createForOfIteratorHelper(cssRules),
         _step;
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
@@ -53,8 +53,8 @@ var ColorSelector = /*#__PURE__*/function (_Component) {
                 };
               } else {
                 _this.options[i].style = {
-                  backgroundColor: c.style.backgroundColor,
-                  borderColor: c.style.backgroundColor
+                  backgroundColor: c.style['background-color'],
+                  borderColor: c.style['background-color']
                 };
               }
             }
