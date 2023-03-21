@@ -58,8 +58,8 @@ export class IconSelector extends Component {
 
         this.cssFiles = IWrapper.getThemeCssRules().url;
         this.cssRules = $glVars.cssRules;
-        this.buildIconList();
         this.icons = {};
+        this.buildIconList();
     }
 
     buildIconList(){
@@ -68,12 +68,12 @@ export class IconSelector extends Component {
             this.icons[name] = [];
         }
 
-        for (let c of this.cssRules){
-            if (c.cssText.includes('content:') && c.selectorText && !c.selectorText.includes(',')){
+        for (let rule of this.cssRules){
+            if (rule.cssText.includes('content:') && rule.selectorText && !rule.selectorText.includes(',')){console.log(rule)
                 for (let name in this.config){
                     let csscl = this.config[name].replace('.', '');
-                    if (c.selectorText.startsWith('.'+csscl)){
-                        let css = c.selectorText.replace('::before', '')
+                    if (rule.selectorText.startsWith('.'+csscl)){
+                        let css = rule.selectorText.replace('::before', '')
                         css = css.replace(':before', '').substr(1);
                         let cssclass = css;
                         if (csscl == 'fa-') cssclass = 'fa '+css;

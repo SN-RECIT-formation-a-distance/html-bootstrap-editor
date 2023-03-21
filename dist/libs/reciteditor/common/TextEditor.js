@@ -39,13 +39,13 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
     _this.editorRef = /*#__PURE__*/_react["default"].createRef();
     var tag = TextEditorModal.allowedTags[props.element.tagName.toLowerCase()];
     if (!tag) console.error('Text editor received unknown tag');
+    _this.initModules();
     var html = props.element[tag.content];
     html = _this.preProcess(html);
     _this.state = {
       value: html,
       tag: tag
     };
-    _this.initModules();
     return _this;
   }
   (0, _createClass2["default"])(TextEditorModal, [{
@@ -154,7 +154,7 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
     value: function preProcess(html) {
       var el = document.createElement('div');
       el.innerHTML = html;
-      var els = el.querySelectorAll('i.fa');
+      var els = el.querySelectorAll(this.getIconQuery());
       if (els.length > 0) {
         var _iterator = _createForOfIteratorHelper(els),
           _step;
@@ -162,6 +162,7 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var i = _step.value;
             i.innerHTML = i.getAttribute('class'); //keep class in inner as editor will remove class attribute, will be readded in postprocess
+            i.classList.add('iconrecit');
           }
         } catch (err) {
           _iterator.e(err);
@@ -176,7 +177,7 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
     value: function postProcess(html) {
       var el = document.createElement('div');
       el.innerHTML = html;
-      var els = el.querySelectorAll('i.fa');
+      var els = el.querySelectorAll('i.iconrecit');
       if (els.length > 0) {
         var _iterator2 = _createForOfIteratorHelper(els),
           _step2;
@@ -196,6 +197,25 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
         }
       }
       return el.innerHTML;
+    }
+  }, {
+    key: "getIconQuery",
+    value: function getIconQuery() {
+      var q = "";
+      if (this.iconClass.length == 0) return 'i.fa';
+      var _iterator3 = _createForOfIteratorHelper(this.iconClass),
+        _step3;
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var c = _step3.value;
+          q = q + "i[class*=\"" + c.substring(1) + "\"],";
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+      return q.substring(0, q.length - 1);
     }
   }, {
     key: "onDataChange",
@@ -227,6 +247,25 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "initModules",
     value: function initModules() {
+      var settings = _Utils.IWrapper.getSettings();
+      this.iconClass = [];
+      if (settings.iconclass) {
+        var config = settings.iconclass;
+        config = config.split(',');
+        var _iterator4 = _createForOfIteratorHelper(config),
+          _step4;
+        try {
+          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+            var c = _step4.value;
+            var data = c.split('=');
+            this.iconClass.push(data[1]);
+          }
+        } catch (err) {
+          _iterator4.e(err);
+        } finally {
+          _iterator4.f();
+        }
+      }
       var that = this;
       this.modules = {
         toolbar: {
@@ -322,11 +361,11 @@ var EditorModuleNonBreakingSpace = /*#__PURE__*/function () {
   }, {
     key: "replaceNonBreakingSpace",
     value: function replaceNonBreakingSpace(el) {
-      var _iterator3 = _createForOfIteratorHelper(el.childNodes),
-        _step3;
+      var _iterator5 = _createForOfIteratorHelper(el.childNodes),
+        _step5;
       try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var t = _step3.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var t = _step5.value;
           if (t.innerHTML) {
             t.innerHTML = _Utils.UtilsString.replaceNonBreakingSpace(t.innerHTML);
           } else {
@@ -334,17 +373,14 @@ var EditorModuleNonBreakingSpace = /*#__PURE__*/function () {
           }
         }
       } catch (err) {
-        _iterator3.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator3.f();
+        _iterator5.f();
       }
     }
   }]);
   return EditorModuleNonBreakingSpace;
 }();
-var Parchment = _reactQuill.Quill["import"]('parchment');
-var Align = new Parchment.Attributor.Class('fa', 'fa-');
-Parchment.register(Align);
 var Inline = _reactQuill.Quill["import"]('blots/inline');
 var FaRule = /*#__PURE__*/function (_Inline) {
   (0, _inherits2["default"])(FaRule, _Inline);
@@ -376,5 +412,8 @@ var FaRule = /*#__PURE__*/function (_Inline) {
 exports.FaRule = FaRule;
 FaRule.blotName = 'fa';
 FaRule.tagName = 'i';
-FaRule.className = 'fa';
+FaRule.className = 'iconrecit';
+var Parchment = _reactQuill.Quill["import"]('parchment');
+var Align = new Parchment.Attributor.Class('fa', 'iconrecit');
+Parchment.register(Align);
 _reactQuill.Quill.register(FaRule);

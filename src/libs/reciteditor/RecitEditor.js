@@ -66,6 +66,7 @@ export * from './layout-builder/LayoutBuilder';
 
 export const $glVars = {
     feedback: new FeedbackCtrl(),
+    cssRules: [],
     recitEditor: null
 }
 

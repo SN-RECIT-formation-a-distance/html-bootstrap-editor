@@ -911,14 +911,16 @@ var UtilsHTML = /*#__PURE__*/function () {
         var rule = cssArray[i].trim();
         if (rule.length > 0) {
           var parts = rule.split('{');
-          var selector = parts[0].trim();
-          var style = parts[1].trim();
-          var css = UtilsHTML.parseCSS(style);
-          cssRules.push({
-            selectorText: selector,
-            cssText: style,
-            style: css
-          });
+          if (parts[1]) {
+            var selector = parts[0].trim();
+            var style = parts[1].trim();
+            var css = UtilsHTML.parseCSS(style);
+            cssRules.push({
+              selectorText: selector,
+              cssText: style,
+              style: css
+            });
+          }
         }
       }
       return cssRules;
@@ -943,7 +945,6 @@ var UtilsHTML = /*#__PURE__*/function () {
       } finally {
         _iterator4.f();
       }
-      console.log(style);
       return style;
     }
   }, {

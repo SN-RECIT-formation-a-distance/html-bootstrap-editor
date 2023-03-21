@@ -61,8 +61,8 @@ var IconSelector = /*#__PURE__*/function (_Component) {
     }
     _this.cssFiles = _RecitEditor.IWrapper.getThemeCssRules().url;
     _this.cssRules = _RecitEditor.$glVars.cssRules;
-    _this.buildIconList();
     _this.icons = {};
+    _this.buildIconList();
     return _this;
   }
   (0, _createClass2["default"])(IconSelector, [{
@@ -76,12 +76,13 @@ var IconSelector = /*#__PURE__*/function (_Component) {
         _step2;
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var c = _step2.value;
-          if (c.cssText.includes('content:') && c.selectorText && !c.selectorText.includes(',')) {
+          var rule = _step2.value;
+          if (rule.cssText.includes('content:') && rule.selectorText && !rule.selectorText.includes(',')) {
+            console.log(rule);
             for (var _name in this.config) {
               var csscl = this.config[_name].replace('.', '');
-              if (c.selectorText.startsWith('.' + csscl)) {
-                var css = c.selectorText.replace('::before', '');
+              if (rule.selectorText.startsWith('.' + csscl)) {
+                var css = rule.selectorText.replace('::before', '');
                 css = css.replace(':before', '').substr(1);
                 var cssclass = css;
                 if (csscl == 'fa-') cssclass = 'fa ' + css;

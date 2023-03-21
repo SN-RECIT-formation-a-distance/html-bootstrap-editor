@@ -22,7 +22,7 @@ IWrapper.getSettings = function(){
     var result = {};
     result.wwwroot = '/';
     result.showcase_url = 'https://sn-recit-formation-a-distance.github.io/html-bootstrap-editor-showcase/index.html';
-    result.iconclass = '.fa';
+    result.iconclass = 'fontawesome=.fa';
     result.pixabaykey = 'key';
     return result;
 }

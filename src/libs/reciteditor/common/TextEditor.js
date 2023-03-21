@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { i18n, UtilsString } from './Utils';
+import { i18n, IWrapper, UtilsString } from './Utils';
 
 export class TextEditorModal extends React.Component {
     static defaultProps = {
@@ -45,10 +45,10 @@ export class TextEditorModal extends React.Component {
 
         let tag = TextEditorModal.allowedTags[props.element.tagName.toLowerCase()];
         if (!tag) console.error('Text editor received unknown tag');
+        this.initModules();
         let html = props.element[tag.content];
         html = this.preProcess(html);
         this.state = {value: html, tag: tag};
-        this.initModules();
     }
 
     render(){
@@ -103,10 +103,11 @@ export class TextEditorModal extends React.Component {
     preProcess(html){
         let el = document.createElement('div');
         el.innerHTML = html;
-        let els = el.querySelectorAll('i.fa');
+        let els = el.querySelectorAll(this.getIconQuery());
         if (els.length > 0){
             for (let i of els){
                 i.innerHTML = i.getAttribute('class');//keep class in inner as editor will remove class attribute, will be readded in postprocess
+                i.classList.add('iconrecit')
             }
         }
         return el.innerHTML;
@@ -115,7 +116,7 @@ export class TextEditorModal extends React.Component {
     postProcess(html){
         let el = document.createElement('div');
         el.innerHTML = html;
-        let els = el.querySelectorAll('i.fa');
+        let els = el.querySelectorAll('i.iconrecit');
         if (els.length > 0){
             for (let i of els){
                 i.setAttribute('class', i.innerText);
@@ -126,6 +127,15 @@ export class TextEditorModal extends React.Component {
             }
         }
         return el.innerHTML;
+    }
+
+    getIconQuery(){
+        let q = "";
+        if (this.iconClass.length == 0) return 'i.fa';
+        for (let c of this.iconClass){
+            q = q + "i[class*=\""+c.substring(1)+"\"],";
+        }
+        return q.substring(0, q.length-1);
     }
 
     onDataChange(val){
@@ -152,6 +162,17 @@ export class TextEditorModal extends React.Component {
     }
 
     initModules(){
+        let settings = IWrapper.getSettings();
+        this.iconClass = [];
+        if (settings.iconclass){
+            let config = settings.iconclass;
+            config = config.split(',');
+            for (let c of config){
+                let data = c.split('=');
+                this.iconClass.push(data[1]);
+            }
+        }
+
         let that = this;
         this.modules = {
             toolbar: {
@@ -188,16 +209,12 @@ class EditorModuleNonBreakingSpace {
     }
 }
 
-const Parchment = Quill.import('parchment');
 
-
-let Align = new Parchment.Attributor.Class('fa', 'fa-');
-Parchment.register(Align);
 const Inline = Quill.import('blots/inline');
 export class FaRule extends Inline {
     static blotName = 'fa';
     static tagName = 'i';
-    static className = 'fa';
+    static className = 'iconrecit';
     /**
      * Converts the HTML tag to image blot
      * @param value
@@ -213,4 +230,8 @@ export class FaRule extends Inline {
 
     optimize(c){}
 }
+
+const Parchment = Quill.import('parchment');
+let Align = new Parchment.Attributor.Class('fa', 'iconrecit');
+Parchment.register(Align);
 Quill.register(FaRule);

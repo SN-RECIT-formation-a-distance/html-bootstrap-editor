@@ -898,14 +898,16 @@ export class UtilsHTML{
             const rule = cssArray[i].trim();
             if (rule.length > 0) {
                 const parts = rule.split('{');
-                const selector = parts[0].trim();
-                const style = parts[1].trim();
-                const css = UtilsHTML.parseCSS(style)
-                cssRules.push({
-                    selectorText: selector,
-                    cssText: style,
-                    style: css
-                });
+                if (parts[1]){
+                    const selector = parts[0].trim();
+                    const style = parts[1].trim();
+                    const css = UtilsHTML.parseCSS(style)
+                    cssRules.push({
+                        selectorText: selector,
+                        cssText: style,
+                        style: css
+                    });
+                }
             }
         }
         return cssRules;
