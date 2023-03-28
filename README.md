@@ -7,6 +7,11 @@ The HTML Bootstrap editor allows you to create a much more attractive and respon
 * jQuery
 * FontAwesome
 
+# Deployment
+In order to make work custom components (for example: flipcard, videobtn) the following files must be added in the HTML page
+1. extra/content.js
+2. extra/styles.css 
+
 ## Showcase
 https://github.com/SN-RECIT-formation-a-distance/html-bootstrap-editor-showcase
 
