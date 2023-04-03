@@ -361,7 +361,7 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
         onMoveNodeUp: this.mainView.onMoveNodeUp,
         onMoveNodeDown: this.mainView.onMoveNodeDown,
         onCloneNode: this.mainView.onCloneNode,
-        onSaveTemplate: this.mainView.onSaveTemplate,
+        onSaveElement: this.mainView.onSaveTemplate,
         device: this.mainView.props.device
       }), this.editingElement && /*#__PURE__*/_react["default"].createElement(_TextEditor.TextEditorModal, {
         onClose: function onClose() {
