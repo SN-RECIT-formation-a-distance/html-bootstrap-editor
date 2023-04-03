@@ -243,8 +243,8 @@ var SourceCodeDesignerState = /*#__PURE__*/function (_CanvasState) {
     }
   }, {
     key: "onStartEditingNodeText",
-    value: function onStartEditingNodeText(el) {
-      this.designer.onStartEditingNodeText(el);
+    value: function onStartEditingNodeText(el, dbClick) {
+      this.designer.onStartEditingNodeText(el, dbClick);
     }
   }, {
     key: "onFinishEditingNodeText",
@@ -576,8 +576,8 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
     }
   }, {
     key: "onStartEditingNodeText",
-    value: function onStartEditingNodeText(selectedElement) {
-      if (_TextEditor.TextEditorModal.isTagEditable(selectedElement.tagName)) {
+    value: function onStartEditingNodeText(selectedElement, dbClick) {
+      if (_TextEditor.TextEditorModal.isTagEditable(selectedElement.tagName) && !dbClick) {
         this.editingElement = selectedElement;
       } else {
         var that = this;

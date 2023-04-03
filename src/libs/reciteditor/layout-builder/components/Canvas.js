@@ -136,7 +136,7 @@ export class CanvasElement{
 
     onDblClick(){
         if(!this.dom.hasAttribute("contenteditable")){
-            this.onEditNodeText(this.dom);
+            this.onEditNodeText(this.dom, true);
         }
     }
 

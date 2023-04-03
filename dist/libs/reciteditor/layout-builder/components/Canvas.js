@@ -120,7 +120,7 @@ var CanvasElement = /*#__PURE__*/function () {
     key: "onDblClick",
     value: function onDblClick() {
       if (!this.dom.hasAttribute("contenteditable")) {
-        this.onEditNodeText(this.dom);
+        this.onEditNodeText(this.dom, true);
       }
     }
   }, {

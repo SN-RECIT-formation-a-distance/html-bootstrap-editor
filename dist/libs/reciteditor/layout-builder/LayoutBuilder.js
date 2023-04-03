@@ -660,14 +660,14 @@ var MainView = /*#__PURE__*/function (_Component2) {
     }
   }, {
     key: "onStartEditingNodeText",
-    value: function onStartEditingNodeText(el) {
+    value: function onStartEditingNodeText(el, dbClick) {
       if (el instanceof HTMLElement) {
-        this.canvasState[this.state.canvasState].onStartEditingNodeText(el);
+        this.canvasState[this.state.canvasState].onStartEditingNodeText(el, dbClick);
         this.setState({
           selectedElement: el
         });
       } else {
-        this.canvasState[this.state.canvasState].onStartEditingNodeText(this.state.selectedElement);
+        this.canvasState[this.state.canvasState].onStartEditingNodeText(this.state.selectedElement, dbClick);
         this.forceUpdate();
       }
     }

@@ -193,8 +193,8 @@ export class SourceCodeDesignerState extends CanvasState{
         this.designer.onAfterInsertNode(elems);
     }
 
-    onStartEditingNodeText(el){
-        this.designer.onStartEditingNodeText(el);
+    onStartEditingNodeText(el, dbClick){
+        this.designer.onStartEditingNodeText(el, dbClick);
     }
 
     onFinishEditingNodeText(html){
@@ -474,8 +474,8 @@ export class DesignerState extends CanvasState{
         setTimeout(loading, 500);
     }
 
-    onStartEditingNodeText(selectedElement){ 
-        if (TextEditorModal.isTagEditable(selectedElement.tagName)){
+    onStartEditingNodeText(selectedElement, dbClick){
+        if (TextEditorModal.isTagEditable(selectedElement.tagName) && !dbClick){
             this.editingElement = selectedElement;
         }else{
             let that = this;     

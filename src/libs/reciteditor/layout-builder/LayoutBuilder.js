@@ -456,13 +456,13 @@ class MainView extends Component{
         event.dataTransfer.setDragImage(this.state.selectedElement, 0, 0);
     }
 
-    onStartEditingNodeText(el){
+    onStartEditingNodeText(el, dbClick){
         if(el instanceof HTMLElement){
-            this.canvasState[this.state.canvasState].onStartEditingNodeText(el);
+            this.canvasState[this.state.canvasState].onStartEditingNodeText(el, dbClick);
             this.setState({selectedElement: el});
         }
         else{
-            this.canvasState[this.state.canvasState].onStartEditingNodeText(this.state.selectedElement);
+            this.canvasState[this.state.canvasState].onStartEditingNodeText(this.state.selectedElement, dbClick);
             this.forceUpdate();
         }
     }
