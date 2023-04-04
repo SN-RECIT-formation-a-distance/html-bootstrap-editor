@@ -73,6 +73,11 @@ export class TextEditorModal extends React.Component {
                             <button className="ql-list" value="ordered" title={i18n.get_string('numberedlist')}></button>
                             <button className="ql-list" value="bullet" title={i18n.get_string('list')}></button>
                         </span>
+
+                        <span className="ql-formats">
+                        <button className="ql-indent" value="-1"></button>
+                        <button className="ql-indent" value="+1"></button>
+                        </span>
                         <span className='ql-formats'>
                             <select className="ql-header" defaultValue={''} onChange={(e) => e.persist()}>
                                 <option value="2"></option>

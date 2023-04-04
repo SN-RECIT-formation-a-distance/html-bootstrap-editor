@@ -99,6 +99,14 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
         title: _Utils.i18n.get_string('list')
       })), /*#__PURE__*/_react["default"].createElement("span", {
         className: "ql-formats"
+      }, /*#__PURE__*/_react["default"].createElement("button", {
+        className: "ql-indent",
+        value: "-1"
+      }), /*#__PURE__*/_react["default"].createElement("button", {
+        className: "ql-indent",
+        value: "+1"
+      })), /*#__PURE__*/_react["default"].createElement("span", {
+        className: "ql-formats"
       }, /*#__PURE__*/_react["default"].createElement("select", {
         className: "ql-header",
         defaultValue: '',
