@@ -2822,7 +2822,7 @@ HTMLPropertiesData.propsAssignmentFacade = {
   },
   icon: {
     min: ['icon'],
-    all: ['icon', 'font', 'bs-general', 'bs-text', 'bs-spacing', 'bs-border', 'background', 'htmlattributes']
+    all: ['icon', 'bs-background', 'bs-general', 'bs-spacing', 'bs-border', 'background', 'htmlattributes']
   },
   link: {
     min: ['link', 'bs-button'],

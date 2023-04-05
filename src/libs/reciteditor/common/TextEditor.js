@@ -74,10 +74,6 @@ export class TextEditorModal extends React.Component {
                             <button className="ql-list" value="bullet" title={i18n.get_string('list')}></button>
                         </span>
 
-                        <span className="ql-formats">
-                        <button className="ql-indent" value="-1"></button>
-                        <button className="ql-indent" value="+1"></button>
-                        </span>
                         <span className='ql-formats'>
                             <select className="ql-header" defaultValue={''} onChange={(e) => e.persist()}>
                                 <option value="2"></option>
@@ -240,3 +236,28 @@ const Parchment = Quill.import('parchment');
 let Align = new Parchment.Attributor.Class('fa', 'iconrecit');
 Parchment.register(Align);
 Quill.register(FaRule);
+
+class IndentAttributor extends Parchment.Attributor.Style {
+    multiplier = 2;
+  
+    constructor(name, style, params) {
+      super(name, style, params);
+    }
+  
+    add(node, value) {
+      return super.add(node, `${value * this.multiplier}rem`);
+    }
+  
+    value(node) {
+      return parseFloat(super.value(node)) / this.multiplier || undefined;
+    }
+}
+
+const levels = [1, 2, 3, 4, 5];
+const multiplier = 2;
+const indentStyle = new IndentAttributor('indent', 'margin-left', {
+  scope: Parchment.Scope.BLOCK,
+  whitelist: levels.map(value => `${value * multiplier}rem`),
+});
+
+Quill.register(indentStyle);

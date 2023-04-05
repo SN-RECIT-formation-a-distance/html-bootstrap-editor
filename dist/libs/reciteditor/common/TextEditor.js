@@ -99,14 +99,6 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
         title: _Utils.i18n.get_string('list')
       })), /*#__PURE__*/_react["default"].createElement("span", {
         className: "ql-formats"
-      }, /*#__PURE__*/_react["default"].createElement("button", {
-        className: "ql-indent",
-        value: "-1"
-      }), /*#__PURE__*/_react["default"].createElement("button", {
-        className: "ql-indent",
-        value: "+1"
-      })), /*#__PURE__*/_react["default"].createElement("span", {
-        className: "ql-formats"
       }, /*#__PURE__*/_react["default"].createElement("select", {
         className: "ql-header",
         defaultValue: '',
@@ -425,3 +417,35 @@ var Parchment = _reactQuill.Quill["import"]('parchment');
 var Align = new Parchment.Attributor.Class('fa', 'iconrecit');
 Parchment.register(Align);
 _reactQuill.Quill.register(FaRule);
+var IndentAttributor = /*#__PURE__*/function (_Parchment$Attributor) {
+  (0, _inherits2["default"])(IndentAttributor, _Parchment$Attributor);
+  var _super3 = _createSuper(IndentAttributor);
+  function IndentAttributor(name, style, params) {
+    var _this3;
+    (0, _classCallCheck2["default"])(this, IndentAttributor);
+    _this3 = _super3.call(this, name, style, params);
+    _this3.multiplier = 2;
+    return _this3;
+  }
+  (0, _createClass2["default"])(IndentAttributor, [{
+    key: "add",
+    value: function add(node, value) {
+      return (0, _get2["default"])((0, _getPrototypeOf2["default"])(IndentAttributor.prototype), "add", this).call(this, node, "".concat(value * this.multiplier, "rem"));
+    }
+  }, {
+    key: "value",
+    value: function value(node) {
+      return parseFloat((0, _get2["default"])((0, _getPrototypeOf2["default"])(IndentAttributor.prototype), "value", this).call(this, node)) / this.multiplier || undefined;
+    }
+  }]);
+  return IndentAttributor;
+}(Parchment.Attributor.Style);
+var levels = [1, 2, 3, 4, 5];
+var multiplier = 2;
+var indentStyle = new IndentAttributor('indent', 'margin-left', {
+  scope: Parchment.Scope.BLOCK,
+  whitelist: levels.map(function (value) {
+    return "".concat(value * multiplier, "rem");
+  })
+});
+_reactQuill.Quill.register(indentStyle);
