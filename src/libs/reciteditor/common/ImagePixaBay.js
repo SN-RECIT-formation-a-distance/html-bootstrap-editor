@@ -93,7 +93,6 @@ export class ImagePixaBay extends Component {
         ]
     
         this.state = {modal: false, data: [], pagination: {}, category: ''}
-        this.Upload = new UploadFile();
     }
 
 
@@ -176,11 +175,10 @@ export class ImagePixaBay extends Component {
 
     onUpload(url){
         this.handleClose();
-        this.Upload.onUploadDone = (url) => this.onAdd(url);
         fetch(url)
         .then(res => res.blob())
         .then(blob => {
-            this.Upload.upload(this.generateFileName(), blob)
+            IWrapper.uploadFile(this.generateFileName(), blob, (file) => this.onAdd(file.url));
         });
     }
 

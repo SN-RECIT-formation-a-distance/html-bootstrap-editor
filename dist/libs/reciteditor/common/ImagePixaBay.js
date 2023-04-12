@@ -101,7 +101,6 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
       pagination: {},
       category: ''
     };
-    _this.Upload = new _RecitEditor.UploadFile();
     return _this;
   }
   (0, _createClass2["default"])(ImagePixaBay, [{
@@ -267,13 +266,12 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
     value: function onUpload(url) {
       var _this4 = this;
       this.handleClose();
-      this.Upload.onUploadDone = function (url) {
-        return _this4.onAdd(url);
-      };
       fetch(url).then(function (res) {
         return res.blob();
       }).then(function (blob) {
-        _this4.Upload.upload(_this4.generateFileName(), blob);
+        _RecitEditor.IWrapper.uploadFile(_this4.generateFileName(), blob, function (file) {
+          return _this4.onAdd(file.url);
+        });
       });
     }
   }, {
