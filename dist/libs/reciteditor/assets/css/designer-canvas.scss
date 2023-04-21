@@ -69,12 +69,14 @@ html{
         .carousel-item:nth-of-type(4):after{content:'4th slide'; @extend .slide-pos;}
         .carousel-item:nth-of-type(5):after{content:'5th slide'; @extend .slide-pos;}
         
-        .attoreciteditor_flipcard2 .back {display: none;}
-        .attoreciteditor_flipcard2.hover .front {display: none;}
-        .attoreciteditor_flipcard2.hover .back {display: block;}
-        .attoreciteditor_flipcard2 .back {position: unset; transform: none;}
-        .attoreciteditor_flipcard2 .front::before{content:'Front'; color:#fff; background-color: #007bff; padding: 7px; border-radius: 24px; font-size: 11px;}
-        .attoreciteditor_flipcard2 .back::before{content:'Back'; color:#fff; background-color: #007bff; padding: 7px; border-radius: 24px; font-size: 11px;}
+        .attoreciteditor_flipcard2, .htmlbootstrapeditor_flipcard2{ 
+            .back {display: none;}
+            &.hover .front {display: none;}
+            &.hover .back {display: block;}
+            .back {position: unset; transform: none;}
+            .front::before{content:'Front'; color:#fff; background-color: #007bff; padding: 7px; border-radius: 24px; font-size: 11px;}
+            .back::before{content:'Back'; color:#fff; background-color: #007bff; padding: 7px; border-radius: 24px; font-size: 11px;}
+        }
         
         /* Those elements have priority over the previous ones*/
         *[data-hovering="1"]{ border: $border-onhover-element;}
@@ -85,9 +87,11 @@ html{
             font-size: 12px; color: initial; font-weight: initial; animation: append-dropping-zone .5s linear; justify-content: center;}
         .dropping-zone-hover{background-color:  rgba(0, 153, 255, .5)!important;}
         
-        .attoreciteditor_imgclick a:empty::before{content: "Link image clickable"; @extend .tag-empty;}
-        .attoreciteditor_imgclick {            text-align: center;            position: relative;            width: fit-content;        }
-        .attoreciteditor_imgclick {
+        .attoreciteditor_imgclick, .htmlbootstrapeditor_imgclick {
+            a:empty::before{content: "Link image clickable"; @extend .tag-empty;}
+            text-align: center;
+            position: relative;
+            width: fit-content;
             .imgclickcontent {            position: absolute;            top: 50%;            left: 50%;            transform: translate(-50%, -50%);            text-align: center;        }
         }
 

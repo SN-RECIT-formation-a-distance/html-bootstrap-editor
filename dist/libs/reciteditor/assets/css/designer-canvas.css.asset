@@ -36,7 +36,7 @@ html {
     /* Those elements have priority over the previous ones*/ }
     html body .nopointerevents {
       pointer-events: none; }
-    html body .tag-empty, html body div:empty:not(.col):not(.embedelement):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before, html body .embedelement:empty::before, html body section:empty::before, html body p:empty::before, html body .row:empty::before, html body .col-1:empty::before, html body .col-md-1:empty::before, html body .col-2:empty::before, html body .col-md-2:empty::before, html body .col-3:empty::before, html body .col-md-3:empty::before, html body .col-4:empty::before, html body .col-md-4:empty::before, html body .col-5:empty::before, html body .col-md-5:empty::before, html body .col-6:empty::before, html body .col-md-6:empty::before, html body .col-7:empty::before, html body .col-md-7:empty::before, html body .col-8:empty::before, html body .col-md-8:empty::before, html body .col-9:empty::before, html body .col-md-9:empty::before, html body .col-10:empty::before, html body .col-md-10:empty::before, html body .col-11:empty::before, html body .col-md-11:empty::before, html body .col-12:empty::before, html body .col-md-12:empty::before, html body .alert:empty::after, html body .card-header:empty::before, html body .card-body:empty::before, html body .card-footer:empty::before, html body td:empty::before, html body th:empty::before, html body .attoreciteditor_imgclick a:empty::before {
+    html body .tag-empty, html body div:empty:not(.col):not(.embedelement):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before, html body .embedelement:empty::before, html body section:empty::before, html body p:empty::before, html body .row:empty::before, html body .col-1:empty::before, html body .col-md-1:empty::before, html body .col-2:empty::before, html body .col-md-2:empty::before, html body .col-3:empty::before, html body .col-md-3:empty::before, html body .col-4:empty::before, html body .col-md-4:empty::before, html body .col-5:empty::before, html body .col-md-5:empty::before, html body .col-6:empty::before, html body .col-md-6:empty::before, html body .col-7:empty::before, html body .col-md-7:empty::before, html body .col-8:empty::before, html body .col-md-8:empty::before, html body .col-9:empty::before, html body .col-md-9:empty::before, html body .col-10:empty::before, html body .col-md-10:empty::before, html body .col-11:empty::before, html body .col-md-11:empty::before, html body .col-12:empty::before, html body .col-md-12:empty::before, html body .alert:empty::after, html body .card-header:empty::before, html body .card-body:empty::before, html body .card-footer:empty::before, html body td:empty::before, html body th:empty::before, html body .attoreciteditor_imgclick a:empty::before, html body .htmlbootstrapeditor_imgclick a:empty::before {
       background-color: #ffd75e;
       padding: 5px; }
     html body div:empty:not(.col):not(.embedelement):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before {
@@ -161,23 +161,23 @@ html {
       content: '4th slide'; }
     html body .carousel-item:nth-of-type(5):after {
       content: '5th slide'; }
-    html body .attoreciteditor_flipcard2 .back {
+    html body .attoreciteditor_flipcard2 .back, html body .htmlbootstrapeditor_flipcard2 .back {
       display: none; }
-    html body .attoreciteditor_flipcard2.hover .front {
+    html body .attoreciteditor_flipcard2.hover .front, html body .htmlbootstrapeditor_flipcard2.hover .front {
       display: none; }
-    html body .attoreciteditor_flipcard2.hover .back {
+    html body .attoreciteditor_flipcard2.hover .back, html body .htmlbootstrapeditor_flipcard2.hover .back {
       display: block; }
-    html body .attoreciteditor_flipcard2 .back {
+    html body .attoreciteditor_flipcard2 .back, html body .htmlbootstrapeditor_flipcard2 .back {
       position: unset;
       transform: none; }
-    html body .attoreciteditor_flipcard2 .front::before {
+    html body .attoreciteditor_flipcard2 .front::before, html body .htmlbootstrapeditor_flipcard2 .front::before {
       content: 'Front';
       color: #fff;
       background-color: #007bff;
       padding: 7px;
       border-radius: 24px;
       font-size: 11px; }
-    html body .attoreciteditor_flipcard2 .back::before {
+    html body .attoreciteditor_flipcard2 .back::before, html body .htmlbootstrapeditor_flipcard2 .back::before {
       content: 'Back';
       color: #fff;
       background-color: #007bff;
@@ -204,18 +204,18 @@ html {
       justify-content: center; }
     html body .dropping-zone-hover {
       background-color: rgba(0, 153, 255, 0.5) !important; }
-    html body .attoreciteditor_imgclick a:empty::before {
-      content: "Link image clickable"; }
-    html body .attoreciteditor_imgclick {
+    html body .attoreciteditor_imgclick, html body .htmlbootstrapeditor_imgclick {
       text-align: center;
       position: relative;
       width: fit-content; }
-    html body .attoreciteditor_imgclick .imgclickcontent {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center; }
+      html body .attoreciteditor_imgclick a:empty::before, html body .htmlbootstrapeditor_imgclick a:empty::before {
+        content: "Link image clickable"; }
+      html body .attoreciteditor_imgclick .imgclickcontent, html body .htmlbootstrapeditor_imgclick .imgclickcontent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center; }
     html body iframe {
       border: 2px dashed #000; }
     html body iframe.video {
