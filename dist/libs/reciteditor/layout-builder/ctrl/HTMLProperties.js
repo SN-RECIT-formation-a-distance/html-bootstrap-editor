@@ -2814,7 +2814,7 @@ HTMLPropertiesData.propsAssignmentFacade = {
   },
   image: {
     min: ['source', 'alt'],
-    all: ['source', 'alt', 'bs-general', 'bs-background', 'bs-spacing', 'bs-border', 'layout', 'htmlattributes']
+    all: ['source', 'alt', 'bs-general', 'bs-spacing', 'bs-border', 'layout', 'htmlattributes']
   },
   video: {
     min: ['videosource'],
