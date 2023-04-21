@@ -2729,7 +2729,7 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
     _this42.options = [{
       text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faMinus
-      }), _RecitEditor.i18n.get_string('line')),
+      }), " ", _RecitEditor.i18n.get_string('line')),
       onClick: function onClick(el) {
         var table = el.parentElement.parentElement;
         var _iterator38 = _createForOfIteratorHelper(table.rows),
@@ -2758,7 +2758,7 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
     }, {
       text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus
-      }), _RecitEditor.i18n.get_string('line')),
+      }), " ", _RecitEditor.i18n.get_string('line')),
       onClick: function onClick(el) {
         var result = {
           action: '',
@@ -2777,7 +2777,7 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
     }, {
       text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus
-      }), _RecitEditor.i18n.get_string('column')),
+      }), " ", _RecitEditor.i18n.get_string('column')),
       onClick: function onClick(el) {
         var table = _RecitEditor.UtilsHTML.getTableFromCell(el);
         var result = _RecitEditor.UtilsHTML.tableAddCol(table);

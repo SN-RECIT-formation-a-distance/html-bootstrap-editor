@@ -284,7 +284,8 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
     (0, _classCallCheck2["default"])(this, FloatingMenu);
     _this = _super2.call(this, props);
     _this.state = {
-      saveElement: false
+      saveElement: false,
+      width: 0
     };
     return _this;
   }
@@ -326,8 +327,15 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
       // 32px = ButtonToolBar thickness
       style.top = Math.max(posCanvas.top + posEl.top - 32, 0);
       style.left = posCanvas.left + posEl.left;
+      if (style.left + this.state.width > window.innerWidth) {
+        delete style.left;
+        style.right = 0;
+      }
       var main = /*#__PURE__*/_react["default"].createElement("div", {
         className: "floating-menu",
+        ref: function ref(_ref) {
+          return _this2.setRef(_ref);
+        },
         style: style
       }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonToolbar, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
         size: "sm"
@@ -395,6 +403,16 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
         description: _RecitEditor.i18n.get_string('addcomponentdesc')
       }));
       return main;
+    }
+  }, {
+    key: "setRef",
+    value: function setRef(ref) {
+      if (!ref) return;
+      if (this.state.width != ref.clientWidth) {
+        this.setState({
+          width: ref.clientWidth
+        });
+      }
     }
   }, {
     key: "onSaveTemplate",

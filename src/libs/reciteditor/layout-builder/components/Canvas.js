@@ -278,7 +278,7 @@ export class FloatingMenu extends Component{
 
     constructor(props){
         super(props);
-        this.state = {saveElement: false};
+        this.state = {saveElement: false, width: 0};
     }
 
     render(){
@@ -305,9 +305,13 @@ export class FloatingMenu extends Component{
         // 32px = ButtonToolBar thickness
         style.top = Math.max(posCanvas.top + posEl.top - 32, 0);
         style.left = posCanvas.left + posEl.left;
+        if ((style.left + this.state.width) > window.innerWidth){ // If the menu overflows the screen width, remove left position and put menu to the right
+            delete style.left;
+            style.right = 0;
+        }
 
         let main =  
-            <div className='floating-menu' style={style}>
+            <div className='floating-menu' ref={ref => this.setRef(ref)} style={style}>
                 <ButtonToolbar>
                     <ButtonGroup size="sm">
                         <Button onDragStart={this.props.onDragElement} draggable="true" style={{cursor: 'grab'}}><FontAwesomeIcon  icon={faArrowsAlt} title={i18n.get_string('drag')}/> {name}</Button>
@@ -323,6 +327,14 @@ export class FloatingMenu extends Component{
                 {this.state.saveElement && <TemplateForm onClose={() => this.setState({saveElement:false})} onSave={this.onSaveTemplate.bind(this)} title={i18n.get_string('createtemplate')} description={i18n.get_string('addcomponentdesc')}/>}
             </div>
         return main;
+    }
+
+    setRef(ref){
+        if (!ref) return;
+
+        if (this.state.width != ref.clientWidth){
+            this.setState({width: ref.clientWidth});
+        }
     }
 
     onSaveTemplate(data){
