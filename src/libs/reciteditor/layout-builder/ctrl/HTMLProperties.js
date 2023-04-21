@@ -1742,7 +1742,7 @@ export class BsTableCellActionProperty extends HTMLProperty{
 
         this.options = [ 
             {
-                text: <span><FontAwesomeIcon icon={faMinus}/>{i18n.get_string('line')}</span>, 
+                text: <span><FontAwesomeIcon icon={faMinus}/> {i18n.get_string('line')}</span>, 
                 onClick: function(el){
                     let table = el.parentElement.parentElement;
                     for (let row of table.rows){
@@ -1761,7 +1761,7 @@ export class BsTableCellActionProperty extends HTMLProperty{
                 }
             },
             {
-                text: <span><FontAwesomeIcon icon={faPlus}/>{i18n.get_string('line')}</span>, 
+                text: <span><FontAwesomeIcon icon={faPlus}/> {i18n.get_string('line')}</span>, 
                 onClick: function(el){
                     let result = {action: '', nodes: null};
                     let table = UtilsHTML.getTableFromCell(el);
@@ -1780,7 +1780,7 @@ export class BsTableCellActionProperty extends HTMLProperty{
                 }
             },
             {
-                text: <span><FontAwesomeIcon icon={faPlus}/>{i18n.get_string('column')}</span>, 
+                text: <span><FontAwesomeIcon icon={faPlus}/> {i18n.get_string('column')}</span>, 
                 onClick: function(el){
                     let table = UtilsHTML.getTableFromCell(el);
                     let result = UtilsHTML.tableAddCol(table);

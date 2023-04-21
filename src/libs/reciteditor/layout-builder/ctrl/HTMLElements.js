@@ -959,7 +959,7 @@ class HTMLElement{
  
  export class HTMLTabElement extends HTMLDivElement{
      constructor(){
-         super(i18n.get_string('tab'), "div", 'nativecomponent', {all: ['tab', ...HTMLPropertiesData.propsAssignmentFacade.containers.all], min:[]});
+         super(i18n.get_string('tab'), "div", 'nativecomponent', {all: ['tab', ...HTMLPropertiesData.propsAssignmentFacade.containers.all], min:['tab']});
          this.cssProp.prefix = 'tab';
          this.panels = {components: 0, properties: 1, treeView: 1};
      }

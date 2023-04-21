@@ -1241,7 +1241,7 @@ var HTMLTabElement = /*#__PURE__*/function (_HTMLDivElement12) {
     (0, _classCallCheck2["default"])(this, HTMLTabElement);
     _this25 = _super37.call(this, _RecitEditor.i18n.get_string('tab'), "div", 'nativecomponent', {
       all: ['tab'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
-      min: []
+      min: ['tab']
     });
     _this25.cssProp.prefix = 'tab';
     _this25.panels = {

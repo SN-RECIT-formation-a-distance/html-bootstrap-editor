@@ -323,7 +323,8 @@ var FormProperties = /*#__PURE__*/function (_Component2) {
           });
           break;
         case 'buttongroup':
-          result = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, null, data.input.options.map(function (item, index) {
+          //A div is needed because buttongroup is inline
+          result = /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, null, data.input.options.map(function (item, index) {
             var btn = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
               size: "sm",
               key: index,
@@ -332,7 +333,7 @@ var FormProperties = /*#__PURE__*/function (_Component2) {
               }
             }, item.text);
             return btn;
-          }));
+          })));
           break;
         case 'ImageSrc':
           result = /*#__PURE__*/_react["default"].createElement(_RecitEditor.ImageSrc, {

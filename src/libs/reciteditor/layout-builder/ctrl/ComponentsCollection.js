@@ -226,14 +226,15 @@ class FormProperties extends Component{
                 result = <ColorSelector name={data.name} value={value} options={data.input.options} flags={flags}
                                 onChange={(event) => this.onDataChange(event, data)} />;
                 break;
-            case 'buttongroup':
-                result = 
+            case 'buttongroup': //A div is needed because buttongroup is inline
+                result = <div> 
                     <ButtonGroup>
                         {data.input.options.map((item, index) => {
                             let btn = <Button size="sm" key={index} onClick={() => this.onClick(item)}>{item.text}</Button>;
                             return (btn);
                         })}
                     </ButtonGroup>
+                    </div>
               
                 break;
             case 'ImageSrc':
