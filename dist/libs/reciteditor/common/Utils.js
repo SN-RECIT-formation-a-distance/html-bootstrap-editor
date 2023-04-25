@@ -15,7 +15,27 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 var _RecitEditor = require("../RecitEditor");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } // This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+/**
+ * Atto HTML editor
+ *
+ * @package    atto_reciteditor
+ * @copyright  2019 RECIT
+ * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+ */
 var JsNx = /*#__PURE__*/function () {
   function JsNx() {
     (0, _classCallCheck2["default"])(this, JsNx);
@@ -97,10 +117,22 @@ var JsNx = /*#__PURE__*/function () {
   return JsNx;
 }();
 exports.JsNx = JsNx;
+/**
+ * Remove an element from the array according to the property and value indicated.
+ * @param {string} property
+ * @param {*} property value
+ * @returns {object}
+ */
 JsNx.removeItem = function (arr, prop, value) {
   var index = JsNx.getItemIndex(arr, prop, value, -1);
   return JsNx.remove(arr, index);
 };
+/**
+ * Return the array item (an object) index according to the property and value indicated. 
+ * @param {string} property
+ * @param {*} property value
+ * @returns {number}
+ */
 JsNx.getItemIndex = function (arr, prop, value) {
   for (var i = 0; i < arr.length; i++) {
     var item = arr[i];
@@ -110,6 +142,12 @@ JsNx.getItemIndex = function (arr, prop, value) {
   }
   return -1;
 };
+/**
+* Get the property value. If it not exists, then return the default value.
+* @param {string} prop
+* @param {*} defaultValue
+* @returns {*}
+*/
 JsNx.get = function (obj, prop, defaultValue) {
   var props = prop.split('.');
   var result = typeof defaultValue === "undefined" ? null : defaultValue;
@@ -122,6 +160,10 @@ JsNx.get = function (obj, prop, defaultValue) {
   }
   return result;
 };
+/*
+* @description Deep clone the object and return a new one
+* @returns {Object}
+*/
 JsNx.clone = function (obj) {
   if (obj instanceof Date) {
     return new Date(obj.valueOf());
@@ -171,6 +213,12 @@ JsNx.copy = function (arr, level) {
     // Array of literal-values (boolean, number, string) ex:  [true, 1, "true"]
   }
 };
+/**
+ * During shallow equality check of objects you get the list of properties (using Object.keys()) of both objects, then check the properties’ values for equality.
+ * @param {object} obj1 
+ * @param {object} obj2 
+ * @return {boolean} it returns true if the objects as equals
+ */
 JsNx.compare = function (obj1, obj2) {
   obj1 = obj1 || null;
   obj2 = obj2 || null;
@@ -722,6 +770,11 @@ var UtilsDateTime = /*#__PURE__*/function () {
   return UtilsDateTime;
 }();
 exports.UtilsDateTime = UtilsDateTime;
+/**
+ * Transform the time in string to minutes
+ * @param {string} - hh:mm
+ * @return {number} - The number of minutes 
+ */
 UtilsDateTime.timeToMin = function (time) {
   var hour, minutes;
   if (time.length !== 5) {

@@ -34,13 +34,22 @@ var Assets = /*#__PURE__*/(0, _createClass2["default"])(function Assets() {
 });
 exports.Assets = Assets;
 Assets.RecitLogo = require('./images/recit.png');
+//CDN because otherwise images will be dependant of reciteditor
 Assets.ImageEmpty = 'https://raw.githubusercontent.com/SN-RECIT-formation-a-distance/moodle-atto_reciteditor/master/src/react/build/assets/images/header4.jpg';
 Assets.ImageEmptyHD = Assets.ImageEmpty;
+//require('./assets/images/empty-hd.jpg');
+//CDN because otherwise images will be dependant of reciteditor
 Assets.ImageAvatar = 'https://sn-recit-formation-a-distance.github.io/html-bootstrap-editor-showcase/img/avatar.jpg';
+//We use .asset so it's treated as a file rather than being interpreted
 Assets.CanvasCSS = require('./css/canvas.css.asset');
 Assets.CanvasDesignerCSS = require('./css/designer-canvas.css.asset');
+//static ContentCSS = './react/build/assets/css/content.css'; it is already in Moodle theme
+//static ContentScript = './react/build/assets/js/script.js'; 
+//static Bootstrap = 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css';
 Assets.BootstrapJS = require('./bootstrap/js/bootstrap.bundle.min.js.asset');
+//Used for preview
 Assets.JqueryJS = require('./bootstrap/js/jquery.min.js.asset');
+//Bootstrap.js depends on jQuery
 Assets.faBootstrap = /*#__PURE__*/_react["default"].createElement("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   className: "svg-inline--fa fa-w-20",
