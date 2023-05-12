@@ -17,31 +17,8 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-/**
- * Abstract class
- */
-var HTMLElement = /*#__PURE__*/function () {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var HTMLElement = function () {
   function HTMLElement(name, tagName, type, properties) {
     (0, _classCallCheck2["default"])(this, HTMLElement);
     this.name = name || "";
@@ -114,7 +91,7 @@ var HTMLElement = /*#__PURE__*/function () {
   }]);
   return HTMLElement;
 }();
-var HTMLBodyElement = /*#__PURE__*/function (_HTMLElement) {
+var HTMLBodyElement = function (_HTMLElement) {
   (0, _inherits2["default"])(HTMLBodyElement, _HTMLElement);
   var _super = _createSuper(HTMLBodyElement);
   function HTMLBodyElement() {
@@ -138,7 +115,7 @@ var HTMLBodyElement = /*#__PURE__*/function (_HTMLElement) {
   return HTMLBodyElement;
 }(HTMLElement);
 exports.HTMLBodyElement = HTMLBodyElement;
-var HTMLHeadingElement = /*#__PURE__*/function (_HTMLElement2) {
+var HTMLHeadingElement = function (_HTMLElement2) {
   (0, _inherits2["default"])(HTMLHeadingElement, _HTMLElement2);
   var _super2 = _createSuper(HTMLHeadingElement);
   function HTMLHeadingElement(name, tagName, icon) {
@@ -189,7 +166,7 @@ var HTMLHeadingElement = /*#__PURE__*/function (_HTMLElement2) {
   return HTMLHeadingElement;
 }(HTMLElement);
 exports.HTMLHeadingElement = HTMLHeadingElement;
-var HTMLParagraphElement = /*#__PURE__*/function (_HTMLElement3) {
+var HTMLParagraphElement = function (_HTMLElement3) {
   (0, _inherits2["default"])(HTMLParagraphElement, _HTMLElement3);
   var _super3 = _createSuper(HTMLParagraphElement);
   function HTMLParagraphElement() {
@@ -213,7 +190,7 @@ var HTMLParagraphElement = /*#__PURE__*/function (_HTMLElement3) {
   return HTMLParagraphElement;
 }(HTMLElement);
 exports.HTMLParagraphElement = HTMLParagraphElement;
-var HTMLLinkElement = /*#__PURE__*/function (_HTMLElement4) {
+var HTMLLinkElement = function (_HTMLElement4) {
   (0, _inherits2["default"])(HTMLLinkElement, _HTMLElement4);
   var _super4 = _createSuper(HTMLLinkElement);
   function HTMLLinkElement() {
@@ -236,7 +213,7 @@ var HTMLLinkElement = /*#__PURE__*/function (_HTMLElement4) {
   return HTMLLinkElement;
 }(HTMLElement);
 exports.HTMLLinkElement = HTMLLinkElement;
-var HTMLImageFigureElement = /*#__PURE__*/function (_HTMLElement5) {
+var HTMLImageFigureElement = function (_HTMLElement5) {
   (0, _inherits2["default"])(HTMLImageFigureElement, _HTMLElement5);
   var _super5 = _createSuper(HTMLImageFigureElement);
   function HTMLImageFigureElement() {
@@ -249,7 +226,7 @@ var HTMLImageFigureElement = /*#__PURE__*/function (_HTMLElement5) {
   return (0, _createClass2["default"])(HTMLImageFigureElement);
 }(HTMLElement);
 exports.HTMLImageFigureElement = HTMLImageFigureElement;
-var HTMLButtonElement = /*#__PURE__*/function (_HTMLElement6) {
+var HTMLButtonElement = function (_HTMLElement6) {
   (0, _inherits2["default"])(HTMLButtonElement, _HTMLElement6);
   var _super6 = _createSuper(HTMLButtonElement);
   function HTMLButtonElement(name, tagName, type, properties) {
@@ -280,29 +257,8 @@ var HTMLButtonElement = /*#__PURE__*/function (_HTMLElement6) {
   }]);
   return HTMLButtonElement;
 }(HTMLElement);
-/*export class HTMLButtonCollapseElement extends HTMLElement{
-    constructor(){
-        super(i18n.get_string('collapsebutton'), 'buttoncollapse', 'bootstrap', [...HTMLPropertiesData.propsAssignmentFacade.controls, 'collapse']);
-        this.cssProp.prefix = 'btn';
-    }
-
-    equal(el){
-        if(el === null){ return false; }
-
-        return (el.classList.contains('btn-collapse'));
-    }
-
-    create(){ 
-        let el = document.createElement("button");
-        el.classList.add('btn');
-        el.classList.add('btn-primary', 'btn-collapse');
-        el.setAttribute('data-bs-toggle', 'collapse');
-        el.innerHTML = i18n.get_string('collapsebutton');
-        return el;
-    }
-}*/
 exports.HTMLButtonElement = HTMLButtonElement;
-var HTMLButtonVideoElement = /*#__PURE__*/function (_HTMLElement7) {
+var HTMLButtonVideoElement = function (_HTMLElement7) {
   (0, _inherits2["default"])(HTMLButtonVideoElement, _HTMLElement7);
   var _super7 = _createSuper(HTMLButtonVideoElement);
   function HTMLButtonVideoElement() {
@@ -318,12 +274,12 @@ var HTMLButtonVideoElement = /*#__PURE__*/function (_HTMLElement7) {
       if (el === null) {
         return false;
       }
-      return el.classList.contains('htmlbootstrapeditor_videobtn') || this.equalLegacy(el); //Videobtn is legacy class
+      return el.classList.contains('htmlbootstrapeditor_videobtn') || this.equalLegacy(el);
     }
   }, {
     key: "equalLegacy",
     value: function equalLegacy(el) {
-      return el.classList.contains('attoreciteditor_videobtn') || el.classList.contains('videobtn'); //Videobtn is legacy class
+      return el.classList.contains('attoreciteditor_videobtn') || el.classList.contains('videobtn');
     }
   }, {
     key: "create",
@@ -340,7 +296,7 @@ var HTMLButtonVideoElement = /*#__PURE__*/function (_HTMLElement7) {
   return HTMLButtonVideoElement;
 }(HTMLElement);
 exports.HTMLButtonVideoElement = HTMLButtonVideoElement;
-var HTMLMediaElement = /*#__PURE__*/function (_HTMLElement8) {
+var HTMLMediaElement = function (_HTMLElement8) {
   (0, _inherits2["default"])(HTMLMediaElement, _HTMLElement8);
   var _super8 = _createSuper(HTMLMediaElement);
   function HTMLMediaElement(name, tagName, type, properties) {
@@ -350,7 +306,7 @@ var HTMLMediaElement = /*#__PURE__*/function (_HTMLElement8) {
   return (0, _createClass2["default"])(HTMLMediaElement);
 }(HTMLElement);
 exports.HTMLMediaElement = HTMLMediaElement;
-var HTMLAudioElement = /*#__PURE__*/function (_HTMLMediaElement) {
+var HTMLAudioElement = function (_HTMLMediaElement) {
   (0, _inherits2["default"])(HTMLAudioElement, _HTMLMediaElement);
   var _super9 = _createSuper(HTMLAudioElement);
   function HTMLAudioElement() {
@@ -376,7 +332,7 @@ var HTMLAudioElement = /*#__PURE__*/function (_HTMLMediaElement) {
   return HTMLAudioElement;
 }(HTMLMediaElement);
 exports.HTMLAudioElement = HTMLAudioElement;
-var HTMLVideoElement = /*#__PURE__*/function (_HTMLMediaElement2) {
+var HTMLVideoElement = function (_HTMLMediaElement2) {
   (0, _inherits2["default"])(HTMLVideoElement, _HTMLMediaElement2);
   var _super10 = _createSuper(HTMLVideoElement);
   function HTMLVideoElement(name, tagName, type) {
@@ -411,7 +367,7 @@ var HTMLVideoElement = /*#__PURE__*/function (_HTMLMediaElement2) {
   return HTMLVideoElement;
 }(HTMLMediaElement);
 exports.HTMLVideoElement = HTMLVideoElement;
-var HTMLDivElement = /*#__PURE__*/function (_HTMLElement9) {
+var HTMLDivElement = function (_HTMLElement9) {
   (0, _inherits2["default"])(HTMLDivElement, _HTMLElement9);
   var _super11 = _createSuper(HTMLDivElement);
   function HTMLDivElement(name, tagName, type, properties) {
@@ -421,7 +377,7 @@ var HTMLDivElement = /*#__PURE__*/function (_HTMLElement9) {
   return (0, _createClass2["default"])(HTMLDivElement);
 }(HTMLElement);
 exports.HTMLDivElement = HTMLDivElement;
-var HTMLEmbedElement = /*#__PURE__*/function (_HTMLElement10) {
+var HTMLEmbedElement = function (_HTMLElement10) {
   (0, _inherits2["default"])(HTMLEmbedElement, _HTMLElement10);
   var _super12 = _createSuper(HTMLEmbedElement);
   function HTMLEmbedElement() {
@@ -450,7 +406,7 @@ var HTMLEmbedElement = /*#__PURE__*/function (_HTMLElement10) {
   return HTMLEmbedElement;
 }(HTMLElement);
 exports.HTMLEmbedElement = HTMLEmbedElement;
-var HTMLIframeElement = /*#__PURE__*/function (_HTMLElement11) {
+var HTMLIframeElement = function (_HTMLElement11) {
   (0, _inherits2["default"])(HTMLIframeElement, _HTMLElement11);
   var _super13 = _createSuper(HTMLIframeElement);
   function HTMLIframeElement() {
@@ -481,7 +437,7 @@ var HTMLIframeElement = /*#__PURE__*/function (_HTMLElement11) {
   return HTMLIframeElement;
 }(HTMLElement);
 exports.HTMLIframeElement = HTMLIframeElement;
-var HTMLSpanElement = /*#__PURE__*/function (_HTMLElement12) {
+var HTMLSpanElement = function (_HTMLElement12) {
   (0, _inherits2["default"])(HTMLSpanElement, _HTMLElement12);
   var _super14 = _createSuper(HTMLSpanElement);
   function HTMLSpanElement() {
@@ -494,7 +450,7 @@ var HTMLSpanElement = /*#__PURE__*/function (_HTMLElement12) {
   return (0, _createClass2["default"])(HTMLSpanElement);
 }(HTMLElement);
 exports.HTMLSpanElement = HTMLSpanElement;
-var HTMLSectionElement = /*#__PURE__*/function (_HTMLElement13) {
+var HTMLSectionElement = function (_HTMLElement13) {
   (0, _inherits2["default"])(HTMLSectionElement, _HTMLElement13);
   var _super15 = _createSuper(HTMLSectionElement);
   function HTMLSectionElement() {
@@ -507,7 +463,7 @@ var HTMLSectionElement = /*#__PURE__*/function (_HTMLElement13) {
   return (0, _createClass2["default"])(HTMLSectionElement);
 }(HTMLElement);
 exports.HTMLSectionElement = HTMLSectionElement;
-var HTMLGridElement = /*#__PURE__*/function (_HTMLElement14) {
+var HTMLGridElement = function (_HTMLElement14) {
   (0, _inherits2["default"])(HTMLGridElement, _HTMLElement14);
   var _super16 = _createSuper(HTMLGridElement);
   function HTMLGridElement() {
@@ -552,7 +508,7 @@ var HTMLGridElement = /*#__PURE__*/function (_HTMLElement14) {
   return HTMLGridElement;
 }(HTMLElement);
 exports.HTMLGridElement = HTMLGridElement;
-var HTMLRowElement = /*#__PURE__*/function (_HTMLElement15) {
+var HTMLRowElement = function (_HTMLElement15) {
   (0, _inherits2["default"])(HTMLRowElement, _HTMLElement15);
   var _super17 = _createSuper(HTMLRowElement);
   function HTMLRowElement() {
@@ -589,7 +545,7 @@ var HTMLRowElement = /*#__PURE__*/function (_HTMLElement15) {
   return HTMLRowElement;
 }(HTMLElement);
 exports.HTMLRowElement = HTMLRowElement;
-var HTMLColElement = /*#__PURE__*/function (_HTMLElement16) {
+var HTMLColElement = function (_HTMLElement16) {
   (0, _inherits2["default"])(HTMLColElement, _HTMLElement16);
   var _super18 = _createSuper(HTMLColElement);
   function HTMLColElement() {
@@ -637,7 +593,7 @@ var HTMLColElement = /*#__PURE__*/function (_HTMLElement16) {
   return HTMLColElement;
 }(HTMLElement);
 exports.HTMLColElement = HTMLColElement;
-var HTMLUListElement = /*#__PURE__*/function (_HTMLElement17) {
+var HTMLUListElement = function (_HTMLElement17) {
   (0, _inherits2["default"])(HTMLUListElement, _HTMLElement17);
   var _super19 = _createSuper(HTMLUListElement);
   function HTMLUListElement() {
@@ -655,7 +611,7 @@ var HTMLUListElement = /*#__PURE__*/function (_HTMLElement17) {
   return HTMLUListElement;
 }(HTMLElement);
 exports.HTMLUListElement = HTMLUListElement;
-var HTMLOListElement = /*#__PURE__*/function (_HTMLElement18) {
+var HTMLOListElement = function (_HTMLElement18) {
   (0, _inherits2["default"])(HTMLOListElement, _HTMLElement18);
   var _super20 = _createSuper(HTMLOListElement);
   function HTMLOListElement() {
@@ -673,7 +629,7 @@ var HTMLOListElement = /*#__PURE__*/function (_HTMLElement18) {
   return HTMLOListElement;
 }(HTMLElement);
 exports.HTMLOListElement = HTMLOListElement;
-var HTMLTableElement = /*#__PURE__*/function (_HTMLElement19) {
+var HTMLTableElement = function (_HTMLElement19) {
   (0, _inherits2["default"])(HTMLTableElement, _HTMLElement19);
   var _super21 = _createSuper(HTMLTableElement);
   function HTMLTableElement() {
@@ -709,7 +665,7 @@ var HTMLTableElement = /*#__PURE__*/function (_HTMLElement19) {
   return HTMLTableElement;
 }(HTMLElement);
 exports.HTMLTableElement = HTMLTableElement;
-var HTMLTableDataCellElement = /*#__PURE__*/function (_HTMLElement20) {
+var HTMLTableDataCellElement = function (_HTMLElement20) {
   (0, _inherits2["default"])(HTMLTableDataCellElement, _HTMLElement20);
   var _super22 = _createSuper(HTMLTableDataCellElement);
   function HTMLTableDataCellElement() {
@@ -733,7 +689,7 @@ var HTMLTableDataCellElement = /*#__PURE__*/function (_HTMLElement20) {
   return HTMLTableDataCellElement;
 }(HTMLElement);
 exports.HTMLTableDataCellElement = HTMLTableDataCellElement;
-var HTMLTableHeaderCellElement = /*#__PURE__*/function (_HTMLElement21) {
+var HTMLTableHeaderCellElement = function (_HTMLElement21) {
   (0, _inherits2["default"])(HTMLTableHeaderCellElement, _HTMLElement21);
   var _super23 = _createSuper(HTMLTableHeaderCellElement);
   function HTMLTableHeaderCellElement() {
@@ -757,7 +713,7 @@ var HTMLTableHeaderCellElement = /*#__PURE__*/function (_HTMLElement21) {
   return HTMLTableHeaderCellElement;
 }(HTMLElement);
 exports.HTMLTableHeaderCellElement = HTMLTableHeaderCellElement;
-var HTMLTableRowElement = /*#__PURE__*/function (_HTMLElement22) {
+var HTMLTableRowElement = function (_HTMLElement22) {
   (0, _inherits2["default"])(HTMLTableRowElement, _HTMLElement22);
   var _super24 = _createSuper(HTMLTableRowElement);
   function HTMLTableRowElement() {
@@ -777,7 +733,7 @@ var HTMLTableRowElement = /*#__PURE__*/function (_HTMLElement22) {
   return HTMLTableRowElement;
 }(HTMLElement);
 exports.HTMLTableRowElement = HTMLTableRowElement;
-var HTMLLIElement = /*#__PURE__*/function (_HTMLElement23) {
+var HTMLLIElement = function (_HTMLElement23) {
   (0, _inherits2["default"])(HTMLLIElement, _HTMLElement23);
   var _super25 = _createSuper(HTMLLIElement);
   function HTMLLIElement() {
@@ -801,7 +757,7 @@ var HTMLLIElement = /*#__PURE__*/function (_HTMLElement23) {
   return HTMLLIElement;
 }(HTMLElement);
 exports.HTMLLIElement = HTMLLIElement;
-var HTMLAlertElement = /*#__PURE__*/function (_HTMLDivElement) {
+var HTMLAlertElement = function (_HTMLDivElement) {
   (0, _inherits2["default"])(HTMLAlertElement, _HTMLDivElement);
   var _super26 = _createSuper(HTMLAlertElement);
   function HTMLAlertElement() {
@@ -834,7 +790,7 @@ var HTMLAlertElement = /*#__PURE__*/function (_HTMLDivElement) {
   return HTMLAlertElement;
 }(HTMLDivElement);
 exports.HTMLAlertElement = HTMLAlertElement;
-var HTMLAvatarCardElement = /*#__PURE__*/function (_HTMLDivElement2) {
+var HTMLAvatarCardElement = function (_HTMLDivElement2) {
   (0, _inherits2["default"])(HTMLAvatarCardElement, _HTMLDivElement2);
   var _super27 = _createSuper(HTMLAvatarCardElement);
   function HTMLAvatarCardElement() {
@@ -887,7 +843,7 @@ var HTMLAvatarCardElement = /*#__PURE__*/function (_HTMLDivElement2) {
   return HTMLAvatarCardElement;
 }(HTMLDivElement);
 exports.HTMLAvatarCardElement = HTMLAvatarCardElement;
-var HTMLCardElement = /*#__PURE__*/function (_HTMLDivElement3) {
+var HTMLCardElement = function (_HTMLDivElement3) {
   (0, _inherits2["default"])(HTMLCardElement, _HTMLDivElement3);
   var _super28 = _createSuper(HTMLCardElement);
   function HTMLCardElement() {
@@ -931,7 +887,7 @@ var HTMLCardElement = /*#__PURE__*/function (_HTMLDivElement3) {
   return HTMLCardElement;
 }(HTMLDivElement);
 exports.HTMLCardElement = HTMLCardElement;
-var HTMLCardBodyElement = /*#__PURE__*/function (_HTMLDivElement4) {
+var HTMLCardBodyElement = function (_HTMLDivElement4) {
   (0, _inherits2["default"])(HTMLCardBodyElement, _HTMLDivElement4);
   var _super29 = _createSuper(HTMLCardBodyElement);
   function HTMLCardBodyElement() {
@@ -960,7 +916,7 @@ var HTMLCardBodyElement = /*#__PURE__*/function (_HTMLDivElement4) {
   return HTMLCardBodyElement;
 }(HTMLDivElement);
 exports.HTMLCardBodyElement = HTMLCardBodyElement;
-var HTMLCardHeaderElement = /*#__PURE__*/function (_HTMLDivElement5) {
+var HTMLCardHeaderElement = function (_HTMLDivElement5) {
   (0, _inherits2["default"])(HTMLCardHeaderElement, _HTMLDivElement5);
   var _super30 = _createSuper(HTMLCardHeaderElement);
   function HTMLCardHeaderElement() {
@@ -989,7 +945,7 @@ var HTMLCardHeaderElement = /*#__PURE__*/function (_HTMLDivElement5) {
   return HTMLCardHeaderElement;
 }(HTMLDivElement);
 exports.HTMLCardHeaderElement = HTMLCardHeaderElement;
-var HTMLCardFooterElement = /*#__PURE__*/function (_HTMLDivElement6) {
+var HTMLCardFooterElement = function (_HTMLDivElement6) {
   (0, _inherits2["default"])(HTMLCardFooterElement, _HTMLDivElement6);
   var _super31 = _createSuper(HTMLCardFooterElement);
   function HTMLCardFooterElement() {
@@ -1018,7 +974,7 @@ var HTMLCardFooterElement = /*#__PURE__*/function (_HTMLDivElement6) {
   return HTMLCardFooterElement;
 }(HTMLDivElement);
 exports.HTMLCardFooterElement = HTMLCardFooterElement;
-var HTMLFlipCardElement = /*#__PURE__*/function (_HTMLDivElement7) {
+var HTMLFlipCardElement = function (_HTMLDivElement7) {
   (0, _inherits2["default"])(HTMLFlipCardElement, _HTMLDivElement7);
   var _super32 = _createSuper(HTMLFlipCardElement);
   function HTMLFlipCardElement() {
@@ -1096,7 +1052,7 @@ var HTMLFlipCardElement = /*#__PURE__*/function (_HTMLDivElement7) {
   return HTMLFlipCardElement;
 }(HTMLDivElement);
 exports.HTMLFlipCardElement = HTMLFlipCardElement;
-var HTMLFlipCardFrontElement = /*#__PURE__*/function (_HTMLDivElement8) {
+var HTMLFlipCardFrontElement = function (_HTMLDivElement8) {
   (0, _inherits2["default"])(HTMLFlipCardFrontElement, _HTMLDivElement8);
   var _super33 = _createSuper(HTMLFlipCardFrontElement);
   function HTMLFlipCardFrontElement() {
@@ -1129,7 +1085,7 @@ var HTMLFlipCardFrontElement = /*#__PURE__*/function (_HTMLDivElement8) {
   return HTMLFlipCardFrontElement;
 }(HTMLDivElement);
 exports.HTMLFlipCardFrontElement = HTMLFlipCardFrontElement;
-var HTMLFlipCardBackElement = /*#__PURE__*/function (_HTMLDivElement9) {
+var HTMLFlipCardBackElement = function (_HTMLDivElement9) {
   (0, _inherits2["default"])(HTMLFlipCardBackElement, _HTMLDivElement9);
   var _super34 = _createSuper(HTMLFlipCardBackElement);
   function HTMLFlipCardBackElement() {
@@ -1162,7 +1118,7 @@ var HTMLFlipCardBackElement = /*#__PURE__*/function (_HTMLDivElement9) {
   return HTMLFlipCardBackElement;
 }(HTMLDivElement);
 exports.HTMLFlipCardBackElement = HTMLFlipCardBackElement;
-var HTMLCarouselElement = /*#__PURE__*/function (_HTMLDivElement10) {
+var HTMLCarouselElement = function (_HTMLDivElement10) {
   (0, _inherits2["default"])(HTMLCarouselElement, _HTMLDivElement10);
   var _super35 = _createSuper(HTMLCarouselElement);
   function HTMLCarouselElement() {
@@ -1226,7 +1182,7 @@ var HTMLCarouselElement = /*#__PURE__*/function (_HTMLDivElement10) {
   return HTMLCarouselElement;
 }(HTMLDivElement);
 exports.HTMLCarouselElement = HTMLCarouselElement;
-var HTMLCarouselNavElement = /*#__PURE__*/function (_HTMLDivElement11) {
+var HTMLCarouselNavElement = function (_HTMLDivElement11) {
   (0, _inherits2["default"])(HTMLCarouselNavElement, _HTMLDivElement11);
   var _super36 = _createSuper(HTMLCarouselNavElement);
   function HTMLCarouselNavElement() {
@@ -1253,7 +1209,7 @@ var HTMLCarouselNavElement = /*#__PURE__*/function (_HTMLDivElement11) {
   return HTMLCarouselNavElement;
 }(HTMLDivElement);
 exports.HTMLCarouselNavElement = HTMLCarouselNavElement;
-var HTMLTabElement = /*#__PURE__*/function (_HTMLDivElement12) {
+var HTMLTabElement = function (_HTMLDivElement12) {
   (0, _inherits2["default"])(HTMLTabElement, _HTMLDivElement12);
   var _super37 = _createSuper(HTMLTabElement);
   function HTMLTabElement() {
@@ -1291,7 +1247,7 @@ var HTMLTabElement = /*#__PURE__*/function (_HTMLDivElement12) {
   return HTMLTabElement;
 }(HTMLDivElement);
 exports.HTMLTabElement = HTMLTabElement;
-var HTMLAccordionElement = /*#__PURE__*/function (_HTMLDivElement13) {
+var HTMLAccordionElement = function (_HTMLDivElement13) {
   (0, _inherits2["default"])(HTMLAccordionElement, _HTMLDivElement13);
   var _super38 = _createSuper(HTMLAccordionElement);
   function HTMLAccordionElement() {
@@ -1320,14 +1276,14 @@ var HTMLAccordionElement = /*#__PURE__*/function (_HTMLDivElement13) {
       var slider = document.createElement("div");
       slider.classList.add("accordion");
       slider.id = "accordion-" + Math.floor(Math.random() * 1000);
-      slider.innerHTML = "\n             <div class=\"card\">\n               <div class=\"card-header\" id=\"headingOne\">\n                 <h2 class=\"mb-0\">\n                   <button class=\"btn btn-link btn-block text-left\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\n                     Item #1\n                   </button>\n                 </h2>\n               </div>\n           \n               <div id=\"collapseOne\" class=\"collapse show\" aria-labelledby=\"headingOne\" data-parent=\"#".concat(slider.id, "\">\n                 <div class=\"card-body\">\n                   Item #1\n                 </div>\n               </div>\n             </div>\n             <div class=\"card\">\n               <div class=\"card-header\" id=\"headingTwo\">\n                 <h2 class=\"mb-0\">\n                   <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\n                     Item #2\n                   </button>\n                 </h2>\n               </div>\n               <div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#").concat(slider.id, "\">\n                 <div class=\"card-body\">\n                   Item #2\n                 </div>\n               </div>\n             </div>\n             <div class=\"card\">\n               <div class=\"card-header\" id=\"headingThree\">\n                 <h2 class=\"mb-0\">\n                   <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseThree\" aria-expanded=\"false\" aria-controls=\"collapseThree\">\n                     Item #3\n                   </button>\n                 </h2>\n               </div>\n               <div id=\"collapseThree\" class=\"collapse\" aria-labelledby=\"headingThree\" data-parent=\"#").concat(slider.id, "\">\n                 <div class=\"card-body\">\n                   Item #3\n                 </div>\n               </div>\n             </div>");
+      slider.innerHTML = "\n             <div class=\"card\">\n               <div class=\"card-header\" id=\"headingOne\">\n                 <h2 class=\"mb-0\">\n                   <a class=\"btn btn-link btn-block text-left\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\">\n                     Item #1\n                   </a>\n                 </h2>\n               </div>\n           \n               <div id=\"collapseOne\" class=\"collapse show\" aria-labelledby=\"headingOne\" data-parent=\"#".concat(slider.id, "\">\n                 <div class=\"card-body\">\n                   Item #1\n                 </div>\n               </div>\n             </div>\n             <div class=\"card\">\n               <div class=\"card-header\" id=\"headingTwo\">\n                 <h2 class=\"mb-0\">\n                   <a class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseTwo\" aria-expanded=\"false\" aria-controls=\"collapseTwo\">\n                     Item #2\n                   </a>\n                 </h2>\n               </div>\n               <div id=\"collapseTwo\" class=\"collapse\" aria-labelledby=\"headingTwo\" data-parent=\"#").concat(slider.id, "\">\n                 <div class=\"card-body\">\n                   Item #2\n                 </div>\n               </div>\n             </div>\n             <div class=\"card\">\n               <div class=\"card-header\" id=\"headingThree\">\n                 <h2 class=\"mb-0\">\n                   <a class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapseThree\" aria-expanded=\"false\" aria-controls=\"collapseThree\">\n                     Item #3\n                   </a>\n                 </h2>\n               </div>\n               <div id=\"collapseThree\" class=\"collapse\" aria-labelledby=\"headingThree\" data-parent=\"#").concat(slider.id, "\">\n                 <div class=\"card-body\">\n                   Item #3\n                 </div>\n               </div>\n             </div>");
       return slider;
     }
   }]);
   return HTMLAccordionElement;
 }(HTMLDivElement);
 exports.HTMLAccordionElement = HTMLAccordionElement;
-var HTMLAccordionNavElement = /*#__PURE__*/function (_HTMLElement24) {
+var HTMLAccordionNavElement = function (_HTMLElement24) {
   (0, _inherits2["default"])(HTMLAccordionNavElement, _HTMLElement24);
   var _super39 = _createSuper(HTMLAccordionNavElement);
   function HTMLAccordionNavElement() {
@@ -1357,7 +1313,7 @@ var HTMLAccordionNavElement = /*#__PURE__*/function (_HTMLElement24) {
   return HTMLAccordionNavElement;
 }(HTMLElement);
 exports.HTMLAccordionNavElement = HTMLAccordionNavElement;
-var HTMLTabContentElement = /*#__PURE__*/function (_HTMLDivElement14) {
+var HTMLTabContentElement = function (_HTMLDivElement14) {
   (0, _inherits2["default"])(HTMLTabContentElement, _HTMLDivElement14);
   var _super40 = _createSuper(HTMLTabContentElement);
   function HTMLTabContentElement() {
@@ -1385,7 +1341,7 @@ var HTMLTabContentElement = /*#__PURE__*/function (_HTMLDivElement14) {
   return HTMLTabContentElement;
 }(HTMLDivElement);
 exports.HTMLTabContentElement = HTMLTabContentElement;
-var HTMLTabPaneElement = /*#__PURE__*/function (_HTMLDivElement15) {
+var HTMLTabPaneElement = function (_HTMLDivElement15) {
   (0, _inherits2["default"])(HTMLTabPaneElement, _HTMLDivElement15);
   var _super41 = _createSuper(HTMLTabPaneElement);
   function HTMLTabPaneElement() {
@@ -1421,7 +1377,7 @@ var HTMLTabPaneElement = /*#__PURE__*/function (_HTMLDivElement15) {
   return HTMLTabPaneElement;
 }(HTMLDivElement);
 exports.HTMLTabPaneElement = HTMLTabPaneElement;
-var HTMLNavElement = /*#__PURE__*/function (_HTMLElement25) {
+var HTMLNavElement = function (_HTMLElement25) {
   (0, _inherits2["default"])(HTMLNavElement, _HTMLElement25);
   var _super42 = _createSuper(HTMLNavElement);
   function HTMLNavElement() {
@@ -1448,7 +1404,7 @@ var HTMLNavElement = /*#__PURE__*/function (_HTMLElement25) {
   return HTMLNavElement;
 }(HTMLElement);
 exports.HTMLNavElement = HTMLNavElement;
-var HTMLNavItemElement = /*#__PURE__*/function (_HTMLElement26) {
+var HTMLNavItemElement = function (_HTMLElement26) {
   (0, _inherits2["default"])(HTMLNavItemElement, _HTMLElement26);
   var _super43 = _createSuper(HTMLNavItemElement);
   function HTMLNavItemElement() {
@@ -1475,7 +1431,7 @@ var HTMLNavItemElement = /*#__PURE__*/function (_HTMLElement26) {
   return HTMLNavItemElement;
 }(HTMLElement);
 exports.HTMLNavItemElement = HTMLNavItemElement;
-var HTMLNavLinkElement = /*#__PURE__*/function (_HTMLElement27) {
+var HTMLNavLinkElement = function (_HTMLElement27) {
   (0, _inherits2["default"])(HTMLNavLinkElement, _HTMLElement27);
   var _super44 = _createSuper(HTMLNavLinkElement);
   function HTMLNavLinkElement() {
@@ -1541,7 +1497,7 @@ var HTMLNavLinkElement = /*#__PURE__*/function (_HTMLElement27) {
   return HTMLNavLinkElement;
 }(HTMLElement);
 exports.HTMLNavLinkElement = HTMLNavLinkElement;
-var HTMLHRElement = /*#__PURE__*/function (_HTMLElement28) {
+var HTMLHRElement = function (_HTMLElement28) {
   (0, _inherits2["default"])(HTMLHRElement, _HTMLElement28);
   var _super45 = _createSuper(HTMLHRElement);
   function HTMLHRElement() {
@@ -1551,7 +1507,7 @@ var HTMLHRElement = /*#__PURE__*/function (_HTMLElement28) {
   return (0, _createClass2["default"])(HTMLHRElement);
 }(HTMLElement);
 exports.HTMLHRElement = HTMLHRElement;
-var HTMLHorizontalBarElement = /*#__PURE__*/function (_HTMLElement29) {
+var HTMLHorizontalBarElement = function (_HTMLElement29) {
   (0, _inherits2["default"])(HTMLHorizontalBarElement, _HTMLElement29);
   var _super46 = _createSuper(HTMLHorizontalBarElement);
   function HTMLHorizontalBarElement() {
@@ -1571,7 +1527,7 @@ var HTMLHorizontalBarElement = /*#__PURE__*/function (_HTMLElement29) {
   return HTMLHorizontalBarElement;
 }(HTMLElement);
 exports.HTMLHorizontalBarElement = HTMLHorizontalBarElement;
-var HTMLImageElement = /*#__PURE__*/function (_HTMLElement30) {
+var HTMLImageElement = function (_HTMLElement30) {
   (0, _inherits2["default"])(HTMLImageElement, _HTMLElement30);
   var _super47 = _createSuper(HTMLImageElement);
   function HTMLImageElement() {
@@ -1590,7 +1546,7 @@ var HTMLImageElement = /*#__PURE__*/function (_HTMLElement30) {
   return HTMLImageElement;
 }(HTMLElement);
 exports.HTMLImageElement = HTMLImageElement;
-var HTMLImageWithCaptionElement = /*#__PURE__*/function (_HTMLElement31) {
+var HTMLImageWithCaptionElement = function (_HTMLElement31) {
   (0, _inherits2["default"])(HTMLImageWithCaptionElement, _HTMLElement31);
   var _super48 = _createSuper(HTMLImageWithCaptionElement);
   function HTMLImageWithCaptionElement() {
@@ -1631,7 +1587,7 @@ var HTMLImageWithCaptionElement = /*#__PURE__*/function (_HTMLElement31) {
   return HTMLImageWithCaptionElement;
 }(HTMLElement);
 exports.HTMLImageWithCaptionElement = HTMLImageWithCaptionElement;
-var HTMLClickableImageElement = /*#__PURE__*/function (_HTMLElement32) {
+var HTMLClickableImageElement = function (_HTMLElement32) {
   (0, _inherits2["default"])(HTMLClickableImageElement, _HTMLElement32);
   var _super49 = _createSuper(HTMLClickableImageElement);
   function HTMLClickableImageElement() {
@@ -1677,7 +1633,7 @@ var HTMLClickableImageElement = /*#__PURE__*/function (_HTMLElement32) {
   return HTMLClickableImageElement;
 }(HTMLElement);
 exports.HTMLClickableImageElement = HTMLClickableImageElement;
-var HTMLIconElement = /*#__PURE__*/function (_HTMLElement33) {
+var HTMLIconElement = function (_HTMLElement33) {
   (0, _inherits2["default"])(HTMLIconElement, _HTMLElement33);
   var _super50 = _createSuper(HTMLIconElement);
   function HTMLIconElement() {
@@ -1696,7 +1652,7 @@ var HTMLIconElement = /*#__PURE__*/function (_HTMLElement33) {
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
-      el.classList.add('fa', 'fa-anchor'); //Default icon
+      el.classList.add('fa', 'fa-anchor');
       return el;
     }
   }]);

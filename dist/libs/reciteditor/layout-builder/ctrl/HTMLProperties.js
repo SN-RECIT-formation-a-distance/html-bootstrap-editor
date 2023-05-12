@@ -22,31 +22,11 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var ColorSelectorInput = /*#__PURE__*/function () {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var ColorSelectorInput = function () {
   function ColorSelectorInput(options, onChangeProp) {
     (0, _classCallCheck2["default"])(this, ColorSelectorInput);
-    this.type = 'colorselector'; // keep this attribute for backward compatibility
+    this.type = 'colorselector';
     this.options = options;
     this.onChangeProp = onChangeProp;
   }
@@ -58,10 +38,10 @@ var ColorSelectorInput = /*#__PURE__*/function () {
   }]);
   return ColorSelectorInput;
 }();
-var MinMaxValueInput = /*#__PURE__*/function () {
+var MinMaxValueInput = function () {
   function MinMaxValueInput(minName, valueName, maxName) {
     (0, _classCallCheck2["default"])(this, MinMaxValueInput);
-    this.type = 'minvaluemax'; // keep this attribute for backward compatibility
+    this.type = 'minvaluemax';
     this.defaultValue = '';
     this.minName = minName;
     this.valueName = valueName;
@@ -77,10 +57,10 @@ var MinMaxValueInput = /*#__PURE__*/function () {
   }]);
   return MinMaxValueInput;
 }();
-var TextInput = /*#__PURE__*/function () {
+var TextInput = function () {
   function TextInput(onChangeProp) {
     (0, _classCallCheck2["default"])(this, TextInput);
-    this.type = 'text'; // keep this attribute for backward compatibility
+    this.type = 'text';
     this.defaultValue = '';
     this.onChangeProp = onChangeProp;
   }
@@ -92,10 +72,10 @@ var TextInput = /*#__PURE__*/function () {
   }]);
   return TextInput;
 }();
-var ComboBox = /*#__PURE__*/function () {
+var ComboBox = function () {
   function ComboBox(options, onChangeProp) {
     (0, _classCallCheck2["default"])(this, ComboBox);
-    this.type = 'combobox'; // keep this attribute for backward compatibility
+    this.type = 'combobox';
     this.defaultValue = '';
     this.options = options;
     this.onChangeProp = onChangeProp;
@@ -108,11 +88,11 @@ var ComboBox = /*#__PURE__*/function () {
   }]);
   return ComboBox;
 }();
-var RadioButton = /*#__PURE__*/function () {
+var RadioButton = function () {
   function RadioButton(options, onChangeProp, defaultValue) {
     (0, _classCallCheck2["default"])(this, RadioButton);
-    this.type = 'radio'; // keep this attribute for backward compatibility
-    this.toggleType = 'radio'; // keep this attribute for backward compatibility
+    this.type = 'radio';
+    this.toggleType = 'radio';
     this.options = options;
     this.defaultValue = defaultValue || [];
     this.onChangeProp = onChangeProp;
@@ -125,11 +105,11 @@ var RadioButton = /*#__PURE__*/function () {
   }]);
   return RadioButton;
 }();
-var CheckboxButton = /*#__PURE__*/function () {
+var CheckboxButton = function () {
   function CheckboxButton(options, onChangeProp, defaultValue) {
     (0, _classCallCheck2["default"])(this, CheckboxButton);
-    this.type = 'radio'; // keep this attribute for backward compatibility
-    this.toggleType = 'checkbox'; // keep this attribute for backward compatibility
+    this.type = 'radio';
+    this.toggleType = 'checkbox';
     this.options = options;
     this.defaultValue = defaultValue || [];
     this.onChangeProp = onChangeProp;
@@ -142,10 +122,10 @@ var CheckboxButton = /*#__PURE__*/function () {
   }]);
   return CheckboxButton;
 }();
-var ColorPicker = /*#__PURE__*/function () {
+var ColorPicker = function () {
   function ColorPicker(name) {
     (0, _classCallCheck2["default"])(this, ColorPicker);
-    this.type = 'color'; // keep this attribute for backward compatibility
+    this.type = 'color';
     this.defaultValue = '';
     this.name = name;
   }
@@ -157,10 +137,10 @@ var ColorPicker = /*#__PURE__*/function () {
   }]);
   return ColorPicker;
 }();
-var IconPicker = /*#__PURE__*/function () {
+var IconPicker = function () {
   function IconPicker() {
     (0, _classCallCheck2["default"])(this, IconPicker);
-    this.type = 'iconselector'; // keep this attribute for backward compatibility
+    this.type = 'iconselector';
     this.text = _RecitEditor.i18n.get_string('selecticon');
   }
   (0, _createClass2["default"])(IconPicker, [{
@@ -171,10 +151,10 @@ var IconPicker = /*#__PURE__*/function () {
   }]);
   return IconPicker;
 }();
-var PixabayPicker = /*#__PURE__*/function () {
+var PixabayPicker = function () {
   function PixabayPicker(onChangeProp) {
     (0, _classCallCheck2["default"])(this, PixabayPicker);
-    this.type = 'pixabay'; // keep this attribute for backward compatibility
+    this.type = 'pixabay';
     this.text = "".concat(_RecitEditor.i18n.get_string('imagebank'), " Pixabay");
     this.onChangeProp = onChangeProp;
   }
@@ -186,15 +166,15 @@ var PixabayPicker = /*#__PURE__*/function () {
   }]);
   return PixabayPicker;
 }();
-var GridBuilder = /*#__PURE__*/(0, _createClass2["default"])(function GridBuilder() {
+var GridBuilder = (0, _createClass2["default"])(function GridBuilder() {
   (0, _classCallCheck2["default"])(this, GridBuilder);
-  this.type = 'gridbuilder'; // keep this attribute for backward compatibility
+  this.type = 'gridbuilder';
   this.text = _RecitEditor.i18n.get_string('gridbuilder');
 });
-var ImageSrc = /*#__PURE__*/function () {
+var ImageSrc = function () {
   function ImageSrc(onChangeProp, accept) {
     (0, _classCallCheck2["default"])(this, ImageSrc);
-    this.type = 'ImageSrc'; // keep this attribute for backward compatibility
+    this.type = 'ImageSrc';
     this.defaultValue = '';
     this.onChangeProp = onChangeProp || null;
     if (accept) {
@@ -215,10 +195,10 @@ var ImageSrc = /*#__PURE__*/function () {
   }]);
   return ImageSrc;
 }();
-var TextArea = /*#__PURE__*/function () {
+var TextArea = function () {
   function TextArea(onChangeProp) {
     (0, _classCallCheck2["default"])(this, TextArea);
-    this.type = 'textarea'; // keep this attribute for backward compatibility
+    this.type = 'textarea';
     this.defaultValue = '';
     this.onChangeProp = onChangeProp;
   }
@@ -230,10 +210,10 @@ var TextArea = /*#__PURE__*/function () {
   }]);
   return TextArea;
 }();
-var LayoutSpacing = /*#__PURE__*/function () {
+var LayoutSpacing = function () {
   function LayoutSpacing(options, onChangeProp) {
     (0, _classCallCheck2["default"])(this, LayoutSpacing);
-    this.type = 'layoutspacing'; // keep this attribute for backward compatibility
+    this.type = 'layoutspacing';
     this.defaultValue = '';
     this.options = options;
     this.onChangeProp = onChangeProp;
@@ -246,10 +226,10 @@ var LayoutSpacing = /*#__PURE__*/function () {
   }]);
   return LayoutSpacing;
 }();
-var MultiSelect = /*#__PURE__*/function () {
+var MultiSelect = function () {
   function MultiSelect(options, onChangeProp) {
     (0, _classCallCheck2["default"])(this, MultiSelect);
-    this.type = 'multipleselect'; // keep this attribute for backward compatibility
+    this.type = 'multipleselect';
     this.defaultValue = '';
     this.options = options;
     this.onChangeProp = onChangeProp;
@@ -262,15 +242,15 @@ var MultiSelect = /*#__PURE__*/function () {
   }]);
   return MultiSelect;
 }();
-var ButtonGroup = /*#__PURE__*/(0, _createClass2["default"])(function ButtonGroup(options) {
+var ButtonGroup = (0, _createClass2["default"])(function ButtonGroup(options) {
   (0, _classCallCheck2["default"])(this, ButtonGroup);
-  this.type = 'buttongroup'; // keep this attribute for backward compatibility
+  this.type = 'buttongroup';
   this.options = options;
 });
-var LayoutSpacingEditor = /*#__PURE__*/function () {
+var LayoutSpacingEditor = function () {
   function LayoutSpacingEditor(onChangeProp) {
     (0, _classCallCheck2["default"])(this, LayoutSpacingEditor);
-    this.type = 'layoutspacingeditor'; // keep this attribute for backward compatibility
+    this.type = 'layoutspacingeditor';
     this.onChangeProp = onChangeProp;
   }
   (0, _createClass2["default"])(LayoutSpacingEditor, [{
@@ -281,7 +261,7 @@ var LayoutSpacingEditor = /*#__PURE__*/function () {
   }]);
   return LayoutSpacingEditor;
 }();
-var HTMLProperty = /*#__PURE__*/function () {
+var HTMLProperty = function () {
   function HTMLProperty(name, text, input) {
     (0, _classCallCheck2["default"])(this, HTMLProperty);
     this.name = name || "";
@@ -301,7 +281,7 @@ var HTMLProperty = /*#__PURE__*/function () {
   }]);
   return HTMLProperty;
 }();
-var HTMLWidthProperty = /*#__PURE__*/function (_HTMLProperty) {
+var HTMLWidthProperty = function (_HTMLProperty) {
   (0, _inherits2["default"])(HTMLWidthProperty, _HTMLProperty);
   var _super = _createSuper(HTMLWidthProperty);
   function HTMLWidthProperty() {
@@ -321,7 +301,7 @@ var HTMLWidthProperty = /*#__PURE__*/function (_HTMLProperty) {
   return HTMLWidthProperty;
 }(HTMLProperty);
 exports.HTMLWidthProperty = HTMLWidthProperty;
-var HTMLHeightProperty = /*#__PURE__*/function (_HTMLProperty2) {
+var HTMLHeightProperty = function (_HTMLProperty2) {
   (0, _inherits2["default"])(HTMLHeightProperty, _HTMLProperty2);
   var _super2 = _createSuper(HTMLHeightProperty);
   function HTMLHeightProperty() {
@@ -341,7 +321,7 @@ var HTMLHeightProperty = /*#__PURE__*/function (_HTMLProperty2) {
   return HTMLHeightProperty;
 }(HTMLProperty);
 exports.HTMLHeightProperty = HTMLHeightProperty;
-var HTMLFontSizeProperty = /*#__PURE__*/function (_HTMLProperty3) {
+var HTMLFontSizeProperty = function (_HTMLProperty3) {
   (0, _inherits2["default"])(HTMLFontSizeProperty, _HTMLProperty3);
   var _super3 = _createSuper(HTMLFontSizeProperty);
   function HTMLFontSizeProperty() {
@@ -365,7 +345,7 @@ var HTMLFontSizeProperty = /*#__PURE__*/function (_HTMLProperty3) {
   return HTMLFontSizeProperty;
 }(HTMLProperty);
 exports.HTMLFontSizeProperty = HTMLFontSizeProperty;
-var HTMLStyleProperty = /*#__PURE__*/function (_HTMLProperty4) {
+var HTMLStyleProperty = function (_HTMLProperty4) {
   (0, _inherits2["default"])(HTMLStyleProperty, _HTMLProperty4);
   var _super4 = _createSuper(HTMLStyleProperty);
   function HTMLStyleProperty() {
@@ -389,7 +369,7 @@ var HTMLStyleProperty = /*#__PURE__*/function (_HTMLProperty4) {
   return HTMLStyleProperty;
 }(HTMLProperty);
 exports.HTMLStyleProperty = HTMLStyleProperty;
-var HTMLFontFamilyProperty = /*#__PURE__*/function (_HTMLProperty5) {
+var HTMLFontFamilyProperty = function (_HTMLProperty5) {
   (0, _inherits2["default"])(HTMLFontFamilyProperty, _HTMLProperty5);
   var _super5 = _createSuper(HTMLFontFamilyProperty);
   function HTMLFontFamilyProperty() {
@@ -429,7 +409,7 @@ var HTMLFontFamilyProperty = /*#__PURE__*/function (_HTMLProperty5) {
   return HTMLFontFamilyProperty;
 }(HTMLProperty);
 exports.HTMLFontFamilyProperty = HTMLFontFamilyProperty;
-var HTMLColorProperty = /*#__PURE__*/function (_HTMLProperty6) {
+var HTMLColorProperty = function (_HTMLProperty6) {
   (0, _inherits2["default"])(HTMLColorProperty, _HTMLProperty6);
   var _super6 = _createSuper(HTMLColorProperty);
   function HTMLColorProperty() {
@@ -445,7 +425,7 @@ var HTMLColorProperty = /*#__PURE__*/function (_HTMLProperty6) {
   return HTMLColorProperty;
 }(HTMLProperty);
 exports.HTMLColorProperty = HTMLColorProperty;
-var HTMLBackgroundProperty = /*#__PURE__*/function (_HTMLProperty7) {
+var HTMLBackgroundProperty = function (_HTMLProperty7) {
   (0, _inherits2["default"])(HTMLBackgroundProperty, _HTMLProperty7);
   var _super7 = _createSuper(HTMLBackgroundProperty);
   function HTMLBackgroundProperty() {
@@ -461,7 +441,7 @@ var HTMLBackgroundProperty = /*#__PURE__*/function (_HTMLProperty7) {
   return HTMLBackgroundProperty;
 }(HTMLProperty);
 exports.HTMLBackgroundProperty = HTMLBackgroundProperty;
-var HTMLHrefProperty = /*#__PURE__*/function (_HTMLProperty8) {
+var HTMLHrefProperty = function (_HTMLProperty8) {
   (0, _inherits2["default"])(HTMLHrefProperty, _HTMLProperty8);
   var _super8 = _createSuper(HTMLHrefProperty);
   function HTMLHrefProperty() {
@@ -485,7 +465,7 @@ var HTMLHrefProperty = /*#__PURE__*/function (_HTMLProperty8) {
   return HTMLHrefProperty;
 }(HTMLProperty);
 exports.HTMLHrefProperty = HTMLHrefProperty;
-var HTMLTargetProperty = /*#__PURE__*/function (_HTMLProperty9) {
+var HTMLTargetProperty = function (_HTMLProperty9) {
   (0, _inherits2["default"])(HTMLTargetProperty, _HTMLProperty9);
   var _super9 = _createSuper(HTMLTargetProperty);
   function HTMLTargetProperty() {
@@ -516,7 +496,7 @@ var HTMLTargetProperty = /*#__PURE__*/function (_HTMLProperty9) {
   return HTMLTargetProperty;
 }(HTMLProperty);
 exports.HTMLTargetProperty = HTMLTargetProperty;
-var HTMLSourceProperty = /*#__PURE__*/function (_HTMLProperty10) {
+var HTMLSourceProperty = function (_HTMLProperty10) {
   (0, _inherits2["default"])(HTMLSourceProperty, _HTMLProperty10);
   var _super10 = _createSuper(HTMLSourceProperty);
   function HTMLSourceProperty(accept) {
@@ -532,7 +512,7 @@ var HTMLSourceProperty = /*#__PURE__*/function (_HTMLProperty10) {
   return HTMLSourceProperty;
 }(HTMLProperty);
 exports.HTMLSourceProperty = HTMLSourceProperty;
-var HTMLImageBankProperty = /*#__PURE__*/function (_HTMLProperty11) {
+var HTMLImageBankProperty = function (_HTMLProperty11) {
   (0, _inherits2["default"])(HTMLImageBankProperty, _HTMLProperty11);
   var _super11 = _createSuper(HTMLImageBankProperty);
   function HTMLImageBankProperty(isSrc) {
@@ -573,16 +553,16 @@ var HTMLImageBankProperty = /*#__PURE__*/function (_HTMLProperty11) {
   return HTMLImageBankProperty;
 }(HTMLProperty);
 exports.HTMLImageBankProperty = HTMLImageBankProperty;
-var HTMLAltProperty = /*#__PURE__*/function (_HTMLProperty12) {
+var HTMLAltProperty = function (_HTMLProperty12) {
   (0, _inherits2["default"])(HTMLAltProperty, _HTMLProperty12);
   var _super12 = _createSuper(HTMLAltProperty);
   function HTMLAltProperty() {
     var _this7;
     (0, _classCallCheck2["default"])(this, HTMLAltProperty);
-    _this7 = _super12.call(this, 'alt', /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('description'), " ", /*#__PURE__*/_react["default"].createElement("a", {
+    _this7 = _super12.call(this, 'alt', _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('description'), " ", _react["default"].createElement("a", {
       target: "_blank",
       href: "https://www.w3.org/WAI/tutorials/images/decision-tree/"
-    }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+    }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
       icon: _freeSolidSvgIcons.faInfoCircle
     }), " ")));
     _this7.input = new TextInput(_this7.onChange.bind((0, _assertThisInitialized2["default"])(_this7)));
@@ -602,7 +582,7 @@ var HTMLAltProperty = /*#__PURE__*/function (_HTMLProperty12) {
   return HTMLAltProperty;
 }(HTMLProperty);
 exports.HTMLAltProperty = HTMLAltProperty;
-var HTMLOuterHTMLProperty = /*#__PURE__*/function (_HTMLProperty13) {
+var HTMLOuterHTMLProperty = function (_HTMLProperty13) {
   (0, _inherits2["default"])(HTMLOuterHTMLProperty, _HTMLProperty13);
   var _super13 = _createSuper(HTMLOuterHTMLProperty);
   function HTMLOuterHTMLProperty() {
@@ -642,7 +622,7 @@ var HTMLOuterHTMLProperty = /*#__PURE__*/function (_HTMLProperty13) {
   return HTMLOuterHTMLProperty;
 }(HTMLProperty);
 exports.HTMLOuterHTMLProperty = HTMLOuterHTMLProperty;
-var HTMLIdProperty = /*#__PURE__*/function (_HTMLProperty14) {
+var HTMLIdProperty = function (_HTMLProperty14) {
   (0, _inherits2["default"])(HTMLIdProperty, _HTMLProperty14);
   var _super14 = _createSuper(HTMLIdProperty);
   function HTMLIdProperty() {
@@ -666,7 +646,7 @@ var HTMLIdProperty = /*#__PURE__*/function (_HTMLProperty14) {
   return HTMLIdProperty;
 }(HTMLProperty);
 exports.HTMLIdProperty = HTMLIdProperty;
-var HTMLVideoButtonProperty = /*#__PURE__*/function (_HTMLProperty15) {
+var HTMLVideoButtonProperty = function (_HTMLProperty15) {
   (0, _inherits2["default"])(HTMLVideoButtonProperty, _HTMLProperty15);
   var _super15 = _createSuper(HTMLVideoButtonProperty);
   function HTMLVideoButtonProperty() {
@@ -691,7 +671,7 @@ var HTMLVideoButtonProperty = /*#__PURE__*/function (_HTMLProperty15) {
   return HTMLVideoButtonProperty;
 }(HTMLProperty);
 exports.HTMLVideoButtonProperty = HTMLVideoButtonProperty;
-var HTMLVideoSourceProperty = /*#__PURE__*/function (_HTMLProperty16) {
+var HTMLVideoSourceProperty = function (_HTMLProperty16) {
   (0, _inherits2["default"])(HTMLVideoSourceProperty, _HTMLProperty16);
   var _super16 = _createSuper(HTMLVideoSourceProperty);
   function HTMLVideoSourceProperty() {
@@ -720,7 +700,7 @@ var HTMLVideoSourceProperty = /*#__PURE__*/function (_HTMLProperty16) {
   return HTMLVideoSourceProperty;
 }(HTMLProperty);
 exports.HTMLVideoSourceProperty = HTMLVideoSourceProperty;
-var HTMLEmbedProperty = /*#__PURE__*/function (_HTMLProperty17) {
+var HTMLEmbedProperty = function (_HTMLProperty17) {
   (0, _inherits2["default"])(HTMLEmbedProperty, _HTMLProperty17);
   var _super17 = _createSuper(HTMLEmbedProperty);
   function HTMLEmbedProperty() {
@@ -744,7 +724,7 @@ var HTMLEmbedProperty = /*#__PURE__*/function (_HTMLProperty17) {
   return HTMLEmbedProperty;
 }(HTMLProperty);
 exports.HTMLEmbedProperty = HTMLEmbedProperty;
-var HTMLClassProperty = /*#__PURE__*/function (_HTMLProperty18) {
+var HTMLClassProperty = function (_HTMLProperty18) {
   (0, _inherits2["default"])(HTMLClassProperty, _HTMLProperty18);
   var _super18 = _createSuper(HTMLClassProperty);
   function HTMLClassProperty() {
@@ -792,7 +772,7 @@ var HTMLClassProperty = /*#__PURE__*/function (_HTMLProperty18) {
   return HTMLClassProperty;
 }(HTMLProperty);
 exports.HTMLClassProperty = HTMLClassProperty;
-var HTMLMarginBorderPaddingProperty = /*#__PURE__*/function (_HTMLProperty19) {
+var HTMLMarginBorderPaddingProperty = function (_HTMLProperty19) {
   (0, _inherits2["default"])(HTMLMarginBorderPaddingProperty, _HTMLProperty19);
   var _super19 = _createSuper(HTMLMarginBorderPaddingProperty);
   function HTMLMarginBorderPaddingProperty() {
@@ -841,7 +821,7 @@ var HTMLMarginBorderPaddingProperty = /*#__PURE__*/function (_HTMLProperty19) {
   return HTMLMarginBorderPaddingProperty;
 }(HTMLProperty);
 exports.HTMLMarginBorderPaddingProperty = HTMLMarginBorderPaddingProperty;
-var BsBackgroundProperty = /*#__PURE__*/function (_HTMLProperty20) {
+var BsBackgroundProperty = function (_HTMLProperty20) {
   (0, _inherits2["default"])(BsBackgroundProperty, _HTMLProperty20);
   var _super20 = _createSuper(BsBackgroundProperty);
   function BsBackgroundProperty() {
@@ -949,7 +929,7 @@ var BsBackgroundProperty = /*#__PURE__*/function (_HTMLProperty20) {
   return BsBackgroundProperty;
 }(HTMLProperty);
 exports.BsBackgroundProperty = BsBackgroundProperty;
-var BsBackgroundImageProperty = /*#__PURE__*/function (_HTMLProperty21) {
+var BsBackgroundImageProperty = function (_HTMLProperty21) {
   (0, _inherits2["default"])(BsBackgroundImageProperty, _HTMLProperty21);
   var _super21 = _createSuper(BsBackgroundImageProperty);
   function BsBackgroundImageProperty() {
@@ -977,17 +957,17 @@ var BsBackgroundImageProperty = /*#__PURE__*/function (_HTMLProperty21) {
   return BsBackgroundImageProperty;
 }(HTMLProperty);
 exports.BsBackgroundImageProperty = BsBackgroundImageProperty;
-var HTMLBackgroundCoverProperty = /*#__PURE__*/function (_HTMLProperty22) {
+var HTMLBackgroundCoverProperty = function (_HTMLProperty22) {
   (0, _inherits2["default"])(HTMLBackgroundCoverProperty, _HTMLProperty22);
   var _super22 = _createSuper(HTMLBackgroundCoverProperty);
   function HTMLBackgroundCoverProperty() {
     var _this17;
     (0, _classCallCheck2["default"])(this, HTMLBackgroundCoverProperty);
-    _this17 = _super22.call(this, 'backgroundcover', /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('backgroundcover'), " ", /*#__PURE__*/_react["default"].createElement(_reactBootstrap.OverlayTrigger, {
-      overlay: /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Tooltip, null, _RecitEditor.i18n.get_string('appliedasstyle'))
-    }, /*#__PURE__*/_react["default"].createElement("a", {
+    _this17 = _super22.call(this, 'backgroundcover', _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('backgroundcover'), " ", _react["default"].createElement(_reactBootstrap.OverlayTrigger, {
+      overlay: _react["default"].createElement(_reactBootstrap.Tooltip, null, _RecitEditor.i18n.get_string('appliedasstyle'))
+    }, _react["default"].createElement("a", {
       className: "color-primary"
-    }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+    }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
       icon: _freeSolidSvgIcons.faInfoCircle
     }), " "))));
     _this17.options = [{
@@ -1022,7 +1002,7 @@ var HTMLBackgroundCoverProperty = /*#__PURE__*/function (_HTMLProperty22) {
   return HTMLBackgroundCoverProperty;
 }(HTMLProperty);
 exports.HTMLBackgroundCoverProperty = HTMLBackgroundCoverProperty;
-var BsShadowProperty = /*#__PURE__*/function (_HTMLProperty23) {
+var BsShadowProperty = function (_HTMLProperty23) {
   (0, _inherits2["default"])(BsShadowProperty, _HTMLProperty23);
   var _super23 = _createSuper(BsShadowProperty);
   function BsShadowProperty() {
@@ -1030,7 +1010,7 @@ var BsShadowProperty = /*#__PURE__*/function (_HTMLProperty23) {
     (0, _classCallCheck2["default"])(this, BsShadowProperty);
     _this18 = _super23.call(this, 'shadow', _RecitEditor.i18n.get_string('shadow'));
     _this18.options = [{
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat,
         title: _RecitEditor.i18n.get_string('removeformat')
       }),
@@ -1096,7 +1076,7 @@ var BsShadowProperty = /*#__PURE__*/function (_HTMLProperty23) {
   return BsShadowProperty;
 }(HTMLProperty);
 exports.BsShadowProperty = BsShadowProperty;
-var BsIconProperty = /*#__PURE__*/function (_HTMLProperty24) {
+var BsIconProperty = function (_HTMLProperty24) {
   (0, _inherits2["default"])(BsIconProperty, _HTMLProperty24);
   var _super24 = _createSuper(BsIconProperty);
   function BsIconProperty() {
@@ -1120,7 +1100,7 @@ var BsIconProperty = /*#__PURE__*/function (_HTMLProperty24) {
   return BsIconProperty;
 }(HTMLProperty);
 exports.BsIconProperty = BsIconProperty;
-var ModalGridProperty = /*#__PURE__*/function (_HTMLProperty25) {
+var ModalGridProperty = function (_HTMLProperty25) {
   (0, _inherits2["default"])(ModalGridProperty, _HTMLProperty25);
   var _super25 = _createSuper(ModalGridProperty);
   function ModalGridProperty() {
@@ -1143,7 +1123,7 @@ var ModalGridProperty = /*#__PURE__*/function (_HTMLProperty25) {
   return ModalGridProperty;
 }(HTMLProperty);
 exports.ModalGridProperty = ModalGridProperty;
-var BsIconSizeProperty = /*#__PURE__*/function (_HTMLProperty26) {
+var BsIconSizeProperty = function (_HTMLProperty26) {
   (0, _inherits2["default"])(BsIconSizeProperty, _HTMLProperty26);
   var _super26 = _createSuper(BsIconSizeProperty);
   function BsIconSizeProperty() {
@@ -1241,7 +1221,7 @@ var BsIconSizeProperty = /*#__PURE__*/function (_HTMLProperty26) {
   return BsIconSizeProperty;
 }(HTMLProperty);
 exports.BsIconSizeProperty = BsIconSizeProperty;
-var BsMarginProperty = /*#__PURE__*/function (_HTMLProperty27) {
+var BsMarginProperty = function (_HTMLProperty27) {
   (0, _inherits2["default"])(BsMarginProperty, _HTMLProperty27);
   var _super27 = _createSuper(BsMarginProperty);
   function BsMarginProperty() {
@@ -1310,7 +1290,7 @@ var BsMarginProperty = /*#__PURE__*/function (_HTMLProperty27) {
   return BsMarginProperty;
 }(HTMLProperty);
 exports.BsMarginProperty = BsMarginProperty;
-var BsPaddingProperty = /*#__PURE__*/function (_HTMLProperty28) {
+var BsPaddingProperty = function (_HTMLProperty28) {
   (0, _inherits2["default"])(BsPaddingProperty, _HTMLProperty28);
   var _super28 = _createSuper(BsPaddingProperty);
   function BsPaddingProperty() {
@@ -1379,7 +1359,7 @@ var BsPaddingProperty = /*#__PURE__*/function (_HTMLProperty28) {
   return BsPaddingProperty;
 }(HTMLProperty);
 exports.BsPaddingProperty = BsPaddingProperty;
-var BsTabProperty = /*#__PURE__*/function (_HTMLProperty29) {
+var BsTabProperty = function (_HTMLProperty29) {
   (0, _inherits2["default"])(BsTabProperty, _HTMLProperty29);
   var _super29 = _createSuper(BsTabProperty);
   function BsTabProperty() {
@@ -1387,13 +1367,13 @@ var BsTabProperty = /*#__PURE__*/function (_HTMLProperty29) {
     (0, _classCallCheck2["default"])(this, BsTabProperty);
     _this22 = _super29.call(this, 'style', _RecitEditor.i18n.get_string('style'));
     _this22.options = [{
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faFolder,
         title: _RecitEditor.i18n.get_string('tab')
       }),
       value: 'nav-tabs'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faEllipsisH,
         title: _RecitEditor.i18n.get_string('pill')
       }),
@@ -1429,7 +1409,7 @@ var BsTabProperty = /*#__PURE__*/function (_HTMLProperty29) {
   return BsTabProperty;
 }(HTMLProperty);
 exports.BsTabProperty = BsTabProperty;
-var BsTabJustifyProperty = /*#__PURE__*/function (_HTMLProperty30) {
+var BsTabJustifyProperty = function (_HTMLProperty30) {
   (0, _inherits2["default"])(BsTabJustifyProperty, _HTMLProperty30);
   var _super30 = _createSuper(BsTabJustifyProperty);
   function BsTabJustifyProperty() {
@@ -1437,31 +1417,31 @@ var BsTabJustifyProperty = /*#__PURE__*/function (_HTMLProperty30) {
     (0, _classCallCheck2["default"])(this, BsTabJustifyProperty);
     _this23 = _super30.call(this, 'justify', _RecitEditor.i18n.get_string('justify'));
     _this23.options = [{
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignLeft,
         title: _RecitEditor.i18n.get_string('left')
       }),
       value: ''
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignCenter,
         title: _RecitEditor.i18n.get_string('center')
       }),
       value: 'justify-content-center'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignRight,
         title: _RecitEditor.i18n.get_string('right')
       }),
       value: 'justify-content-end'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignJustify,
         title: _RecitEditor.i18n.get_string('fullwidth')
       }),
       value: 'nav-fill'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faEllipsisV,
         title: _RecitEditor.i18n.get_string('horizontal')
       }),
@@ -1520,7 +1500,7 @@ var BsTabJustifyProperty = /*#__PURE__*/function (_HTMLProperty30) {
   return BsTabJustifyProperty;
 }(HTMLProperty);
 exports.BsTabJustifyProperty = BsTabJustifyProperty;
-var BsAddTabProperty = /*#__PURE__*/function (_HTMLProperty31) {
+var BsAddTabProperty = function (_HTMLProperty31) {
   (0, _inherits2["default"])(BsAddTabProperty, _HTMLProperty31);
   var _super31 = _createSuper(BsAddTabProperty);
   function BsAddTabProperty() {
@@ -1528,7 +1508,7 @@ var BsAddTabProperty = /*#__PURE__*/function (_HTMLProperty31) {
     (0, _classCallCheck2["default"])(this, BsAddTabProperty);
     _this24 = _super31.call(this, 'addtab', _RecitEditor.i18n.get_string('actions'));
     _this24.options = [{
-      text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus,
         title: _RecitEditor.i18n.get_string('addtab')
       }), _RecitEditor.i18n.get_string('tab')),
@@ -1602,7 +1582,7 @@ var BsAddTabProperty = /*#__PURE__*/function (_HTMLProperty31) {
   return BsAddTabProperty;
 }(HTMLProperty);
 exports.BsAddTabProperty = BsAddTabProperty;
-var BsAddAccordionProperty = /*#__PURE__*/function (_HTMLProperty32) {
+var BsAddAccordionProperty = function (_HTMLProperty32) {
   (0, _inherits2["default"])(BsAddAccordionProperty, _HTMLProperty32);
   var _super32 = _createSuper(BsAddAccordionProperty);
   function BsAddAccordionProperty() {
@@ -1610,7 +1590,7 @@ var BsAddAccordionProperty = /*#__PURE__*/function (_HTMLProperty32) {
     (0, _classCallCheck2["default"])(this, BsAddAccordionProperty);
     _this25 = _super32.call(this, 'addaccordion', _RecitEditor.i18n.get_string('actions'));
     _this25.options = [{
-      text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus,
         title: _RecitEditor.i18n.get_string('add')
       }), _RecitEditor.i18n.get_string('accordion')),
@@ -1634,7 +1614,7 @@ var BsAddAccordionProperty = /*#__PURE__*/function (_HTMLProperty32) {
         var nav = document.createElement('div');
         nav.classList.add('card');
         tab.appendChild(nav);
-        nav.innerHTML = "\n                    <div class=\"card-header\" id=\"heading".concat(id, "\">\n                      <h2 class=\"mb-0\">\n                        <button class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse").concat(id, "\" aria-expanded=\"false\" aria-controls=\"collapse").concat(id, "\">\n                          Item #").concat(id, "\n                        </button>\n                      </h2>\n                    </div>\n                    <div id=\"collapse").concat(id, "\" class=\"collapse\" aria-labelledby=\"heading").concat(id, "\" data-parent=\"#").concat(el.id, "\">\n                      <div class=\"card-body\">\n                        Item #").concat(id, "\n                      </div>\n                    </div>");
+        nav.innerHTML = "\n                    <div class=\"card-header\" id=\"heading".concat(id, "\">\n                      <h2 class=\"mb-0\">\n                        <a class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse").concat(id, "\" aria-expanded=\"false\" aria-controls=\"collapse").concat(id, "\">\n                          Item #").concat(id, "\n                        </a>\n                      </h2>\n                    </div>\n                    <div id=\"collapse").concat(id, "\" class=\"collapse\" aria-labelledby=\"heading").concat(id, "\" data-parent=\"#").concat(tab.id, "\">\n                      <div class=\"card-body\">\n                        Item #").concat(id, "\n                      </div>\n                    </div>");
         return {
           action: 'insert',
           nodes: [nav]
@@ -1653,17 +1633,17 @@ var BsAddAccordionProperty = /*#__PURE__*/function (_HTMLProperty32) {
   return BsAddAccordionProperty;
 }(HTMLProperty);
 exports.BsAddAccordionProperty = BsAddAccordionProperty;
-var BsBorderProperty = /*#__PURE__*/function (_HTMLProperty33) {
+var BsBorderProperty = function (_HTMLProperty33) {
   (0, _inherits2["default"])(BsBorderProperty, _HTMLProperty33);
   var _super33 = _createSuper(BsBorderProperty);
   function BsBorderProperty() {
     var _this26;
     (0, _classCallCheck2["default"])(this, BsBorderProperty);
-    _this26 = _super33.call(this, 'border', /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('border'), " ", /*#__PURE__*/_react["default"].createElement(_reactBootstrap.OverlayTrigger, {
-      overlay: /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Tooltip, null, _RecitEditor.i18n.get_string('appliedasstyle'))
-    }, /*#__PURE__*/_react["default"].createElement("a", {
+    _this26 = _super33.call(this, 'border', _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('border'), " ", _react["default"].createElement(_reactBootstrap.OverlayTrigger, {
+      overlay: _react["default"].createElement(_reactBootstrap.Tooltip, null, _RecitEditor.i18n.get_string('appliedasstyle'))
+    }, _react["default"].createElement("a", {
       className: "color-primary"
-    }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+    }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
       icon: _freeSolidSvgIcons.faInfoCircle
     }), " "))));
     _this26.options = [{
@@ -1722,7 +1702,7 @@ var BsBorderProperty = /*#__PURE__*/function (_HTMLProperty33) {
       if (value.newValue.length > 0) {
         el.style['border' + value.name + '-width'] = value.newValue;
         if (!el.style['border-style']) {
-          el.style['border' + value.name + '-style'] = 'solid'; //Set solid if not set, otherwise border wont show
+          el.style['border' + value.name + '-style'] = 'solid';
         }
       }
     }
@@ -1730,7 +1710,7 @@ var BsBorderProperty = /*#__PURE__*/function (_HTMLProperty33) {
   return BsBorderProperty;
 }(HTMLProperty);
 exports.BsBorderProperty = BsBorderProperty;
-var BsHeadingProperty = /*#__PURE__*/function (_HTMLProperty34) {
+var BsHeadingProperty = function (_HTMLProperty34) {
   (0, _inherits2["default"])(BsHeadingProperty, _HTMLProperty34);
   var _super34 = _createSuper(BsHeadingProperty);
   function BsHeadingProperty() {
@@ -1804,7 +1784,7 @@ var BsHeadingProperty = /*#__PURE__*/function (_HTMLProperty34) {
   return BsHeadingProperty;
 }(HTMLProperty);
 exports.BsHeadingProperty = BsHeadingProperty;
-var BsBorderColorProperty = /*#__PURE__*/function (_HTMLProperty35) {
+var BsBorderColorProperty = function (_HTMLProperty35) {
   (0, _inherits2["default"])(BsBorderColorProperty, _HTMLProperty35);
   var _super35 = _createSuper(BsBorderColorProperty);
   function BsBorderColorProperty() {
@@ -1895,7 +1875,7 @@ var BsBorderColorProperty = /*#__PURE__*/function (_HTMLProperty35) {
   return BsBorderColorProperty;
 }(HTMLProperty);
 exports.BsBorderColorProperty = BsBorderColorProperty;
-var BsBorderStyleProperty = /*#__PURE__*/function (_HTMLProperty36) {
+var BsBorderStyleProperty = function (_HTMLProperty36) {
   (0, _inherits2["default"])(BsBorderStyleProperty, _HTMLProperty36);
   var _super36 = _createSuper(BsBorderStyleProperty);
   function BsBorderStyleProperty() {
@@ -1903,35 +1883,35 @@ var BsBorderStyleProperty = /*#__PURE__*/function (_HTMLProperty36) {
     (0, _classCallCheck2["default"])(this, BsBorderStyleProperty);
     _this29 = _super36.call(this, 'borderstyle', _RecitEditor.i18n.get_string('borderstyle'));
     _this29.options = [{
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         className: "mr-1",
         icon: _freeSolidSvgIcons.faRemoveFormat,
         title: "Default"
       }),
       value: ''
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         className: "mr-1",
         icon: _freeSolidSvgIcons.faSquare,
         title: "Solide"
       }),
       value: 'solid'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         className: "mr-1",
         icon: _freeSolidSvgIcons.faRuler,
         title: "Barr\xE9"
       }),
       value: 'dashed'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         className: "mr-1",
         icon: _freeSolidSvgIcons.faEllipsisH,
         title: "Pointill\xE9"
       }),
       value: 'dotted'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         className: "mr-1",
         icon: _freeSolidSvgIcons.faGripLines,
         title: "Double"
@@ -1959,7 +1939,7 @@ var BsBorderStyleProperty = /*#__PURE__*/function (_HTMLProperty36) {
   return BsBorderStyleProperty;
 }(HTMLProperty);
 exports.BsBorderStyleProperty = BsBorderStyleProperty;
-var BsBorderRadiusProperty = /*#__PURE__*/function (_HTMLProperty37) {
+var BsBorderRadiusProperty = function (_HTMLProperty37) {
   (0, _inherits2["default"])(BsBorderRadiusProperty, _HTMLProperty37);
   var _super37 = _createSuper(BsBorderRadiusProperty);
   function BsBorderRadiusProperty() {
@@ -2039,7 +2019,7 @@ var BsBorderRadiusProperty = /*#__PURE__*/function (_HTMLProperty37) {
   return BsBorderRadiusProperty;
 }(HTMLProperty);
 exports.BsBorderRadiusProperty = BsBorderRadiusProperty;
-var BsTextColorProperty = /*#__PURE__*/function (_HTMLProperty38) {
+var BsTextColorProperty = function (_HTMLProperty38) {
   (0, _inherits2["default"])(BsTextColorProperty, _HTMLProperty38);
   var _super38 = _createSuper(BsTextColorProperty);
   function BsTextColorProperty() {
@@ -2130,7 +2110,7 @@ var BsTextColorProperty = /*#__PURE__*/function (_HTMLProperty38) {
   return BsTextColorProperty;
 }(HTMLProperty);
 exports.BsTextColorProperty = BsTextColorProperty;
-var BsTextAlignmentProperty = /*#__PURE__*/function (_HTMLProperty39) {
+var BsTextAlignmentProperty = function (_HTMLProperty39) {
   (0, _inherits2["default"])(BsTextAlignmentProperty, _HTMLProperty39);
   var _super39 = _createSuper(BsTextAlignmentProperty);
   function BsTextAlignmentProperty() {
@@ -2138,31 +2118,31 @@ var BsTextAlignmentProperty = /*#__PURE__*/function (_HTMLProperty39) {
     (0, _classCallCheck2["default"])(this, BsTextAlignmentProperty);
     _this32 = _super39.call(this, 'alignment', _RecitEditor.i18n.get_string('alignment'));
     _this32.options = [{
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat,
         title: _RecitEditor.i18n.get_string('default')
       }),
       value: 'default'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignLeft,
         title: _RecitEditor.i18n.get_string('left')
       }),
       value: 'text-left'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignCenter,
         title: _RecitEditor.i18n.get_string('center')
       }),
       value: 'text-center'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignRight,
         title: _RecitEditor.i18n.get_string('right')
       }),
       value: 'text-right'
     }, {
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignJustify,
         title: _RecitEditor.i18n.get_string('justify')
       }),
@@ -2216,7 +2196,7 @@ var BsTextAlignmentProperty = /*#__PURE__*/function (_HTMLProperty39) {
   return BsTextAlignmentProperty;
 }(HTMLProperty);
 exports.BsTextAlignmentProperty = BsTextAlignmentProperty;
-var BsBtnBlockProperty = /*#__PURE__*/function (_HTMLProperty40) {
+var BsBtnBlockProperty = function (_HTMLProperty40) {
   (0, _inherits2["default"])(BsBtnBlockProperty, _HTMLProperty40);
   var _super40 = _createSuper(BsBtnBlockProperty);
   function BsBtnBlockProperty() {
@@ -2256,7 +2236,7 @@ var BsBtnBlockProperty = /*#__PURE__*/function (_HTMLProperty40) {
   return BsBtnBlockProperty;
 }(HTMLProperty);
 exports.BsBtnBlockProperty = BsBtnBlockProperty;
-var BsGridResponsiveProperty = /*#__PURE__*/function (_HTMLProperty41) {
+var BsGridResponsiveProperty = function (_HTMLProperty41) {
   (0, _inherits2["default"])(BsGridResponsiveProperty, _HTMLProperty41);
   var _super41 = _createSuper(BsGridResponsiveProperty);
   function BsGridResponsiveProperty() {
@@ -2299,7 +2279,7 @@ var BsGridResponsiveProperty = /*#__PURE__*/function (_HTMLProperty41) {
   return BsGridResponsiveProperty;
 }(HTMLProperty);
 exports.BsGridResponsiveProperty = BsGridResponsiveProperty;
-var BsGridVerticalAlignProperty = /*#__PURE__*/function (_HTMLProperty42) {
+var BsGridVerticalAlignProperty = function (_HTMLProperty42) {
   (0, _inherits2["default"])(BsGridVerticalAlignProperty, _HTMLProperty42);
   var _super42 = _createSuper(BsGridVerticalAlignProperty);
   function BsGridVerticalAlignProperty() {
@@ -2339,7 +2319,7 @@ var BsGridVerticalAlignProperty = /*#__PURE__*/function (_HTMLProperty42) {
   return BsGridVerticalAlignProperty;
 }(HTMLProperty);
 exports.BsGridVerticalAlignProperty = BsGridVerticalAlignProperty;
-var BsGridPaddingProperty = /*#__PURE__*/function (_HTMLProperty43) {
+var BsGridPaddingProperty = function (_HTMLProperty43) {
   (0, _inherits2["default"])(BsGridPaddingProperty, _HTMLProperty43);
   var _super43 = _createSuper(BsGridPaddingProperty);
   function BsGridPaddingProperty() {
@@ -2347,7 +2327,7 @@ var BsGridPaddingProperty = /*#__PURE__*/function (_HTMLProperty43) {
     (0, _classCallCheck2["default"])(this, BsGridPaddingProperty);
     _this36 = _super43.call(this, 'gridpadding', _RecitEditor.i18n.get_string('paddingtype'));
     _this36.options = [{
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat
       }),
       value: "remove"
@@ -2473,7 +2453,7 @@ BsGridPaddingProperty.classList = {
   lateral: ['px-3', 'px-md-4', 'px-lg-5'],
   remove: ['p-', 'pb-', 'pt-', 'pl-', 'pr-', 'px-', 'py-']
 };
-var BsBtnOutlineProperty = /*#__PURE__*/function (_HTMLProperty44) {
+var BsBtnOutlineProperty = function (_HTMLProperty44) {
   (0, _inherits2["default"])(BsBtnOutlineProperty, _HTMLProperty44);
   var _super44 = _createSuper(BsBtnOutlineProperty);
   function BsBtnOutlineProperty() {
@@ -2552,7 +2532,7 @@ var BsBtnOutlineProperty = /*#__PURE__*/function (_HTMLProperty44) {
   return BsBtnOutlineProperty;
 }(HTMLProperty);
 exports.BsBtnOutlineProperty = BsBtnOutlineProperty;
-var BsBtnSizeProperty = /*#__PURE__*/function (_HTMLProperty45) {
+var BsBtnSizeProperty = function (_HTMLProperty45) {
   (0, _inherits2["default"])(BsBtnSizeProperty, _HTMLProperty45);
   var _super45 = _createSuper(BsBtnSizeProperty);
   function BsBtnSizeProperty() {
@@ -2560,7 +2540,7 @@ var BsBtnSizeProperty = /*#__PURE__*/function (_HTMLProperty45) {
     (0, _classCallCheck2["default"])(this, BsBtnSizeProperty);
     _this38 = _super45.call(this, 'btnsize', _RecitEditor.i18n.get_string('size'));
     _this38.options = [{
-      text: /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat
       }),
       value: ""
@@ -2621,7 +2601,7 @@ var BsBtnSizeProperty = /*#__PURE__*/function (_HTMLProperty45) {
   return BsBtnSizeProperty;
 }(HTMLProperty);
 exports.BsBtnSizeProperty = BsBtnSizeProperty;
-var BsTableActionProperty = /*#__PURE__*/function (_HTMLProperty46) {
+var BsTableActionProperty = function (_HTMLProperty46) {
   (0, _inherits2["default"])(BsTableActionProperty, _HTMLProperty46);
   var _super46 = _createSuper(BsTableActionProperty);
   function BsTableActionProperty() {
@@ -2629,7 +2609,7 @@ var BsTableActionProperty = /*#__PURE__*/function (_HTMLProperty46) {
     (0, _classCallCheck2["default"])(this, BsTableActionProperty);
     _this39 = _super46.call(this, 'tableaction', _RecitEditor.i18n.get_string('actions'));
     _this39.options = [{
-      text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus
       }), " Colonne"),
       onClick: function onClick(el) {
@@ -2641,7 +2621,7 @@ var BsTableActionProperty = /*#__PURE__*/function (_HTMLProperty46) {
         };
       }
     }, {
-      text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus
       }), " Ligne"),
       onClick: function onClick(el) {
@@ -2669,7 +2649,7 @@ var BsTableActionProperty = /*#__PURE__*/function (_HTMLProperty46) {
   return BsTableActionProperty;
 }(HTMLProperty);
 exports.BsTableActionProperty = BsTableActionProperty;
-var BsTableBorderProperty = /*#__PURE__*/function (_HTMLProperty47) {
+var BsTableBorderProperty = function (_HTMLProperty47) {
   (0, _inherits2["default"])(BsTableBorderProperty, _HTMLProperty47);
   var _super47 = _createSuper(BsTableBorderProperty);
   function BsTableBorderProperty() {
@@ -2704,7 +2684,7 @@ var BsTableBorderProperty = /*#__PURE__*/function (_HTMLProperty47) {
   return BsTableBorderProperty;
 }(HTMLProperty);
 exports.BsTableBorderProperty = BsTableBorderProperty;
-var BsTableStripedProperty = /*#__PURE__*/function (_HTMLProperty48) {
+var BsTableStripedProperty = function (_HTMLProperty48) {
   (0, _inherits2["default"])(BsTableStripedProperty, _HTMLProperty48);
   var _super48 = _createSuper(BsTableStripedProperty);
   function BsTableStripedProperty() {
@@ -2739,7 +2719,7 @@ var BsTableStripedProperty = /*#__PURE__*/function (_HTMLProperty48) {
   return BsTableStripedProperty;
 }(HTMLProperty);
 exports.BsTableStripedProperty = BsTableStripedProperty;
-var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
+var BsTableCellActionProperty = function (_HTMLProperty49) {
   (0, _inherits2["default"])(BsTableCellActionProperty, _HTMLProperty49);
   var _super49 = _createSuper(BsTableCellActionProperty);
   function BsTableCellActionProperty() {
@@ -2747,7 +2727,7 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
     (0, _classCallCheck2["default"])(this, BsTableCellActionProperty);
     _this42 = _super49.call(this, 'tablecellaction', _RecitEditor.i18n.get_string('actions'));
     _this42.options = [{
-      text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faMinus
       }), " ", _RecitEditor.i18n.get_string('line')),
       onClick: function onClick(el) {
@@ -2764,7 +2744,6 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
               console.log(ex);
             }
           }
-          //deleteRow
         } catch (err) {
           _iterator38.e(err);
         } finally {
@@ -2776,7 +2755,7 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
         };
       }
     }, {
-      text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus
       }), " ", _RecitEditor.i18n.get_string('line')),
       onClick: function onClick(el) {
@@ -2795,7 +2774,7 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
         return result;
       }
     }, {
-      text: /*#__PURE__*/_react["default"].createElement("span", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus
       }), " ", _RecitEditor.i18n.get_string('column')),
       onClick: function onClick(el) {
@@ -2819,7 +2798,7 @@ var BsTableCellActionProperty = /*#__PURE__*/function (_HTMLProperty49) {
   return BsTableCellActionProperty;
 }(HTMLProperty);
 exports.BsTableCellActionProperty = BsTableCellActionProperty;
-var HTMLPropertiesData = /*#__PURE__*/(0, _createClass2["default"])(function HTMLPropertiesData() {
+var HTMLPropertiesData = (0, _createClass2["default"])(function HTMLPropertiesData() {
   (0, _classCallCheck2["default"])(this, HTMLPropertiesData);
 });
 exports.HTMLPropertiesData = HTMLPropertiesData;
