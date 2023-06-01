@@ -15,41 +15,20 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 var _RecitEditor = require("../RecitEditor");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var JsNx = /*#__PURE__*/function () {
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } /**
+                                                                                                                                                                                     * Atto HTML editor
+                                                                                                                                                                                     *
+                                                                                                                                                                                     * @package    atto_reciteditor
+                                                                                                                                                                                     * @copyright  2019 RECIT
+                                                                                                                                                                                     * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                     */
+var JsNx = function () {
   function JsNx() {
     (0, _classCallCheck2["default"])(this, JsNx);
   }
   (0, _createClass2["default"])(JsNx, null, [{
     key: "at",
-    value:
-    /**
-     * Return the array item at the indicated index. If it not exists, then return the default value.
-     * @param {number} index
-     * @param {*} default value
-     * @returns {*}
-     */
-    function at(arr, index, defaultValue) {
+    value: function at(arr, index, defaultValue) {
       if (JsNx.exists(arr, index)) {
         return arr[index];
       } else {
@@ -58,13 +37,7 @@ var JsNx = /*#__PURE__*/function () {
     }
   }, {
     key: "exists",
-    value:
-    /**
-     * Check if the index exists in the array.
-     * @param {number} index
-     * @returns {boolean}
-     */
-    function exists(arr, index) {
+    value: function exists(arr, index) {
       if (typeof arr[index] === "undefined") {
         return false;
       } else {
@@ -73,15 +46,7 @@ var JsNx = /*#__PURE__*/function () {
     }
   }, {
     key: "getItem",
-    value:
-    /**
-     * Return the array item (an object) according to the property and value indicated. If it not exists, then return the default value.
-     * @param {string} property
-     * @param {*} property value
-     * @param {*} default value
-     * @returns {*}
-     */
-    function getItem(arr, prop, value, defaultValue) {
+    value: function getItem(arr, prop, value, defaultValue) {
       var _iterator = _createForOfIteratorHelper(arr),
         _step;
       try {
@@ -100,13 +65,7 @@ var JsNx = /*#__PURE__*/function () {
     }
   }, {
     key: "remove",
-    value:
-    /**
-     * Remove an element from the array. If the element does not exists then do nothing.
-     * @param {number} index
-     * @returns {object}
-     */
-    function remove(arr, index) {
+    value: function remove(arr, index) {
       var result = [];
       if (JsNx.exists(arr, index)) {
         result = arr.splice(index, 1);
@@ -117,22 +76,10 @@ var JsNx = /*#__PURE__*/function () {
   return JsNx;
 }();
 exports.JsNx = JsNx;
-/**
- * Remove an element from the array according to the property and value indicated.
- * @param {string} property
- * @param {*} property value
- * @returns {object}
- */
 JsNx.removeItem = function (arr, prop, value) {
   var index = JsNx.getItemIndex(arr, prop, value, -1);
   return JsNx.remove(arr, index);
 };
-/**
- * Return the array item (an object) index according to the property and value indicated. 
- * @param {string} property
- * @param {*} property value
- * @returns {number}
- */
 JsNx.getItemIndex = function (arr, prop, value) {
   for (var i = 0; i < arr.length; i++) {
     var item = arr[i];
@@ -142,12 +89,6 @@ JsNx.getItemIndex = function (arr, prop, value) {
   }
   return -1;
 };
-/**
-* Get the property value. If it not exists, then return the default value.
-* @param {string} prop
-* @param {*} defaultValue
-* @returns {*}
-*/
 JsNx.get = function (obj, prop, defaultValue) {
   var props = prop.split('.');
   var result = typeof defaultValue === "undefined" ? null : defaultValue;
@@ -160,10 +101,6 @@ JsNx.get = function (obj, prop, defaultValue) {
   }
   return result;
 };
-/*
-* @description Deep clone the object and return a new one
-* @returns {Object}
-*/
 JsNx.clone = function (obj) {
   if (obj instanceof Date) {
     return new Date(obj.valueOf());
@@ -191,9 +128,7 @@ JsNx.copy = function (arr, level) {
   switch (level) {
     case 1:
       return JSON.parse(JSON.stringify(arr));
-    //  Array of literal-structures (array, object) ex: [[], {}];
     case 2:
-      //return jQuery.extend(this); // Array of prototype-objects (function). The jQuery technique can be used to deep-copy all array-types. ex: [function () {}, function () {}];
       var result = [];
       var _iterator8 = _createForOfIteratorHelper(arr),
         _step8;
@@ -210,15 +145,8 @@ JsNx.copy = function (arr, level) {
       return result;
     default:
       return arr.slice();
-    // Array of literal-values (boolean, number, string) ex:  [true, 1, "true"]
   }
 };
-/**
- * During shallow equality check of objects you get the list of properties (using Object.keys()) of both objects, then check the properties’ values for equality.
- * @param {object} obj1 
- * @param {object} obj2 
- * @return {boolean} it returns true if the objects as equals
- */
 JsNx.compare = function (obj1, obj2) {
   obj1 = obj1 || null;
   obj2 = obj2 || null;
@@ -240,7 +168,7 @@ JsNx.compare = function (obj1, obj2) {
   }
   return true;
 };
-var Storage = /*#__PURE__*/function () {
+var Storage = function () {
   function Storage() {
     (0, _classCallCheck2["default"])(this, Storage);
   }
@@ -259,17 +187,13 @@ var Storage = /*#__PURE__*/function () {
 }();
 exports.Storage = Storage;
 Storage.KEY_PREFIX = "reciteditor.";
-var Utils = /*#__PURE__*/function () {
+var Utils = function () {
   function Utils() {
     (0, _classCallCheck2["default"])(this, Utils);
   }
   (0, _createClass2["default"])(Utils, null, [{
     key: "dateParse",
-    value:
-    // this is necessary in order to handle with timezone
-    function dateParse(strDate) {
-      // return Moment(strDate).toDate();
-    }
+    value: function dateParse(strDate) {}
   }, {
     key: "formatMoney",
     value: function formatMoney(value) {
@@ -310,7 +234,6 @@ var Utils = /*#__PURE__*/function () {
       if (Utils.countOccurrencesInString(s, subString) < 2) {
         return s.replace(subString, replacement);
       } else {
-        //There are multiple occurences of the substring in the string so replace only the one we want by index
         var offset = index - subString.length;
         var p = s.substr(index - offset).replace(subString, replacement);
         return s.substr(0, index - offset) + p;
@@ -346,41 +269,21 @@ var Utils = /*#__PURE__*/function () {
     value: function RGBToHex(rgb) {
       rgb = rgb || "rgb(0,0,0)";
       var regex = new RegExp(/^rgb[(](?:\s*0*(?:\d\d?(?:\.\d+)?(?:\s*%)?|\.\d+\s*%|100(?:\.0*)?\s*%|(?:1\d\d|2[0-4]\d|25[0-5])(?:\.\d+)?)\s*(?:,(?![)])|(?=[)]))){3}[)]$/gm);
-
-      // not an RGB
       if (!regex.test(rgb)) {
         return rgb;
       }
-
-      // Choose correct separator
       var sep = rgb.indexOf(",") > -1 ? "," : " ";
-      // Turn "rgb(r,g,b)" into [r,g,b]
       rgb = rgb.substr(4).split(")")[0].split(sep);
-
-      // Convert %s to 0–255
       for (var R in rgb) {
         var _r = rgb[R];
         if (_r.indexOf("%") > -1) rgb[R] = Math.round(_r.substr(0, _r.length - 1) / 100 * 255);
-        /* Example:
-        75% -> 191
-        75/100 = 0.75, * 255 = 191.25 -> 191
-        */
       }
-
       var r = (+rgb[0]).toString(16),
         g = (+rgb[1]).toString(16),
         b = (+rgb[2]).toString(16);
       if (r.length === 1) r = "0" + r;
       if (g.length === 1) g = "0" + g;
       if (b.length === 1) b = "0" + b;
-
-      /*
-          Now we can supply values like either of these:
-          rgb(255,25,2)
-          rgb(255 25 2)
-          rgb(50%,30%,10%)
-          rgb(50% 30% 10%)
-      */
       return "#" + r + g + b;
     }
   }, {
@@ -424,7 +327,6 @@ var Utils = /*#__PURE__*/function () {
     key: "formatVideoURLEmbed",
     value: function formatVideoURLEmbed(url) {
       if (url.includes('youtube') && url.includes('watch?v=') || url.includes('youtu.be')) {
-        //URL is not embed
         var id = Utils.getYoutubeIDFromURL(url);
         if (id) {
           url = '//www.youtube.com/embed/' + id;
@@ -444,7 +346,7 @@ var Utils = /*#__PURE__*/function () {
 }();
 exports.Utils = Utils;
 Utils.version = 1.0;
-var IWrapper = /*#__PURE__*/function () {
+var IWrapper = function () {
   function IWrapper() {
     (0, _classCallCheck2["default"])(this, IWrapper);
   }
@@ -549,7 +451,7 @@ var IWrapper = /*#__PURE__*/function () {
 }();
 exports.IWrapper = IWrapper;
 IWrapper.wrapper = null;
-var UploadFile = /*#__PURE__*/function () {
+var UploadFile = function () {
   function UploadFile() {
     (0, _classCallCheck2["default"])(this, UploadFile);
     this.onReadyStateChange = this.onReadyStateChange.bind(this);
@@ -636,25 +538,16 @@ var UploadFile = /*#__PURE__*/function () {
         callback(canvas.toDataURL(fileType));
       };
     }
-
-    /**
-     * @param {string} dataURI
-     * @return {Blob} Binary object.
-     */
   }, {
     key: "convertbase64ToBin",
     value: function convertbase64ToBin(dataURI) {
-      // convert base64/URLEncoded data component to raw binary data held in a string
       var byteString;
       if (dataURI.split(',')[0].indexOf('base64') >= 0) {
         byteString = atob(dataURI.split(',')[1]);
       } else {
         byteString = decodeURI(dataURI.split(',')[1]);
       }
-      // separate out the mime component
       var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-      // write the bytes of the string to a typed array
       var ia = new Uint8Array(byteString.length);
       for (var i = 0; i < byteString.length; i++) {
         ia[i] = byteString.charCodeAt(i);
@@ -668,7 +561,7 @@ var UploadFile = /*#__PURE__*/function () {
 }();
 exports.UploadFile = UploadFile;
 UploadFile.instance = null;
-var UtilsString = /*#__PURE__*/function () {
+var UtilsString = function () {
   function UtilsString() {
     (0, _classCallCheck2["default"])(this, UtilsString);
   }
@@ -679,8 +572,6 @@ var UtilsString = /*#__PURE__*/function () {
       if (email.length === 0) {
         return true;
       }
-
-      //var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       var filter = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       var emails = email.split(",");
       var _iterator2 = _createForOfIteratorHelper(emails),
@@ -704,8 +595,8 @@ var UtilsString = /*#__PURE__*/function () {
     value: function replaceNonBreakingSpace(str) {
       if (!str || str.length == 0) return;
       var regex = new RegExp(/(\u00AB|\u2014)(?:\s+)?|(?:\s+)?([\?!:;\u00BB])/g);
-      str = str.replace("&nbsp; ", ""); //Revert old nbsp
-      str = str.replace("&nbsp;", ""); //Revert old nbsp
+      str = str.replace("&nbsp; ", "");
+      str = str.replace("&nbsp;", "");
       str = str.replace(regex, "$1&nbsp;$2");
       return str;
     }
@@ -718,7 +609,7 @@ var UtilsString = /*#__PURE__*/function () {
   return UtilsString;
 }();
 exports.UtilsString = UtilsString;
-var UtilsDateTime = /*#__PURE__*/function () {
+var UtilsDateTime = function () {
   function UtilsDateTime() {
     (0, _classCallCheck2["default"])(this, UtilsDateTime);
   }
@@ -737,18 +628,11 @@ var UtilsDateTime = /*#__PURE__*/function () {
     key: "dateToNbMinSinceSunday",
     value: function dateToNbMinSinceSunday(weekDay, date) {
       if (date instanceof Date) {
-        return date.getHours() * 60 + date.getMinutes() + weekDay * 1440; // 1440 = minutes in a day
+        return date.getHours() * 60 + date.getMinutes() + weekDay * 1440;
       } else {
         return 0;
       }
     }
-
-    /**
-    * Transform the shift minutes to the time string
-    * @param {type} time 
-    * @param {type} separator
-    * @returns {ScheduleShift.minutesToTime.result}
-    */
   }, {
     key: "minutesToTime",
     value: function minutesToTime(time, separator) {
@@ -758,9 +642,9 @@ var UtilsDateTime = /*#__PURE__*/function () {
         hour = time;
         min = 0;
       } else {
-        hour = Math.trunc(time / 60); // extract the hour
+        hour = Math.trunc(time / 60);
         offsetDays = Math.trunc(hour / 24);
-        min = time - hour * 60; // extract the minutes
+        min = time - hour * 60;
         hour -= offsetDays * 24;
       }
       result = hour.toString().nxLpad("0", 2) + separator + min.toString().nxLpad("0", 2);
@@ -770,11 +654,6 @@ var UtilsDateTime = /*#__PURE__*/function () {
   return UtilsDateTime;
 }();
 exports.UtilsDateTime = UtilsDateTime;
-/**
- * Transform the time in string to minutes
- * @param {string} - hh:mm
- * @return {number} - The number of minutes 
- */
 UtilsDateTime.timeToMin = function (time) {
   var hour, minutes;
   if (time.length !== 5) {
@@ -785,21 +664,13 @@ UtilsDateTime.timeToMin = function (time) {
   return hour * 60 + minutes;
 };
 ;
-var UtilsTreeStruct = /*#__PURE__*/function () {
+var UtilsTreeStruct = function () {
   function UtilsTreeStruct() {
     (0, _classCallCheck2["default"])(this, UtilsTreeStruct);
   }
   (0, _createClass2["default"])(UtilsTreeStruct, null, [{
     key: "treeWalk",
-    value:
-    /**
-     * Apply a user supplied function to every node of the tree and return its result
-     * @param {Array} - tree
-     * @param {string} - proNodes The property name of the children nodes 
-     * @param {function} - callback The callback function
-     * @returns void
-     */
-    function treeWalk(tree, propNodes, callback) {
+    value: function treeWalk(tree, propNodes, callback) {
       var i, node;
       for (i = 0; i < tree.length; i++) {
         node = tree[i];
@@ -811,22 +682,11 @@ var UtilsTreeStruct = /*#__PURE__*/function () {
         }
       }
     }
-
-    /**
-     * Get the parent node 
-     * @param {Array} - tree
-     * @param {string} - proNodes - The property name of the children nodes 
-     * @param {function} - callback - The callback function. It needs to return true or false
-     * @param * - default value
-     * @returns * - the parent node or the default value
-     */
   }, {
     key: "getParentNode",
     value: function getParentNode(rootNode, propNodes, callback, defaultValue) {
       var i, node;
       var result = defaultValue;
-
-      // there is no parent node
       if (callback(rootNode)) {
         return result;
       }
@@ -844,15 +704,6 @@ var UtilsTreeStruct = /*#__PURE__*/function () {
       }
       return result;
     }
-
-    /**
-     * Get a node from the tree
-     * @param {Array} - tree
-     * @param {string} - proNodes - The property name of the children nodes 
-     * @param {function} - callback - The callback function. It needs to return true or false
-     * @param * - default value
-     * @returns * - the node or the default value
-     */
   }, {
     key: "getNode",
     value: function getNode(tree, propNodes, callback, defaultValue) {
@@ -876,14 +727,6 @@ var UtilsTreeStruct = /*#__PURE__*/function () {
       }
       return defaultValue;
     }
-
-    /**
-    * Remove a node from the tree
-    * @param {Array} - tree
-    * @param {string} - proNodes - The property name of the children nodes 
-    * @param {function} - callback - The callback function. It needs to return true or false
-    * @returns {boolean} - True if the node was found. False otherwise.
-    */
   }, {
     key: "removeNode",
     value: function removeNode(tree, propNodes, callback) {
@@ -906,34 +749,11 @@ var UtilsTreeStruct = /*#__PURE__*/function () {
       }
       return false;
     }
-    /*static removeNode(tree, propNodes, callback){
-        let i, node;
-        
-        for(i = 0; i < tree.length; i++){
-            node = tree[i];
-            
-            if((node.hasOwnProperty(propNodes)) && (node[propNodes].length > 0)){
-                if(callback(node)){
-                    tree.splice(i, 1);
-                    return true;
-                }
-                
-                return UtilsTreeStruct.removeNode(node[propNodes], propNodes, callback);
-            }
-            else{
-                if(callback(node)){
-                    tree.splice(i, 1);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }*/
   }]);
   return UtilsTreeStruct;
 }();
 exports.UtilsTreeStruct = UtilsTreeStruct;
-var UtilsHTML = /*#__PURE__*/function () {
+var UtilsHTML = function () {
   function UtilsHTML() {
     (0, _classCallCheck2["default"])(this, UtilsHTML);
   }
@@ -1003,7 +823,7 @@ var UtilsHTML = /*#__PURE__*/function () {
   }, {
     key: "getStylesheetRules",
     value: function () {
-      var _getStylesheetRules = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(urls) {
+      var _getStylesheetRules = (0, _asyncToGenerator2["default"])(_regenerator["default"].mark(function _callee(urls) {
         var promises, contents;
         return _regenerator["default"].wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -1045,8 +865,6 @@ var UtilsHTML = /*#__PURE__*/function () {
           done = font.done;
         }
       }
-
-      // converted to set then arr to filter repetitive values
       var fontlist = (0, _toConsumableArray2["default"])(new Set(arr));
       var list = [];
       var _iterator5 = _createForOfIteratorHelper(fontlist),
@@ -1194,12 +1012,11 @@ var UtilsHTML = /*#__PURE__*/function () {
         } else if (result.sel.anchorOffset < result.sel.focusOffset) {
           result.selectionDirection = 'rtl';
         }
-        var mainNode = result.sel.baseNode || result.sel.anchorNode; // Chromme || Firefox
+        var mainNode = result.sel.baseNode || result.sel.anchorNode;
         if (!mainNode) return null;
         result.node = mainNode instanceof Element ? mainNode : mainNode.parentElement;
         result.subSelection = result.sel.anchorOffset > 0 && result.sel.focusOffset > 0;
         if (!result.isSelection) {
-          //If it's not a selection, set the range to be the whole node
           var range = document.createRange();
           var text = result.node;
           if (text) {
@@ -1216,7 +1033,6 @@ var UtilsHTML = /*#__PURE__*/function () {
         result.selectedText = result.sel.toString();
         result.selectedContent = result.range.cloneContents();
         if (result.selectedContent.children[0]) {
-          // Est-ce que la selection contient des tag html?
           if (result.selectedContent.children[0].innerText == result.selectedText) {
             result.node = result.selectedContent.children[0];
             result.isNodeRoot = false;
@@ -1248,43 +1064,32 @@ var UtilsHTML = /*#__PURE__*/function () {
   return UtilsHTML;
 }();
 exports.UtilsHTML = UtilsHTML;
-var i18n = /*#__PURE__*/function () {
+var i18n = function () {
   function i18n() {
     (0, _classCallCheck2["default"])(this, i18n);
   }
   (0, _createClass2["default"])(i18n, null, [{
     key: "get_string",
     value: function get_string(str) {
-      //if (!document.lang) document.lang = ""
       var res = "";
       try {
         res = IWrapper.get_string(str);
       } catch (e) {
         throw new Error("Try to get string before wrapper initialized: " + str);
       }
-      //if (res.startsWith('[[')) document.lang += "'"+str+"',"+'\n'
-      //if (res.startsWith('[[')) document.lang += "$string['"+str+"'] = '';"+'\n'
       return res;
     }
   }]);
   return i18n;
 }();
 exports.i18n = i18n;
-var Cookies = /*#__PURE__*/function () {
+var Cookies = function () {
   function Cookies() {
     (0, _classCallCheck2["default"])(this, Cookies);
   }
   (0, _createClass2["default"])(Cookies, null, [{
     key: "set",
-    value:
-    /**
-    * @static
-    * @param {type} id
-    * @param {type} value
-    * @param {type} minutesExpire
-    * @returns {void}
-    */
-    function set(id, value, minutesExpire) {
+    value: function set(id, value, minutesExpire) {
       value = window.escape(value);
       var d = new Date();
       d.setTime(d.getTime() + minutesExpire * 60 * 1000);

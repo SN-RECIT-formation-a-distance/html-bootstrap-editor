@@ -20,28 +20,14 @@ var _RecitEditor = require("../RecitEditor");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var InputColor = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var InputColor = function (_Component) {
   (0, _inherits2["default"])(InputColor, _Component);
   var _super = _createSuper(InputColor);
   function InputColor(props) {
@@ -60,12 +46,12 @@ var InputColor = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var value = _RecitEditor.Utils.RGBToHex(this.state.value);
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         style: {
           display: "inline-flex",
           width: '100%'
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Control, {
+      }, _react["default"].createElement(_reactBootstrap.Form.Control, {
         size: this.props.size,
         name: this.props.name,
         type: "color",
@@ -76,13 +62,13 @@ var InputColor = /*#__PURE__*/function (_Component) {
         style: {
           width: "80px"
         }
-      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }), _react["default"].createElement(_reactBootstrap.Button, {
         className: "ml-1",
         size: "sm",
         variant: 'primary',
         onClick: this.onReset,
         title: _RecitEditor.i18n.get_string('deleteformat')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat
       })));
       return main;
@@ -132,7 +118,6 @@ var InputColor = /*#__PURE__*/function (_Component) {
         this.props.onChange(eventData);
       }
       if (this.props.onBlur) {
-        // Fire onBlur too as it's a button, it'll never get fired
         this.props.onBlur(eventData);
       }
     }

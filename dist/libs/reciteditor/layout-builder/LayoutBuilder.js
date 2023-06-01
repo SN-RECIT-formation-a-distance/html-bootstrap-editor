@@ -23,28 +23,14 @@ var _LayoutBuilder$defaul;
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var LayoutBuilder = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var LayoutBuilder = function (_Component) {
   (0, _inherits2["default"])(LayoutBuilder, _Component);
   var _super = _createSuper(LayoutBuilder);
   function LayoutBuilder(props) {
@@ -61,7 +47,7 @@ var LayoutBuilder = /*#__PURE__*/function (_Component) {
       device: device,
       view: 'designer'
     };
-    _this.mainViewRef = /*#__PURE__*/_react["default"].createRef();
+    _this.mainViewRef = _react["default"].createRef();
     _this.historyManager = new _RecitEditor.HistoryManager();
     return _this;
   }
@@ -74,113 +60,113 @@ var LayoutBuilder = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         className: "layout-builder"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Navbar, {
+      }, _react["default"].createElement(_reactBootstrap.Navbar, {
         bg: "dark",
         variant: "dark",
         onSelect: this.onNavbarSelect,
         expand: "sm"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Navbar.Brand, null, /*#__PURE__*/_react["default"].createElement("img", {
+      }, _react["default"].createElement(_reactBootstrap.Navbar.Brand, null, _react["default"].createElement("img", {
         alt: "R\xC9CIT",
         src: _RecitEditor.Assets.RecitLogo,
         width: "30",
         height: "30",
         className: "d-inline-block align-top"
-      }), ' ', _RecitEditor.i18n.get_string('pluginname')), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Navbar.Toggle, {
+      }), ' ', _RecitEditor.i18n.get_string('pluginname')), _react["default"].createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "basic-navbar-nav"
-      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Navbar.Collapse, {
+      }), _react["default"].createElement(_reactBootstrap.Navbar.Collapse, {
         id: "basic-navbar-nav"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav, null, this.props.options.wordProcessor && /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      }, _react["default"].createElement(_reactBootstrap.Nav, null, this.props.options.wordProcessor && _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "wordbuilder"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faFileWord,
         title: _RecitEditor.i18n.get_string('texteditor')
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav, {
+      }))), _react["default"].createElement(_reactBootstrap.Nav, {
         className: "mr-auto"
-      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav, {
+      }), _react["default"].createElement(_reactBootstrap.Nav, {
         className: "mr-auto",
         activeKey: this.state.view
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      }, _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "designer"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTh,
         title: _RecitEditor.i18n.get_string('canvas')
-      }), " ", /*#__PURE__*/_react["default"].createElement("span", {
+      }), " ", _react["default"].createElement("span", {
         className: "d-mobile-none"
-      }, _RecitEditor.i18n.get_string('canvas'))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      }, _RecitEditor.i18n.get_string('canvas'))), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "preview"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faEye,
         title: _RecitEditor.i18n.get_string('preview')
-      }), " ", /*#__PURE__*/_react["default"].createElement("span", {
+      }), " ", _react["default"].createElement("span", {
         className: "d-mobile-none"
-      }, _RecitEditor.i18n.get_string('preview'))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      }, _RecitEditor.i18n.get_string('preview'))), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "sourceCode"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faCode,
         title: _RecitEditor.i18n.get_string('sourcecode')
-      }), " ", /*#__PURE__*/_react["default"].createElement("span", {
+      }), " ", _react["default"].createElement("span", {
         className: "d-mobile-none"
-      }, _RecitEditor.i18n.get_string('sourcecode'))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      }, _RecitEditor.i18n.get_string('sourcecode'))), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "sourceCodeDesigner"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faColumns,
         title: _RecitEditor.i18n.get_string('sourcecodedesigner')
-      }), " ", /*#__PURE__*/_react["default"].createElement("span", {
+      }), " ", _react["default"].createElement("span", {
         className: "d-mobile-none"
-      }, _RecitEditor.i18n.get_string('canvas'), "-", _RecitEditor.i18n.get_string('sourcecode')))), (this.state.view == 'designer' || this.state.view == 'sourceCodeDesigner') && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      }, _RecitEditor.i18n.get_string('canvas'), "-", _RecitEditor.i18n.get_string('sourcecode')))), (this.state.view == 'designer' || this.state.view == 'sourceCodeDesigner') && _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_reactBootstrap.Nav, null, _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "undo"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faUndo,
         title: _RecitEditor.i18n.get_string('undo')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      })), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "redo"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRedo,
         title: _RecitEditor.i18n.get_string('redo')
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav, {
+      }))), _react["default"].createElement(_reactBootstrap.Nav, {
         className: "separator"
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav, {
+      })), _react["default"].createElement(_reactBootstrap.Nav, {
         activeKey: this.state.device
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      }, _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "xs"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faMobileAlt,
         title: _RecitEditor.i18n.get_string('smartphone')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      })), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "sm"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTabletAlt,
         title: _RecitEditor.i18n.get_string('verticaltablet')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      })), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "md"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTabletAlt,
         title: _RecitEditor.i18n.get_string('horizontaltablet'),
         style: {
           transform: 'rotate(90deg)'
         }
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      })), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "lg"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faLaptop,
         title: _RecitEditor.i18n.get_string('hdscreen')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav.Link, {
+      })), _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "xl"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faDesktop,
         title: _RecitEditor.i18n.get_string('fhdscreen')
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Nav, {
+      }))), _react["default"].createElement(_reactBootstrap.Nav, {
         className: "separator"
-      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }), _react["default"].createElement(_reactBootstrap.Button, {
         variant: "success",
         size: "sm",
         onClick: this.onSaveAndClose
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSave,
         title: _RecitEditor.i18n.get_string('save')
-      }), " ", _RecitEditor.i18n.get_string('save')))), /*#__PURE__*/_react["default"].createElement(MainView, {
+      }), " ", _RecitEditor.i18n.get_string('save')))), _react["default"].createElement(MainView, {
         ref: this.mainViewRef,
         content: this.props.content,
         device: this.getDeviceDimension(),
@@ -204,7 +190,6 @@ var LayoutBuilder = /*#__PURE__*/function (_Component) {
       } else if (eventKey === 'redo') {
         this.historyManager.onRedo(this.mainViewRef.current.setData, this.mainViewRef.current.getData());
       } else {
-        // device
         this.setState({
           device: eventKey
         }, this.windowResizeTo);
@@ -216,7 +201,6 @@ var LayoutBuilder = /*#__PURE__*/function (_Component) {
       var _this2 = this;
       return new Promise(function (resolve, reject) {
         _this2.mainViewRef.current.screenshot(resolve);
-        //this.setState({view: 'preview'}, () => this.mainViewRef.current.screenshot(resolve));
       });
     }
   }, {
@@ -315,7 +299,7 @@ LayoutBuilder.properties = {
   },
   maxScreenWidth: 1920
 };
-var MainView = /*#__PURE__*/function (_Component2) {
+var MainView = function (_Component2) {
   (0, _inherits2["default"])(MainView, _Component2);
   var _super2 = _createSuper(MainView);
   function MainView(props) {
@@ -420,7 +404,6 @@ var MainView = /*#__PURE__*/function (_Component2) {
   }, {
     key: "forceRefresh",
     value: function forceRefresh() {
-      //Wait to see if selectedElement gets destroyed
       if (typeof this.state.selectedElement == 'undefined' || this.state.selectedElement.deleted) {
         this.setState({
           selectedElement: null
@@ -432,108 +415,108 @@ var MainView = /*#__PURE__*/function (_Component2) {
   }, {
     key: "render",
     value: function render() {
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         className: "main"
-      }, /*#__PURE__*/_react["default"].createElement("div", {
+      }, _react["default"].createElement("div", {
         className: "left-area",
         style: {
           height: "calc(100vh - ".concat(LayoutBuilder.properties.topNavBar.height, "px")
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonToolbar, {
+      }, _react["default"].createElement(_reactBootstrap.ButtonToolbar, {
         style: {
           height: '100%',
           backgroundColor: '#6c757d'
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }, _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         "aria-label": "Buttons",
         style: {
           flexDirection: 'column'
         }
-      }, /*#__PURE__*/_react["default"].createElement(LeftPanelButton, {
+      }, _react["default"].createElement(LeftPanelButton, {
         checked: this.state.panels.components === 1,
         value: "components,1",
         onClick: this.onPanelChange,
         title: _RecitEditor.i18n.get_string('templates'),
         glyph: _freeSolidSvgIcons.faCloud
-      }), /*#__PURE__*/_react["default"].createElement(LeftPanelButton, {
+      }), _react["default"].createElement(LeftPanelButton, {
         checked: this.state.panels.components === 3,
         value: "components,3",
         onClick: this.onPanelChange,
         title: _RecitEditor.i18n.get_string('components'),
         glyph: _freeSolidSvgIcons.faPuzzlePiece
-      }), /*#__PURE__*/_react["default"].createElement("div", {
+      }), _react["default"].createElement("div", {
         style: {
           margin: '4px 0',
           height: '1px',
           backgroundColor: '#fff'
         }
-      }), /*#__PURE__*/_react["default"].createElement(LeftPanelButton, {
+      }), _react["default"].createElement(LeftPanelButton, {
         checked: this.state.panels.properties === 3,
         value: "properties,3",
         onClick: this.onPanelChange,
         title: _RecitEditor.i18n.get_string('basic'),
         glyph: _freeSolidSvgIcons.faCubes
-      }), /*#__PURE__*/_react["default"].createElement(LeftPanelButton, {
+      }), _react["default"].createElement(LeftPanelButton, {
         checked: this.state.panels.properties === 1,
         value: "properties,1",
         onClick: this.onPanelChange,
         title: _RecitEditor.i18n.get_string('bootstrap'),
         svg: _RecitEditor.Assets.faBootstrap
-      }), /*#__PURE__*/_react["default"].createElement(LeftPanelButton, {
+      }), _react["default"].createElement(LeftPanelButton, {
         checked: this.state.panels.properties === 2,
         value: "properties,2",
         onClick: this.onPanelChange,
         title: _RecitEditor.i18n.get_string('htmlproprieties'),
         svg: _RecitEditor.Assets.faHtml
-      }), /*#__PURE__*/_react["default"].createElement("div", {
+      }), _react["default"].createElement("div", {
         style: {
           margin: '4px 0',
           height: '1px',
           backgroundColor: '#fff'
         }
-      }), /*#__PURE__*/_react["default"].createElement(LeftPanelButton, {
+      }), _react["default"].createElement(LeftPanelButton, {
         checked: this.state.panels.treeView === 1,
         value: "treeView,1",
         onClick: this.onPanelChange,
         title: _RecitEditor.i18n.get_string('tree'),
         glyph: _freeSolidSvgIcons.faSitemap
-      }))), (this.state.panels.components | this.state.panels.properties | this.state.panels.treeView) >= 1 && /*#__PURE__*/_react["default"].createElement("div", {
+      }))), (this.state.panels.components | this.state.panels.properties | this.state.panels.treeView) >= 1 && _react["default"].createElement("div", {
         className: "panel-list",
         style: {
           width: "".concat(LayoutBuilder.properties.leftPanel.panelList.width, "px")
         }
-      }, this.state.panels.components === 1 && /*#__PURE__*/_react["default"].createElement(_RecitEditor.VisualComponentList, {
+      }, this.state.panels.components === 1 && _react["default"].createElement(_RecitEditor.VisualComponentList, {
         onDragEnd: this.onDragEnd,
         onInsert: this.onInsertTemplate,
         onSaveTemplate: this.onSaveTemplate,
         tab: "tpl"
-      }), this.state.panels.components === 3 && /*#__PURE__*/_react["default"].createElement(_RecitEditor.VisualComponentList, {
+      }), this.state.panels.components === 3 && _react["default"].createElement(_RecitEditor.VisualComponentList, {
         onDragEnd: this.onDragEnd,
         onInsert: this.onInsertTemplate,
         onSaveTemplate: this.onSaveTemplate,
         tab: "comp"
-      }), this.state.panels.properties === 1 && /*#__PURE__*/_react["default"].createElement(_RecitEditor.ComponentProperties, {
+      }), this.state.panels.properties === 1 && _react["default"].createElement(_RecitEditor.ComponentProperties, {
         onAfterInsertNode: this.onAfterInsertNode,
         onAfterAssignProperty: this.onAfterAssignProperty,
         onAfterReplaceNode: this.onAfterReplaceNode,
         onDeleteElement: this.onDeleteElement,
         element: this.state.selectedElement,
         tab: "bs"
-      }), this.state.panels.properties === 2 && /*#__PURE__*/_react["default"].createElement(_RecitEditor.ComponentProperties, {
+      }), this.state.panels.properties === 2 && _react["default"].createElement(_RecitEditor.ComponentProperties, {
         onAfterInsertNode: this.onAfterInsertNode,
         onAfterAssignProperty: this.onAfterAssignProperty,
         onAfterReplaceNode: this.onAfterReplaceNode,
         onDeleteElement: this.onDeleteElement,
         element: this.state.selectedElement,
         tab: "html"
-      }), this.state.panels.properties === 3 && /*#__PURE__*/_react["default"].createElement(_RecitEditor.ComponentProperties, {
+      }), this.state.panels.properties === 3 && _react["default"].createElement(_RecitEditor.ComponentProperties, {
         onAfterInsertNode: this.onAfterInsertNode,
         onAfterAssignProperty: this.onAfterAssignProperty,
         onAfterReplaceNode: this.onAfterReplaceNode,
         onDeleteElement: this.onDeleteElement,
         element: this.state.selectedElement,
         tab: "bm"
-      }), this.state.panels.treeView === 1 && /*#__PURE__*/_react["default"].createElement(_RecitEditor.TreeView, {
+      }), this.state.panels.treeView === 1 && _react["default"].createElement(_RecitEditor.TreeView, {
         data: this.canvasState.designer.getBody(),
         onSelect: this.onSelectElement,
         selectedElement: this.state.selectedElement,
@@ -542,9 +525,9 @@ var MainView = /*#__PURE__*/function (_Component2) {
         onDeleteElement: this.onDeleteElement,
         onMoveNodeUp: this.onMoveNodeUp,
         onMoveNodeDown: this.onMoveNodeDown
-      }))), /*#__PURE__*/_react["default"].createElement("div", {
+      }))), _react["default"].createElement("div", {
         className: "center-area"
-      }, /*#__PURE__*/_react["default"].createElement("div", {
+      }, _react["default"].createElement("div", {
         className: "d-flex"
       }, this.canvasState.sourceCodeDesigner.render(this.props.view, this.state.selectedElement), this.canvasState.preview.render(this.props.view === 'preview', this.state.selectedElement))));
       return main;
@@ -596,14 +579,7 @@ var MainView = /*#__PURE__*/function (_Component2) {
     }
   }, {
     key: "onAfterAssignProperty",
-    value: function onAfterAssignProperty() {
-      // When sourceCodeDesigner view is open, we should refresh the code source after assigning a property
-      /*if (this.props.view == 'sourceCodeDesigner'){
-          let data = this.canvasState.designer.getData(false);
-          this.canvasState.sourceCode.setData(data);
-          this.canvasState.sourceCode.refresh();
-      }*/
-    }
+    value: function onAfterAssignProperty() {}
   }, {
     key: "onUnselectElement",
     value: function onUnselectElement() {
@@ -758,7 +734,7 @@ MainView.defaultProps = {
   view: "designer",
   historyManager: null
 };
-var LeftPanelButton = /*#__PURE__*/function (_Component3) {
+var LeftPanelButton = function (_Component3) {
   (0, _inherits2["default"])(LeftPanelButton, _Component3);
   var _super3 = _createSuper(LeftPanelButton);
   function LeftPanelButton() {
@@ -770,7 +746,7 @@ var LeftPanelButton = /*#__PURE__*/function (_Component3) {
     value: function render() {
       var _this4 = this;
       var fontSize = this.props.text ? '1rem' : '2rem';
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      var main = _react["default"].createElement(_reactBootstrap.Button, {
         variant: this.props.checked ? 'success' : 'secondary',
         onClick: function onClick(e) {
           return _this4.props.onClick(_this4.props.value);
@@ -781,9 +757,9 @@ var LeftPanelButton = /*#__PURE__*/function (_Component3) {
           minHeight: '55px'
         },
         title: this.props.title
-      }, this.props.glyph && /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, this.props.glyph && _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: this.props.glyph
-      }), this.props.text && this.props.text, this.props.svg && /*#__PURE__*/_react["default"].createElement("i", null, this.props.svg));
+      }), this.props.text && this.props.text, this.props.svg && _react["default"].createElement("i", null, this.props.svg));
       return main;
     }
   }]);

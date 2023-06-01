@@ -23,10 +23,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-/**
- * Singleton class
- */
-var FeedbackCtrl = /*#__PURE__*/function () {
+var FeedbackCtrl = function () {
   function FeedbackCtrl() {
     (0, _classCallCheck2["default"])(this, FeedbackCtrl);
     if (this.constructor.instance) {
@@ -139,7 +136,7 @@ var FeedbackCtrl = /*#__PURE__*/function () {
 }();
 exports.FeedbackCtrl = FeedbackCtrl;
 FeedbackCtrl.instance = null;
-var VisualFeedback = /*#__PURE__*/function (_Component) {
+var VisualFeedback = function (_Component) {
   (0, _inherits2["default"])(VisualFeedback, _Component);
   var _super = _createSuper(VisualFeedback);
   function VisualFeedback(props) {
@@ -174,14 +171,14 @@ var VisualFeedback = /*#__PURE__*/function (_Component) {
       if (this.props.timeout) {
         setTimeout(this.onDismiss, this.props.timeout * 1000);
       }
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         className: "VisualFeedback",
         "data-feedback-type": this.props.type
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Alert, {
+      }, _react["default"].createElement(_reactBootstrap.Alert, {
         variant: bsStyle,
         onClose: this.onDismiss,
         dismissible: true
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Alert.Heading, null, this.props.title), /*#__PURE__*/_react["default"].createElement("p", null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactBootstrap.Alert.Heading, null, this.props.title), _react["default"].createElement("p", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: icon
       }), ' ', this.props.msg)));
       return main;
@@ -200,5 +197,5 @@ VisualFeedback.defaultProps = {
   title: "",
   msg: "",
   type: "",
-  timeout: 0 // in secs
+  timeout: 0
 };

@@ -15,28 +15,14 @@ var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var HTMLElementData = /*#__PURE__*/function () {
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } /**
+                                                                                                                                                                                     * Atto HTML editor
+                                                                                                                                                                                     *
+                                                                                                                                                                                     * @package    atto_reciteditor
+                                                                                                                                                                                     * @copyright  2019 RECIT
+                                                                                                                                                                                     * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                     */
+var HTMLElementData = function () {
   function HTMLElementData() {
     (0, _classCallCheck2["default"])(this, HTMLElementData);
     this.propertyList = {
@@ -161,10 +147,10 @@ var HTMLElementData = /*#__PURE__*/function () {
       name: _RecitEditor.i18n.get_string('layout'),
       children: [new _HTMLElements.HTMLBodyElement(), new _HTMLElements.HTMLDivElement(), new _HTMLElements.HTMLSectionElement(), new _HTMLElements.HTMLGridElement(), new _HTMLElements.HTMLRowElement(), new _HTMLElements.HTMLColElement()]
     }, {
-      name: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('text'), " ", /*#__PURE__*/_react["default"].createElement("a", {
+      name: _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('text'), " ", _react["default"].createElement("a", {
         target: "_blank",
         href: "https://www.w3.org/WAI/tutorials/page-structure/headings/#heading-ranks"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faInfoCircle
       }), " ")),
       children: [new _HTMLElements.HTMLHeadingElement('H1', 'h1'), new _HTMLElements.HTMLHeadingElement('H2', 'h2'), new _HTMLElements.HTMLHeadingElement('H3', 'h3'), new _HTMLElements.HTMLHeadingElement('H4', 'h4'), new _HTMLElements.HTMLHeadingElement('H5', 'h5'), new _HTMLElements.HTMLHeadingElement('H6', 'h6'), new _HTMLElements.HTMLHeadingElement(_RecitEditor.i18n.get_string('headingwithicon'), 'h3', true), new _HTMLElements.HTMLParagraphElement(), new _HTMLElements.HTMLUListElement(), new _HTMLElements.HTMLOListElement(), new _HTMLElements.HTMLLIElement(), new _HTMLElements.HTMLSpanElement()]
@@ -269,8 +255,6 @@ var HTMLElementData = /*#__PURE__*/function () {
     value: function getElementClass(data, el) {
       data = data || null;
       el = el || null;
-
-      // it gives priority to bootstrap
       var list = this.elementListSortbyType();
       var _iterator6 = _createForOfIteratorHelper(list),
         _step6;
@@ -298,7 +282,7 @@ var HTMLElementData = /*#__PURE__*/function () {
         var component = this.getElementClass(componentData);
         el = component.create();
       } else if (componentData.type === 'c' || componentData.type === 'l') {
-        var html = componentData.htmlStr || componentData.htmlstr; //Save file sometimes void caps
+        var html = componentData.htmlStr || componentData.htmlstr;
         if (!html) {
           alert(_RecitEditor.i18n.get_string('invalidcomponent'));
           console.log(componentData);

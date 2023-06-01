@@ -20,28 +20,14 @@ var _Pagination = require("./Pagination");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var ImagePixaBay = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var ImagePixaBay = function (_Component) {
   (0, _inherits2["default"])(ImagePixaBay, _Component);
   var _super = _createSuper(ImagePixaBay);
   function ImagePixaBay(props) {
@@ -129,7 +115,7 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
       var _this2 = this;
       if (!_RecitEditor.IWrapper.isUploadImplemented()) return null;
       if (this.api_key.length == 0) return null;
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      var main = _react["default"].createElement(_reactBootstrap.Button, {
         key: "1",
         name: this.props.name,
         size: "sm",
@@ -138,33 +124,33 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
           return _this2.handleShow();
         },
         disabled: this.props.disabled
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faImage
       }), " ".concat(this.props.text));
-      var modal = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal, {
+      var modal = _react["default"].createElement(_reactBootstrap.Modal, {
         key: "2",
         dialogClassName: "iconselectormodal",
         show: this.state.modal,
         onHide: function onHide() {
           return _this2.handleClose();
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Header, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Header, {
         closeButton: true
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Title, null, /*#__PURE__*/_react["default"].createElement("a", {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Title, null, _react["default"].createElement("a", {
         href: "https://pixabay.com/",
         target: "_blank",
         style: {
           margin: 'auto'
         }
-      }, /*#__PURE__*/_react["default"].createElement("img", {
+      }, _react["default"].createElement("img", {
         src: "https://pixabay.com/static/img/logo.svg",
         style: {
           width: "94px"
         }
-      }), " Free Images"))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Body, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Row, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Group, {
+      }), " Free Images"))), _react["default"].createElement(_reactBootstrap.Modal.Body, null, _react["default"].createElement(_reactBootstrap.Form.Row, null, _react["default"].createElement(_reactBootstrap.Form.Group, {
         as: _reactBootstrap.Col,
         className: "col-8"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Label, null, _RecitEditor.i18n.get_string('keyword')), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.FormControl, {
+      }, _react["default"].createElement(_reactBootstrap.Form.Label, null, _RecitEditor.i18n.get_string('keyword')), _react["default"].createElement(_reactBootstrap.FormControl, {
         className: "InputText",
         type: "text",
         value: this.state.search,
@@ -174,10 +160,10 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
         onSubmit: function onSubmit() {
           return _this2.onQuery();
         }
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Group, {
+      })), _react["default"].createElement(_reactBootstrap.Form.Group, {
         as: _reactBootstrap.Col,
         className: "col-3"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Label, null, _RecitEditor.i18n.get_string('category')), /*#__PURE__*/_react["default"].createElement(_RecitEditor.ComboBox, {
+      }, _react["default"].createElement(_reactBootstrap.Form.Label, null, _RecitEditor.i18n.get_string('category')), _react["default"].createElement(_RecitEditor.ComboBox, {
         onChange: function onChange(e) {
           return _this2.setState({
             category: e.target.value
@@ -185,18 +171,18 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
         },
         value: this.state.category,
         options: this.categories
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Group, {
+      })), _react["default"].createElement(_reactBootstrap.Form.Group, {
         as: _reactBootstrap.Col,
         className: "col-1"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Label, null, "\xA0"), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Form.Label, null, "\xA0"), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this2.onQuery();
         },
         className: "form-control",
         title: _RecitEditor.i18n.get_string('search')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSearch
-      })))), /*#__PURE__*/_react["default"].createElement("div", {
+      })))), _react["default"].createElement("div", {
         className: "d-flex mb-5",
         style: {
           flexWrap: 'wrap',
@@ -204,16 +190,16 @@ var ImagePixaBay = /*#__PURE__*/function (_Component) {
           overflowY: 'auto'
         }
       }, this.state.data.map(function (res, i) {
-        return /*#__PURE__*/_react["default"].createElement("div", {
+        return _react["default"].createElement("div", {
           key: i,
           className: "m-2 img-bay",
           onClick: function onClick() {
             return _this2.onUpload(res.largeImageURL);
           }
-        }, /*#__PURE__*/_react["default"].createElement("img", {
+        }, _react["default"].createElement("img", {
           src: res.previewURL
         }));
-      })), this.state.data.length > 0 && /*#__PURE__*/_react["default"].createElement(_Pagination.Pagination, {
+      })), this.state.data.length > 0 && _react["default"].createElement(_Pagination.Pagination, {
         pagination: this.state.pagination,
         onChangePage: function onChangePage(p) {
           return _this2.onChangePage(p);

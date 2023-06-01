@@ -19,28 +19,14 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var CanvasState = /*#__PURE__*/function () {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var CanvasState = function () {
   function CanvasState(mainView) {
     (0, _classCallCheck2["default"])(this, CanvasState);
     this.mainView = mainView;
@@ -58,7 +44,7 @@ var CanvasState = /*#__PURE__*/function () {
   }
   (0, _createClass2["default"])(CanvasState, [{
     key: "onLoadFrame",
-    value: function onLoadFrame() {} // Abstract method
+    value: function onLoadFrame() {}
   }, {
     key: "onInit",
     value: function onInit(iframe) {}
@@ -134,11 +120,8 @@ var CanvasState = /*#__PURE__*/function () {
       if (htmlDoc === null) {
         return;
       }
-
-      // remove the class dropping-zone of all elements
       var items = htmlDoc.querySelectorAll(".dropping-zone, .dropping-zone-hover, [contenteditable], [data-hovering], [data-selected], [draggable]");
       items.forEach(function (item) {
-        //item.classList.remove('dropping-zone');
         if (item.classList.contains("dropping-zone")) {
           item.remove();
         } else if (item.classList.contains("dropping-zone-hover")) {
@@ -168,7 +151,7 @@ var CanvasState = /*#__PURE__*/function () {
   }]);
   return CanvasState;
 }();
-var SourceCodeDesignerState = /*#__PURE__*/function (_CanvasState) {
+var SourceCodeDesignerState = function (_CanvasState) {
   (0, _inherits2["default"])(SourceCodeDesignerState, _CanvasState);
   var _super = _createSuper(SourceCodeDesignerState);
   function SourceCodeDesignerState(mainView, designerState, sourceCodeState) {
@@ -190,9 +173,9 @@ var SourceCodeDesignerState = /*#__PURE__*/function (_CanvasState) {
         sourceCodeWidth = "100%";
         sourceCodeHeight = "95vh";
       }
-      var main = /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement("div", {
         className: col
-      }, this.designer.render(view === 'designer' || view == 'sourceCodeDesigner', selectedElement)), /*#__PURE__*/_react["default"].createElement("div", {
+      }, this.designer.render(view === 'designer' || view == 'sourceCodeDesigner', selectedElement)), _react["default"].createElement("div", {
         className: col
       }, this.sourceCode.render(view === 'sourceCode' || view == 'sourceCodeDesigner', selectedElement, sourceCodeWidth, sourceCodeHeight)));
       return main;
@@ -280,7 +263,7 @@ var SourceCodeDesignerState = /*#__PURE__*/function (_CanvasState) {
   return SourceCodeDesignerState;
 }(CanvasState);
 exports.SourceCodeDesignerState = SourceCodeDesignerState;
-var DesignerState = /*#__PURE__*/function (_CanvasState2) {
+var DesignerState = function (_CanvasState2) {
   (0, _inherits2["default"])(DesignerState, _CanvasState2);
   var _super2 = _createSuper(DesignerState);
   function DesignerState(mainView, historyManager) {
@@ -349,13 +332,7 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
       el.setAttribute("href", "".concat(_RecitEditor.Assets.CanvasDesignerCSS));
       el.setAttribute("rel", "stylesheet");
       head.appendChild(el);
-
-      // pure JS
       _RecitEditor.CanvasElement.create(body, this.mainView.onSelectElement, this.mainView.onDrop, this.mainView.onStartEditingNodeText);
-
-      // React JS
-      //body.appendChild(doc.firstChild);        
-
       body.onkeydown = this.mainView.onKey;
       body.ondrag = this.mainView.onDragStart;
     }
@@ -364,15 +341,15 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
     value: function render(show, selectedElement, width) {
       var _this3 = this;
       var posCanvas = this.iFrame === null ? null : this.iFrame.getBoundingClientRect();
-      var main = /*#__PURE__*/_react["default"].createElement(_RecitEditor.Canvas, {
+      var main = _react["default"].createElement(_RecitEditor.Canvas, {
         style: {
           display: show ? 'flex' : 'none'
         }
-      }, /*#__PURE__*/_react["default"].createElement("iframe", {
+      }, _react["default"].createElement("iframe", {
         id: "designer-canvas",
         className: "canvas",
         style: this.getStyle(width)
-      }), /*#__PURE__*/_react["default"].createElement(_RecitEditor.FloatingMenu, {
+      }), _react["default"].createElement(_RecitEditor.FloatingMenu, {
         posCanvas: posCanvas,
         selectedElement: selectedElement,
         onDragElement: this.mainView.onDragStart,
@@ -383,7 +360,7 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
         onCloneNode: this.mainView.onCloneNode,
         onSaveElement: this.mainView.onSaveTemplate,
         device: this.mainView.props.device
-      }), this.editingElement && /*#__PURE__*/_react["default"].createElement(_TextEditor.TextEditorModal, {
+      }), this.editingElement && _react["default"].createElement(_TextEditor.TextEditorModal, {
         onClose: function onClose() {
           return _this3.mainView.onFinishEditingNodeText(null);
         },
@@ -401,25 +378,12 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
         el: el,
         panels: panels
       };
-
-      //We allow body to be selected for save template button
-      //if((result.el !== null) && (result.el.tagName.toLowerCase() === 'body')){ 
-      //result.el = null;
-      //}
-
-      // if the selected element receives another click then it deselects it
       if (Object.is(result.el, selectedElement)) {
         this.htmlCleaning(this.window.document);
-
-        //result.panels.components = 1; // show templates panel
-        //result.panels.properties = 0; // hide properties panel
         result.el = null;
       } else {
         this.htmlCleaning(this.window.document);
-
-        //result.panels.components = 0; // hide templates panel
-        result.panels.properties = result.panels.properties === 0 ? 3 : result.panels.properties; // if no properties panel is visible then it displays the basic panel
-
+        result.panels.properties = result.panels.properties === 0 ? 3 : result.panels.properties;
         if (result.el !== null) {
           if (result.el.getAttribute('data-selected') === '1') {
             result.el.removeAttribute('data-selected');
@@ -473,7 +437,7 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
     value: function onDeleteElement(el) {
       if (!el) {
         return;
-      } // Element does not exist
+      }
       if (el.isSameNode(this.window.document.body)) {
         return;
       }
@@ -609,8 +573,6 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
           var sel = that.window.getSelection();
           sel.removeAllRanges();
           sel.addRange(range);
-
-          // set scroll to the end if multiline
           el.scrollTop = el.scrollHeight;
         };
         if (selectedElement === null) {
@@ -632,20 +594,11 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
   }, {
     key: "onKey",
     value: function onKey(e, editingElement) {
-      /*if (e.keyCode === 46) {//del
-          if (!editingElement || editingElement.getAttribute('contenteditable') != 'true') {
-              this.mainView.onDeleteElement(null);
-          }
-      }*/
-
       if (e.ctrlKey && e.keyCode == 90) {
-        //ctrl z
         this.historyManager.onUndo(this.mainView.setData, this.mainView.getData());
       }
       if (!e.shiftKey && e.keyCode == 13) {
-        //return
         if (editingElement && editingElement.getAttribute('contenteditable') == 'true') {
-          // prevent the default behaviour of return key pressed
           e.preventDefault();
           return false;
         }
@@ -655,7 +608,7 @@ var DesignerState = /*#__PURE__*/function (_CanvasState2) {
   return DesignerState;
 }(CanvasState);
 exports.DesignerState = DesignerState;
-var SourceCodeState = /*#__PURE__*/function (_CanvasState3) {
+var SourceCodeState = function (_CanvasState3) {
   (0, _inherits2["default"])(SourceCodeState, _CanvasState3);
   var _super3 = _createSuper(SourceCodeState);
   function SourceCodeState(mainView) {
@@ -676,7 +629,7 @@ var SourceCodeState = /*#__PURE__*/function (_CanvasState3) {
         display: show ? 'block' : 'none',
         overflowY: 'auto'
       };
-      return /*#__PURE__*/_react["default"].createElement(_RecitEditor.SourceCodeEditor, {
+      return _react["default"].createElement(_RecitEditor.SourceCodeEditor, {
         queryStr: this.queryStr,
         style: style,
         value: this.data,
@@ -739,7 +692,7 @@ var SourceCodeState = /*#__PURE__*/function (_CanvasState3) {
   return SourceCodeState;
 }(CanvasState);
 exports.SourceCodeState = SourceCodeState;
-var PreviewState = /*#__PURE__*/function (_CanvasState4) {
+var PreviewState = function (_CanvasState4) {
   (0, _inherits2["default"])(PreviewState, _CanvasState4);
   var _super4 = _createSuper(PreviewState);
   function PreviewState(mainView) {
@@ -810,10 +763,8 @@ var PreviewState = /*#__PURE__*/function (_CanvasState4) {
       bsJs.setAttribute("type", "text/javascript");
       el.onload = function () {
         return head.appendChild(bsJs);
-      }; //Wait until jQuery is loaded
-
+      };
       this.iFrame.addEventListener("click", function (e) {
-        //Prevent links from working on preview
         if (e.target.tagName == 'A' || e.target.tagName == 'BUTTON') {
           if (e.target.host.toString().length > 0 && e.target.host !== window.location.host) {
             e.preventDefault();
@@ -824,11 +775,11 @@ var PreviewState = /*#__PURE__*/function (_CanvasState4) {
   }, {
     key: "render",
     value: function render(show, selectedElement) {
-      var main = /*#__PURE__*/_react["default"].createElement(_RecitEditor.Canvas, {
+      var main = _react["default"].createElement(_RecitEditor.Canvas, {
         style: {
           display: show ? 'flex' : 'none'
         }
-      }, /*#__PURE__*/_react["default"].createElement("iframe", {
+      }, _react["default"].createElement("iframe", {
         id: "preview-canvas",
         className: "canvas",
         style: this.getStyle()
@@ -848,8 +799,6 @@ var PreviewState = /*#__PURE__*/function (_CanvasState4) {
     key: "htmlCleaning",
     value: function htmlCleaning() {
       (0, _get2["default"])((0, _getPrototypeOf2["default"])(PreviewState.prototype), "htmlCleaning", this).call(this, this.iFrame.document);
-
-      //Clean up popups before returning html
       var popup = this.iFrame.document.body.querySelectorAll('.r_popup-overlay');
       var _iterator4 = _createForOfIteratorHelper(popup),
         _step4;

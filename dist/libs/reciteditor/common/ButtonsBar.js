@@ -24,28 +24,14 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var ButtonsBar = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var ButtonsBar = function (_Component) {
   (0, _inherits2["default"])(ButtonsBar, _Component);
   var _super = _createSuper(ButtonsBar);
   function ButtonsBar(props) {
@@ -114,283 +100,283 @@ var ButtonsBar = /*#__PURE__*/function (_Component) {
         text: '70',
         value: '70px'
       }];
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         style: {
           backgroundColor: style.backgroundColor,
           minHeight: 50,
           padding: ".5rem"
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonToolbar, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }, _react["default"].createElement(_reactBootstrap.ButtonToolbar, null, _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, this.props.options.layoutBuilder && /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, this.props.options.layoutBuilder && _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.props.onShowHtmlEditor
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faFileCode,
         title: _RecitEditor.i18n.get_string('returntohtmleditor')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.props.onCodeSource
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faCode,
         title: _RecitEditor.i18n.get_string('htmleditor')
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }))), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(DropdownSetCssProp, {
+      }, _react["default"].createElement(DropdownSetCssProp, {
         selection: selection,
         cssProp: "font-size",
         defaultValue: "16px",
         dataProvider: fontSizes
-      }), /*#__PURE__*/_react["default"].createElement(BtnSetCssProp, {
+      }), _react["default"].createElement(BtnSetCssProp, {
         selection: selection,
         cssProp: "font-weight",
         defaultValue: "normal",
         value: "bold",
         icon: _freeSolidSvgIcons.faBold,
         title: _RecitEditor.i18n.get_string('bold')
-      }), /*#__PURE__*/_react["default"].createElement(BtnSetCssProp, {
+      }), _react["default"].createElement(BtnSetCssProp, {
         selection: selection,
         cssProp: "font-style",
         defaultValue: "normal",
         value: "italic",
         icon: _freeSolidSvgIcons.faItalic,
         title: _RecitEditor.i18n.get_string('italic')
-      }), /*#__PURE__*/_react["default"].createElement(BtnSetCssProp, {
+      }), _react["default"].createElement(BtnSetCssProp, {
         selection: selection,
         cssProp: "text-decoration",
         defaultValue: "normal",
         value: "underline",
         icon: _freeSolidSvgIcons.faUnderline,
         title: _RecitEditor.i18n.get_string('underline')
-      }), /*#__PURE__*/_react["default"].createElement(BtnSetCssProp, {
+      }), _react["default"].createElement(BtnSetCssProp, {
         selection: selection,
         cssProp: "text-decoration",
         defaultValue: "normal",
         value: "line-through",
         icon: _freeSolidSvgIcons.faStrikethrough,
         title: _RecitEditor.i18n.get_string('strikethrough')
-      }), /*#__PURE__*/_react["default"].createElement(BtnUnsetCssProp, {
+      }), _react["default"].createElement(BtnUnsetCssProp, {
         selection: selection,
         cssProp: ["fontSize", "fontWeight", "fontStyle", "textDecoration"],
         icon: _freeSolidSvgIcons.faRemoveFormat,
         defaultValue: "",
         title: _RecitEditor.i18n.get_string('removeformat')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      })), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(BtnColorPicker, {
+      }, _react["default"].createElement(BtnColorPicker, {
         selection: selection,
         cssProp: "backgroundColor",
         icon: _freeSolidSvgIcons.faFillDrip,
         defaultValue: "#FFFFFF",
         title: _RecitEditor.i18n.get_string('bgcolor')
-      }), /*#__PURE__*/_react["default"].createElement(BtnUnsetCssProp, {
+      }), _react["default"].createElement(BtnUnsetCssProp, {
         selection: selection,
         cssProp: ["backgroundColor"],
         icon: _freeSolidSvgIcons.faRemoveFormat,
         defaultValue: "#FFFFFF",
         title: _RecitEditor.i18n.get_string('removebgcolor')
-      }), /*#__PURE__*/_react["default"].createElement(BtnColorPicker, {
+      }), _react["default"].createElement(BtnColorPicker, {
         selection: selection,
         cssProp: "color",
         icon: _freeSolidSvgIcons.faFont,
         defaultValue: "#000000",
         title: _RecitEditor.i18n.get_string('fontcolor')
-      }), /*#__PURE__*/_react["default"].createElement(BtnUnsetCssProp, {
+      }), _react["default"].createElement(BtnUnsetCssProp, {
         selection: selection,
         cssProp: ["color"],
         icon: _freeSolidSvgIcons.faRemoveFormat,
         defaultValue: "#000000",
         title: _RecitEditor.i18n.get_string('removefontcolor')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      })), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: function onClick() {
           return _this2.applyNumerationTypeset("ul");
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faListUl,
         title: _RecitEditor.i18n.get_string('list')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: function onClick() {
           return _this2.applyNumerationTypeset("ol");
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faListOl,
         title: _RecitEditor.i18n.get_string('numberedlist')
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }))), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(BtnAlignment, {
+      }, _react["default"].createElement(BtnAlignment, {
         selection: selection,
         cssProp: "left",
         icon: _freeSolidSvgIcons.faAlignLeft,
         title: _RecitEditor.i18n.get_string('alignleft')
-      }), /*#__PURE__*/_react["default"].createElement(BtnAlignment, {
+      }), _react["default"].createElement(BtnAlignment, {
         selection: selection,
         cssProp: "center",
         icon: _freeSolidSvgIcons.faAlignCenter,
         title: _RecitEditor.i18n.get_string('aligncenter')
-      }), /*#__PURE__*/_react["default"].createElement(BtnAlignment, {
+      }), _react["default"].createElement(BtnAlignment, {
         selection: selection,
         cssProp: "right",
         icon: _freeSolidSvgIcons.faAlignRight,
         title: _RecitEditor.i18n.get_string('alignright')
-      }), /*#__PURE__*/_react["default"].createElement(BtnAlignment, {
+      }), _react["default"].createElement(BtnAlignment, {
         selection: selection,
         cssProp: "justify",
         icon: _freeSolidSvgIcons.faAlignJustify,
         title: _RecitEditor.i18n.get_string('justify')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      })), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: function onClick() {
           return _this2.applyIndentTypeset("outdent");
         },
         title: _RecitEditor.i18n.get_string('outdent')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faOutdent
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: function onClick() {
           return _this2.applyIndentTypeset("indent");
         },
         title: _RecitEditor.i18n.get_string('indent')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faIndent
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }))), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.onAddLink,
         title: _RecitEditor.i18n.get_string('link')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faLink
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.onRemoveLink,
         title: _RecitEditor.i18n.get_string('removelink')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faUnlink
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }))), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.props.onUndo,
         disabled: history.undo.length === 0,
         title: _RecitEditor.i18n.get_string('undo')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faUndo
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.props.onRedo,
         disabled: history.redo.length === 0,
         title: _RecitEditor.i18n.get_string('redo')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRedo
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }))), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Button, {
         variant: this.props.flags.highlighter ? 'warning' : ButtonsBar.Layout.btnNormal,
         onClick: this.props.onHighlighter,
         title: _RecitEditor.i18n.get_string('highlighttool')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faHighlighter
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         variant: this.props.flags.mathFormula ? 'warning' : ButtonsBar.Layout.btnNormal,
         onClick: this.props.onMathFormula,
         title: _RecitEditor.i18n.get_string('math')
-      }, /*#__PURE__*/_react["default"].createElement("i", null, /*#__PURE__*/_react["default"].createElement("b", null, "f(x)"))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement("i", null, _react["default"].createElement("b", null, "f(x)"))), _react["default"].createElement(_reactBootstrap.Button, {
         variant: this.props.flags.mathFormula ? 'warning' : ButtonsBar.Layout.btnNormal,
         id: "btn-addimg",
         onClick: function onClick() {
           return _this2.onAddImageModal(true);
         },
         title: _RecitEditor.i18n.get_string('addimage')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faImage
-      })), /*#__PURE__*/_react["default"].createElement(_ScreenCapture.ScreenCapture, {
+      })), _react["default"].createElement(_ScreenCapture.ScreenCapture, {
         onEndCapture: this.props.onScreenCapture
       }, function (_ref) {
         var onStartCapture = _ref.onStartCapture;
-        return /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+        return _react["default"].createElement(_reactBootstrap.Button, {
           variant: ButtonsBar.Layout.btnNormal,
           onClick: onStartCapture,
           title: _RecitEditor.i18n.get_string('screenshot')
-        }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+        }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
           icon: _freeSolidSvgIcons.faCamera
         }));
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      })), _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         className: "mr-2 mb-2",
         size: "sm",
         style: {
           border: style.border,
           borderRadius: style.borderRadius
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.onRemoveTypeset,
         title: _RecitEditor.i18n.get_string('removeformat')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat
-      })))), this.state.modalInputLink && /*#__PURE__*/_react["default"].createElement(InputLink, {
+      })))), this.state.modalInputLink && _react["default"].createElement(InputLink, {
         selection: this.props.selection,
         onClose: this.onCloseInputLink
-      }), this.state.modalInputImage && /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal, {
+      }), this.state.modalInputImage && _react["default"].createElement(_reactBootstrap.Modal, {
         key: "2",
         show: this.state.modalInputImage,
         onHide: function onHide() {
           return _this2.onAddImageModal(false);
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Header, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Header, {
         closeButton: true
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Title, null, _RecitEditor.i18n.get_string('addimage'))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Body, null, /*#__PURE__*/_react["default"].createElement(_RecitEditor.ImageSrc, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Title, null, _RecitEditor.i18n.get_string('addimage'))), _react["default"].createElement(_reactBootstrap.Modal.Body, null, _react["default"].createElement(_RecitEditor.ImageSrc, {
         name: "Image",
         value: "",
         placeholder: _RecitEditor.i18n.get_string('imageurl'),
@@ -402,7 +388,7 @@ var ButtonsBar = /*#__PURE__*/function (_Component) {
   }, {
     key: "onAddImageModal",
     value: function onAddImageModal(toggle) {
-      document.getElementById('btn-addimg').blur(); //Unselect the button as popup will reopen when pressing enter
+      document.getElementById('btn-addimg').blur();
       this.setState({
         modalInputImage: toggle
       });
@@ -431,8 +417,6 @@ var ButtonsBar = /*#__PURE__*/function (_Component) {
       if (sel === null) {
         return;
       }
-
-      // if there is no text selected then it quits
       if (sel.sel.isCollapsed) {
         return;
       }
@@ -443,7 +427,6 @@ var ButtonsBar = /*#__PURE__*/function (_Component) {
         newNode.setAttribute("data-indent", "1");
         sel.range.insertNode(newNode);
       } else {
-        //let node = (sel.anchorNode instanceof Element ? sel.anchorNode :  sel.anchorNode.parentElement);
         if (sel.node.getAttribute("data-indent") === "1") {
           sel.parentNode.insertAdjacentHTML("beforeend", sel.node.innerHTML);
           sel.node.remove();
@@ -487,8 +470,6 @@ var ButtonsBar = /*#__PURE__*/function (_Component) {
       if (sel === null) {
         return;
       }
-
-      // if there is no text selected then it quits
       if (sel.sel.isCollapsed) {
         return;
       }
@@ -498,8 +479,6 @@ var ButtonsBar = /*#__PURE__*/function (_Component) {
       sel.node.style.fontSize = '';
       sel.node.style.fontWeight = '';
       sel.node.style.textDecoration = '';
-
-      // && (sel.sel.extentOffset - sel.sel.anchorOffset > 0)
       if (!sel.isNodeRoot) {
         sel.parentNode.insertAdjacentHTML("beforeend", sel.node.innerHTML);
         sel.node.remove();
@@ -527,7 +506,7 @@ ButtonsBar.Layout = {
   btnNormal: "light",
   btnToggled: "secondary"
 };
-var DropdownSetCssProp = /*#__PURE__*/function (_Component2) {
+var DropdownSetCssProp = function (_Component2) {
   (0, _inherits2["default"])(DropdownSetCssProp, _Component2);
   var _super2 = _createSuper(DropdownSetCssProp);
   function DropdownSetCssProp(props) {
@@ -542,12 +521,12 @@ var DropdownSetCssProp = /*#__PURE__*/function (_Component2) {
     value: function render() {
       var _this4 = this;
       var value = this.getCurrentValue();
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.DropdownButton, {
+      var main = _react["default"].createElement(_reactBootstrap.DropdownButton, {
         variant: ButtonsBar.Layout.btnNormal,
         as: _reactBootstrap.ButtonGroup,
         title: value
       }, this.props.dataProvider.map(function (item, index) {
-        return /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Dropdown.Item, {
+        return _react["default"].createElement(_reactBootstrap.Dropdown.Item, {
           key: index,
           onClick: function onClick(event) {
             return _this4.onClick(event, item);
@@ -574,8 +553,6 @@ var DropdownSetCssProp = /*#__PURE__*/function (_Component2) {
       if (sel === null) {
         return;
       }
-
-      // if there is no text selected then it quits
       if (sel.sel.isCollapsed) {
         return;
       }
@@ -591,7 +568,6 @@ var DropdownSetCssProp = /*#__PURE__*/function (_Component2) {
         _newNode.style[prop] = item.value;
         sel.range.insertNode(_newNode);
       } else {
-        //sel.node.outerHTML = sel.node.innerHTML;
         sel.node.style[prop] = item.value;
       }
     }
@@ -606,7 +582,7 @@ DropdownSetCssProp.defaultProps = {
   dataProvider: "",
   title: ""
 };
-var BtnSetCssProp = /*#__PURE__*/function (_Component3) {
+var BtnSetCssProp = function (_Component3) {
   (0, _inherits2["default"])(BtnSetCssProp, _Component3);
   var _super3 = _createSuper(BtnSetCssProp);
   function BtnSetCssProp(props) {
@@ -623,11 +599,11 @@ var BtnSetCssProp = /*#__PURE__*/function (_Component3) {
       if (this.props.variant.length > 0) {
         variant = this.props.variant;
       }
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      var main = _react["default"].createElement(_reactBootstrap.Button, {
         variant: variant,
         title: this.props.title,
         onClick: this.onClick
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: this.props.icon
       }), " ");
       return main;
@@ -662,8 +638,6 @@ var BtnSetCssProp = /*#__PURE__*/function (_Component3) {
       if (sel === null || !sel.isSelection) {
         return;
       }
-
-      // if there is no text selected then it quits
       if (sel.sel.isCollapsed) {
         return;
       }
@@ -672,18 +646,16 @@ var BtnSetCssProp = /*#__PURE__*/function (_Component3) {
       if (selection.rangeCount) {
         var range = selection.getRangeAt(0);
         var clonedSelection = range.cloneContents();
-        var dummydiv = document.createElement('div'); //We have to create a dummy div to get the selected document fragment, fragment doesnt have innerhtml prop
+        var dummydiv = document.createElement('div');
         dummydiv.appendChild(clonedSelection);
         var text = dummydiv.innerHTML;
         var parent = range.startContainer.parentNode;
         var offset = _RecitEditor.Utils.getCaretCharacterOffsetWithin(parent);
         if (this.props.tagName.length > 0 && this.props.tagName.toUpperCase() != parent.tagName) {
-          //If the prop is a tag name
           var inner = document.createElement(this.props.tagName);
           inner.innerHTML = text;
           parent.innerHTML = _RecitEditor.Utils.replaceAt(parent.innerHTML, text, inner.outerHTML, offset);
         } else if (text == parent.innerHTML && !parent.style[prop]) {
-          //If the text selectioned is the whole tag, set style on the tag rather than create a span
           parent.style[prop] = this.getValue();
         } else if (range.startOffset > 0 && !parent.style[prop]) {
           var _inner = document.createElement("span");
@@ -691,7 +663,6 @@ var BtnSetCssProp = /*#__PURE__*/function (_Component3) {
           _inner.innerHTML = text;
           parent.innerHTML = _RecitEditor.Utils.replaceAt(parent.innerHTML, text, _inner.outerHTML, offset);
         } else if (parent.style && parent.style[prop] || this.props.tagName.toUpperCase() == parent.tagName) {
-          //Undo the style
           parent.outerHTML = parent.innerHTML;
         }
       }
@@ -718,7 +689,7 @@ BtnSetCssProp.defaultProps = {
   title: "",
   variant: ""
 };
-var BtnColorPicker = /*#__PURE__*/function (_Component4) {
+var BtnColorPicker = function (_Component4) {
   (0, _inherits2["default"])(BtnColorPicker, _Component4);
   var _super4 = _createSuper(BtnColorPicker);
   function BtnColorPicker(props) {
@@ -739,12 +710,12 @@ var BtnColorPicker = /*#__PURE__*/function (_Component4) {
       if (this.props.selection !== null && this.props.selection.node !== null) {
         value = this.RGBToHex(this.props.selection.node.style[this.props.cssProp]);
       }
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      var main = _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         title: this.props.title
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: this.props.icon
-      }), " ", /*#__PURE__*/_react["default"].createElement("input", {
+      }), " ", _react["default"].createElement("input", {
         type: "color",
         onChange: this.onChange,
         onBlur: this.onBlur,
@@ -756,37 +727,18 @@ var BtnColorPicker = /*#__PURE__*/function (_Component4) {
     key: "RGBToHex",
     value: function RGBToHex(rgb) {
       rgb = rgb || "rgb(0,0,0)";
-
-      // Choose correct separator
       var sep = rgb.indexOf(",") > -1 ? "," : " ";
-      // Turn "rgb(r,g,b)" into [r,g,b]
       rgb = rgb.substr(4).split(")")[0].split(sep);
-
-      // Convert %s to 0–255
       for (var R in rgb) {
         var _r = rgb[R];
         if (_r.indexOf("%") > -1) rgb[R] = Math.round(_r.substr(0, _r.length - 1) / 100 * 255);
-        /* Example:
-        75% -> 191
-        75/100 = 0.75, * 255 = 191.25 -> 191
-        */
       }
-
       var r = (+rgb[0]).toString(16),
         g = (+rgb[1]).toString(16),
         b = (+rgb[2]).toString(16);
       if (r.length === 1) r = "0" + r;
       if (g.length === 1) g = "0" + g;
       if (b.length === 1) b = "0" + b;
-
-      /*
-          Now we can supply values like either of these:
-          rgb(255,25,2)
-          rgb(255 25 2)
-          rgb(50%,30%,10%)
-          rgb(50% 30% 10%)
-      */
-
       return "#" + r + g + b;
     }
   }, {
@@ -803,8 +755,6 @@ var BtnColorPicker = /*#__PURE__*/function (_Component4) {
       if (sel === null) {
         return;
       }
-
-      // if there is no text selected then it quits
       if (sel.sel.isCollapsed) {
         return;
       }
@@ -813,7 +763,6 @@ var BtnColorPicker = /*#__PURE__*/function (_Component4) {
       if (sel.isNodeRoot) {
         var newNode = document.createElement("span");
         newNode.appendChild(sel.range.extractContents());
-        //sel.node.appendChild(newNode);
         sel.range.insertNode(newNode);
         newNode.style[prop] = color;
       } else if (sel.subSelection) {
@@ -840,7 +789,7 @@ BtnColorPicker.defaultProps = {
   onClick: null,
   title: ""
 };
-var BtnUnsetCssProp = /*#__PURE__*/function (_Component5) {
+var BtnUnsetCssProp = function (_Component5) {
   (0, _inherits2["default"])(BtnUnsetCssProp, _Component5);
   var _super5 = _createSuper(BtnUnsetCssProp);
   function BtnUnsetCssProp(props) {
@@ -853,11 +802,11 @@ var BtnUnsetCssProp = /*#__PURE__*/function (_Component5) {
   (0, _createClass2["default"])(BtnUnsetCssProp, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      return _react["default"].createElement(_reactBootstrap.Button, {
         variant: ButtonsBar.Layout.btnNormal,
         onClick: this.onClick,
         title: this.props.title
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: this.props.icon
       }));
     }
@@ -890,59 +839,6 @@ var BtnUnsetCssProp = /*#__PURE__*/function (_Component5) {
   }]);
   return BtnUnsetCssProp;
 }(_react.Component);
-/*class BtnSetCssClass extends Component{
-    static defaultProps = {
-        selection: null,
-        icon: null,
-        text: null,
-        cssClass: "",
-        onClick: null,
-        title: ""
-    };
-
-    constructor(props){
-        super(props);
-
-        this.onClick = this.onClick.bind(this);
-    }
-
-    render(){
-        let sel = this.props.selection;
-        let variant = "secondary";
-
-        if((sel !== null) && (sel.node !== null)){
-            variant = (sel.node.classList.contains(this.props.cssClass) ? "outline-secondary" : "secondary");
-        }
-
-        return <Button variant={variant} onClick={this.onClick} title={this.props.title}><FontAwesomeIcon icon={this.props.icon}/>{this.props.text}</Button>
-    }
-
-    onClick(event){
-        let sel = this.props.selection;
-        let option = this.props.cssClass;
-        
-        if(sel === null){ return; }
-        
-        if(sel.isNodeRoot){
-            let newNode = document.createElement("span");
-            newNode.classList.add(option);
-            newNode.appendChild(sel.range.extractContents());
-            sel.node.appendChild(newNode);
-        }
-        else{
-            if(sel.node.classList.contains(option)){
-                sel.node.classList.remove(option);
-            }
-            else{
-                sel.node.classList.add(option);
-            }
-        }
-
-        if(this.props.onClick){
-            this.props.onClick(event);
-        }
-    }
-}*/
 BtnUnsetCssProp.defaultProps = {
   selection: null,
   icon: null,
@@ -951,7 +847,7 @@ BtnUnsetCssProp.defaultProps = {
   onClick: null,
   title: ""
 };
-var BtnAlignment = /*#__PURE__*/function (_Component6) {
+var BtnAlignment = function (_Component6) {
   (0, _inherits2["default"])(BtnAlignment, _Component6);
   var _super6 = _createSuper(BtnAlignment);
   function BtnAlignment(props) {
@@ -969,11 +865,11 @@ var BtnAlignment = /*#__PURE__*/function (_Component6) {
       if (sel !== null && sel.node !== null) {
         variant = sel.node.style.textAlign === this.props.cssProp ? ButtonsBar.Layout.btnToggled : ButtonsBar.Layout.btnNormal;
       }
-      return /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      return _react["default"].createElement(_reactBootstrap.Button, {
         variant: variant,
         onClick: this.onClick,
         title: this.props.title
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: this.props.icon
       }));
     }
@@ -999,7 +895,6 @@ var BtnAlignment = /*#__PURE__*/function (_Component6) {
           sel.parentNode.style.textAlign = option;
         } else {
           var _newNode3 = document.createElement("p");
-          //newNode.appendChild(sel.range.extractContents());
           _newNode3.style.textAlign = option;
           _newNode3.appendChild(sel.node);
           sel.parentNode.appendChild(_newNode3);
@@ -1020,7 +915,7 @@ BtnAlignment.defaultProps = {
   onClick: null,
   title: ""
 };
-var InputLink = /*#__PURE__*/function (_Component7) {
+var InputLink = function (_Component7) {
   (0, _inherits2["default"])(InputLink, _Component7);
   var _super7 = _createSuper(InputLink);
   function InputLink(props) {
@@ -1042,30 +937,30 @@ var InputLink = /*#__PURE__*/function (_Component7) {
   (0, _createClass2["default"])(InputLink, [{
     key: "render",
     value: function render() {
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal, {
+      var main = _react["default"].createElement(_reactBootstrap.Modal, {
         show: true,
         onHide: this.props.onClose
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Header, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Header, {
         closeButton: true
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Title, null, _RecitEditor.i18n.get_string('createlink'))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Body, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Group, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Title, null, _RecitEditor.i18n.get_string('createlink'))), _react["default"].createElement(_reactBootstrap.Modal.Body, null, _react["default"].createElement(_reactBootstrap.Form, null, _react["default"].createElement(_reactBootstrap.Form.Group, {
         controlId: "formURL"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Label, null, _RecitEditor.i18n.get_string('inputurl')), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Control, {
+      }, _react["default"].createElement(_reactBootstrap.Form.Label, null, _RecitEditor.i18n.get_string('inputurl')), _react["default"].createElement(_reactBootstrap.Form.Control, {
         name: "url",
         type: "text",
         value: this.state.url,
         placeholder: "http://",
         onChange: this.onChange
-      }), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Text, {
+      }), _react["default"].createElement(_reactBootstrap.Form.Text, {
         className: "text-muted"
-      }, "".concat(_RecitEditor.i18n.get_string('texttoshow'), ": ").concat(this.state.text))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Group, {
+      }, "".concat(_RecitEditor.i18n.get_string('texttoshow'), ": ").concat(this.state.text))), _react["default"].createElement(_reactBootstrap.Form.Group, {
         controlId: "formTarget"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Form.Check, {
+      }, _react["default"].createElement(_reactBootstrap.Form.Check, {
         name: "target",
         type: "checkbox",
         checked: this.state.target,
         label: _RecitEditor.i18n.get_string('openinnewwindow'),
         onChange: this.onChange
-      })))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Footer, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })))), _react["default"].createElement(_reactBootstrap.Modal.Footer, null, _react["default"].createElement(_reactBootstrap.Button, {
         variant: "primary",
         onClick: this.onSave
       }, _RecitEditor.i18n.get_string('createlink'))));

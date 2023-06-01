@@ -20,28 +20,14 @@ var _RecitEditor = require("../../RecitEditor");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var GridBuilder = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var GridBuilder = function (_Component) {
   (0, _inherits2["default"])(GridBuilder, _Component);
   var _super = _createSuper(GridBuilder);
   function GridBuilder(props) {
@@ -104,7 +90,7 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
       var _this2 = this;
       var numcols = this.state.data.numcols;
       var cols = this.state.data.cols;
-      var modal = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal, {
+      var modal = _react["default"].createElement(_reactBootstrap.Modal, {
         key: "3",
         show: this.state.modal,
         onHide: function onHide() {
@@ -113,40 +99,40 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
         size: "xl",
         backdrop: "static",
         keyboard: false
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Header, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Header, {
         closeButton: true
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Title, null, this.props.text)), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Body, null, /*#__PURE__*/_react["default"].createElement("div", {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Title, null, this.props.text)), _react["default"].createElement(_reactBootstrap.Modal.Body, null, _react["default"].createElement("div", {
         className: "row"
-      }, /*#__PURE__*/_react["default"].createElement("div", {
+      }, _react["default"].createElement("div", {
         className: "col-md-6"
-      }, /*#__PURE__*/_react["default"].createElement("h5", null, _RecitEditor.i18n.get_string('howmuchcols')), /*#__PURE__*/_react["default"].createElement("select", {
+      }, _react["default"].createElement("h5", null, _RecitEditor.i18n.get_string('howmuchcols')), _react["default"].createElement("select", {
         value: numcols,
         name: "numcols",
         onChange: this.onDataChange
       }, function () {
         var arr = [];
-        arr.push( /*#__PURE__*/_react["default"].createElement("option", {
+        arr.push(_react["default"].createElement("option", {
           key: 0,
           value: "0",
           disabled: true
         }, _RecitEditor.i18n.get_string('selectoption')));
         for (var i = 1; i <= 4; i++) {
-          arr.push( /*#__PURE__*/_react["default"].createElement("option", {
+          arr.push(_react["default"].createElement("option", {
             key: i,
             value: i
           }, i));
         }
         return arr;
-      }())), /*#__PURE__*/_react["default"].createElement("div", {
+      }())), _react["default"].createElement("div", {
         className: "col-md-6"
-      }, /*#__PURE__*/_react["default"].createElement("h5", null, _RecitEditor.i18n.get_string('responsive')), /*#__PURE__*/_react["default"].createElement(_RecitEditor.ToggleButtons, {
+      }, _react["default"].createElement("h5", null, _RecitEditor.i18n.get_string('responsive')), _react["default"].createElement(_RecitEditor.ToggleButtons, {
         type: "radio",
         bsSize: "sm",
         className: "gridbuilder_toggle",
         name: "responsive",
         value: this.state.data.responsive,
         options: [{
-          text: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+          text: _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
             icon: _freeSolidSvgIcons.faTabletAlt,
             title: "MD",
             style: {
@@ -155,20 +141,20 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
           }), " md"),
           value: 'md'
         }, {
-          text: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+          text: _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
             icon: _freeSolidSvgIcons.faLaptop,
             title: "LG"
           }), " lg"),
           value: 'lg'
         }, {
-          text: /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+          text: _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
             icon: _freeSolidSvgIcons.faDesktop,
             title: "XL"
           }), " xl"),
           value: 'xl'
         }],
         onChange: this.onDataChange
-      }), /*#__PURE__*/_react["default"].createElement("h5", null, _RecitEditor.i18n.get_string('verticalspace')), /*#__PURE__*/_react["default"].createElement(_RecitEditor.ToggleButtons, {
+      }), _react["default"].createElement("h5", null, _RecitEditor.i18n.get_string('verticalspace')), _react["default"].createElement(_RecitEditor.ToggleButtons, {
         type: "radio",
         bsSize: "sm",
         className: "gridbuilder_toggle",
@@ -182,13 +168,13 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
           value: 0
         }],
         onChange: this.onDataChange
-      }))), numcols > 0 && /*#__PURE__*/_react["default"].createElement("div", {
+      }))), numcols > 0 && _react["default"].createElement("div", {
         className: "p-1 mt-2"
-      }, /*#__PURE__*/_react["default"].createElement("h5", {
+      }, _react["default"].createElement("h5", {
         className: "mt-3"
-      }, _RecitEditor.i18n.get_string('definecols')), /*#__PURE__*/_react["default"].createElement("p", {
+      }, _RecitEditor.i18n.get_string('definecols')), _react["default"].createElement("p", {
         className: "text-muted"
-      }, _RecitEditor.i18n.get_string('coltotal')), /*#__PURE__*/_react["default"].createElement("div", {
+      }, _RecitEditor.i18n.get_string('coltotal')), _react["default"].createElement("div", {
         className: 'row m-auto',
         style: {
           maxWidth: this.getPreviewMaxWidth(),
@@ -198,7 +184,7 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
         var arr = [];
         for (var i = 1; i <= numcols; i++) {
           var colNum = cols[i];
-          arr.push( /*#__PURE__*/_react["default"].createElement("div", {
+          arr.push(_react["default"].createElement("div", {
             key: i,
             className: 'border ' + _this2.getColClasses(i, true),
             style: {
@@ -206,42 +192,42 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
               maxHeight: '360px',
               overflow: 'hidden'
             }
-          }, /*#__PURE__*/_react["default"].createElement("select", {
+          }, _react["default"].createElement("select", {
             className: "mt-2",
             value: colNum[_this2.state.data.responsive] || 'na',
             name: i,
             onChange: _this2.onColChange
           }, function () {
-            var arr = [/*#__PURE__*/_react["default"].createElement("option", {
+            var arr = [_react["default"].createElement("option", {
               key: "0",
               value: "na"
             }, _RecitEditor.i18n.get_string('herit'))];
             for (var _i = 1; _i <= 12; _i++) {
-              arr.push( /*#__PURE__*/_react["default"].createElement("option", {
+              arr.push(_react["default"].createElement("option", {
                 key: _i,
                 value: _i
               }, _i));
             }
             return arr;
-          }()), /*#__PURE__*/_react["default"].createElement("br", null), "Col #", i, /*#__PURE__*/_react["default"].createElement("br", null), /*#__PURE__*/_react["default"].createElement("span", {
+          }()), _react["default"].createElement("br", null), "Col #", i, _react["default"].createElement("br", null), _react["default"].createElement("span", {
             className: "badge badge-warning"
-          }, _this2.getColClasses(i)), /*#__PURE__*/_react["default"].createElement("br", null), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqu"));
+          }, _this2.getColClasses(i)), _react["default"].createElement("br", null), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqu"));
         }
         return arr;
-      }()))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Footer, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }()))), _react["default"].createElement(_reactBootstrap.Modal.Footer, null, _react["default"].createElement(_reactBootstrap.Button, {
         variant: "secondary",
         onClick: function onClick() {
           return _this2.onClose();
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTimes,
         title: _RecitEditor.i18n.get_string('cancel')
-      }), " ", _RecitEditor.i18n.get_string('cancel')), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }), " ", _RecitEditor.i18n.get_string('cancel')), _react["default"].createElement(_reactBootstrap.Button, {
         variant: "success",
         onClick: function onClick() {
           return _this2.onSave();
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSave,
         title: _RecitEditor.i18n.get_string('save')
       }), " ", _RecitEditor.i18n.get_string('create'))));
@@ -322,7 +308,6 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
   }, {
     key: "onSave",
     value: function onSave() {
-      //if (!confirm(i18n.get_string('confirmreplace'))) return;
       var numcols = this.state.data.numcols;
       if (numcols == 0) return;
       var html = '<div class="row flex-md-row justify-content-md-center">';
@@ -344,7 +329,6 @@ var GridBuilder = /*#__PURE__*/function (_Component) {
   }, {
     key: "onClose",
     value: function onClose() {
-      //       this.props.value.removeAttribute('data-empty');
       this.setState({
         modal: false
       });

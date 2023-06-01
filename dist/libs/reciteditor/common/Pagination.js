@@ -17,7 +17,7 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var Pagination = /*#__PURE__*/function (_Component) {
+var Pagination = function (_Component) {
   (0, _inherits2["default"])(Pagination, _Component);
   var _super = _createSuper(Pagination);
   function Pagination(props) {
@@ -32,14 +32,14 @@ var Pagination = /*#__PURE__*/function (_Component) {
       var count = this.props.pagination.count;
       var pageCount = Math.ceil(count / this.props.pagination.item_per_page);
       if (pageCount > 1) {
-        pagination.push( /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination.First, {
+        pagination.push(_react["default"].createElement(_reactBootstrap.Pagination.First, {
           key: "first",
           disabled: this.props.pagination.current_page == 1,
           onClick: function onClick() {
             return _this.props.onChangePage(1);
           }
         }));
-        pagination.push( /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination.Prev, {
+        pagination.push(_react["default"].createElement(_reactBootstrap.Pagination.Prev, {
           key: "prev",
           disabled: this.props.pagination.current_page == 1,
           onClick: function onClick() {
@@ -57,7 +57,7 @@ var Pagination = /*#__PURE__*/function (_Component) {
               this.pushPage(1, pagination);
             }
             if (_p - 2 > 1) {
-              pagination.push( /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination.Ellipsis, {
+              pagination.push(_react["default"].createElement(_reactBootstrap.Pagination.Ellipsis, {
                 key: "el" + _p
               }));
             }
@@ -67,7 +67,7 @@ var Pagination = /*#__PURE__*/function (_Component) {
           if (_p < pageCount) {
             this.pushPage(_p + 1, pagination);
             if (_p + 1 < pageCount) {
-              pagination.push( /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination.Ellipsis, {
+              pagination.push(_react["default"].createElement(_reactBootstrap.Pagination.Ellipsis, {
                 key: "elend" + _p
               }));
             }
@@ -76,14 +76,14 @@ var Pagination = /*#__PURE__*/function (_Component) {
             }
           }
         }
-        pagination.push( /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination.Next, {
+        pagination.push(_react["default"].createElement(_reactBootstrap.Pagination.Next, {
           key: "next",
           disabled: this.props.pagination.current_page == pageCount,
           onClick: function onClick() {
             return _this.props.onChangePage(_this.props.pagination.current_page + 1);
           }
         }));
-        pagination.push( /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination.Last, {
+        pagination.push(_react["default"].createElement(_reactBootstrap.Pagination.Last, {
           key: "last",
           disabled: this.props.pagination.current_page == pageCount,
           onClick: function onClick() {
@@ -97,7 +97,7 @@ var Pagination = /*#__PURE__*/function (_Component) {
     key: "pushPage",
     value: function pushPage(p, pagination) {
       var _this2 = this;
-      pagination.push( /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination.Item, {
+      pagination.push(_react["default"].createElement(_reactBootstrap.Pagination.Item, {
         key: p,
         onClick: function onClick() {
           return _this2.props.onChangePage(p);
@@ -108,7 +108,7 @@ var Pagination = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Pagination, {
+      var main = _react["default"].createElement(_reactBootstrap.Pagination, {
         style: {
           display: 'flex',
           justifyContent: 'center'

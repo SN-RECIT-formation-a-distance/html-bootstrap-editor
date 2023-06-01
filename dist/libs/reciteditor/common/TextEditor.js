@@ -28,7 +28,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var TextEditorModal = /*#__PURE__*/function (_React$Component) {
+var TextEditorModal = function (_React$Component) {
   (0, _inherits2["default"])(TextEditorModal, _React$Component);
   var _super = _createSuper(TextEditorModal);
   function TextEditorModal(props) {
@@ -36,7 +36,7 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
     (0, _classCallCheck2["default"])(this, TextEditorModal);
     _this = _super.call(this, props);
     _this.onDataChange = _this.onDataChange.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.editorRef = /*#__PURE__*/_react["default"].createRef();
+    _this.editorRef = _react["default"].createRef();
     var tag = TextEditorModal.allowedTags[props.element.tagName.toLowerCase()];
     if (!tag) console.error('Text editor received unknown tag');
     _this.initModules();
@@ -52,78 +52,78 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
     key: "render",
     value: function render() {
       var _this2 = this;
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal, {
+      var main = _react["default"].createElement(_reactBootstrap.Modal, {
         show: true,
         onHide: this.props.onClose,
         size: "lg",
         backdrop: "static",
         keyboard: false
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Body, null, /*#__PURE__*/_react["default"].createElement("div", {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Body, null, _react["default"].createElement("div", {
         id: "cktoolbar"
-      }, /*#__PURE__*/_react["default"].createElement("span", {
+      }, _react["default"].createElement("span", {
         className: "ql-formats"
-      }, /*#__PURE__*/_react["default"].createElement("button", {
+      }, _react["default"].createElement("button", {
         className: "ql-bold",
         title: _Utils.i18n.get_string('bold')
-      }), /*#__PURE__*/_react["default"].createElement("button", {
+      }), _react["default"].createElement("button", {
         className: "ql-italic",
         title: _Utils.i18n.get_string('italic')
-      }), /*#__PURE__*/_react["default"].createElement("button", {
+      }), _react["default"].createElement("button", {
         className: "ql-underline",
         title: _Utils.i18n.get_string('underline')
-      }), /*#__PURE__*/_react["default"].createElement("button", {
+      }), _react["default"].createElement("button", {
         className: "ql-strike",
         title: _Utils.i18n.get_string('strikethrough')
-      })), /*#__PURE__*/_react["default"].createElement("span", {
+      })), _react["default"].createElement("span", {
         className: "ql-formats"
-      }, /*#__PURE__*/_react["default"].createElement("button", {
+      }, _react["default"].createElement("button", {
         className: "ql-link",
         title: _Utils.i18n.get_string('link')
-      })), /*#__PURE__*/_react["default"].createElement("span", {
+      })), _react["default"].createElement("span", {
         className: "ql-formats"
-      }, /*#__PURE__*/_react["default"].createElement("select", {
+      }, _react["default"].createElement("select", {
         className: "ql-color",
         title: _Utils.i18n.get_string('fontcolor')
-      }), /*#__PURE__*/_react["default"].createElement("select", {
+      }), _react["default"].createElement("select", {
         className: "ql-background",
         title: _Utils.i18n.get_string('bgcolor')
-      })), /*#__PURE__*/_react["default"].createElement("span", {
+      })), _react["default"].createElement("span", {
         className: "ql-formats"
-      }, /*#__PURE__*/_react["default"].createElement("button", {
+      }, _react["default"].createElement("button", {
         className: "ql-list",
         value: "ordered",
         title: _Utils.i18n.get_string('numberedlist')
-      }), /*#__PURE__*/_react["default"].createElement("button", {
+      }), _react["default"].createElement("button", {
         className: "ql-list",
         value: "bullet",
         title: _Utils.i18n.get_string('list')
-      })), /*#__PURE__*/_react["default"].createElement("span", {
+      })), _react["default"].createElement("span", {
         className: "ql-formats"
-      }, /*#__PURE__*/_react["default"].createElement("select", {
+      }, _react["default"].createElement("select", {
         className: "ql-header",
         defaultValue: '',
         onChange: function onChange(e) {
           return e.persist();
         }
-      }, /*#__PURE__*/_react["default"].createElement("option", {
+      }, _react["default"].createElement("option", {
         value: "2"
-      }), /*#__PURE__*/_react["default"].createElement("option", {
+      }), _react["default"].createElement("option", {
         value: "3"
-      }), /*#__PURE__*/_react["default"].createElement("option", {
+      }), _react["default"].createElement("option", {
         value: "4"
-      }), /*#__PURE__*/_react["default"].createElement("option", {
+      }), _react["default"].createElement("option", {
         value: "5"
-      }), /*#__PURE__*/_react["default"].createElement("option", null))), /*#__PURE__*/_react["default"].createElement("span", {
+      }), _react["default"].createElement("option", null))), _react["default"].createElement("span", {
         className: "ql-formats"
-      }, /*#__PURE__*/_react["default"].createElement("button", {
+      }, _react["default"].createElement("button", {
         className: "ql-clean",
         title: _Utils.i18n.get_string('removeformat')
-      }), /*#__PURE__*/_react["default"].createElement("button", {
+      }), _react["default"].createElement("button", {
         className: "ql-nonbreakingspace",
         title: _Utils.i18n.get_string('nonbreakingspace')
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faParagraph
-      })))), /*#__PURE__*/_react["default"].createElement(_reactQuill["default"], {
+      })))), _react["default"].createElement(_reactQuill["default"], {
         style: {
           height: '250px'
         },
@@ -132,18 +132,18 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
         onChange: this.onDataChange,
         modules: this.modules,
         ref: this.editorRef
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Footer, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Modal.Footer, null, _react["default"].createElement(_reactBootstrap.Button, {
         variant: "secondary",
         onClick: this.props.onClose
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTimes,
         title: _Utils.i18n.get_string('cancel')
-      }), " ", _Utils.i18n.get_string('cancel')), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }), " ", _Utils.i18n.get_string('cancel')), _react["default"].createElement(_reactBootstrap.Button, {
         variant: "success",
         onClick: function onClick() {
           return _this2.onSave();
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSave,
         title: _Utils.i18n.get_string('save')
       }), " ", _Utils.i18n.get_string('save'))));
@@ -161,7 +161,7 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
         try {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var i = _step.value;
-            i.innerHTML = i.getAttribute('class'); //keep class in inner as editor will remove class attribute, will be readded in postprocess
+            i.innerHTML = i.getAttribute('class');
             i.classList.add('iconrecit');
           }
         } catch (err) {
@@ -227,7 +227,7 @@ var TextEditorModal = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "onSave",
     value: function onSave() {
-      var html = this.state.value.replace(/<p(\s+[a-z0-9\-_\'\"=]+)*><\/p>/ig, ''); //Remove empty tags
+      var html = this.state.value.replace(/<p(\s+[a-z0-9\-_\'\"=]+)*><\/p>/ig, '');
       if (this.state.tag.stripPTags) {
         html = html.replace(/(<p[^>]*>|<\/p>)/g, '');
       }
@@ -331,7 +331,6 @@ TextEditorModal.allowedTags = {
   'ol': {
     content: 'outerHTML'
   },
-  //'a': {content: 'innerHTML', stripPTags: true},
   'em': {
     content: 'outerHTML'
   },
@@ -346,7 +345,7 @@ TextEditorModal.allowedTags = {
     stripPTags: true
   }
 };
-var EditorModuleNonBreakingSpace = /*#__PURE__*/function () {
+var EditorModuleNonBreakingSpace = function () {
   function EditorModuleNonBreakingSpace() {
     (0, _classCallCheck2["default"])(this, EditorModuleNonBreakingSpace);
   }
@@ -382,7 +381,7 @@ var EditorModuleNonBreakingSpace = /*#__PURE__*/function () {
   return EditorModuleNonBreakingSpace;
 }();
 var Inline = _reactQuill.Quill["import"]('blots/inline');
-var FaRule = /*#__PURE__*/function (_Inline) {
+var FaRule = function (_Inline) {
   (0, _inherits2["default"])(FaRule, _Inline);
   var _super2 = _createSuper(FaRule);
   function FaRule() {
@@ -394,12 +393,7 @@ var FaRule = /*#__PURE__*/function (_Inline) {
     value: function optimize(c) {}
   }], [{
     key: "create",
-    value:
-    /**
-     * Converts the HTML tag to image blot
-     * @param value
-     */
-    function create(value) {
+    value: function create(value) {
       var node = (0, _get2["default"])((0, _getPrototypeOf2["default"])(FaRule), "create", this).call(this);
       Object.getOwnPropertyNames(value).forEach(function (attribute_name) {
         node.setAttribute(attribute_name, value[attribute_name]);
@@ -417,7 +411,7 @@ var Parchment = _reactQuill.Quill["import"]('parchment');
 var Align = new Parchment.Attributor.Class('fa', 'iconrecit');
 Parchment.register(Align);
 _reactQuill.Quill.register(FaRule);
-var IndentAttributor = /*#__PURE__*/function (_Parchment$Attributor) {
+var IndentAttributor = function (_Parchment$Attributor) {
   (0, _inherits2["default"])(IndentAttributor, _Parchment$Attributor);
   var _super3 = _createSuper(IndentAttributor);
   function IndentAttributor(name, style, params) {

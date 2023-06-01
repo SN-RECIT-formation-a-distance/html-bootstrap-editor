@@ -23,28 +23,14 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var IconSelector = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var IconSelector = function (_Component) {
   (0, _inherits2["default"])(IconSelector, _Component);
   var _super = _createSuper(IconSelector);
   function IconSelector(props) {
@@ -124,48 +110,48 @@ var IconSelector = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var items = this.getIconTable();
-      var main = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      var main = _react["default"].createElement(_reactBootstrap.Button, {
         key: "1",
         name: this.props.name,
         size: "sm",
         variant: "primary",
         onClick: this.handleShow,
         disabled: this.props.disabled
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faIcons
       }), " ".concat(this.props.text));
-      var modal = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal, {
+      var modal = _react["default"].createElement(_reactBootstrap.Modal, {
         key: "2",
         dialogClassName: "iconselectormodal",
         show: this.state.modal,
         onHide: this.handleClose
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Header, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Header, {
         closeButton: true
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Title, null, _RecitEditor.i18n.get_string('selecticon'))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Modal.Body, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.FormControl, {
+      }, _react["default"].createElement(_reactBootstrap.Modal.Title, null, _RecitEditor.i18n.get_string('selecticon'))), _react["default"].createElement(_reactBootstrap.Modal.Body, null, _react["default"].createElement(_reactBootstrap.FormControl, {
         className: "InputText mb-3",
         type: "text",
         value: this.state.search,
         onChange: this.onSearch,
         placeholder: _RecitEditor.i18n.get_string('search')
-      }), /*#__PURE__*/_react["default"].createElement(_RecitEditor.IFrame, {
+      }), _react["default"].createElement(_RecitEditor.IFrame, {
         style: {
           width: '100%',
           height: '70vh',
           border: '0'
         }
-      }, /*#__PURE__*/_react["default"].createElement("div", {
+      }, _react["default"].createElement("div", {
         style: {
           width: '100%',
           height: '100%',
           backgroundColor: '#fff'
         }
       }, this.cssFiles.map(function (file, k) {
-        return /*#__PURE__*/_react["default"].createElement("link", {
+        return _react["default"].createElement("link", {
           key: k,
           rel: "stylesheet",
           href: file
         });
-      }), /*#__PURE__*/_react["default"].createElement("div", {
+      }), _react["default"].createElement("div", {
         style: {
           backgroundColor: '#fff'
         }
@@ -203,18 +189,18 @@ var IconSelector = /*#__PURE__*/function (_Component) {
       var _loop = function _loop(cat) {
         if (icons[cat].length > 0) {
           var catText = cat;
-          items.push( /*#__PURE__*/_react["default"].createElement("a", {
+          items.push(_react["default"].createElement("a", {
             href: "#",
             onClick: function onClick(e) {
               return _this2.onCollapse(e, cat);
             },
             key: key,
             className: "h3"
-          }, _this2.state.collapsed[cat] ? /*#__PURE__*/_react["default"].createElement("i", {
+          }, _this2.state.collapsed[cat] ? _react["default"].createElement("i", {
             className: "fa fa-angle-right"
-          }) : /*#__PURE__*/_react["default"].createElement("i", {
+          }) : _react["default"].createElement("i", {
             className: "fa fa-angle-down"
-          }), " ", /*#__PURE__*/_react["default"].createElement("span", null, catText)));
+          }), " ", _react["default"].createElement("span", null, catText)));
           key++;
           var content = [];
           if (!_this2.state.collapsed[cat]) {
@@ -223,7 +209,7 @@ var IconSelector = /*#__PURE__*/function (_Component) {
             try {
               var _loop2 = function _loop2() {
                 var val = _step3.value;
-                content.push( /*#__PURE__*/_react["default"].createElement("div", {
+                content.push(_react["default"].createElement("div", {
                   key: key,
                   style: {
                     width: '70px',
@@ -237,12 +223,12 @@ var IconSelector = /*#__PURE__*/function (_Component) {
                   onClick: function onClick() {
                     return _this2.onChange(val.css);
                   }
-                }, /*#__PURE__*/_react["default"].createElement("i", {
+                }, _react["default"].createElement("i", {
                   className: val.css,
                   style: {
                     fontSize: '40px'
                   }
-                }), /*#__PURE__*/_react["default"].createElement("br", null), val.name));
+                }), _react["default"].createElement("br", null), val.name));
                 key++;
               };
               for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
@@ -254,7 +240,7 @@ var IconSelector = /*#__PURE__*/function (_Component) {
               _iterator3.f();
             }
           }
-          items.push( /*#__PURE__*/_react["default"].createElement("div", {
+          items.push(_react["default"].createElement("div", {
             key: key,
             className: "d-flex flex-wrap mb-3"
           }, content));

@@ -23,28 +23,14 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var TreeView = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var TreeView = function (_Component) {
   (0, _inherits2["default"])(TreeView, _Component);
   var _super = _createSuper(TreeView);
   function TreeView(props) {
@@ -62,7 +48,6 @@ var TreeView = /*#__PURE__*/function (_Component) {
   (0, _createClass2["default"])(TreeView, [{
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
-      // when the selected element is changed then it collapses all branches
       if (!Object.is(prevProps.selectedElement, this.props.selectedElement)) {
         this.setState({
           notCollapsed: {}
@@ -81,17 +66,17 @@ var TreeView = /*#__PURE__*/function (_Component) {
         data = _RecitEditor.UtilsHTML.assignTagId(this.props.data);
       }
       var treeView = this.createTreeViewData(data);
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         className: "panel"
-      }, /*#__PURE__*/_react["default"].createElement("h5", {
+      }, _react["default"].createElement("h5", {
         className: "m-0 p-2"
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSitemap
-      }), " ", _RecitEditor.i18n.get_string('tree')), /*#__PURE__*/_react["default"].createElement("hr", {
+      }), " ", _RecitEditor.i18n.get_string('tree')), _react["default"].createElement("hr", {
         className: "mt-0"
-      }), /*#__PURE__*/_react["default"].createElement("ul", {
+      }), _react["default"].createElement("ul", {
         className: "tree-view"
-      }, this.renderTreeView(treeView, 0)), this.state.saveElement && /*#__PURE__*/_react["default"].createElement(_RecitEditor.TemplateForm, {
+      }, this.renderTreeView(treeView, 0)), this.state.saveElement && _react["default"].createElement(_RecitEditor.TemplateForm, {
         onClose: function onClose() {
           return _this2.setState({
             saveElement: false
@@ -109,16 +94,14 @@ var TreeView = /*#__PURE__*/function (_Component) {
       var _this3 = this;
       var id = "id".concat(key);
       var result = null;
-      var selected = this.props.selectedElement !== null && this.props.selectedElement.isSameNode(node.dom); //If root isn't selected
+      var selected = this.props.selectedElement !== null && this.props.selectedElement.isSameNode(node.dom);
       var extraClasses = selected ? 'disabled btn-warning' : '';
-
-      //node.dom.isSameNode(this.props.data) checks if root node is selected
-      var btn = /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonToolbar, {
+      var btn = _react["default"].createElement(_reactBootstrap.ButtonToolbar, {
         "aria-label": "Item actions",
         style: {
           flexWrap: "nowrap"
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.ButtonGroup, null, _react["default"].createElement(_reactBootstrap.Button, {
         variant: "link",
         className: "p-1 ".concat(extraClasses),
         style: {
@@ -127,65 +110,65 @@ var TreeView = /*#__PURE__*/function (_Component) {
         onClick: function onClick() {
           return _this3.props.onSelect(node.dom);
         }
-      }, " ".concat(node.text))), selected && /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }, " ".concat(node.text))), selected && _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         size: "sm",
         className: "ml-2 btn-group-actions",
         style: selected ? {
           display: 'flex'
         } : {}
-      }, !node.dom.isSameNode(this.props.data) && /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, !node.dom.isSameNode(this.props.data) && _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this3.props.onMoveNodeUp(node.dom);
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowUp,
         title: _RecitEditor.i18n.get_string('moveelementup')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this3.props.onMoveNodeDown(node.dom);
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowDown,
         title: _RecitEditor.i18n.get_string('moveelementdown')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this3.props.onDeleteElement(node.dom);
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTrashAlt,
         title: _RecitEditor.i18n.get_string('delete')
-      }))), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }))), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this3.setState({
             saveElement: node.dom
           });
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSave,
         title: _RecitEditor.i18n.get_string('save')
       }))));
       var icon = this.state.notCollapsed[id] || node.dom.contains(this.props.selectedElement) ? _freeSolidSvgIcons.faAngleDown : _freeSolidSvgIcons.faAngleRight;
       if (node.children.length > 0) {
-        result = /*#__PURE__*/_react["default"].createElement("li", {
+        result = _react["default"].createElement("li", {
           key: key
-        }, /*#__PURE__*/_react["default"].createElement("span", {
+        }, _react["default"].createElement("span", {
           className: "d-flex align-items-center"
-        }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+        }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
           className: "mr-1",
           icon: icon,
           onClick: function onClick(event) {
             return _this3.onCollapse(event, id);
           }
-        }), btn), (this.state.notCollapsed[id] || node.dom.contains(this.props.selectedElement)) && /*#__PURE__*/_react["default"].createElement("ul", null, node.children.map(function (item, index) {
+        }), btn), (this.state.notCollapsed[id] || node.dom.contains(this.props.selectedElement)) && _react["default"].createElement("ul", null, node.children.map(function (item, index) {
           key = key + 1;
           return _this3.renderTreeView(item, key);
         })));
       } else {
-        result = /*#__PURE__*/_react["default"].createElement("li", {
+        result = _react["default"].createElement("li", {
           key: key
-        }, /*#__PURE__*/_react["default"].createElement("span", {
+        }, _react["default"].createElement("span", {
           className: "d-flex align-items-center"
-        }, /*#__PURE__*/_react["default"].createElement("i", {
+        }, _react["default"].createElement("i", {
           style: {
             marginRight: "12px"
           }

@@ -23,28 +23,14 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } // This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/**
- * Atto HTML editor
- *
- * @package    atto_reciteditor
- * @copyright  2019 RECIT
- * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
- */
-var Canvas = /*#__PURE__*/function (_Component) {
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
+                                                                                                                                                                                                                                                                                                                                           *
+                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
+                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
+                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                                                                                                                                                                           */
+var Canvas = function (_Component) {
   (0, _inherits2["default"])(Canvas, _Component);
   var _super = _createSuper(Canvas);
   function Canvas() {
@@ -59,7 +45,7 @@ var Canvas = /*#__PURE__*/function (_Component) {
         display: "flex"
       };
       style = this.props.style;
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         style: style
       }, this.props.children);
       return main;
@@ -67,25 +53,18 @@ var Canvas = /*#__PURE__*/function (_Component) {
   }]);
   return Canvas;
 }(_react.Component);
-/**
- * This class attaches all required events for edition to all dom elements.
- * Example: For a dom element to be selectable, it needs to be wrapped with this class.
- */
 exports.Canvas = Canvas;
 Canvas.defaultProps = {
   children: null,
   style: null
 };
-var CanvasElement = /*#__PURE__*/function () {
-  //Keep a list of instance to avoid recreating canvaselement if it was already instancied
-
+var CanvasElement = function () {
   function CanvasElement(dom, onSelectCallback, onDropCallback, onEditNodeText) {
     (0, _classCallCheck2["default"])(this, CanvasElement);
     this.onDragOver = this.onDragOver.bind(this);
     this.onDragEnter = this.onDragEnter.bind(this);
     this.onDragLeave = this.onDragLeave.bind(this);
     this.onDrop = this.onDrop.bind(this);
-    //this.onDragStart = this.onDragStart.bind(this);
     this.onClickHandler = this.onClickHandler.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onDblClick = this.onDblClick.bind(this);
@@ -98,7 +77,6 @@ var CanvasElement = /*#__PURE__*/function () {
     this.dom.ondragover = this.onDragOver;
     this.dom.ondragenter = this.onDragEnter;
     this.dom.ondragleave = this.onDragLeave;
-    //this.dom.ondragstart = this.onDragStart;
     this.dom.ondrop = this.onDrop;
     this.dom.onclick = this.onClickHandler;
     this.dom.onmouseover = this.onMouseOver;
@@ -113,7 +91,7 @@ var CanvasElement = /*#__PURE__*/function () {
   (0, _createClass2["default"])(CanvasElement, [{
     key: "onClickHandler",
     value: function onClickHandler(event) {
-      event.preventDefault(); // Cancel the default action (in case of href)
+      event.preventDefault();
       event.stopPropagation();
       this.state.clickCounter++;
       var that = this;
@@ -146,7 +124,6 @@ var CanvasElement = /*#__PURE__*/function () {
   }, {
     key: "onDrop",
     value: function onDrop(event) {
-      // it needs to stop propagation otherwise it will dispatch onFillInSlot in cascade. We want just assign a section to one single slot.
       event.stopPropagation();
       var eventData = event.dataTransfer.getData("componentData");
       var el = null;
@@ -168,7 +145,6 @@ var CanvasElement = /*#__PURE__*/function () {
             console.log(err);
           }
         } else if (event.currentTarget.tagName.toLowerCase() === "body") {
-          //this.dom.appendChild(el);
           event.currentTarget.appendChild(el);
         } else {
           console.log(_RecitEditor.i18n.get_string('failedtodrop'), event.target);
@@ -176,16 +152,13 @@ var CanvasElement = /*#__PURE__*/function () {
       }
       this.state.initDragging = false;
       this.state.onDragging = false;
-      //let el = React.createElement(component.element, {});
-      //ReactDOM.render(el, this.dom);
-
       this.onDropCallback(this.dom, el);
       return false;
     }
   }, {
     key: "onDragOver",
     value: function onDragOver(event) {
-      event.preventDefault(); // Necessary to allow us to drop.
+      event.preventDefault();
       if (!event.target.classList.contains('dropping-zone-hover') && event.target.classList.contains('dropping-zone')) {
         event.target.classList.add('dropping-zone-hover');
       }
@@ -194,7 +167,6 @@ var CanvasElement = /*#__PURE__*/function () {
   }, {
     key: "onDragEnter",
     value: function onDragEnter(event) {
-      // do not cascate the event towards the parents
       event.preventDefault();
       event.stopPropagation();
       if (this.state.onDragging) {
@@ -212,10 +184,7 @@ var CanvasElement = /*#__PURE__*/function () {
           item.remove();
         });
       };
-
-      // wait 0.5 second to add the dropping zone
       window.setTimeout(function () {
-        // if the user moved the mouse then we do not add the dropping zone
         if (!that.state.initDragging) {
           return;
         }
@@ -296,7 +265,7 @@ var CanvasElement = /*#__PURE__*/function () {
 exports.CanvasElement = CanvasElement;
 CanvasElement.draggingItem = null;
 CanvasElement.instanceList = [];
-var FloatingMenu = /*#__PURE__*/function (_Component2) {
+var FloatingMenu = function (_Component2) {
   (0, _inherits2["default"])(FloatingMenu, _Component2);
   var _super2 = _createSuper(FloatingMenu);
   function FloatingMenu(props) {
@@ -335,7 +304,7 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
       };
       var posCanvas = this.props.posCanvas;
       var posEl = _RecitEditor.UtilsHTML.getBoundingClientRect(this.props.selectedElement, this.props.device.scale);
-      var isEditable = true; //TextEditorModal.isTagEditable(this.props.selectedElement.tagName);
+      var isEditable = true;
       var name = '';
       var help = null;
       var cl = _RecitEditor.HTMLElementData.getInstance().getElementClass(null, this.props.selectedElement);
@@ -343,77 +312,74 @@ var FloatingMenu = /*#__PURE__*/function (_Component2) {
         name = cl.getDesc(this.props.selectedElement);
         help = cl.getHelpText(this.props.selectedElement);
       }
-
-      // 32px = ButtonToolBar thickness
       style.top = Math.max(posCanvas.top + posEl.top - 32, 0);
       style.left = posCanvas.left + posEl.left;
       if (style.left + this.state.width > window.innerWidth) {
-        // If the menu overflows the screen width, remove left position and put menu to the right
         delete style.left;
         style.right = 0;
       }
-      var main = /*#__PURE__*/_react["default"].createElement("div", {
+      var main = _react["default"].createElement("div", {
         className: "floating-menu",
         ref: function ref(_ref) {
           return _this2.setRef(_ref);
         },
         style: style
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonToolbar, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.ButtonGroup, {
+      }, _react["default"].createElement(_reactBootstrap.ButtonToolbar, null, _react["default"].createElement(_reactBootstrap.ButtonGroup, {
         size: "sm"
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }, _react["default"].createElement(_reactBootstrap.Button, {
         onDragStart: this.props.onDragElement,
         draggable: "true",
         style: {
           cursor: 'grab'
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowsAlt,
         title: _RecitEditor.i18n.get_string('drag')
-      }), " ", name), isEditable && /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      }), " ", name), isEditable && _react["default"].createElement(_reactBootstrap.Button, {
         onClick: this.props.onEdit
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faEdit,
         title: _RecitEditor.i18n.get_string('edit')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this2.setState({
             saveElement: true
           });
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSave,
         title: _RecitEditor.i18n.get_string('save')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this2.props.onMoveNodeUp(null);
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowUp,
         title: _RecitEditor.i18n.get_string('moveelementup')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this2.props.onMoveNodeDown(null);
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowDown,
         title: _RecitEditor.i18n.get_string('moveelementdown')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: this.props.onCloneNode
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faClone,
         title: _RecitEditor.i18n.get_string('clone')
-      })), /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, {
+      })), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this2.props.onDeleteElement(null);
         }
-      }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faTrashAlt,
         title: _RecitEditor.i18n.get_string('delete')
-      })), help && /*#__PURE__*/_react["default"].createElement(_reactBootstrap.OverlayTrigger, {
-        overlay: /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Tooltip, null, help)
-      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Button, null, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+      })), help && _react["default"].createElement(_reactBootstrap.OverlayTrigger, {
+        overlay: _react["default"].createElement(_reactBootstrap.Tooltip, null, help)
+      }, _react["default"].createElement(_reactBootstrap.Button, null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faInfoCircle
-      }), " ")))), this.state.saveElement && /*#__PURE__*/_react["default"].createElement(_RecitEditor.TemplateForm, {
+      }), " ")))), this.state.saveElement && _react["default"].createElement(_RecitEditor.TemplateForm, {
         onClose: function onClose() {
           return _this2.setState({
             saveElement: false
