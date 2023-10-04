@@ -5,7 +5,7 @@ var _typeof = require("@babel/runtime/helpers/typeof");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.InputText = void 0;
+exports.VideoSrc = void 0;
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
@@ -14,6 +14,9 @@ var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 var _react = _interopRequireWildcard(require("react"));
 var _reactBootstrap = require("react-bootstrap");
+var _reactFontawesome = require("@fortawesome/react-fontawesome");
+var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
+var _RecitEditor = require("../RecitEditor");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
@@ -24,126 +27,60 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
                                                                                                                                                                                                                                                                                                                                            * @copyright  2019 RECIT
                                                                                                                                                                                                                                                                                                                                            * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
                                                                                                                                                                                                                                                                                                                                            */
-var InputText = function (_Component) {
-  (0, _inherits2["default"])(InputText, _Component);
-  var _super = _createSuper(InputText);
-  function InputText(props) {
+var VideoSrc = function (_Component) {
+  (0, _inherits2["default"])(VideoSrc, _Component);
+  var _super = _createSuper(VideoSrc);
+  function VideoSrc(props) {
     var _this;
-    (0, _classCallCheck2["default"])(this, InputText);
+    (0, _classCallCheck2["default"])(this, VideoSrc);
     _this = _super.call(this, props);
-    _this.onCommit = _this.onCommit.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onChange = _this.onChange.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onFocusOut = _this.onFocusOut.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onKeyDown = _this.onKeyDown.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.state = {
-      value: "",
-      dataChanged: false
-    };
-    if (_this.props.value) {
-      _this.state.value = _this.props.value;
-    }
-    _this.inputRef = _react["default"].createRef();
+    _this.onClick = _this.onClick.bind((0, _assertThisInitialized2["default"])(_this));
     return _this;
   }
-  (0, _createClass2["default"])(InputText, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      if (this.props.autoSelect) {
-        this.inputRef.current.select();
-      }
-    }
-  }, {
+  (0, _createClass2["default"])(VideoSrc, [{
     key: "render",
     value: function render() {
-      var main = _react["default"].createElement(_reactBootstrap.FormControl, {
-        ref: this.inputRef,
-        autoFocus: this.props.autoFocus,
-        className: "InputText",
+      var main = _react["default"].createElement(_reactBootstrap.InputGroup, {
+        className: "mb-3"
+      }, _react["default"].createElement(_RecitEditor.InputText, {
         name: this.props.name,
-        type: "text",
-        value: this.state.value,
+        value: this.props.value,
         placeholder: this.props.placeholder,
-        onChange: this.onChange,
-        onBlur: this.onFocusOut,
-        onKeyDown: this.onKeyDown,
+        onChange: this.props.onChange,
+        onKeyDown: this.props.onKeyDown,
+        autoFocus: this.props.autoFocus,
+        autoSelect: this.props.autoSelect,
+        onCommit: this.props.onCommit,
         disabled: this.props.disabled,
         size: this.props.size
-      });
+      }), _react["default"].createElement(_reactBootstrap.InputGroup.Append, null, _react["default"].createElement(_reactBootstrap.Button, {
+        size: "sm",
+        onClick: this.onClick,
+        title: _RecitEditor.i18n.get_string('youtubeparamrel')
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+        icon: _freeSolidSvgIcons.faSync
+      }))));
       return main;
     }
   }, {
-    key: "onChange",
-    value: function onChange(event) {
-      this.setState({
-        value: event.target.value.toString(),
-        dataChanged: true
-      });
-    }
-  }, {
-    key: "onCommit",
-    value: function onCommit(callback) {
-      var _this2 = this;
-      callback = callback || null;
-      var value = this.state.value;
+    key: "onClick",
+    value: function onClick(event) {
+      var value = _RecitEditor.Utils.formatVideoURLEmbed(this.props.value);
       var eventData = {
         target: {
           name: this.props.name,
           value: value
         }
       };
-      this.setState({
-        dataChanged: false
-      }, function () {
-        if (_this2.props.onChange) _this2.props.onChange(eventData);
-        if (_this2.props.onCommit) _this2.props.onCommit(eventData);
-        if (callback !== null) {
-          callback();
-        }
-        ;
-      });
-    }
-  }, {
-    key: "onFocusOut",
-    value: function onFocusOut(event) {
-      this.onCommit();
-    }
-  }, {
-    key: "onKeyDown",
-    value: function onKeyDown(event) {
-      var that = this;
-      event.persist();
-      var callback = function callback() {
-        if (that.props.onKeyDown !== null) {
-          that.props.onKeyDown(event);
-        }
-      };
-      switch (event.key) {
-        case "Enter":
-          this.onCommit(callback);
-          break;
-        default:
+      if (this.props.onChange) {
+        this.props.onChange(eventData);
       }
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (prevState.dataChanged) {
-        return null;
-      }
-      var nextValue = nextProps.value === null ? "" : nextProps.value;
-      if (nextValue !== prevState.value) {
-        return {
-          value: nextValue,
-          dataChanged: false
-        };
-      }
-      return null;
     }
   }]);
-  return InputText;
+  return VideoSrc;
 }(_react.Component);
-exports.InputText = InputText;
-InputText.defaultProps = {
+exports.VideoSrc = VideoSrc;
+VideoSrc.defaultProps = {
   name: "",
   value: '',
   placeholder: "",

@@ -30,6 +30,7 @@ import { LayoutSpacingEditor, LayoutSpacing, MultipleSelect, $glVars, Assets, To
 import { HTMLElementData } from './HTMLElementData';
 import { GridBuilder } from '../components/GridBuilder';
 import { ImagePixaBay } from '../../common/ImagePixaBay';
+import { VideoSrc } from '../../common/VideoSrc';
 
 export class ComponentProperties extends Component{
     static defaultProps = {
@@ -173,6 +174,7 @@ class FormProperties extends Component{
         let value = data.getValue(this.props.element, data);
         let flags = data.getFlags(this.props.element);
         
+        console.log(this.props.element, data, value, flags)
         switch(data.input.type){
             case 'radio':
                 result = <ToggleButtons type={data.input.toggleType} name={data.name} value={value} bsSize="sm" defaultValue={value}
@@ -240,6 +242,9 @@ class FormProperties extends Component{
             case 'ImageSrc':
                 result = <ImageSrc name={data.name} accept={data.input.accept} value={value} size="sm" onChange={(event) => this.onDataChange(event, data)}  />;
                 break;
+            case 'VideoSrc':
+                result = <VideoSrc name={data.name} value={value} size="sm" onChange={(event) => this.onDataChange(event, data)}  />;
+                    break;
             case 'button':
                 result = <Button size="sm" onClick={() => this.onDataChange({target:{value:''}}, data)}>{data.input.text}</Button>
                 break;

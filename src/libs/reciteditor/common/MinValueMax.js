@@ -27,7 +27,7 @@ import { i18n } from '../RecitEditor';
 
 export class MinValueMax extends Component {
     static defaultProps = {
-        values: {},
+        values: {min: '', value: '', max: ''},
         valueName: 'Value',
         placeholder: "",
         onChange: null,
@@ -47,15 +47,16 @@ export class MinValueMax extends Component {
         this.onFocusOut = this.onFocusOut.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
 
-        this.state = {values: {}};    
-        if (this.props.values){
-            for (let k of ['min','value','max']){
-                if (this.props.values[k]){
-                    this.state.values[k] = this.props.values[k];
-                }else{
-                    this.state.values[k] = '';
-                }
-            }
+        this.state = {values: this.props.values};    
+    }
+
+    componentDidMount(){
+        this.setState({values: this.props.values});
+    }
+
+    componentDidUpdate(prevProps){
+        if((this.props.values.min != this.state.values.min) || (this.props.values.value != this.state.values.value) || (this.props.values.max != this.state.values.max)){
+            this.setState({values: this.props.values});
         }
     }
     

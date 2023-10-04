@@ -273,14 +273,14 @@ class MainView extends Component{
     componentDidUpdate(prevProps){
         if(prevProps.view !== this.props.view){
             let data = "";
+
             if (prevProps.view == 'sourceCodeDesigner'){
                 data = this.canvasState.designer.getData(true);
             }else{
                 data = this.canvasState[prevProps.view].getData();
             }
             this.setData(data);
-            let view = this.props.view;
-            this.setState({canvasState: view},  this.onPanelChange);
+            this.setState({canvasState: this.props.view},  this.onPanelChange);
         }
 
         if((prevProps.device.name !== this.props.device.name) || (prevProps.view !== this.props.view)){

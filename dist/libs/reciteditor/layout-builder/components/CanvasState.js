@@ -175,9 +175,9 @@ var SourceCodeDesignerState = function (_CanvasState) {
       }
       var main = _react["default"].createElement(_react["default"].Fragment, null, _react["default"].createElement("div", {
         className: col
-      }, this.designer.render(view === 'designer' || view == 'sourceCodeDesigner', selectedElement)), _react["default"].createElement("div", {
+      }, this.sourceCode.render(view === 'sourceCode' || view == 'sourceCodeDesigner', selectedElement, sourceCodeWidth, sourceCodeHeight)), _react["default"].createElement("div", {
         className: col
-      }, this.sourceCode.render(view === 'sourceCode' || view == 'sourceCodeDesigner', selectedElement, sourceCodeWidth, sourceCodeHeight)));
+      }, this.designer.render(view === 'designer' || view == 'sourceCodeDesigner', selectedElement)));
       return main;
     }
   }, {
@@ -211,6 +211,9 @@ var SourceCodeDesignerState = function (_CanvasState) {
     value: function onSelectElement(el, selectedElement, panels) {
       this.sourceCode.onSelectElement(el, selectedElement, panels);
       var result = this.designer.onSelectElement(el, selectedElement, panels);
+      result.panels.components = 0;
+      result.panels.properties = 0;
+      result.panels.treeView = 0;
       return result;
     }
   }, {
@@ -257,7 +260,10 @@ var SourceCodeDesignerState = function (_CanvasState) {
   }, {
     key: "onPanelChange",
     value: function onPanelChange(panels) {
-      return this.designer.onPanelChange(panels);
+      panels.components = 0;
+      panels.properties = 0;
+      panels.treeView = 0;
+      return panels;
     }
   }]);
   return SourceCodeDesignerState;

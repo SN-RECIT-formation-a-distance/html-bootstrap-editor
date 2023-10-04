@@ -42,7 +42,7 @@ export class InputText extends Component {
         // if the data has changed then the component waits until the commit event in order to modify the value coming from props values
         if(prevState.dataChanged){ return null; }
 
-        let nextValue = nextProps.value;
+        let nextValue = (nextProps.value === null ? "" : nextProps.value);
         if(nextValue !== prevState.value){
             return({value: nextValue, dataChanged: false});
         }
@@ -57,7 +57,7 @@ export class InputText extends Component {
         this.onFocusOut = this.onFocusOut.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
 
-        this.state = {dataChanged: false};    
+        this.state = {value: "", dataChanged: false};    
         if (this.props.value){
            this.state.value = this.props.value;
         }

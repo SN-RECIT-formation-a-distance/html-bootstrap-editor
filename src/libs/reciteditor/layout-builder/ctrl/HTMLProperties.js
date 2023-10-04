@@ -174,6 +174,27 @@ class ImageSrc{
     }
 }
 
+class VideoSrc{
+    constructor(onChangeProp){
+        this.type = 'VideoSrc'; // keep this attribute for backward compatibility
+        this.defaultValue = '';
+        this.onChangeProp = onChangeProp || null;
+    }
+
+    onChange(el, value, data){
+        if(this.onChangeProp){
+            this.onChangeProp(el, value, data);
+        }
+        else{
+            let iframe = el;
+            if (el.tagName == 'DIV'){
+                iframe = el.querySelector('iframe');
+            }
+            iframe.src = value;
+        }
+    }
+}
+
 class TextArea{
     constructor(onChangeProp){
         this.type = 'textarea'; // keep this attribute for backward compatibility
@@ -257,7 +278,7 @@ export class HTMLHeightProperty extends HTMLProperty{
     }
 
     getValue(el, data){
-        return {min:el.style.minWidth, value:el.style.width, max:el.style.maxWidth};
+        return {min:el.style.minHeight, value:el.style.height, max:el.style.maxHeight};
     }
 }
 
@@ -480,21 +501,16 @@ export class HTMLVideoButtonProperty extends HTMLProperty{
 
 export class HTMLVideoSourceProperty extends HTMLProperty{
     constructor(){
-        super('src',  i18n.get_string('videourl'));
-        this.input = new TextInput(this.onChange.bind(this));
+        super('src',  i18n.get_string('videourl'), new VideoSrc());
     }
 
     getValue(el, data){
         let iframe = el;
-        if (el.tagName == 'DIV') iframe = el.querySelector('iframe');
-        return iframe.src;
-    }
+        if (el.tagName == 'DIV'){
+            iframe = el.querySelector('iframe');
+        }
 
-    onChange(el, value, data){
-        let iframe = el;
-        value = Utils.formatVideoURLEmbed(value);
-        if (el.tagName == 'DIV') iframe = el.querySelector('iframe');
-        iframe.src = value;
+        return iframe.src;
     }
 }
 

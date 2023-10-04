@@ -403,9 +403,10 @@ export class Utils{
         if ((url.includes('youtube') && url.includes('watch?v=')) || url.includes('youtu.be')){//URL is not embed
             let id = Utils.getYoutubeIDFromURL(url);
             if (id){
-                url = '//www.youtube.com/embed/' + id;
+                url = 'https://www.youtube.com/embed/' + id;
             }
         }
+
         if (!url.includes('rel=')){
             if (url.includes('?')){
                 url = url + '&rel=0';
@@ -413,6 +414,7 @@ export class Utils{
                 url = url + '?rel=0';
             }
         }
+
         return url;
     }
 }

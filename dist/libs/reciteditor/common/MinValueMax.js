@@ -37,21 +37,27 @@ var MinValueMax = function (_Component) {
     _this.onFocusOut = _this.onFocusOut.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onKeyDown = _this.onKeyDown.bind((0, _assertThisInitialized2["default"])(_this));
     _this.state = {
-      values: {}
+      values: _this.props.values
     };
-    if (_this.props.values) {
-      for (var _i = 0, _arr = ['min', 'value', 'max']; _i < _arr.length; _i++) {
-        var k = _arr[_i];
-        if (_this.props.values[k]) {
-          _this.state.values[k] = _this.props.values[k];
-        } else {
-          _this.state.values[k] = '';
-        }
-      }
-    }
     return _this;
   }
   (0, _createClass2["default"])(MinValueMax, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setState({
+        values: this.props.values
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (this.props.values.min != this.state.values.min || this.props.values.value != this.state.values.value || this.props.values.max != this.state.values.max) {
+        this.setState({
+          values: this.props.values
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var main = _react["default"].createElement(_reactBootstrap.Container, null, _react["default"].createElement(_reactBootstrap.Row, null, _react["default"].createElement(_reactBootstrap.Col, null, _RecitEditor.i18n.get_string('min'), _react["default"].createElement("br", null), _react["default"].createElement(_reactBootstrap.FormControl, {
@@ -152,7 +158,11 @@ var MinValueMax = function (_Component) {
 }(_react.Component);
 exports.MinValueMax = MinValueMax;
 MinValueMax.defaultProps = {
-  values: {},
+  values: {
+    min: '',
+    value: '',
+    max: ''
+  },
   valueName: 'Value',
   placeholder: "",
   onChange: null,

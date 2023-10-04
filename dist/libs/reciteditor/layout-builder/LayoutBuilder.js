@@ -379,9 +379,8 @@ var MainView = function (_Component2) {
           data = this.canvasState[prevProps.view].getData();
         }
         this.setData(data);
-        var view = this.props.view;
         this.setState({
-          canvasState: view
+          canvasState: this.props.view
         }, this.onPanelChange);
       }
       if (prevProps.device.name !== this.props.device.name || prevProps.view !== this.props.view) {

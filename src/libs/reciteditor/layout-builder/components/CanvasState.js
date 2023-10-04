@@ -130,10 +130,10 @@ export class SourceCodeDesignerState extends CanvasState{
 
         let main = <>
             <div className={col}>
-                {this.designer.render((view === 'designer' || view == 'sourceCodeDesigner'), selectedElement)}
+                {this.sourceCode.render((view === 'sourceCode' || view == 'sourceCodeDesigner'), selectedElement, sourceCodeWidth, sourceCodeHeight)}
             </div>
             <div className={col}>
-                {this.sourceCode.render((view === 'sourceCode' || view == 'sourceCodeDesigner'), selectedElement, sourceCodeWidth, sourceCodeHeight)}
+                {this.designer.render((view === 'designer' || view == 'sourceCodeDesigner'), selectedElement)}
             </div>
            </>
 
@@ -165,6 +165,10 @@ export class SourceCodeDesignerState extends CanvasState{
     onSelectElement(el, selectedElement, panels){
         this.sourceCode.onSelectElement(el, selectedElement, panels);
         let result = this.designer.onSelectElement(el, selectedElement, panels);
+
+        result.panels.components = 0;
+        result.panels.properties = 0;
+        result.panels.treeView = 0;
         return result
     }
 
@@ -202,7 +206,11 @@ export class SourceCodeDesignerState extends CanvasState{
     }
 
     onPanelChange(panels){
-        return this.designer.onPanelChange(panels);
+        panels.components = 0;
+        panels.properties = 0;
+        panels.treeView = 0;
+        
+        return panels;
     }
 }
 

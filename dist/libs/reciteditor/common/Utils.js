@@ -329,7 +329,7 @@ var Utils = function () {
       if (url.includes('youtube') && url.includes('watch?v=') || url.includes('youtu.be')) {
         var id = Utils.getYoutubeIDFromURL(url);
         if (id) {
-          url = '//www.youtube.com/embed/' + id;
+          url = 'https://www.youtube.com/embed/' + id;
         }
       }
       if (!url.includes('rel=')) {
