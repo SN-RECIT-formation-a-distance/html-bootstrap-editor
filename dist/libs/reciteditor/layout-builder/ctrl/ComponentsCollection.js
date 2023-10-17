@@ -20,7 +20,6 @@ var _RecitEditor = require("../../RecitEditor");
 var _HTMLElementData = require("./HTMLElementData");
 var _GridBuilder = require("../components/GridBuilder");
 var _ImagePixaBay = require("../../common/ImagePixaBay");
-var _VideoSrc = require("../../common/VideoSrc");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
@@ -188,7 +187,6 @@ var FormProperties = function (_Component2) {
       var result = null;
       var value = data.getValue(this.props.element, data);
       var flags = data.getFlags(this.props.element);
-      console.log(this.props.element, data, value, flags);
       switch (data.input.type) {
         case 'radio':
           result = _react["default"].createElement(_RecitEditor.ToggleButtons, {
@@ -339,16 +337,6 @@ var FormProperties = function (_Component2) {
           result = _react["default"].createElement(_RecitEditor.ImageSrc, {
             name: data.name,
             accept: data.input.accept,
-            value: value,
-            size: "sm",
-            onChange: function onChange(event) {
-              return _this3.onDataChange(event, data);
-            }
-          });
-          break;
-        case 'VideoSrc':
-          result = _react["default"].createElement(_VideoSrc.VideoSrc, {
-            name: data.name,
             value: value,
             size: "sm",
             onChange: function onChange(event) {
