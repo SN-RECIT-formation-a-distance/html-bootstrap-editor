@@ -47,16 +47,15 @@ export class MinValueMax extends Component {
         this.onFocusOut = this.onFocusOut.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
 
-        this.state = {values: this.props.values};    
-    }
-
-    componentDidMount(){
-        this.setState({values: this.props.values});
+        this.state = {values: Object.assign({}, this.props.values), dataChanged: false};
     }
 
     componentDidUpdate(prevProps){
-        if((this.props.values.min != this.state.values.min) || (this.props.values.value != this.state.values.value) || (this.props.values.max != this.state.values.max)){
-            this.setState({values: this.props.values});
+        // prevent to evaluate new values from outside component when entering a new value
+        if(!this.state.dataChanged){
+            if((this.props.values.min != this.state.values.min) || (this.props.values.value != this.state.values.value) || (this.props.values.max != this.state.values.max)){
+                this.setState({values: Object.assign({}, this.props.values)});
+            }
         }
     }
     
@@ -80,7 +79,7 @@ export class MinValueMax extends Component {
     onChange(event){
         let values = this.state.values;
         values[event.target.name] = event.target.value;
-        this.setState({values: values});
+        this.setState({values: values, dataChanged: true});
     }   
     
     onCommit(callback){

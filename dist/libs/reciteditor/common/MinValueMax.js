@@ -37,24 +37,20 @@ var MinValueMax = function (_Component) {
     _this.onFocusOut = _this.onFocusOut.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onKeyDown = _this.onKeyDown.bind((0, _assertThisInitialized2["default"])(_this));
     _this.state = {
-      values: _this.props.values
+      values: Object.assign({}, _this.props.values),
+      dataChanged: false
     };
     return _this;
   }
   (0, _createClass2["default"])(MinValueMax, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.setState({
-        values: this.props.values
-      });
-    }
-  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (this.props.values.min != this.state.values.min || this.props.values.value != this.state.values.value || this.props.values.max != this.state.values.max) {
-        this.setState({
-          values: this.props.values
-        });
+      if (!this.state.dataChanged) {
+        if (this.props.values.min != this.state.values.min || this.props.values.value != this.state.values.value || this.props.values.max != this.state.values.max) {
+          this.setState({
+            values: Object.assign({}, this.props.values)
+          });
+        }
       }
     }
   }, {
@@ -105,7 +101,8 @@ var MinValueMax = function (_Component) {
       var values = this.state.values;
       values[event.target.name] = event.target.value;
       this.setState({
-        values: values
+        values: values,
+        dataChanged: true
       });
     }
   }, {
