@@ -24,7 +24,7 @@
  import { i18n } from '../../RecitEditor';
  import {BsBackgroundProperty, BsBackgroundImageProperty, BsShadowProperty, BsIconProperty, BsIconSizeProperty, BsMarginProperty, BsPaddingProperty, HTMLClassProperty,
     HTMLStyleProperty, HTMLWidthProperty, HTMLHeightProperty, HTMLFontSizeProperty, HTMLFontFamilyProperty, HTMLColorProperty, HTMLBackgroundProperty, HTMLHrefProperty, HTMLTargetProperty, 
-            HTMLSourceProperty, HTMLIdProperty, HTMLVideoButtonProperty, HTMLVideoSourceProperty, HTMLEmbedProperty, HTMLPropertiesData, BsTabProperty, BsTabJustifyProperty, BsAddTabProperty, HTMLMarginBorderPaddingProperty, BsAddAccordionProperty, BsBorderProperty, BsBorderColorProperty, BsBorderStyleProperty, BsBorderRadiusProperty, BsTextColorProperty, BsTextAlignmentProperty, BsBtnBlockProperty, BsBtnOutlineProperty, BsBtnSizeProperty, BsTableActionProperty, BsTableBorderProperty, BsTableStripedProperty, BsTableCellActionProperty, HTMLAltProperty, HTMLOuterHTMLProperty, ModalGridProperty, BsGridResponsiveProperty, BsGridPaddingProperty, HTMLImageBankProperty, HTMLBackgroundCoverProperty, BsGridVerticalAlignProperty, BsHeadingProperty} from './HTMLProperties';
+            HTMLSourceProperty, HTMLIdProperty, HTMLVideoButtonProperty, HTMLVideoSourceProperty, HTMLEmbedProperty, HTMLPropertiesData, BsTabProperty, BsTabJustifyProperty, BsAddTabProperty, HTMLMarginBorderPaddingProperty, BsAddAccordionProperty, BsBorderProperty, BsBorderColorProperty, BsBorderStyleProperty, BsBorderRadiusProperty, BsTextColorProperty, BsTextAlignmentProperty, BsBtnBlockProperty, BsBtnOutlineProperty, BsBtnSizeProperty, BsTableActionProperty, BsTableBorderProperty, BsTableStripedProperty, BsTableCellActionProperty, HTMLAltProperty, HTMLOuterHTMLProperty, ModalGridProperty, BsGridResponsiveProperty, BsGridPaddingProperty, HTMLImageBankProperty, HTMLBackgroundCoverProperty, BsGridVerticalAlignProperty, BsHeadingProperty, BsFullHeightProperty} from './HTMLProperties';
  import {HTMLHeadingElement, HTMLParagraphElement, HTMLButtonElement, HTMLLinkElement, HTMLAudioElement, HTMLVideoElement, HTMLButtonVideoElement, HTMLEmbedElement,
             HTMLNavElement, HTMLNavItemElement, HTMLNavLinkElement,
             HTMLBodyElement, HTMLDivElement, HTMLSpanElement, HTMLSectionElement, HTMLGridElement, HTMLRowElement, HTMLColElement, HTMLUListElement, HTMLOListElement, HTMLLIElement,
@@ -151,6 +151,12 @@ export class HTMLElementData{
                 name: 'heading', description: i18n.get_string('heading'), 
                 children: [
                     new BsHeadingProperty(),
+                ]
+            }, 
+            {
+                name: 'bs-dimension', description: i18n.get_string('dimension'), 
+                children: [
+                    new BsFullHeightProperty(),
                 ]
             }, 
         ],

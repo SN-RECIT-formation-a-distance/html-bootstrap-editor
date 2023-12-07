@@ -58,7 +58,7 @@ export class LayoutBuilder extends Component
         this.onNavbarSelect = this.onNavbarSelect.bind(this);
         this.onSaveAndClose = this.onSaveAndClose.bind(this);
         this.onWindowResize = this.onWindowResize.bind(this);
-        this.windowResizeTo = this.windowResizeTo.bind(this);
+        //this.windowResizeTo = this.windowResizeTo.bind(this);
 
         window.addEventListener("resize", this.onWindowResize);
 
@@ -71,7 +71,7 @@ export class LayoutBuilder extends Component
     }  
 
     componentDidMount(){
-        this.windowResizeTo();
+        //this.windowResizeTo();
         window.moveTo(0,0);
     }
 
@@ -151,11 +151,11 @@ export class LayoutBuilder extends Component
         });
     }
 
-    windowResizeTo(){
+    /*windowResizeTo(){
         let device = this.getDeviceDimension();
         let width = device.width + LayoutBuilder.properties.leftPanel.width + 15 + (this.state.view === 'sourceCodeDesigner' ? 780 : 0);
         window.resizeTo(Math.min(width, screen.availWidth), screen.availHeight);
-    }
+    }*/
 
     onWindowResize(){
         this.forceUpdate();

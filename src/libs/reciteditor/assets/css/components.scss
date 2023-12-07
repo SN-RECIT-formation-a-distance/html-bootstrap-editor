@@ -179,26 +179,27 @@ html{
     .VisualFeedback[data-feedback-type="info"]{top: auto; left: auto; right: 0; bottom: 0;}
 }
 
-.templatevitrine {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+.modal-showcase{
+    background-color: rgba(0,0,0,.9);
+    .modal-dialog{
+        max-width: 90vw;
+        width: 90vw;
 
-    .modal-dialog {
-        max-width: 100% !important;
-        max-height: 100%;
-    }
+        .modal-content {
+            height: 90vh;
 
-    .modal-content {
-        height: auto;
-        min-height: 100%;
-        border-radius: 0;
-    }
-    iframe {
-        width: 100%;
-        height: 85vh;
-        border: 0;
+            .modal-header{
+                padding: 0.5rem 1rem 0.5rem 1rem;
+            }
+            .modal-body{
+                padding: 0;
+                iframe{
+                    border: none;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
     }
 }
 

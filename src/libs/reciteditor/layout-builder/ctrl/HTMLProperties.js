@@ -695,6 +695,42 @@ export class HTMLBackgroundCoverProperty extends HTMLProperty{
     }
 }
 
+export class BsFullHeightProperty extends HTMLProperty{
+    constructor(){
+        super('fullheight', i18n.get_string('fullheight'));
+
+        this.custom = {
+            className: "h-100"
+        };
+
+        this.options = [
+            {text:i18n.get_string('yes'), value: this.custom.className},
+            {text:i18n.get_string('no'), value: ""}                       
+        ];
+
+        this.input = new RadioButton(this.options, this.onChange.bind(this));
+    }
+ 
+    getValue(el, data){
+        let result = "";
+                        
+        if(el.classList.contains(this.custom.className)){
+            result = this.custom.className;
+        }
+
+        return result;
+    }
+
+    onChange(el, value, data){
+
+        if(value.length > 0){
+            el.classList.add(this.custom.className);
+        }else{
+            el.classList.remove(this.custom.className);
+        }
+    }
+}
+
 export class BsShadowProperty extends HTMLProperty{
     constructor(){
         super('shadow',  i18n.get_string('shadow'));

@@ -638,7 +638,11 @@ class HTMLElement{
  
  export class HTMLCardElement extends HTMLDivElement{
      constructor(){
-         super(i18n.get_string('card'), "div", 'bootstrap');
+        let properties = Object.assign(HTMLPropertiesData.propsAssignmentFacade.containers, {});
+        properties.min.splice(1, 0, 'bs-dimension');
+        properties.all.splice(2, 0, 'bs-dimension');
+
+        super(i18n.get_string('card'), "div", 'bootstrap', properties);
      }
  
      equal(el){

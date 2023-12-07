@@ -473,7 +473,7 @@ class TemplateList extends Component{
                     })}
                 </ul></>}
                 {this.state.showShowcase && 
-                    <Modal show={true} onHide={() => this.showShowcase(false)} backdrop="static" keyboard={false} className='templatevitrine'>
+                    <Modal show={true} onHide={() => this.showShowcase(false)} backdrop="static" centered keyboard={false} className='modal-showcase'>
                         <Modal.Header closeButton>
                             <Modal.Title>{i18n.get_string('showroom')}</Modal.Title>
                         </Modal.Header>
@@ -585,9 +585,13 @@ class TemplateList extends Component{
 
     receiveMessageFromIframe(event) {
         switch (event.data.message){
-            case 'import':
+            case 'import': // retrocompatible
+            case 'showcase-import':
                 let data = [{name: event.data.value.name, htmlStr: event.data.value.htmlStr || event.data.value.htmlString || event.data.value.htmlstr, img: event.data.value.img || event.data.value.image, type: 'l'}];
                 this.onImport(null, data);
+                this.showShowcase(false);
+                break;
+            case 'showcase-exit':
                 this.showShowcase(false);
                 break;
         }
