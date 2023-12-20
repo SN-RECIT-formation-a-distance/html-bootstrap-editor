@@ -40,7 +40,6 @@ var LayoutBuilder = function (_Component) {
     _this.onNavbarSelect = _this.onNavbarSelect.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onSaveAndClose = _this.onSaveAndClose.bind((0, _assertThisInitialized2["default"])(_this));
     _this.onWindowResize = _this.onWindowResize.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.windowResizeTo = _this.windowResizeTo.bind((0, _assertThisInitialized2["default"])(_this));
     window.addEventListener("resize", _this.onWindowResize);
     var device = window.screen.width <= LayoutBuilder.properties.maxScreenWidth ? 'lg' : 'xl';
     _this.state = {
@@ -54,7 +53,6 @@ var LayoutBuilder = function (_Component) {
   (0, _createClass2["default"])(LayoutBuilder, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.windowResizeTo();
       window.moveTo(0, 0);
     }
   }, {
@@ -202,13 +200,6 @@ var LayoutBuilder = function (_Component) {
       return new Promise(function (resolve, reject) {
         _this2.mainViewRef.current.screenshot(resolve);
       });
-    }
-  }, {
-    key: "windowResizeTo",
-    value: function windowResizeTo() {
-      var device = this.getDeviceDimension();
-      var width = device.width + LayoutBuilder.properties.leftPanel.width + 15 + (this.state.view === 'sourceCodeDesigner' ? 780 : 0);
-      window.resizeTo(Math.min(width, screen.availWidth), screen.availHeight);
     }
   }, {
     key: "onWindowResize",
@@ -414,13 +405,14 @@ var MainView = function (_Component2) {
   }, {
     key: "render",
     value: function render() {
+      var areaHeight = {
+        height: "calc(100vh - ".concat(LayoutBuilder.properties.topNavBar.height, "px")
+      };
       var main = _react["default"].createElement("div", {
         className: "main"
       }, _react["default"].createElement("div", {
         className: "left-area",
-        style: {
-          height: "calc(100vh - ".concat(LayoutBuilder.properties.topNavBar.height, "px")
-        }
+        style: areaHeight
       }, _react["default"].createElement(_reactBootstrap.ButtonToolbar, {
         style: {
           height: '100%',
@@ -525,7 +517,8 @@ var MainView = function (_Component2) {
         onMoveNodeUp: this.onMoveNodeUp,
         onMoveNodeDown: this.onMoveNodeDown
       }))), _react["default"].createElement("div", {
-        className: "center-area"
+        className: "center-area",
+        style: areaHeight
       }, _react["default"].createElement("div", {
         className: "d-flex"
       }, this.canvasState.sourceCodeDesigner.render(this.props.view, this.state.selectedElement), this.canvasState.preview.render(this.props.view === 'preview', this.state.selectedElement))));

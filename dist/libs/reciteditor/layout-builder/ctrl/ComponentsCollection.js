@@ -637,8 +637,9 @@ var TemplateList = function (_Component5) {
           return _this8.showShowcase(false);
         },
         backdrop: "static",
+        centered: true,
         keyboard: false,
-        className: "templatevitrine"
+        className: "modal-showcase"
       }, _react["default"].createElement(_reactBootstrap.Modal.Header, {
         closeButton: true
       }, _react["default"].createElement(_reactBootstrap.Modal.Title, null, _RecitEditor.i18n.get_string('showroom'))), _react["default"].createElement(_reactBootstrap.Modal.Body, null, _react["default"].createElement("iframe", {
@@ -798,6 +799,7 @@ var TemplateList = function (_Component5) {
     value: function receiveMessageFromIframe(event) {
       switch (event.data.message) {
         case 'import':
+        case 'showcase-import':
           var data = [{
             name: event.data.value.name,
             htmlStr: event.data.value.htmlStr || event.data.value.htmlString || event.data.value.htmlstr,
@@ -805,6 +807,9 @@ var TemplateList = function (_Component5) {
             type: 'l'
           }];
           this.onImport(null, data);
+          this.showShowcase(false);
+          break;
+        case 'showcase-exit':
           this.showShowcase(false);
           break;
       }

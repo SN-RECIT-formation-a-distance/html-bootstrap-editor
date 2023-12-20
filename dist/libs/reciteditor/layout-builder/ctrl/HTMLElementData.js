@@ -91,6 +91,10 @@ var HTMLElementData = function () {
         name: 'heading',
         description: _RecitEditor.i18n.get_string('heading'),
         children: [new _HTMLProperties.BsHeadingProperty()]
+      }, {
+        name: 'bs-dimension',
+        description: _RecitEditor.i18n.get_string('dimension'),
+        children: [new _HTMLProperties.BsFullHeightProperty()]
       }],
       html: [{
         name: 'layout',

@@ -854,7 +854,10 @@ var HTMLCardElement = function (_HTMLDivElement3) {
   var _super28 = _createSuper(HTMLCardElement);
   function HTMLCardElement() {
     (0, _classCallCheck2["default"])(this, HTMLCardElement);
-    return _super28.call(this, _RecitEditor.i18n.get_string('card'), "div", 'bootstrap');
+    var properties = Object.assign(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers, {});
+    properties.min.splice(1, 0, 'bs-dimension');
+    properties.all.splice(2, 0, 'bs-dimension');
+    return _super28.call(this, _RecitEditor.i18n.get_string('card'), "div", 'bootstrap', properties);
   }
   (0, _createClass2["default"])(HTMLCardElement, [{
     key: "equal",

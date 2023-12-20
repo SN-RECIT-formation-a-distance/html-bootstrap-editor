@@ -310,9 +310,11 @@ class MainView extends Component{
     }
     
     render(){
+        let areaHeight =  {height: `calc(100vh - ${LayoutBuilder.properties.topNavBar.height}px`};
+
         let main =
             <div className="main">
-                <div className="left-area" style={{height: `calc(100vh - ${LayoutBuilder.properties.topNavBar.height}px`}}>
+                <div className="left-area" style={areaHeight}>
                     <ButtonToolbar style={{height:'100%', backgroundColor: '#6c757d'}}>
                         <ButtonGroup aria-label="Buttons" style={{flexDirection: 'column' }}>
                             <LeftPanelButton checked={this.state.panels.components === 1} value='components,1' onClick={this.onPanelChange} title={i18n.get_string('templates')} glyph={faCloud} />
@@ -338,7 +340,7 @@ class MainView extends Component{
                     }
                 </div>
                 
-                <div className="center-area">
+                <div className="center-area" style={areaHeight}>
                     <div className='d-flex'>
                         {this.canvasState.sourceCodeDesigner.render(this.props.view, this.state.selectedElement)}
                         {this.canvasState.preview.render(this.props.view === 'preview', this.state.selectedElement)} 
