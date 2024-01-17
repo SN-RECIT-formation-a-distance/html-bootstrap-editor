@@ -33,23 +33,25 @@ html{
             padding: 5px;
         }
 
-        div:empty:not(.col):not(.embedelement):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before{content: "Div"; @extend .tag-empty;}
+        div:empty:not(.col):not(.col-auto):not(.row):not(.row-fluid):not(.embedelement):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before{content: "Div"; @extend .tag-empty;}
         .embedelement:empty::before{content: "Embed"; @extend .tag-empty;}
         div:not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer):not(.dropping-zone):not(.carousel-item){ border: $border-invisible-element; }    
         section{border: $border-invisible-element; padding: 1rem;}
         table{border: $border-invisible-element; border-width: 3px;}
         section:empty::before{content: "Section"; @extend .tag-empty;}
         p:empty::before{content: "P"; @extend .tag-empty;}
-        
+         
         .container{ border: $border-invisible-element; padding: 1rem; }
         .container-fluid{@extend .container;}
         .row{ border: $border-invisible-element;  padding: 1rem; }
-        .row:empty::before{content: "Row"; @extend .tag-empty;}
-        
-        @for $i from 1 through 12 {
+        .row:empty::before, .row-fluid:empty::before{content: "Row"; @extend .tag-empty;}
+         
+        @for $i from 1 through 12 { 
             .col-#{$i}, .col-md-#{$i} {border: $border-invisible-element; min-height: 30px;}
             .col-#{$i}:empty::before, .col-md-#{$i}:empty::before {content: 'Col'; @extend .tag-empty;}
         }
+
+        .col-auto:empty::before,.col:empty::before {content: 'Col'; @extend .tag-empty;}
 
         .alert:empty::after{content: "Alert"; @extend .tag-empty;}
         .card{@extend .extra-landmark;}

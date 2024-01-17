@@ -408,7 +408,7 @@ class HTMLElement{
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('row') || this.equalLegacy(el));
+         return (el.classList.contains('row') || el.classList.contains('row-fluid') || this.equalLegacy(el));
      }
 
      equalLegacy(el){
@@ -421,7 +421,7 @@ class HTMLElement{
          return el;
      }
  }
- 
+  
  export class HTMLColElement extends HTMLElement{
      constructor(){
          super('Col', 'col', 'bootstrap', {
@@ -439,7 +439,7 @@ class HTMLElement{
                  containsCol = true;
              }
          }
-         return (el.classList.contains('col') || containsCol);
+         return (el.classList.contains('col') || el.classList.contains('col-auto') || containsCol);
      }
  
      create(){

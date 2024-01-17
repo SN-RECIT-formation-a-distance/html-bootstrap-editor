@@ -959,7 +959,11 @@ var BsBackgroundImageProperty = function (_HTMLProperty21) {
     key: "onChange",
     value: function onChange(el, value, data) {
       if (value.length > 0) {
-        el.style.backgroundImage = "url('".concat(value, "')");
+        if (value.includes('url(')) {
+          el.style.backgroundImage = value;
+        } else {
+          el.style.backgroundImage = "url('".concat(value, "')");
+        }
       } else {
         el.style.backgroundImage = "";
       }

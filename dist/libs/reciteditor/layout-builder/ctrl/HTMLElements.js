@@ -533,7 +533,7 @@ var HTMLRowElement = function (_HTMLElement15) {
       if (el === null) {
         return false;
       }
-      return el.classList.contains('row') || this.equalLegacy(el);
+      return el.classList.contains('row') || el.classList.contains('row-fluid') || this.equalLegacy(el);
     }
   }, {
     key: "equalLegacy",
@@ -576,7 +576,7 @@ var HTMLColElement = function (_HTMLElement16) {
           containsCol = true;
         }
       }
-      return el.classList.contains('col') || containsCol;
+      return el.classList.contains('col') || el.classList.contains('col-auto') || containsCol;
     }
   }, {
     key: "create",

@@ -653,7 +653,12 @@ export class BsBackgroundImageProperty extends HTMLProperty{
 
     onChange(el, value, data){
         if(value.length > 0){
-            el.style.backgroundImage = `url('${value}')`;
+            if(value.includes('url(')){
+                el.style.backgroundImage = value;
+            }
+            else{
+                el.style.backgroundImage = `url('${value}')`;
+            }
         }
         else{
             el.style.backgroundImage = "";
