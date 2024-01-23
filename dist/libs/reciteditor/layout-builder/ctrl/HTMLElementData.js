@@ -131,7 +131,7 @@ var HTMLElementData = function () {
       }, {
         name: 'htmlattributes',
         description: _RecitEditor.i18n.get_string('htmlattributes'),
-        children: [new _HTMLProperties.HTMLIdProperty(), new _HTMLProperties.HTMLClassProperty(), new _HTMLProperties.HTMLStyleProperty()]
+        children: [new _HTMLProperties.HTMLClassProperty(), new _HTMLProperties.HTMLStyleProperty(), new _HTMLProperties.HTMLIdProperty()]
       }, {
         name: 'videobtn',
         description: _RecitEditor.i18n.get_string('source'),

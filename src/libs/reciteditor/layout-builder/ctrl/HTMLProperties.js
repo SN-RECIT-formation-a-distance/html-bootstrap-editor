@@ -1887,7 +1887,7 @@ export class HTMLPropertiesData{
         },
         icon: {
             min: ['icon'],
-            all: ['icon', 'htmlcode', 'bs-background', 'bs-general', 'bs-spacing', 'bs-border', 'background', 'htmlattributes']
+            all: ['icon', 'htmlcode', 'htmlattributes', 'bs-background', 'bs-general', 'bs-spacing', 'bs-border', 'background']
         },
         link: {
             min: ['link', 'bs-button'],
