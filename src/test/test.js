@@ -7,6 +7,7 @@ let IWrapper = {
     getSettings: null,
     uploadFile: null,
     getThemeCssRules: null,
+    getAdditionalHTMLHead: null,
     getThemeUrl: null,
     getContent: null,
     saveContent: null,
@@ -42,9 +43,31 @@ IWrapper.uploadFile = function(filename, binFile, cb){
  * This function will return all CSS rules used on the website.
  */
 IWrapper.getThemeCssRules = function(returnAllRules){
-    var cssRulesBuffer = {rules: [], url: ['https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css']};
+    var cssRulesBuffer = {
+        rules: [], 
+        urlList: [
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css',
+        ]
+    };
 
     return cssRulesBuffer;
+}
+
+/**
+ * This function will return additional HTML headers
+ */
+IWrapper.getAdditionalHTMLHead = function(){
+    let result = {
+        css: [
+            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css',
+            'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0'
+        ], 
+        js: [
+          //  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js'
+        ]
+    };
+
+    return result;
 }
 
 /**

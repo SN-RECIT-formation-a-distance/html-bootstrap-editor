@@ -65,7 +65,7 @@ var IconSelector = function (_Component) {
         _iterator.f();
       }
     }
-    _this.cssFiles = _RecitEditor.IWrapper.getThemeCssRules().url;
+    _this.cssFiles = _RecitEditor.IWrapper.getThemeCssRules().urlList.concat(_RecitEditor.IWrapper.getAdditionalHTMLHead().css);
     _this.cssRules = _RecitEditor.$glVars.cssRules;
     _this.icons = {};
     _this.buildIconList();
@@ -84,7 +84,6 @@ var IconSelector = function (_Component) {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var rule = _step2.value;
           if (rule.cssText.includes('content:') && rule.selectorText && !rule.selectorText.includes(',')) {
-            console.log(rule);
             for (var _name in this.config) {
               var csscl = this.config[_name].replace('.', '');
               if (rule.selectorText.startsWith('.' + csscl)) {

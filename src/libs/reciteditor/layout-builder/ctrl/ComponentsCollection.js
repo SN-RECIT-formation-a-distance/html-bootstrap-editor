@@ -26,7 +26,7 @@ import { Form, Row, Col, Nav, ButtonToolbar, ButtonGroup, Button, Modal  } from 
 import { faSave, faTrashAlt, faAngleRight, faAngleDown, faCubes, faCloud, faTimes, faCloudDownloadAlt, faCog, faPuzzlePiece, faArrowUp, faArrowDown} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LayoutSpacingEditor, LayoutSpacing, MultipleSelect, $glVars, Assets, ToggleButtons, InputColor, InputText, InputTextArea, MinValueMax, ComboBox, ImageSrc, BtnUpload, IWrapper,
-    IconSelector, ColorSelector, Templates, i18n } from '../../RecitEditor';
+    IconSelector, ColorSelector, Templates, i18n, HTMLCodeProperty } from '../../RecitEditor';
 import { HTMLElementData } from './HTMLElementData';
 import { GridBuilder } from '../components/GridBuilder';
 import { ImagePixaBay } from '../../common/ImagePixaBay';
@@ -35,6 +35,7 @@ export class ComponentProperties extends Component{
     static defaultProps = {
         element: null,
         onAfterInsertNode: null,
+        onReplaceNode: null,
         onDeleteElement: null,
         onAfterAssignProperty: null,
         tab: 'bm'
@@ -66,10 +67,10 @@ export class ComponentProperties extends Component{
                 {header}
 
                 {this.props.tab === "bs" && 
-                        <FormProperties element={this.props.element} onAfterReplaceNode={this.props.onAfterReplaceNode} onAfterAssignProperty={this.props.onAfterAssignProperty} onAfterInsertNode={this.props.onAfterInsertNode} onDeleteElement={this.props.onDeleteElement} properties={propertyList.bootstrap} />
+                        <FormProperties element={this.props.element} onReplaceNode={this.props.onReplaceNode} onAfterReplaceNode={this.props.onAfterReplaceNode} onAfterAssignProperty={this.props.onAfterAssignProperty} onAfterInsertNode={this.props.onAfterInsertNode} onDeleteElement={this.props.onDeleteElement} properties={propertyList.bootstrap} />
                 }
-                {this.props.tab === "html" && <FormProperties element={this.props.element} onAfterInsertNode={this.props.onAfterInsertNode} onAfterAssignProperty={this.props.onAfterAssignProperty} onAfterReplaceNode={this.props.onAfterReplaceNode} onDeleteElement={this.props.onDeleteElement} properties={propertyList.html} />}
-                {this.props.tab === "bm" && <FormProperties element={this.props.element} onAfterInsertNode={this.props.onAfterInsertNode} onAfterAssignProperty={this.props.onAfterAssignProperty} onAfterReplaceNode={this.props.onAfterReplaceNode} onDeleteElement={this.props.onDeleteElement} properties={propertyList.bookmark} />}
+                {this.props.tab === "html" && <FormProperties element={this.props.element} onReplaceNode={this.props.onReplaceNode} onAfterInsertNode={this.props.onAfterInsertNode} onAfterAssignProperty={this.props.onAfterAssignProperty} onAfterReplaceNode={this.props.onAfterReplaceNode} onDeleteElement={this.props.onDeleteElement} properties={propertyList.html} />}
+                {this.props.tab === "bm" && <FormProperties element={this.props.element}  onReplaceNode={this.props.onReplaceNode} onAfterInsertNode={this.props.onAfterInsertNode} onAfterAssignProperty={this.props.onAfterAssignProperty} onAfterReplaceNode={this.props.onAfterReplaceNode} onDeleteElement={this.props.onDeleteElement} properties={propertyList.bookmark} />}
             </div>
                 
                 
@@ -114,7 +115,8 @@ class FormProperties extends Component{
         onAfterInsertNode: null,
         onAfterReplaceNode: null,
         onAfterAssignProperty: null,
-        onDeleteElement: null
+        onDeleteElement: null,
+        onReplaceNode: null
     };
 
     constructor(props){
@@ -249,7 +251,12 @@ class FormProperties extends Component{
     }
 
     onDataChange(event, componentData){
-        if (componentData.input.onChange){
+        if(componentData instanceof HTMLCodeProperty){
+            let newEl = componentData.input.onChange(this.props.element, event.target.value, componentData);
+            this.props.onReplaceNode(this.props.element, newEl);
+        }
+        else if (componentData.input.onChange){
+            console.log( event.target.value)
             componentData.input.onChange(this.props.element, event.target.value, componentData);
             this.forceUpdate();
             this.props.onAfterAssignProperty();

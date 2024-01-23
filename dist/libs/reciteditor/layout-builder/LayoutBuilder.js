@@ -305,6 +305,7 @@ var MainView = function (_Component2) {
     _this3.onCloneNode = _this3.onCloneNode.bind((0, _assertThisInitialized2["default"])(_this3));
     _this3.onAfterInsertNode = _this3.onAfterInsertNode.bind((0, _assertThisInitialized2["default"])(_this3));
     _this3.onAfterReplaceNode = _this3.onAfterReplaceNode.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3.onReplaceNode = _this3.onReplaceNode.bind((0, _assertThisInitialized2["default"])(_this3));
     _this3.onAfterAssignProperty = _this3.onAfterAssignProperty.bind((0, _assertThisInitialized2["default"])(_this3));
     _this3.onStartEditingNodeText = _this3.onStartEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this3));
     _this3.onFinishEditingNodeText = _this3.onFinishEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this3));
@@ -487,6 +488,7 @@ var MainView = function (_Component2) {
         onSaveTemplate: this.onSaveTemplate,
         tab: "comp"
       }), this.state.panels.properties === 1 && _react["default"].createElement(_RecitEditor.ComponentProperties, {
+        onReplaceNode: this.onReplaceNode,
         onAfterInsertNode: this.onAfterInsertNode,
         onAfterAssignProperty: this.onAfterAssignProperty,
         onAfterReplaceNode: this.onAfterReplaceNode,
@@ -494,6 +496,7 @@ var MainView = function (_Component2) {
         element: this.state.selectedElement,
         tab: "bs"
       }), this.state.panels.properties === 2 && _react["default"].createElement(_RecitEditor.ComponentProperties, {
+        onReplaceNode: this.onReplaceNode,
         onAfterInsertNode: this.onAfterInsertNode,
         onAfterAssignProperty: this.onAfterAssignProperty,
         onAfterReplaceNode: this.onAfterReplaceNode,
@@ -501,6 +504,7 @@ var MainView = function (_Component2) {
         element: this.state.selectedElement,
         tab: "html"
       }), this.state.panels.properties === 3 && _react["default"].createElement(_RecitEditor.ComponentProperties, {
+        onReplaceNode: this.onReplaceNode,
         onAfterInsertNode: this.onAfterInsertNode,
         onAfterAssignProperty: this.onAfterAssignProperty,
         onAfterReplaceNode: this.onAfterReplaceNode,
@@ -631,6 +635,13 @@ var MainView = function (_Component2) {
     key: "onAfterReplaceNode",
     value: function onAfterReplaceNode(elems) {
       this.canvasState[this.state.canvasState].onAfterInsertNode(elems);
+      this.forceUpdate();
+    }
+  }, {
+    key: "onReplaceNode",
+    value: function onReplaceNode(fromEl, toEl) {
+      this.canvasState[this.state.canvasState].onReplaceNode(fromEl, toEl);
+      this.onUnselectElement();
       this.forceUpdate();
     }
   }, {

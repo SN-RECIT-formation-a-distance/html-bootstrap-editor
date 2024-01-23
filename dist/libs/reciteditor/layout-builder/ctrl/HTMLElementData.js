@@ -144,6 +144,10 @@ var HTMLElementData = function () {
         name: 'embed',
         description: _RecitEditor.i18n.get_string('properties'),
         children: [new _HTMLProperties.HTMLEmbedProperty()]
+      }, {
+        name: 'htmlcode',
+        description: _RecitEditor.i18n.get_string('htmlcode'),
+        children: [new _HTMLProperties.HTMLCodeProperty()]
       }],
       bookmark: []
     };

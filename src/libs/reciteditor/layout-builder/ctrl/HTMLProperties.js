@@ -128,6 +128,10 @@ class IconPicker{
     }
 
     onChange(el, value, data){
+        while (el.firstChild) {
+            el.removeChild(el.firstChild);
+        }
+
         el.setAttribute('class', value);
     }
 }
@@ -182,7 +186,7 @@ class TextArea{
     }
 
     onChange(el, value, data){
-        this.onChangeProp(el, value, data);
+        return this.onChangeProp(el, value, data);
     }
 }
 
@@ -279,11 +283,11 @@ export class HTMLFontSizeProperty extends HTMLProperty{
 export class HTMLStyleProperty extends HTMLProperty{
     constructor(){
         super('style',  i18n.get_string('style'));
-        this.input = new TextInput(this.onChange.bind(this));
+        this.input = new TextArea(this.onChange.bind(this));
     }
 
     getValue(el, data){
-        return el.getAttribute('style');
+        return el.getAttribute('style') || "";
     }
 
     onChange(el, value, data){
@@ -517,8 +521,24 @@ export class HTMLEmbedProperty extends HTMLProperty{
         return el.innerHTML;
     }
 
-    onChange(el, value, data){
+    onChange(el, value, data){       
         el.innerHTML = value;
+    }
+}
+
+export class HTMLCodeProperty extends HTMLProperty{
+    constructor(){
+        super('htmlcode',  i18n.get_string('htmlcode'));
+        this.input = new TextArea(this.onChange.bind(this));
+    }
+
+    getValue(el, data){
+        return el.outerHTML;
+    }
+
+    onChange(el, value, data){
+        let newEl = new DOMParser().parseFromString(value, "text/html").body.firstElementChild;
+        return newEl;
     }
 }
 
@@ -1867,7 +1887,7 @@ export class HTMLPropertiesData{
         },
         icon: {
             min: ['icon'],
-            all: ['icon', 'bs-background', 'bs-general', 'bs-spacing', 'bs-border', 'background', 'htmlattributes']
+            all: ['icon', 'htmlcode', 'bs-background', 'bs-general', 'bs-spacing', 'bs-border', 'background', 'htmlattributes']
         },
         link: {
             min: ['link', 'bs-button'],

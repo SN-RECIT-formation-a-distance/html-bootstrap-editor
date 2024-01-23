@@ -68,6 +68,7 @@ var ComponentProperties = function (_Component) {
         className: "panel"
       }, header, this.props.tab === "bs" && _react["default"].createElement(FormProperties, {
         element: this.props.element,
+        onReplaceNode: this.props.onReplaceNode,
         onAfterReplaceNode: this.props.onAfterReplaceNode,
         onAfterAssignProperty: this.props.onAfterAssignProperty,
         onAfterInsertNode: this.props.onAfterInsertNode,
@@ -75,6 +76,7 @@ var ComponentProperties = function (_Component) {
         properties: propertyList.bootstrap
       }), this.props.tab === "html" && _react["default"].createElement(FormProperties, {
         element: this.props.element,
+        onReplaceNode: this.props.onReplaceNode,
         onAfterInsertNode: this.props.onAfterInsertNode,
         onAfterAssignProperty: this.props.onAfterAssignProperty,
         onAfterReplaceNode: this.props.onAfterReplaceNode,
@@ -82,6 +84,7 @@ var ComponentProperties = function (_Component) {
         properties: propertyList.html
       }), this.props.tab === "bm" && _react["default"].createElement(FormProperties, {
         element: this.props.element,
+        onReplaceNode: this.props.onReplaceNode,
         onAfterInsertNode: this.props.onAfterInsertNode,
         onAfterAssignProperty: this.props.onAfterAssignProperty,
         onAfterReplaceNode: this.props.onAfterReplaceNode,
@@ -129,6 +132,7 @@ exports.ComponentProperties = ComponentProperties;
 ComponentProperties.defaultProps = {
   element: null,
   onAfterInsertNode: null,
+  onReplaceNode: null,
   onDeleteElement: null,
   onAfterAssignProperty: null,
   tab: 'bm'
@@ -362,7 +366,11 @@ var FormProperties = function (_Component2) {
   }, {
     key: "onDataChange",
     value: function onDataChange(event, componentData) {
-      if (componentData.input.onChange) {
+      if (componentData instanceof _RecitEditor.HTMLCodeProperty) {
+        var newEl = componentData.input.onChange(this.props.element, event.target.value, componentData);
+        this.props.onReplaceNode(this.props.element, newEl);
+      } else if (componentData.input.onChange) {
+        console.log(event.target.value);
         componentData.input.onChange(this.props.element, event.target.value, componentData);
         this.forceUpdate();
         this.props.onAfterAssignProperty();
@@ -397,7 +405,8 @@ FormProperties.defaultProps = {
   onAfterInsertNode: null,
   onAfterReplaceNode: null,
   onAfterAssignProperty: null,
-  onDeleteElement: null
+  onDeleteElement: null,
+  onReplaceNode: null
 };
 var VisualComponentList = function (_Component3) {
   (0, _inherits2["default"])(VisualComponentList, _Component3);

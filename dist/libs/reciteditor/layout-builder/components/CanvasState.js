@@ -15,17 +15,17 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
 var _react = _interopRequireDefault(require("react"));
 var _TextEditor = require("../../common/TextEditor");
 var _RecitEditor = require("../../RecitEditor");
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
-                                                                                                                                                                                                                                                                                                                                           * Atto HTML editor
-                                                                                                                                                                                                                                                                                                                                           *
-                                                                                                                                                                                                                                                                                                                                           * @package    atto_reciteditor
-                                                                                                                                                                                                                                                                                                                                           * @copyright  2019 RECIT
-                                                                                                                                                                                                                                                                                                                                           * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
-                                                                                                                                                                                                                                                                                                                                           */
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } /**
+                                                                                                                                                                                     * Atto HTML editor
+                                                                                                                                                                                     *
+                                                                                                                                                                                     * @package    atto_reciteditor
+                                                                                                                                                                                     * @copyright  2019 RECIT
+                                                                                                                                                                                     * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+                                                                                                                                                                                     */
 var CanvasState = function () {
   function CanvasState(mainView) {
     (0, _classCallCheck2["default"])(this, CanvasState);
@@ -48,6 +48,69 @@ var CanvasState = function () {
   }, {
     key: "onInit",
     value: function onInit(iframe) {}
+  }, {
+    key: "onInitCSS",
+    value: function onInitCSS(doc, head) {
+      var cssRules = _RecitEditor.IWrapper.getThemeCssRules();
+      var el = null;
+      if (cssRules.urlList.length > 0) {
+        var _iterator = _createForOfIteratorHelper(cssRules.urlList),
+          _step;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var url = _step.value;
+            el = doc.createElement("link");
+            el.setAttribute("href", url);
+            el.setAttribute("rel", "stylesheet");
+            head.appendChild(el);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      }
+      var additionalHTMLHead = _RecitEditor.IWrapper.getAdditionalHTMLHead();
+      if (additionalHTMLHead.css.length > 0) {
+        var _iterator2 = _createForOfIteratorHelper(additionalHTMLHead.css),
+          _step2;
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var _url = _step2.value;
+            el = doc.createElement("link");
+            el.setAttribute("href", _url);
+            el.setAttribute("rel", "stylesheet");
+            head.appendChild(el);
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      }
+      if (additionalHTMLHead.js.length > 0) {
+        var _iterator3 = _createForOfIteratorHelper(additionalHTMLHead.js),
+          _step3;
+        try {
+          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+            var _url2 = _step3.value;
+            el = doc.createElement("script");
+            el.setAttribute("src", _url2);
+            head.appendChild(el);
+          }
+        } catch (err) {
+          _iterator3.e(err);
+        } finally {
+          _iterator3.f();
+        }
+      }
+      if (cssRules.rules.length > 0) {
+        el = doc.createElement("style");
+        el.setAttribute("title", "theme-moodle");
+        el.innerHTML = _RecitEditor.UtilsHTML.cssRules2Str(cssRules.rules);
+        head.appendChild(el);
+      }
+    }
   }, {
     key: "render",
     value: function render(show, selectedElement) {}
@@ -85,6 +148,9 @@ var CanvasState = function () {
     key: "onAfterInsertNode",
     value: function onAfterInsertNode(elems) {}
   }, {
+    key: "onReplaceNode",
+    value: function onReplaceNode(fromEl, toEl) {}
+  }, {
     key: "onInsertTemplate",
     value: function onInsertTemplate(position, item) {}
   }, {
@@ -96,9 +162,6 @@ var CanvasState = function () {
   }, {
     key: "onKey",
     value: function onKey(e, editingElement) {}
-  }, {
-    key: "getCSSRules",
-    value: function getCSSRules() {}
   }, {
     key: "onPanelChange",
     value: function onPanelChange(panels) {
@@ -309,32 +372,8 @@ var DesignerState = function (_CanvasState2) {
       var head = this.window.document.head;
       var doc = this.window.document;
       var body = this.window.document.body;
-      var style = _RecitEditor.IWrapper.getThemeCssRules();
-      var el = null;
-      if (style.url.length > 0) {
-        var _iterator = _createForOfIteratorHelper(style.url),
-          _step;
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var url = _step.value;
-            el = doc.createElement("link");
-            el.setAttribute("href", url);
-            el.setAttribute("rel", "stylesheet");
-            head.appendChild(el);
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
-      }
-      if (style.rules.length > 0) {
-        el = doc.createElement("style");
-        el.setAttribute("title", "theme-moodle");
-        el.innerHTML = _RecitEditor.UtilsHTML.cssRules2Str(style.rules);
-        head.appendChild(el);
-      }
-      el = doc.createElement("link");
+      this.onInitCSS(doc, head);
+      var el = doc.createElement("link");
       el.setAttribute("href", "".concat(_RecitEditor.Assets.CanvasDesignerCSS));
       el.setAttribute("rel", "stylesheet");
       head.appendChild(el);
@@ -504,18 +543,32 @@ var DesignerState = function (_CanvasState2) {
     key: "onAfterInsertNode",
     value: function onAfterInsertNode(elems) {
       this.onBeforeChange();
-      var _iterator2 = _createForOfIteratorHelper(elems),
-        _step2;
+      var _iterator4 = _createForOfIteratorHelper(elems),
+        _step4;
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var el = _step2.value;
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var el = _step4.value;
           _RecitEditor.CanvasElement.create(el, this.mainView.onSelectElement, this.mainView.onDrop, this.mainView.onStartEditingNodeText);
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator4.e(err);
       } finally {
-        _iterator2.f();
+        _iterator4.f();
       }
+      this.editingElement = null;
+      this.onAfterChange();
+    }
+  }, {
+    key: "onReplaceNode",
+    value: function onReplaceNode(fromEl, toEl) {
+      if (toEl === null) {
+        return;
+      }
+      this.onBeforeChange();
+      fromEl.replaceWith(toEl);
+      _RecitEditor.CanvasElement.create(toEl, this.mainView.onSelectElement, this.mainView.onDrop, this.mainView.onStartEditingNodeText);
+      this.editingElement = null;
+      this.htmlCleaning(this.window.document, true);
       this.onAfterChange();
     }
   }, {
@@ -732,30 +785,8 @@ var PreviewState = function (_CanvasState4) {
       this.iFrame = iframe.contentWindow || iframe.contentDocument;
       var head = this.iFrame.document.head;
       var doc = this.iFrame.document;
-      var style = _RecitEditor.IWrapper.getThemeCssRules();
       var el = null;
-      if (style.rules.length > 0) {
-        el = doc.createElement("style");
-        el.innerHTML = _RecitEditor.UtilsHTML.cssRules2Str(style.rules);
-        head.appendChild(el);
-      }
-      if (style.url.length > 0) {
-        var _iterator3 = _createForOfIteratorHelper(style.url),
-          _step3;
-        try {
-          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-            var url = _step3.value;
-            el = doc.createElement("link");
-            el.setAttribute("href", url);
-            el.setAttribute("rel", "stylesheet");
-            head.appendChild(el);
-          }
-        } catch (err) {
-          _iterator3.e(err);
-        } finally {
-          _iterator3.f();
-        }
-      }
+      this.onInitCSS(doc, head);
       el = doc.createElement("link");
       el.setAttribute("href", "".concat(_RecitEditor.Assets.CanvasCSS));
       el.setAttribute("rel", "stylesheet");
@@ -806,17 +837,17 @@ var PreviewState = function (_CanvasState4) {
     value: function htmlCleaning() {
       (0, _get2["default"])((0, _getPrototypeOf2["default"])(PreviewState.prototype), "htmlCleaning", this).call(this, this.iFrame.document);
       var popup = this.iFrame.document.body.querySelectorAll('.r_popup-overlay');
-      var _iterator4 = _createForOfIteratorHelper(popup),
-        _step4;
+      var _iterator5 = _createForOfIteratorHelper(popup),
+        _step5;
       try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var el = _step4.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var el = _step5.value;
           el.remove();
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator4.f();
+        _iterator5.f();
       }
     }
   }, {

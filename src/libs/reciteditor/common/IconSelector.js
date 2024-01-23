@@ -56,7 +56,7 @@ export class IconSelector extends Component {
             }
         }
 
-        this.cssFiles = IWrapper.getThemeCssRules().url;
+        this.cssFiles = IWrapper.getThemeCssRules().urlList.concat(IWrapper.getAdditionalHTMLHead().css);
         this.cssRules = $glVars.cssRules;
         this.icons = {};
         this.buildIconList();
@@ -69,7 +69,7 @@ export class IconSelector extends Component {
         }
 
         for (let rule of this.cssRules){
-            if (rule.cssText.includes('content:') && rule.selectorText && !rule.selectorText.includes(',')){console.log(rule)
+            if (rule.cssText.includes('content:') && rule.selectorText && !rule.selectorText.includes(',')){
                 for (let name in this.config){
                     let csscl = this.config[name].replace('.', '');
                     if (rule.selectorText.startsWith('.'+csscl)){

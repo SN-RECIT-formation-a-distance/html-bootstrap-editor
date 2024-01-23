@@ -1647,7 +1647,7 @@ var HTMLIconElement = function (_HTMLElement33) {
   var _super50 = _createSuper(HTMLIconElement);
   function HTMLIconElement() {
     (0, _classCallCheck2["default"])(this, HTMLIconElement);
-    return _super50.call(this, _RecitEditor.i18n.get_string('icon'), "i", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.icon);
+    return _super50.call(this, _RecitEditor.i18n.get_string('icon'), "i", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.icon);
   }
   (0, _createClass2["default"])(HTMLIconElement, [{
     key: "equal",
@@ -1655,7 +1655,17 @@ var HTMLIconElement = function (_HTMLElement33) {
       if (el === null) {
         return false;
       }
-      return el.classList.contains('fa') || el.tagName == 'I' && el.classList[0] && el.innerHTML == '';
+      return this.equalFontAwesome(el) || this.equalGoogleIcons(el) || el.tagName == 'I' && el.classList[0] && el.innerHTML == '';
+    }
+  }, {
+    key: "equalFontAwesome",
+    value: function equalFontAwesome(el) {
+      return el.classList.contains('fa');
+    }
+  }, {
+    key: "equalGoogleIcons",
+    value: function equalGoogleIcons(el) {
+      return el.classList.contains('material-symbols-outlined');
     }
   }, {
     key: "create",

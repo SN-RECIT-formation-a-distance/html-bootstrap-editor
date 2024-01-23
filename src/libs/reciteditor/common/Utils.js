@@ -436,6 +436,13 @@ export class IWrapper {
         return IWrapper.wrapper.getThemeCssRules(returnAllRules);
     }
 
+    static getAdditionalHTMLHead(){
+        if(!IWrapper.wrapper.getAdditionalHTMLHead){
+            throw new Error('getAdditionalHTMLHead undefined');
+        }
+        return IWrapper.wrapper.getAdditionalHTMLHead();
+    }
+
     static getContent(){
         if(!IWrapper.wrapper.getContent){
             throw new Error('getContent undefined');

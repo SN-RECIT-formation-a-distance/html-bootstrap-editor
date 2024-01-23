@@ -92,7 +92,7 @@ export class RecitEditor extends Component{
         this.mainViewRef = React.createRef();
         $glVars.recitEditor = this;
         
-        let cssFiles = IWrapper.getThemeCssRules().url;
+        let cssFiles = IWrapper.getThemeCssRules().urlList.concat(IWrapper.getAdditionalHTMLHead().css);
         UtilsHTML.getStylesheetRules(cssFiles).then((rules) => {
             $glVars.cssRules = rules;
         });

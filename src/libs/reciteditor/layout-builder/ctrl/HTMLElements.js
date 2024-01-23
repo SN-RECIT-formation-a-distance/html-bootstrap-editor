@@ -1310,13 +1310,23 @@ class HTMLElement{
  
  export class HTMLIconElement extends HTMLElement{
      constructor(){
-         super(i18n.get_string('icon'), "i", 'native', HTMLPropertiesData.propsAssignmentFacade.icon);
+         super(i18n.get_string('icon'), "i", 'bootstrap', HTMLPropertiesData.propsAssignmentFacade.icon);
      }
  
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('fa') || (el.tagName == 'I' && el.classList[0] && el.innerHTML == ''));
+         return (this.equalFontAwesome(el)
+                ||  this.equalGoogleIcons(el)
+                || (el.tagName == 'I' && el.classList[0] && el.innerHTML == ''));
+     }
+
+     equalFontAwesome(el){
+        return el.classList.contains('fa');
+     }
+
+     equalGoogleIcons(el){
+        return el.classList.contains('material-symbols-outlined');
      }
  
      create(){

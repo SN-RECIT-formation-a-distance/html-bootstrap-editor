@@ -414,7 +414,7 @@ var RecitEditor = function (_Component) {
     _Utils.IWrapper.wrapper = props.wrapper;
     _this.mainViewRef = _react["default"].createRef();
     $glVars.recitEditor = (0, _assertThisInitialized2["default"])(_this);
-    var cssFiles = _Utils.IWrapper.getThemeCssRules().url;
+    var cssFiles = _Utils.IWrapper.getThemeCssRules().urlList.concat(_Utils.IWrapper.getAdditionalHTMLHead().css);
     _Utils.UtilsHTML.getStylesheetRules(cssFiles).then(function (rules) {
       $glVars.cssRules = rules;
     });

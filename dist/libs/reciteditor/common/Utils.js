@@ -367,6 +367,14 @@ var IWrapper = function () {
       return IWrapper.wrapper.getThemeCssRules(returnAllRules);
     }
   }, {
+    key: "getAdditionalHTMLHead",
+    value: function getAdditionalHTMLHead() {
+      if (!IWrapper.wrapper.getAdditionalHTMLHead) {
+        throw new Error('getAdditionalHTMLHead undefined');
+      }
+      return IWrapper.wrapper.getAdditionalHTMLHead();
+    }
+  }, {
     key: "getContent",
     value: function getContent() {
       if (!IWrapper.wrapper.getContent) {

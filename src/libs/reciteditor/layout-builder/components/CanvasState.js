@@ -45,6 +45,49 @@ class CanvasState{
 
     onLoadFrame(){} // Abstract method
     onInit(iframe){}
+    
+    onInitCSS(doc, head){
+        let cssRules = IWrapper.getThemeCssRules();
+        let el = null;
+        
+        if (cssRules.urlList.length > 0){
+            for (let url of cssRules.urlList){            
+                el = doc.createElement("link");
+                el.setAttribute("href", url);
+                el.setAttribute("rel", "stylesheet");
+                head.appendChild(el);
+            }
+        }
+
+        let additionalHTMLHead = IWrapper.getAdditionalHTMLHead();
+
+        if (additionalHTMLHead.css.length > 0){
+            for (let url of additionalHTMLHead.css){  
+                el = doc.createElement("link");
+                el.setAttribute("href", url);
+                el.setAttribute("rel", "stylesheet");
+                head.appendChild(el);
+                //let htmlDoc = new DOMParser().parseFromString(link, "text/html");
+                //head.appendChild(htmlDoc.head.firstChild);
+            }
+        }
+
+        if (additionalHTMLHead.js.length > 0){
+            for (let url of additionalHTMLHead.js){  
+                el = doc.createElement("script");
+                el.setAttribute("src", url);
+                head.appendChild(el);
+            }
+        }
+
+        if (cssRules.rules.length > 0){
+            el = doc.createElement("style");
+            el.setAttribute("title", "theme-moodle");
+            el.innerHTML = UtilsHTML.cssRules2Str(cssRules.rules);
+            head.appendChild(el);
+        }
+    }
+
     render(show, selectedElement){}
     onDragEnd(){}
     getData(htmlCleaning){}
@@ -57,11 +100,11 @@ class CanvasState{
     onMoveNodeDown(selectedElement){}
     onCloneNode(selectedElement){}
     onAfterInsertNode(elems){}
+    onReplaceNode(fromEl, toEl){}
     onInsertTemplate(position, item){}
     onStartEditingNodeText(selectedElement){}
     onFinishEditingNodeText(html){}
     onKey(e, editingElement){}
-    getCSSRules(){}
 
     onPanelChange(panels){ 
         return panels;
@@ -252,26 +295,10 @@ export class DesignerState extends CanvasState{
         let head = this.window.document.head;
         let doc = this.window.document;
         let body = this.window.document.body;
-        let style = IWrapper.getThemeCssRules();
-        let el = null;
-        
-        if (style.url.length > 0){
-            for (let url of style.url){            
-                el = doc.createElement("link");
-                el.setAttribute("href", url);
-                el.setAttribute("rel", "stylesheet");
-                head.appendChild(el);
-            }
-        }
+       
+        this.onInitCSS(doc, head);
 
-        if (style.rules.length > 0){
-            el = doc.createElement("style");
-            el.setAttribute("title", "theme-moodle");
-            el.innerHTML = UtilsHTML.cssRules2Str(style.rules);
-            head.appendChild(el);
-        }
-
-        el = doc.createElement("link");
+        let el = doc.createElement("link");
 		el.setAttribute("href", `${Assets.CanvasDesignerCSS}`);
 		el.setAttribute("rel", "stylesheet");
 		head.appendChild(el);
@@ -436,8 +463,26 @@ export class DesignerState extends CanvasState{
         for(let el of elems){
             CanvasElement.create(el, this.mainView.onSelectElement, this.mainView.onDrop, this.mainView.onStartEditingNodeText);
         }
+
+        this.editingElement = null;
+
         this.onAfterChange();
     }
+
+    onReplaceNode(fromEl, toEl){
+        if(toEl === null){
+            return;
+        }
+        
+        this.onBeforeChange();
+
+        fromEl.replaceWith(toEl);
+        CanvasElement.create(toEl, this.mainView.onSelectElement, this.mainView.onDrop, this.mainView.onStartEditingNodeText);
+        this.editingElement = null;
+        this.htmlCleaning(this.window.document, true);
+
+        this.onAfterChange();
+    }    
 
     onInsertTemplate(position, item){
         let body = this.getBody();
@@ -641,23 +686,9 @@ export class PreviewState extends CanvasState{
         this.iFrame =  iframe.contentWindow || iframe.contentDocument;
         let head = this.iFrame.document.head;
         let doc = this.iFrame.document;
-        let style = IWrapper.getThemeCssRules();
         let el = null
 
-        if (style.rules.length > 0){
-            el = doc.createElement("style");
-            el.innerHTML = UtilsHTML.cssRules2Str(style.rules);
-            head.appendChild(el);
-        }
-
-        if (style.url.length > 0){
-            for (let url of style.url){            
-                el = doc.createElement("link");
-                el.setAttribute("href", url);
-                el.setAttribute("rel", "stylesheet");
-                head.appendChild(el);
-            }
-        }
+        this.onInitCSS(doc, head);
 
         el = doc.createElement("link");
 		el.setAttribute("href", `${Assets.CanvasCSS}`);
