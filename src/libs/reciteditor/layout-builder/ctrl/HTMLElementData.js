@@ -180,7 +180,7 @@ export class HTMLElementData{
             {
                 name: 'background', description: i18n.get_string('background'), 
                 children: [
-                   new HTMLBackgroundProperty(),
+                    new HTMLBackgroundProperty(),
                 ]
             },
             {
@@ -245,6 +245,14 @@ export class HTMLElementData{
                 name: 'htmlcode', description: i18n.get_string('htmlcode'), 
                 children: [
                     new HTMLCodeProperty()
+                ]
+            },
+            {
+                name: 'appearance', description: i18n.get_string('htmlcode'), 
+                children: [
+                    new HTMLColorProperty(), 
+                    new HTMLBackgroundProperty(),
+                    new HTMLFontSizeProperty(),
                 ]
             },
         ],

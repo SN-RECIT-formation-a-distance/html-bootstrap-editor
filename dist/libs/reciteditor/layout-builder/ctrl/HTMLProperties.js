@@ -1240,21 +1240,6 @@ var BsIconSizeProperty = function (_HTMLProperty28) {
       text: "fa-5x",
       value: "fa-5x"
     }, {
-      text: "fa-6x",
-      value: "fa-6x"
-    }, {
-      text: "fa-7x",
-      value: "fa-7x"
-    }, {
-      text: "fa-8x",
-      value: "fa-8x"
-    }, {
-      text: "fa-9x",
-      value: "fa-9x"
-    }, {
-      text: "fa-10x",
-      value: "fa-10x"
-    }, {
       text: "fa-fw",
       value: "fa-fw"
     }];
@@ -2906,7 +2891,7 @@ HTMLPropertiesData.propsAssignmentFacade = {
   },
   icon: {
     min: ['icon'],
-    all: ['icon', 'htmlcode', 'htmlattributes', 'bs-background', 'bs-general', 'bs-spacing', 'bs-border', 'background']
+    all: ['icon', 'appearance', 'htmlcode', 'htmlattributes', 'bs-background', 'bs-general', 'bs-spacing', 'bs-border']
   },
   link: {
     min: ['link', 'bs-button'],

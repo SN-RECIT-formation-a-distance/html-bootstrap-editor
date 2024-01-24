@@ -148,6 +148,10 @@ var HTMLElementData = function () {
         name: 'htmlcode',
         description: _RecitEditor.i18n.get_string('htmlcode'),
         children: [new _HTMLProperties.HTMLCodeProperty()]
+      }, {
+        name: 'appearance',
+        description: _RecitEditor.i18n.get_string('htmlcode'),
+        children: [new _HTMLProperties.HTMLColorProperty(), new _HTMLProperties.HTMLBackgroundProperty(), new _HTMLProperties.HTMLFontSizeProperty()]
       }],
       bookmark: []
     };
