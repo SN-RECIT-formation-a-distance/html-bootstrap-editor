@@ -607,6 +607,7 @@ class HTMLElement{
          let el = document.createElement("img");
          el.classList.add("rounded-circle", "img-fluid", "shadow");
          el.setAttribute("src", `${Assets.ImageAvatar}`);
+         el.setAttribute('alt', '');
          el.style.height = '120px';
          el.style.width = '120px';
          el.style.marginTop = '-60px';
@@ -659,6 +660,7 @@ class HTMLElement{
          let el = document.createElement("img");
          el.classList.add("card-img-top");
          el.setAttribute("src", `${Assets.ImageEmpty}`);
+         el.setAttribute('alt', '');
          card.appendChild(el);
  
          let body = document.createElement("div");
@@ -786,6 +788,7 @@ class HTMLElement{
              el.classList.add("rounded-circle");
              el.classList.add("shadow");
              el.setAttribute("src", `${Assets.ImageAvatar}`);
+             el.setAttribute('alt', '');
              el.style.height = '120px';
              el.style.width = '120px';
              el.style.marginTop = '-60px';
@@ -1228,6 +1231,7 @@ class HTMLElement{
      create(){
          let el = document.createElement("img");
          el.setAttribute('src', `${Assets.ImageEmpty}`);
+         el.setAttribute('alt', '');
          el.classList.add("img-fluid");
          return el;
      }
@@ -1258,6 +1262,7 @@ class HTMLElement{
          el.setAttribute('src', `${Assets.ImageEmpty}`);
          el.classList.add("img-fluid");
          el.classList.add("htmlbootstrapeditor_img-popup");
+         el.setAttribute('alt', '');
          div.appendChild(el);
  
          el = document.createElement("figcaption");
@@ -1290,6 +1295,7 @@ class HTMLElement{
          let el = document.createElement("img");
          el.setAttribute('src', `${Assets.ImageEmpty}`);
          el.classList.add("img-fluid");
+         el.setAttribute('alt', '');
          div.appendChild(el);
  
          let div2 = document.createElement("div");

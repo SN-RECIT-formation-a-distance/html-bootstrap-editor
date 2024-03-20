@@ -823,6 +823,7 @@ var HTMLAvatarCardElement = function (_HTMLDivElement2) {
       var el = document.createElement("img");
       el.classList.add("rounded-circle", "img-fluid", "shadow");
       el.setAttribute("src", "".concat(_RecitEditor.Assets.ImageAvatar));
+      el.setAttribute('alt', '');
       el.style.height = '120px';
       el.style.width = '120px';
       el.style.marginTop = '-60px';
@@ -875,6 +876,7 @@ var HTMLCardElement = function (_HTMLDivElement3) {
       var el = document.createElement("img");
       el.classList.add("card-img-top");
       el.setAttribute("src", "".concat(_RecitEditor.Assets.ImageEmpty));
+      el.setAttribute('alt', '');
       card.appendChild(el);
       var body = document.createElement("div");
       body.classList.add("card-body", "bg-white");
@@ -1038,6 +1040,7 @@ var HTMLFlipCardElement = function (_HTMLDivElement7) {
         el.classList.add("rounded-circle");
         el.classList.add("shadow");
         el.setAttribute("src", "".concat(_RecitEditor.Assets.ImageAvatar));
+        el.setAttribute('alt', '');
         el.style.height = '120px';
         el.style.width = '120px';
         el.style.marginTop = '-60px';
@@ -1548,6 +1551,7 @@ var HTMLImageElement = function (_HTMLElement30) {
     value: function create() {
       var el = document.createElement("img");
       el.setAttribute('src', "".concat(_RecitEditor.Assets.ImageEmpty));
+      el.setAttribute('alt', '');
       el.classList.add("img-fluid");
       return el;
     }
@@ -1586,6 +1590,7 @@ var HTMLImageWithCaptionElement = function (_HTMLElement31) {
       el.setAttribute('src', "".concat(_RecitEditor.Assets.ImageEmpty));
       el.classList.add("img-fluid");
       el.classList.add("htmlbootstrapeditor_img-popup");
+      el.setAttribute('alt', '');
       div.appendChild(el);
       el = document.createElement("figcaption");
       el.innerHTML = "Source : Nom de l'auteur, <em>titre de la photo ou de l'oeuvre</em> (année), nom de l'institution qui possède l'œuvre.";
@@ -1624,6 +1629,7 @@ var HTMLClickableImageElement = function (_HTMLElement32) {
       var el = document.createElement("img");
       el.setAttribute('src', "".concat(_RecitEditor.Assets.ImageEmpty));
       el.classList.add("img-fluid");
+      el.setAttribute('alt', '');
       div.appendChild(el);
       var div2 = document.createElement("div");
       div2.classList.add('imgclickcontent');

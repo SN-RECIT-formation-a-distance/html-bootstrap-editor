@@ -370,7 +370,6 @@ var FormProperties = function (_Component2) {
         var newEl = componentData.input.onChange(this.props.element, event.target.value, componentData);
         this.props.onReplaceNode(this.props.element, newEl);
       } else if (componentData.input.onChange) {
-        console.log(event.target.value);
         componentData.input.onChange(this.props.element, event.target.value, componentData);
         this.forceUpdate();
         this.props.onAfterAssignProperty();
