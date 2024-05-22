@@ -7,21 +7,20 @@ Object.defineProperty(exports, "__esModule", {
 exports.i18n = exports.UtilsTreeStruct = exports.UtilsString = exports.UtilsHTML = exports.UtilsDateTime = exports.Utils = exports.UploadFile = exports.Storage = exports.JsNx = exports.IWrapper = exports.Cookies = void 0;
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-var _RecitEditor = require("../RecitEditor");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } /**
-                                                                                                                                                                                     * Atto HTML editor
-                                                                                                                                                                                     *
-                                                                                                                                                                                     * @package    atto_reciteditor
-                                                                                                                                                                                     * @copyright  2019 RECIT
-                                                                                                                                                                                     * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
-                                                                                                                                                                                     */
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+/**
+ * Atto HTML editor
+ *
+ * @package    atto_reciteditor
+ * @copyright  2019 RECIT
+ * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
+ */
 var JsNx = function () {
   function JsNx() {
     (0, _classCallCheck2["default"])(this, JsNx);
@@ -130,17 +129,17 @@ JsNx.copy = function (arr, level) {
       return JSON.parse(JSON.stringify(arr));
     case 2:
       var result = [];
-      var _iterator8 = _createForOfIteratorHelper(arr),
-        _step8;
+      var _iterator7 = _createForOfIteratorHelper(arr),
+        _step7;
       try {
-        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-          var item = _step8.value;
+        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+          var item = _step7.value;
           result.push(item !== null ? JsNx.clone(item) : null);
         }
       } catch (err) {
-        _iterator8.e(err);
+        _iterator7.e(err);
       } finally {
-        _iterator8.f();
+        _iterator7.f();
       }
       return result;
     default:
@@ -858,41 +857,6 @@ var UtilsHTML = function () {
       return getStylesheetRules;
     }()
   }, {
-    key: "getAvailableFonts",
-    value: function getAvailableFonts() {
-      var _document = document,
-        fonts = _document.fonts;
-      var it = fonts.entries();
-      var arr = [];
-      var done = false;
-      while (!done) {
-        var font = it.next();
-        if (!font.done) {
-          arr.push(font.value[0].family);
-        } else {
-          done = font.done;
-        }
-      }
-      var fontlist = (0, _toConsumableArray2["default"])(new Set(arr));
-      var list = [];
-      var _iterator5 = _createForOfIteratorHelper(fontlist),
-        _step5;
-      try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var f = _step5.value;
-          list.push({
-            text: f,
-            value: f
-          });
-        }
-      } catch (err) {
-        _iterator5.e(err);
-      } finally {
-        _iterator5.f();
-      }
-      return list;
-    }
-  }, {
     key: "getTableFromCell",
     value: function getTableFromCell(cell) {
       var table = cell;
@@ -907,11 +871,11 @@ var UtilsHTML = function () {
     key: "tableAddCol",
     value: function tableAddCol(table) {
       var result = [];
-      var _iterator6 = _createForOfIteratorHelper(table.rows),
-        _step6;
+      var _iterator5 = _createForOfIteratorHelper(table.rows),
+        _step5;
       try {
-        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-          var row = _step6.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var row = _step5.value;
           var tag = 'td';
           if (row.children[0] && row.children[0].tagName == 'TH') {
             tag = 'th';
@@ -921,9 +885,9 @@ var UtilsHTML = function () {
           row.appendChild(td);
         }
       } catch (err) {
-        _iterator6.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator6.f();
+        _iterator5.f();
       }
       return result;
     }
@@ -963,11 +927,11 @@ var UtilsHTML = function () {
       var id = 1;
       var funcRec = function funcRec(node) {
         node.setAttribute("data-tag-id", id++);
-        var _iterator7 = _createForOfIteratorHelper(node.children),
-          _step7;
+        var _iterator6 = _createForOfIteratorHelper(node.children),
+          _step6;
         try {
-          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-            var child = _step7.value;
+          for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+            var child = _step6.value;
             if (child.children.length > 0) {
               funcRec(child);
             } else {
@@ -975,9 +939,9 @@ var UtilsHTML = function () {
             }
           }
         } catch (err) {
-          _iterator7.e(err);
+          _iterator6.e(err);
         } finally {
-          _iterator7.f();
+          _iterator6.f();
         }
       };
       funcRec(node);

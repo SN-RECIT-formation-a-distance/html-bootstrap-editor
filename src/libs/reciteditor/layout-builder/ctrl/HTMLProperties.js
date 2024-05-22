@@ -299,20 +299,14 @@ export class HTMLFontFamilyProperty extends HTMLProperty{
     constructor(){
         super('fontfamily',  i18n.get_string('font'));
 
-        this.options = [
-            {text: 'Sans-serif', value:'sans-serif'},
-            {text: 'Serif', value:'serif'},
-            {text: 'Monospace', value:'monospace'},
-            {text: 'Cursive', value:'cursive'},
-            {text: 'Fantasy', value:'fantasy'},
-            ...UtilsHTML.getAvailableFonts(),
-        ];
+        this.options = HTMLElementData.fontFamilyList;
 
         this.input = new ComboBox(this.options, this.onChange.bind(this));
     }
 
     getValue(el, data){
-        return el.style.fontFamily;
+        let value = el.style.fontFamily.replaceAll('"', '');
+        return value;
     }
 
     onChange(el, value, data){

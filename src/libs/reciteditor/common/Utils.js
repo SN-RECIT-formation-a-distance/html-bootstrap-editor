@@ -21,8 +21,6 @@
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
 
-import {$glVars, Assets} from '../RecitEditor';
-
 export class JsNx{
     /**
      * Return the array item at the indicated index. If it not exists, then return the default value.
@@ -938,31 +936,6 @@ export class UtilsHTML{
         const promises = urls.map(url => fetch(url).then(response => response.text()));
         const contents = await Promise.all(promises);
         return UtilsHTML.cssStr2Rules(contents.join(''));
-    }
-
-    static getAvailableFonts(){
-        let { fonts } = document;
-        const it = fonts.entries();
-
-        let arr = [];
-        let done = false;
-
-        while (!done) {
-            const font = it.next();
-            if (!font.done) {
-            arr.push(font.value[0].family);
-            } else {
-            done = font.done;
-            }
-        }
-
-        // converted to set then arr to filter repetitive values
-        let fontlist = [...new Set(arr)];
-        let list = [];
-        for (let f of fontlist){
-            list.push({text:f, value:f})
-        }
-        return list;
     }
 
     static getTableFromCell(cell){

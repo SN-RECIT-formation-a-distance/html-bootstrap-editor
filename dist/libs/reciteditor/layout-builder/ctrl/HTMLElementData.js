@@ -324,4 +324,5 @@ var HTMLElementData = function () {
   return HTMLElementData;
 }();
 exports.HTMLElementData = HTMLElementData;
+HTMLElementData.fontFamilyList = [];
 HTMLElementData.instance = null;

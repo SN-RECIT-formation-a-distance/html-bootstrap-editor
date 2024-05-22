@@ -23,7 +23,7 @@
 
 import React from 'react';
 import { TextEditorModal } from '../../common/TextEditor';
-import {LayoutBuilder, Canvas, CanvasElement, FloatingMenu, NodeTextEditing, SourceCodeEditor, Assets, HTMLElementData, UtilsHTML, IWrapper, UtilsString} from '../../RecitEditor';
+import {LayoutBuilder, Canvas, CanvasElement, FloatingMenu, SourceCodeEditor, Assets, HTMLElementData, UtilsHTML, IWrapper, JsNx} from '../../RecitEditor';
 
 class CanvasState{
     constructor(mainView){
@@ -309,13 +309,15 @@ export class DesignerState extends CanvasState{
         // React JS
         //body.appendChild(doc.firstChild);        
 
-        body.onkeydown = this.mainView.onKey;
+        body.onkeydown = this.mainView.onKey; 
         body.ondrag = this.mainView.onDragStart;
     }
 
     render(show, selectedElement, width){
         let posCanvas = (this.iFrame === null ? null : this.iFrame.getBoundingClientRect());        
  
+        this.loadFontFamilies();
+
         let main = 
             <Canvas style={{display: (show ? 'flex' : 'none') }}>
                 <iframe id="designer-canvas" className="canvas" style={this.getStyle(width)}></iframe>
@@ -328,7 +330,28 @@ export class DesignerState extends CanvasState{
         return main; 
     }
 
-    onSelectElement(el, selectedElement, panels){
+    loadFontFamilies(){
+        // if the list of font family is already loaded, we exit
+        if(this.window === null || HTMLElementData.fontFamilyList.length > 0){
+            return;
+        }
+
+        this.window.document.fonts.ready.then((fontFaceSet) => {
+           // HTMLElementData.fontFamilyList.push({value: 'cursive', text: 'Cursive'});
+            //HTMLElementData.fontFamilyList.push({value: 'monospace', text: 'Monospace'});
+           // HTMLElementData.fontFamilyList.push({value: 'sans-serif', text: 'Sans-serif'});
+           // HTMLElementData.fontFamilyList.push({value: 'serif', text: 'Serif'});
+
+            const fontFaces = [...fontFaceSet];
+            for(let item of fontFaces){
+                if(JsNx.getItem(HTMLElementData.fontFamilyList, 'value', item.family, null) === null){
+                    HTMLElementData.fontFamilyList.push({value: item.family, text:item.family});
+                }
+            }
+        });
+    }
+
+    onSelectElement(el, selectedElement, panels){      
         let result = {el: el, panels: panels};
 
         //We allow body to be selected for save template button
@@ -528,6 +551,10 @@ export class DesignerState extends CanvasState{
     }
 
     onStartEditingNodeText(selectedElement, dbClick){
+        if(selectedElement === null){ 
+            return; 
+        }
+        
         if (TextEditorModal.isTagEditable(selectedElement.tagName) && !dbClick){
             this.editingElement = selectedElement;
         }else{

@@ -385,29 +385,15 @@ var HTMLFontFamilyProperty = function (_HTMLProperty5) {
     var _this3;
     (0, _classCallCheck2["default"])(this, HTMLFontFamilyProperty);
     _this3 = _super5.call(this, 'fontfamily', _RecitEditor.i18n.get_string('font'));
-    _this3.options = [{
-      text: 'Sans-serif',
-      value: 'sans-serif'
-    }, {
-      text: 'Serif',
-      value: 'serif'
-    }, {
-      text: 'Monospace',
-      value: 'monospace'
-    }, {
-      text: 'Cursive',
-      value: 'cursive'
-    }, {
-      text: 'Fantasy',
-      value: 'fantasy'
-    }].concat((0, _toConsumableArray2["default"])(_RecitEditor.UtilsHTML.getAvailableFonts()));
+    _this3.options = _HTMLElementData.HTMLElementData.fontFamilyList;
     _this3.input = new ComboBox(_this3.options, _this3.onChange.bind((0, _assertThisInitialized2["default"])(_this3)));
     return _this3;
   }
   (0, _createClass2["default"])(HTMLFontFamilyProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
-      return el.style.fontFamily;
+      var value = el.style.fontFamily.replaceAll('"', '');
+      return value;
     }
   }, {
     key: "onChange",

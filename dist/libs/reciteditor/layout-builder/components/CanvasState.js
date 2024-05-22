@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.SourceCodeState = exports.SourceCodeDesignerState = exports.PreviewState = exports.DesignerState = void 0;
 var _get2 = _interopRequireDefault(require("@babel/runtime/helpers/get"));
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
@@ -386,6 +387,7 @@ var DesignerState = function (_CanvasState2) {
     value: function render(show, selectedElement, width) {
       var _this3 = this;
       var posCanvas = this.iFrame === null ? null : this.iFrame.getBoundingClientRect();
+      this.loadFontFamilies();
       var main = _react["default"].createElement(_RecitEditor.Canvas, {
         style: {
           display: show ? 'flex' : 'none'
@@ -415,6 +417,33 @@ var DesignerState = function (_CanvasState2) {
         element: this.editingElement
       }));
       return main;
+    }
+  }, {
+    key: "loadFontFamilies",
+    value: function loadFontFamilies() {
+      if (this.window === null || _RecitEditor.HTMLElementData.fontFamilyList.length > 0) {
+        return;
+      }
+      this.window.document.fonts.ready.then(function (fontFaceSet) {
+        var fontFaces = (0, _toConsumableArray2["default"])(fontFaceSet);
+        var _iterator4 = _createForOfIteratorHelper(fontFaces),
+          _step4;
+        try {
+          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+            var item = _step4.value;
+            if (_RecitEditor.JsNx.getItem(_RecitEditor.HTMLElementData.fontFamilyList, 'value', item.family, null) === null) {
+              _RecitEditor.HTMLElementData.fontFamilyList.push({
+                value: item.family,
+                text: item.family
+              });
+            }
+          }
+        } catch (err) {
+          _iterator4.e(err);
+        } finally {
+          _iterator4.f();
+        }
+      });
     }
   }, {
     key: "onSelectElement",
@@ -543,17 +572,17 @@ var DesignerState = function (_CanvasState2) {
     key: "onAfterInsertNode",
     value: function onAfterInsertNode(elems) {
       this.onBeforeChange();
-      var _iterator4 = _createForOfIteratorHelper(elems),
-        _step4;
+      var _iterator5 = _createForOfIteratorHelper(elems),
+        _step5;
       try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var el = _step4.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var el = _step5.value;
           _RecitEditor.CanvasElement.create(el, this.mainView.onSelectElement, this.mainView.onDrop, this.mainView.onStartEditingNodeText);
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator4.f();
+        _iterator5.f();
       }
       this.editingElement = null;
       this.onAfterChange();
@@ -620,6 +649,9 @@ var DesignerState = function (_CanvasState2) {
   }, {
     key: "onStartEditingNodeText",
     value: function onStartEditingNodeText(selectedElement, dbClick) {
+      if (selectedElement === null) {
+        return;
+      }
       if (_TextEditor.TextEditorModal.isTagEditable(selectedElement.tagName) && !dbClick) {
         this.editingElement = selectedElement;
       } else {
@@ -837,17 +869,17 @@ var PreviewState = function (_CanvasState4) {
     value: function htmlCleaning() {
       (0, _get2["default"])((0, _getPrototypeOf2["default"])(PreviewState.prototype), "htmlCleaning", this).call(this, this.iFrame.document);
       var popup = this.iFrame.document.body.querySelectorAll('.r_popup-overlay');
-      var _iterator5 = _createForOfIteratorHelper(popup),
-        _step5;
+      var _iterator6 = _createForOfIteratorHelper(popup),
+        _step6;
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var el = _step5.value;
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var el = _step6.value;
           el.remove();
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator5.f();
+        _iterator6.f();
       }
     }
   }, {

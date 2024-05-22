@@ -36,313 +36,315 @@ import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class HTMLElementData{
-    constructor(){
-    this.propertyList = {
-        bootstrap: [
-            {
-                name: 'bs-background', description: i18n.get_string('background'), 
-                children: [
-                    new BsBackgroundProperty(),
-                    new BsBackgroundImageProperty(),
-                    new HTMLImageBankProperty(false),
-                    new HTMLBackgroundCoverProperty(),
-                    new BsShadowProperty()
-                ]
-            },
-            {
-                name: 'icon', description: i18n.get_string('icon'), 
-                children: [
-                    new BsIconProperty(),
-                    new BsIconSizeProperty(),
-                    new BsTextColorProperty(),
-                ]
-            },
-            {
-                name: 'modal-grid', description: i18n.get_string('grid'), visible: false,
-                children: [
-                    new ModalGridProperty()
-                ]
-            },     
-            {
-                name: 'bs-grid', description: i18n.get_string('grid'),
-                children: [
-                    new BsGridPaddingProperty()
-                ]
-            },
-            {
-                name: 'bs-row', description: i18n.get_string('row'),
-                children: [
-                    new BsGridResponsiveProperty()
-                ]
-            },
-            {
-                name: 'bs-col', description: i18n.get_string('column'),
-                children: [
-                    new BsGridVerticalAlignProperty()
-                ]
-            },
-            {
-                name: 'bs-general', description: i18n.get_string('classlist'), 
-                children: [
-                    new HTMLClassProperty()
-                ]
-            },   
-            {
-                name: 'bs-spacing', description: i18n.get_string('spacing'), 
-                children: [
-                    new BsMarginProperty(),
-                    new BsPaddingProperty()
-                ]
-            },
-            {
-                name: 'bs-border', description: i18n.get_string('border'), 
-                children: [
-                    new BsBorderProperty(),
-                    new BsBorderColorProperty(),
-                    new BsBorderStyleProperty(),
-                    new BsBorderRadiusProperty()
-                ]
-            },
-            {
-                name: 'bs-text', description: i18n.get_string('text'), 
-                children: [
-                    new BsTextColorProperty(),
-                    new BsTextAlignmentProperty()
-                ]
-            },
-            {
-                name: 'bs-button', description: i18n.get_string('button'), 
-                children: [
-                    new BsBackgroundProperty(),
-                    new BsBtnBlockProperty(),
-                    new BsBtnOutlineProperty(),
-                    new BsBtnSizeProperty()
-                ]
-            },
-            {
-                name: 'bs-table', description: i18n.get_string('table'), 
-                children: [
-                    new BsTableActionProperty(),
-                    new BsTableBorderProperty(),
-                    new BsTableStripedProperty()
-                ]
-            },
-            {
-                name: 'bs-tablecell', description: i18n.get_string('table'), 
-                children: [
-                    new BsTableCellActionProperty()
-                ]
-            },
-            {
-                name: 'tab', description: i18n.get_string('taboptions'), 
-                children: [
-                    new BsTabProperty(),
-                    new BsTabJustifyProperty(),
-                    new BsAddTabProperty()
-                ]
-            },
-            {
-                name: 'accordion', description: i18n.get_string('accordionoptions'), 
-                children: [
-                    new BsAddAccordionProperty()
-                ]
-            },
-            {
-                name: 'heading', description: i18n.get_string('heading'), 
-                children: [
-                    new BsHeadingProperty(),
-                ]
-            }, 
-            {
-                name: 'bs-dimension', description: i18n.get_string('dimension'), 
-                children: [
-                    new BsFullHeightProperty(),
-                ]
-            }, 
-        ],
-        html: [
-            {
-                name: 'layout', description: i18n.get_string('layout'), 
-                children: [
-                    new HTMLWidthProperty(),
-                    new HTMLHeightProperty(),
-                    new HTMLMarginBorderPaddingProperty()
-                ]
-            },  
-            {
-                name: 'font', description: i18n.get_string('font'), 
-                children: [
-                    new HTMLFontSizeProperty(),
-                    new HTMLFontFamilyProperty(),
-                    new HTMLColorProperty()
-                ]
-            },
-            {
-                name: 'background', description: i18n.get_string('background'), 
-                children: [
-                    new HTMLBackgroundProperty(),
-                ]
-            },
-            {
-                name: 'link', description: i18n.get_string('linkoptions'), 
-                children: [
-                    new HTMLHrefProperty(),
-                    new HTMLTargetProperty()
-                ]
-            },
-            {
-                name: 'source', description: i18n.get_string('source'), 
-                children: [
-                    new HTMLSourceProperty(),
-                    new HTMLImageBankProperty(true)
-                ]
-            },
-            {
-                name: 'sourceaudio', description: i18n.get_string('source'), 
-                children: [
-                    new HTMLSourceProperty('.mp3,.wav')
-                ]
-            },
-            {
-                name: 'outerhtml', description: i18n.get_string('source'), 
-                children: [
-                    new HTMLOuterHTMLProperty()
-                ]
-            },
-            {
-                name: 'alt', description: i18n.get_string('description'), 
-                children: [
-                    new HTMLAltProperty()
-                ]
-            },
-            {
-                name: 'htmlattributes', description: i18n.get_string('htmlattributes'), 
-                children: [
-                    new HTMLClassProperty(),
-                    new HTMLStyleProperty(),
-                    new HTMLIdProperty()
-                ]
-            },
-            {
-                name: 'videobtn', description: i18n.get_string('source'), 
-                children: [
-                    new HTMLVideoButtonProperty()
-                ]
-            },
-            {
-                name: 'videosource', description: i18n.get_string('source'), 
-                children: [
-                    new HTMLVideoSourceProperty()
-                ]
-            },
-            {
-                name: 'embed', description: i18n.get_string('properties'), 
-                children: [
-                    new HTMLEmbedProperty()
-                ]
-            },
-            {
-                name: 'htmlcode', description: i18n.get_string('htmlcode'), 
-                children: [
-                    new HTMLCodeProperty()
-                ]
-            },
-            {
-                name: 'appearance', description: i18n.get_string('htmlcode'), 
-                children: [
-                    new HTMLColorProperty(), 
-                    new HTMLBackgroundProperty(),
-                    new HTMLFontSizeProperty(),
-                ]
-            },
-        ],
-        bookmark: []
-    };  
+    static fontFamilyList = [];
 
-    this.elementList = [
-        {
-            name: i18n.get_string('layout'), 
-            children: [
-                new HTMLBodyElement(),
-                new HTMLDivElement(),
-                new HTMLSectionElement(),
-                new HTMLGridElement(),
-                new HTMLRowElement(),
-                new HTMLColElement(),
-            ]
-        },
-        {
-            name: <>{i18n.get_string('text')} <a target='_blank' href='https://www.w3.org/WAI/tutorials/page-structure/headings/#heading-ranks'><FontAwesomeIcon icon={faInfoCircle}/> </a></>,
-            children: [
-                new HTMLHeadingElement('H1', 'h1'),
-                new HTMLHeadingElement('H2', 'h2'),
-                new HTMLHeadingElement('H3', 'h3'),
-                new HTMLHeadingElement('H4', 'h4'),
-                new HTMLHeadingElement('H5', 'h5'),
-                new HTMLHeadingElement('H6', 'h6'),
-                new HTMLHeadingElement(i18n.get_string('headingwithicon'), 'h3', true),
-                new HTMLParagraphElement(),
-                new HTMLUListElement(),
-                new HTMLOListElement(),
-                new HTMLLIElement(),
-                new HTMLSpanElement(),
-            ]
-        },
-        {
-            name: i18n.get_string('media'), 
-            children: [
-                new HTMLImageElement(),
-                new HTMLImageWithCaptionElement(),
-                new HTMLImageFigureElement(),
-                new HTMLClickableImageElement(),
-                new HTMLVideoElement(i18n.get_string('video'), null, 'bootstrap'),
-                new HTMLIframeElement(),
-                new HTMLButtonVideoElement(),
-                new HTMLIconElement(),
-                new HTMLAudioElement(),
-                new HTMLEmbedElement()
-            ]
-        },
-        {
-            name: i18n.get_string('navigation'), 
-            children: [
-                new HTMLButtonElement(i18n.get_string('button'), 'a', 'bootstrap', HTMLPropertiesData.propsAssignmentFacade.buttons),
-                new HTMLButtonVideoElement(),
-                new HTMLLinkElement(),
-                new HTMLNavElement(),
-                new HTMLNavItemElement(),
-                new HTMLNavLinkElement()
-            ]
-        },
-        {
-            name: i18n.get_string('nativecomponents'), 
-            children: [
-                new HTMLAccordionElement(),
-                new HTMLAccordionNavElement(),
-                new HTMLCarouselElement(),
-                new HTMLCarouselNavElement(),
-                new HTMLFlipCardElement(),
-                new HTMLFlipCardFrontElement(),
-                new HTMLFlipCardBackElement(),
-                new HTMLTabElement(),
-                new HTMLTabPaneElement(),
-                new HTMLTabContentElement(),
-                new HTMLTableElement(),
-                new HTMLTableDataCellElement(),
-                new HTMLTableHeaderCellElement(),
-                new HTMLTableRowElement(),
-                new HTMLAlertElement(),
-                new HTMLAvatarCardElement(),
-                new HTMLCardElement(),
-                new HTMLCardBodyElement(),
-                new HTMLCardHeaderElement(),
-                new HTMLCardFooterElement(),
-                new HTMLHRElement(),
-                new HTMLHorizontalBarElement()
-            ]
-        },
-    ];
-}
+    constructor(){
+        this.propertyList = {
+            bootstrap: [
+                {
+                    name: 'bs-background', description: i18n.get_string('background'), 
+                    children: [
+                        new BsBackgroundProperty(),
+                        new BsBackgroundImageProperty(),
+                        new HTMLImageBankProperty(false),
+                        new HTMLBackgroundCoverProperty(),
+                        new BsShadowProperty()
+                    ]
+                },
+                {
+                    name: 'icon', description: i18n.get_string('icon'), 
+                    children: [
+                        new BsIconProperty(),
+                        new BsIconSizeProperty(),
+                        new BsTextColorProperty(),
+                    ]
+                },
+                {
+                    name: 'modal-grid', description: i18n.get_string('grid'), visible: false,
+                    children: [
+                        new ModalGridProperty()
+                    ]
+                },     
+                {
+                    name: 'bs-grid', description: i18n.get_string('grid'),
+                    children: [
+                        new BsGridPaddingProperty()
+                    ]
+                },
+                {
+                    name: 'bs-row', description: i18n.get_string('row'),
+                    children: [
+                        new BsGridResponsiveProperty()
+                    ]
+                },
+                {
+                    name: 'bs-col', description: i18n.get_string('column'),
+                    children: [
+                        new BsGridVerticalAlignProperty()
+                    ]
+                },
+                {
+                    name: 'bs-general', description: i18n.get_string('classlist'), 
+                    children: [
+                        new HTMLClassProperty()
+                    ]
+                },   
+                {
+                    name: 'bs-spacing', description: i18n.get_string('spacing'), 
+                    children: [
+                        new BsMarginProperty(),
+                        new BsPaddingProperty()
+                    ]
+                },
+                {
+                    name: 'bs-border', description: i18n.get_string('border'), 
+                    children: [
+                        new BsBorderProperty(),
+                        new BsBorderColorProperty(),
+                        new BsBorderStyleProperty(),
+                        new BsBorderRadiusProperty()
+                    ]
+                },
+                {
+                    name: 'bs-text', description: i18n.get_string('text'), 
+                    children: [
+                        new BsTextColorProperty(),
+                        new BsTextAlignmentProperty()
+                    ]
+                },
+                {
+                    name: 'bs-button', description: i18n.get_string('button'), 
+                    children: [
+                        new BsBackgroundProperty(),
+                        new BsBtnBlockProperty(),
+                        new BsBtnOutlineProperty(),
+                        new BsBtnSizeProperty()
+                    ]
+                },
+                {
+                    name: 'bs-table', description: i18n.get_string('table'), 
+                    children: [
+                        new BsTableActionProperty(),
+                        new BsTableBorderProperty(),
+                        new BsTableStripedProperty()
+                    ]
+                },
+                {
+                    name: 'bs-tablecell', description: i18n.get_string('table'), 
+                    children: [
+                        new BsTableCellActionProperty()
+                    ]
+                },
+                {
+                    name: 'tab', description: i18n.get_string('taboptions'), 
+                    children: [
+                        new BsTabProperty(),
+                        new BsTabJustifyProperty(),
+                        new BsAddTabProperty()
+                    ]
+                },
+                {
+                    name: 'accordion', description: i18n.get_string('accordionoptions'), 
+                    children: [
+                        new BsAddAccordionProperty()
+                    ]
+                },
+                {
+                    name: 'heading', description: i18n.get_string('heading'), 
+                    children: [
+                        new BsHeadingProperty(),
+                    ]
+                }, 
+                {
+                    name: 'bs-dimension', description: i18n.get_string('dimension'), 
+                    children: [
+                        new BsFullHeightProperty(),
+                    ]
+                }, 
+            ],
+            html: [
+                {
+                    name: 'layout', description: i18n.get_string('layout'), 
+                    children: [
+                        new HTMLWidthProperty(),
+                        new HTMLHeightProperty(),
+                        new HTMLMarginBorderPaddingProperty()
+                    ]
+                },  
+                {
+                    name: 'font', description: i18n.get_string('font'), 
+                    children: [
+                        new HTMLFontSizeProperty(),
+                        new HTMLFontFamilyProperty(),
+                        new HTMLColorProperty()
+                    ]
+                },
+                {
+                    name: 'background', description: i18n.get_string('background'), 
+                    children: [
+                        new HTMLBackgroundProperty(),
+                    ]
+                },
+                {
+                    name: 'link', description: i18n.get_string('linkoptions'), 
+                    children: [
+                        new HTMLHrefProperty(),
+                        new HTMLTargetProperty()
+                    ]
+                },
+                {
+                    name: 'source', description: i18n.get_string('source'), 
+                    children: [
+                        new HTMLSourceProperty(),
+                        new HTMLImageBankProperty(true)
+                    ]
+                },
+                {
+                    name: 'sourceaudio', description: i18n.get_string('source'), 
+                    children: [
+                        new HTMLSourceProperty('.mp3,.wav')
+                    ]
+                },
+                {
+                    name: 'outerhtml', description: i18n.get_string('source'), 
+                    children: [
+                        new HTMLOuterHTMLProperty()
+                    ]
+                },
+                {
+                    name: 'alt', description: i18n.get_string('description'), 
+                    children: [
+                        new HTMLAltProperty()
+                    ]
+                },
+                {
+                    name: 'htmlattributes', description: i18n.get_string('htmlattributes'), 
+                    children: [
+                        new HTMLClassProperty(),
+                        new HTMLStyleProperty(),
+                        new HTMLIdProperty()
+                    ]
+                },
+                {
+                    name: 'videobtn', description: i18n.get_string('source'), 
+                    children: [
+                        new HTMLVideoButtonProperty()
+                    ]
+                },
+                {
+                    name: 'videosource', description: i18n.get_string('source'), 
+                    children: [
+                        new HTMLVideoSourceProperty()
+                    ]
+                },
+                {
+                    name: 'embed', description: i18n.get_string('properties'), 
+                    children: [
+                        new HTMLEmbedProperty()
+                    ]
+                },
+                {
+                    name: 'htmlcode', description: i18n.get_string('htmlcode'), 
+                    children: [
+                        new HTMLCodeProperty()
+                    ]
+                },
+                {
+                    name: 'appearance', description: i18n.get_string('htmlcode'), 
+                    children: [
+                        new HTMLColorProperty(), 
+                        new HTMLBackgroundProperty(),
+                        new HTMLFontSizeProperty(),
+                    ]
+                },
+            ],
+            bookmark: []
+        };  
+
+        this.elementList = [
+            {
+                name: i18n.get_string('layout'), 
+                children: [
+                    new HTMLBodyElement(),
+                    new HTMLDivElement(),
+                    new HTMLSectionElement(),
+                    new HTMLGridElement(),
+                    new HTMLRowElement(),
+                    new HTMLColElement(),
+                ]
+            },
+            {
+                name: <>{i18n.get_string('text')} <a target='_blank' href='https://www.w3.org/WAI/tutorials/page-structure/headings/#heading-ranks'><FontAwesomeIcon icon={faInfoCircle}/> </a></>,
+                children: [
+                    new HTMLHeadingElement('H1', 'h1'),
+                    new HTMLHeadingElement('H2', 'h2'),
+                    new HTMLHeadingElement('H3', 'h3'),
+                    new HTMLHeadingElement('H4', 'h4'),
+                    new HTMLHeadingElement('H5', 'h5'),
+                    new HTMLHeadingElement('H6', 'h6'),
+                    new HTMLHeadingElement(i18n.get_string('headingwithicon'), 'h3', true),
+                    new HTMLParagraphElement(),
+                    new HTMLUListElement(),
+                    new HTMLOListElement(),
+                    new HTMLLIElement(),
+                    new HTMLSpanElement(),
+                ]
+            },
+            {
+                name: i18n.get_string('media'), 
+                children: [
+                    new HTMLImageElement(),
+                    new HTMLImageWithCaptionElement(),
+                    new HTMLImageFigureElement(),
+                    new HTMLClickableImageElement(),
+                    new HTMLVideoElement(i18n.get_string('video'), null, 'bootstrap'),
+                    new HTMLIframeElement(),
+                    new HTMLButtonVideoElement(),
+                    new HTMLIconElement(),
+                    new HTMLAudioElement(),
+                    new HTMLEmbedElement()
+                ]
+            },
+            {
+                name: i18n.get_string('navigation'), 
+                children: [
+                    new HTMLButtonElement(i18n.get_string('button'), 'a', 'bootstrap', HTMLPropertiesData.propsAssignmentFacade.buttons),
+                    new HTMLButtonVideoElement(),
+                    new HTMLLinkElement(),
+                    new HTMLNavElement(),
+                    new HTMLNavItemElement(),
+                    new HTMLNavLinkElement()
+                ]
+            },
+            {
+                name: i18n.get_string('nativecomponents'), 
+                children: [
+                    new HTMLAccordionElement(),
+                    new HTMLAccordionNavElement(),
+                    new HTMLCarouselElement(),
+                    new HTMLCarouselNavElement(),
+                    new HTMLFlipCardElement(),
+                    new HTMLFlipCardFrontElement(),
+                    new HTMLFlipCardBackElement(),
+                    new HTMLTabElement(),
+                    new HTMLTabPaneElement(),
+                    new HTMLTabContentElement(),
+                    new HTMLTableElement(),
+                    new HTMLTableDataCellElement(),
+                    new HTMLTableHeaderCellElement(),
+                    new HTMLTableRowElement(),
+                    new HTMLAlertElement(),
+                    new HTMLAvatarCardElement(),
+                    new HTMLCardElement(),
+                    new HTMLCardBodyElement(),
+                    new HTMLCardHeaderElement(),
+                    new HTMLCardFooterElement(),
+                    new HTMLHRElement(),
+                    new HTMLHorizontalBarElement()
+                ]
+            },
+        ];
+    }
 
     elementListSortByName(){
         this.elementList.sort((a,b) =>{
