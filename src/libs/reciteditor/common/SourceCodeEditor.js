@@ -27,8 +27,8 @@ import { EditorView } from '@codemirror/view';
 import { searchConfig } from '@codemirror/search';
 import { lintGutter } from '@codemirror/lint';
 import { html, htmlCompletion, autoCloseTags } from '@codemirror/lang-html';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/material.css';
+//import 'codemirror/lib/codemirror.css';
+//import 'codemirror/theme/material.css';
 var beautifyingHTML = require("pretty");
 
 export class SourceCodeEditor extends Component{
