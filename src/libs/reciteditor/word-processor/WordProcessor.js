@@ -26,9 +26,9 @@ import CodeMirror from '@uiw/react-codemirror';
 //import MathJax from 'react-mathjax';
 import {ButtonsBar, UtilsHTML, JsNx} from '../RecitEditor';
 
-import 'codemirror/lib/codemirror.css';
+//import 'codemirror/lib/codemirror.css';
 import { html } from '@codemirror/lang-html';
-import 'codemirror/theme/material.css';
+//import 'codemirror/theme/material.css';
 var beautifyingHTML = require("pretty");
 
 export class WordProcessor extends Component
