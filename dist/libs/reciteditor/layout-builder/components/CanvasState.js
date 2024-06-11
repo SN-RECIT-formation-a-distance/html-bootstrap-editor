@@ -375,7 +375,7 @@ var DesignerState = function (_CanvasState2) {
       var body = this.window.document.body;
       this.onInitCSS(doc, head);
       var el = doc.createElement("link");
-      el.setAttribute("href", "".concat(_RecitEditor.Assets.CanvasDesignerCSS));
+      el.setAttribute("href", "./".concat(_RecitEditor.Assets.CanvasDesignerCSS));
       el.setAttribute("rel", "stylesheet");
       head.appendChild(el);
       _RecitEditor.CanvasElement.create(body, this.mainView.onSelectElement, this.mainView.onDrop, this.mainView.onStartEditingNodeText);

@@ -299,7 +299,7 @@ export class DesignerState extends CanvasState{
         this.onInitCSS(doc, head);
 
         let el = doc.createElement("link");
-		el.setAttribute("href", `${Assets.CanvasDesignerCSS}`);
+		el.setAttribute("href", `./${Assets.CanvasDesignerCSS}`);
 		el.setAttribute("rel", "stylesheet");
 		head.appendChild(el);
 
