@@ -157,11 +157,8 @@ var IconSelector = function (_Component) {
               return _this2.onChange(item2.cssRule);
             }
           }, _react["default"].createElement("i", {
-            className: item2.cssRule,
-            style: {
-              fontSize: '40px'
-            }
-          }), _react["default"].createElement("br", null), item2.name);
+            className: item2.cssRule
+          }), item2.name);
           return icon;
         })));
         return tab;
@@ -196,7 +193,7 @@ var IconSelector = function (_Component) {
           height: "60vh"
         },
         head: this.settings.cssFiles
-      }, _react["default"].createElement("style", null, ".icon-tile{width: 60px; text-align: center; cursor: pointer; font-size: 10px; margin: 1rem; }"), tabs)));
+      }, _react["default"].createElement("style", null, "body{background-color: #FFF!important;} \n                            .icon-tile{width: 60px; text-align: center; cursor: pointer; font-size: 10px; margin: 1rem; }\n                            .icon-tile i{font-size: 40px; margin-bottom: 1rem; display: block;}"), tabs)));
       return [modal, main];
     }
   }, {
@@ -256,2362 +253,2362 @@ IconSelector.IconsLibraries = [{
   name: 'Font Awesome 4',
   iconList: [{
     name: "glass",
-    cssRule: "fa-glass"
+    cssRule: "fa fa-glass"
   }, {
     name: "music",
-    cssRule: "fa-music"
+    cssRule: "fa fa-music"
   }, {
     name: "search",
-    cssRule: "fa-search"
+    cssRule: "fa fa-search"
   }, {
     name: "envelope-o",
-    cssRule: "fa-envelope-o"
+    cssRule: "fa fa-envelope-o"
   }, {
     name: "heart",
-    cssRule: "fa-heart"
+    cssRule: "fa fa-heart"
   }, {
     name: "star",
-    cssRule: "fa-star"
+    cssRule: "fa fa-star"
   }, {
     name: "star-o",
-    cssRule: "fa-star-o"
+    cssRule: "fa fa-star-o"
   }, {
     name: "user",
-    cssRule: "fa-user"
+    cssRule: "fa fa-user"
   }, {
     name: "film",
-    cssRule: "fa-film"
+    cssRule: "fa fa-film"
   }, {
     name: "th-large",
-    cssRule: "fa-th-large"
+    cssRule: "fa fa-th-large"
   }, {
     name: "th",
-    cssRule: "fa-th"
+    cssRule: "fa fa-th"
   }, {
     name: "th-list",
-    cssRule: "fa-th-list"
+    cssRule: "fa fa-th-list"
   }, {
     name: "check",
-    cssRule: "fa-check"
+    cssRule: "fa fa-check"
   }, {
     name: "remove",
-    cssRule: "fa-remove"
+    cssRule: "fa fa-remove"
   }, {
     name: "close",
-    cssRule: "fa-close"
+    cssRule: "fa fa-close"
   }, {
     name: "times",
-    cssRule: "fa-times"
+    cssRule: "fa fa-times"
   }, {
     name: "search-plus",
-    cssRule: "fa-search-plus"
+    cssRule: "fa fa-search-plus"
   }, {
     name: "search-minus",
-    cssRule: "fa-search-minus"
+    cssRule: "fa fa-search-minus"
   }, {
     name: "power-off",
-    cssRule: "fa-power-off"
+    cssRule: "fa fa-power-off"
   }, {
     name: "signal",
-    cssRule: "fa-signal"
+    cssRule: "fa fa-signal"
   }, {
     name: "gear",
-    cssRule: "fa-gear"
+    cssRule: "fa fa-gear"
   }, {
     name: "cog",
-    cssRule: "fa-cog"
+    cssRule: "fa fa-cog"
   }, {
     name: "trash-o",
-    cssRule: "fa-trash-o"
+    cssRule: "fa fa-trash-o"
   }, {
     name: "home",
-    cssRule: "fa-home"
+    cssRule: "fa fa-home"
   }, {
     name: "file-o",
-    cssRule: "fa-file-o"
+    cssRule: "fa fa-file-o"
   }, {
     name: "clock-o",
-    cssRule: "fa-clock-o"
+    cssRule: "fa fa-clock-o"
   }, {
     name: "road",
-    cssRule: "fa-road"
+    cssRule: "fa fa-road"
   }, {
     name: "download",
-    cssRule: "fa-download"
+    cssRule: "fa fa-download"
   }, {
     name: "arrow-circle-o-down",
-    cssRule: "fa-arrow-circle-o-down"
+    cssRule: "fa fa-arrow-circle-o-down"
   }, {
     name: "arrow-circle-o-up",
-    cssRule: "fa-arrow-circle-o-up"
+    cssRule: "fa fa-arrow-circle-o-up"
   }, {
     name: "inbox",
-    cssRule: "fa-inbox"
+    cssRule: "fa fa-inbox"
   }, {
     name: "play-circle-o",
-    cssRule: "fa-play-circle-o"
+    cssRule: "fa fa-play-circle-o"
   }, {
     name: "rotate-right",
-    cssRule: "fa-rotate-right"
+    cssRule: "fa fa-rotate-right"
   }, {
     name: "repeat",
-    cssRule: "fa-repeat"
+    cssRule: "fa fa-repeat"
   }, {
     name: "refresh",
-    cssRule: "fa-refresh"
+    cssRule: "fa fa-refresh"
   }, {
     name: "list-alt",
-    cssRule: "fa-list-alt"
+    cssRule: "fa fa-list-alt"
   }, {
     name: "lock",
-    cssRule: "fa-lock"
+    cssRule: "fa fa-lock"
   }, {
     name: "flag",
-    cssRule: "fa-flag"
+    cssRule: "fa fa-flag"
   }, {
     name: "headphones",
-    cssRule: "fa-headphones"
+    cssRule: "fa fa-headphones"
   }, {
     name: "volume-off",
-    cssRule: "fa-volume-off"
+    cssRule: "fa fa-volume-off"
   }, {
     name: "volume-down",
-    cssRule: "fa-volume-down"
+    cssRule: "fa fa-volume-down"
   }, {
     name: "volume-up",
-    cssRule: "fa-volume-up"
+    cssRule: "fa fa-volume-up"
   }, {
     name: "qrcode",
-    cssRule: "fa-qrcode"
+    cssRule: "fa fa-qrcode"
   }, {
     name: "barcode",
-    cssRule: "fa-barcode"
+    cssRule: "fa fa-barcode"
   }, {
     name: "tag",
-    cssRule: "fa-tag"
+    cssRule: "fa fa-tag"
   }, {
     name: "tags",
-    cssRule: "fa-tags"
+    cssRule: "fa fa-tags"
   }, {
     name: "book",
-    cssRule: "fa-book"
+    cssRule: "fa fa-book"
   }, {
     name: "bookmark",
-    cssRule: "fa-bookmark"
+    cssRule: "fa fa-bookmark"
   }, {
     name: "print",
-    cssRule: "fa-print"
+    cssRule: "fa fa-print"
   }, {
     name: "camera",
-    cssRule: "fa-camera"
+    cssRule: "fa fa-camera"
   }, {
     name: "font",
-    cssRule: "fa-font"
+    cssRule: "fa fa-font"
   }, {
     name: "bold",
-    cssRule: "fa-bold"
+    cssRule: "fa fa-bold"
   }, {
     name: "italic",
-    cssRule: "fa-italic"
+    cssRule: "fa fa-italic"
   }, {
     name: "text-height",
-    cssRule: "fa-text-height"
+    cssRule: "fa fa-text-height"
   }, {
     name: "text-width",
-    cssRule: "fa-text-width"
+    cssRule: "fa fa-text-width"
   }, {
     name: "align-left",
-    cssRule: "fa-align-left"
+    cssRule: "fa fa-align-left"
   }, {
     name: "align-center",
-    cssRule: "fa-align-center"
+    cssRule: "fa fa-align-center"
   }, {
     name: "align-right",
-    cssRule: "fa-align-right"
+    cssRule: "fa fa-align-right"
   }, {
     name: "align-justify",
-    cssRule: "fa-align-justify"
+    cssRule: "fa fa-align-justify"
   }, {
     name: "list",
-    cssRule: "fa-list"
+    cssRule: "fa fa-list"
   }, {
     name: "dedent",
-    cssRule: "fa-dedent"
+    cssRule: "fa fa-dedent"
   }, {
     name: "outdent",
-    cssRule: "fa-outdent"
+    cssRule: "fa fa-outdent"
   }, {
     name: "indent",
-    cssRule: "fa-indent"
+    cssRule: "fa fa-indent"
   }, {
     name: "video-camera",
-    cssRule: "fa-video-camera"
+    cssRule: "fa fa-video-camera"
   }, {
     name: "photo",
-    cssRule: "fa-photo"
+    cssRule: "fa fa-photo"
   }, {
     name: "image",
-    cssRule: "fa-image"
+    cssRule: "fa fa-image"
   }, {
     name: "picture-o",
-    cssRule: "fa-picture-o"
+    cssRule: "fa fa-picture-o"
   }, {
     name: "pencil",
-    cssRule: "fa-pencil"
+    cssRule: "fa fa-pencil"
   }, {
     name: "map-marker",
-    cssRule: "fa-map-marker"
+    cssRule: "fa fa-map-marker"
   }, {
     name: "adjust",
-    cssRule: "fa-adjust"
+    cssRule: "fa fa-adjust"
   }, {
     name: "tint",
-    cssRule: "fa-tint"
+    cssRule: "fa fa-tint"
   }, {
     name: "edit",
-    cssRule: "fa-edit"
+    cssRule: "fa fa-edit"
   }, {
     name: "pencil-square-o",
-    cssRule: "fa-pencil-square-o"
+    cssRule: "fa fa-pencil-square-o"
   }, {
     name: "share-square-o",
-    cssRule: "fa-share-square-o"
+    cssRule: "fa fa-share-square-o"
   }, {
     name: "check-square-o",
-    cssRule: "fa-check-square-o"
+    cssRule: "fa fa-check-square-o"
   }, {
     name: "arrows",
-    cssRule: "fa-arrows"
+    cssRule: "fa fa-arrows"
   }, {
     name: "step-backward",
-    cssRule: "fa-step-backward"
+    cssRule: "fa fa-step-backward"
   }, {
     name: "fast-backward",
-    cssRule: "fa-fast-backward"
+    cssRule: "fa fa-fast-backward"
   }, {
     name: "backward",
-    cssRule: "fa-backward"
+    cssRule: "fa fa-backward"
   }, {
     name: "play",
-    cssRule: "fa-play"
+    cssRule: "fa fa-play"
   }, {
     name: "pause",
-    cssRule: "fa-pause"
+    cssRule: "fa fa-pause"
   }, {
     name: "stop",
-    cssRule: "fa-stop"
+    cssRule: "fa fa-stop"
   }, {
     name: "forward",
-    cssRule: "fa-forward"
+    cssRule: "fa fa-forward"
   }, {
     name: "fast-forward",
-    cssRule: "fa-fast-forward"
+    cssRule: "fa fa-fast-forward"
   }, {
     name: "step-forward",
-    cssRule: "fa-step-forward"
+    cssRule: "fa fa-step-forward"
   }, {
     name: "eject",
-    cssRule: "fa-eject"
+    cssRule: "fa fa-eject"
   }, {
     name: "chevron-left",
-    cssRule: "fa-chevron-left"
+    cssRule: "fa fa-chevron-left"
   }, {
     name: "chevron-right",
-    cssRule: "fa-chevron-right"
+    cssRule: "fa fa-chevron-right"
   }, {
     name: "plus-circle",
-    cssRule: "fa-plus-circle"
+    cssRule: "fa fa-plus-circle"
   }, {
     name: "minus-circle",
-    cssRule: "fa-minus-circle"
+    cssRule: "fa fa-minus-circle"
   }, {
     name: "times-circle",
-    cssRule: "fa-times-circle"
+    cssRule: "fa fa-times-circle"
   }, {
     name: "check-circle",
-    cssRule: "fa-check-circle"
+    cssRule: "fa fa-check-circle"
   }, {
     name: "question-circle",
-    cssRule: "fa-question-circle"
+    cssRule: "fa fa-question-circle"
   }, {
     name: "info-circle",
-    cssRule: "fa-info-circle"
+    cssRule: "fa fa-info-circle"
   }, {
     name: "crosshairs",
-    cssRule: "fa-crosshairs"
+    cssRule: "fa fa-crosshairs"
   }, {
     name: "times-circle-o",
-    cssRule: "fa-times-circle-o"
+    cssRule: "fa fa-times-circle-o"
   }, {
     name: "check-circle-o",
-    cssRule: "fa-check-circle-o"
+    cssRule: "fa fa-check-circle-o"
   }, {
     name: "ban",
-    cssRule: "fa-ban"
+    cssRule: "fa fa-ban"
   }, {
     name: "arrow-left",
-    cssRule: "fa-arrow-left"
+    cssRule: "fa fa-arrow-left"
   }, {
     name: "arrow-right",
-    cssRule: "fa-arrow-right"
+    cssRule: "fa fa-arrow-right"
   }, {
     name: "arrow-up",
-    cssRule: "fa-arrow-up"
+    cssRule: "fa fa-arrow-up"
   }, {
     name: "arrow-down",
-    cssRule: "fa-arrow-down"
+    cssRule: "fa fa-arrow-down"
   }, {
     name: "mail-forward",
-    cssRule: "fa-mail-forward"
+    cssRule: "fa fa-mail-forward"
   }, {
     name: "share",
-    cssRule: "fa-share"
+    cssRule: "fa fa-share"
   }, {
     name: "expand",
-    cssRule: "fa-expand"
+    cssRule: "fa fa-expand"
   }, {
     name: "compress",
-    cssRule: "fa-compress"
+    cssRule: "fa fa-compress"
   }, {
     name: "plus",
-    cssRule: "fa-plus"
+    cssRule: "fa fa-plus"
   }, {
     name: "minus",
-    cssRule: "fa-minus"
+    cssRule: "fa fa-minus"
   }, {
     name: "asterisk",
-    cssRule: "fa-asterisk"
+    cssRule: "fa fa-asterisk"
   }, {
     name: "exclamation-circle",
-    cssRule: "fa-exclamation-circle"
+    cssRule: "fa fa-exclamation-circle"
   }, {
     name: "gift",
-    cssRule: "fa-gift"
+    cssRule: "fa fa-gift"
   }, {
     name: "leaf",
-    cssRule: "fa-leaf"
+    cssRule: "fa fa-leaf"
   }, {
     name: "fire",
-    cssRule: "fa-fire"
+    cssRule: "fa fa-fire"
   }, {
     name: "eye",
-    cssRule: "fa-eye"
+    cssRule: "fa fa-eye"
   }, {
     name: "eye-slash",
-    cssRule: "fa-eye-slash"
+    cssRule: "fa fa-eye-slash"
   }, {
     name: "warning",
-    cssRule: "fa-warning"
+    cssRule: "fa fa-warning"
   }, {
     name: "exclamation-triangle",
-    cssRule: "fa-exclamation-triangle"
+    cssRule: "fa fa-exclamation-triangle"
   }, {
     name: "plane",
-    cssRule: "fa-plane"
+    cssRule: "fa fa-plane"
   }, {
     name: "calendar",
-    cssRule: "fa-calendar"
+    cssRule: "fa fa-calendar"
   }, {
     name: "random",
-    cssRule: "fa-random"
+    cssRule: "fa fa-random"
   }, {
     name: "comment",
-    cssRule: "fa-comment"
+    cssRule: "fa fa-comment"
   }, {
     name: "magnet",
-    cssRule: "fa-magnet"
+    cssRule: "fa fa-magnet"
   }, {
     name: "chevron-up",
-    cssRule: "fa-chevron-up"
+    cssRule: "fa fa-chevron-up"
   }, {
     name: "chevron-down",
-    cssRule: "fa-chevron-down"
+    cssRule: "fa fa-chevron-down"
   }, {
     name: "retweet",
-    cssRule: "fa-retweet"
+    cssRule: "fa fa-retweet"
   }, {
     name: "shopping-cart",
-    cssRule: "fa-shopping-cart"
+    cssRule: "fa fa-shopping-cart"
   }, {
     name: "folder",
-    cssRule: "fa-folder"
+    cssRule: "fa fa-folder"
   }, {
     name: "folder-open",
-    cssRule: "fa-folder-open"
+    cssRule: "fa fa-folder-open"
   }, {
     name: "arrows-v",
-    cssRule: "fa-arrows-v"
+    cssRule: "fa fa-arrows-v"
   }, {
     name: "arrows-h",
-    cssRule: "fa-arrows-h"
+    cssRule: "fa fa-arrows-h"
   }, {
     name: "bar-chart-o",
-    cssRule: "fa-bar-chart-o"
+    cssRule: "fa fa-bar-chart-o"
   }, {
     name: "bar-chart",
-    cssRule: "fa-bar-chart"
+    cssRule: "fa fa-bar-chart"
   }, {
     name: "twitter-square",
-    cssRule: "fa-twitter-square"
+    cssRule: "fa fa-twitter-square"
   }, {
     name: "facebook-square",
-    cssRule: "fa-facebook-square"
+    cssRule: "fa fa-facebook-square"
   }, {
     name: "camera-retro",
-    cssRule: "fa-camera-retro"
+    cssRule: "fa fa-camera-retro"
   }, {
     name: "key",
-    cssRule: "fa-key"
+    cssRule: "fa fa-key"
   }, {
     name: "gears",
-    cssRule: "fa-gears"
+    cssRule: "fa fa-gears"
   }, {
     name: "cogs",
-    cssRule: "fa-cogs"
+    cssRule: "fa fa-cogs"
   }, {
     name: "comments",
-    cssRule: "fa-comments"
+    cssRule: "fa fa-comments"
   }, {
     name: "thumbs-o-up",
-    cssRule: "fa-thumbs-o-up"
+    cssRule: "fa fa-thumbs-o-up"
   }, {
     name: "thumbs-o-down",
-    cssRule: "fa-thumbs-o-down"
+    cssRule: "fa fa-thumbs-o-down"
   }, {
     name: "star-half",
-    cssRule: "fa-star-half"
+    cssRule: "fa fa-star-half"
   }, {
     name: "heart-o",
-    cssRule: "fa-heart-o"
+    cssRule: "fa fa-heart-o"
   }, {
     name: "sign-out",
-    cssRule: "fa-sign-out"
+    cssRule: "fa fa-sign-out"
   }, {
     name: "linkedin-square",
-    cssRule: "fa-linkedin-square"
+    cssRule: "fa fa-linkedin-square"
   }, {
     name: "thumb-tack",
-    cssRule: "fa-thumb-tack"
+    cssRule: "fa fa-thumb-tack"
   }, {
     name: "external-link",
-    cssRule: "fa-external-link"
+    cssRule: "fa fa-external-link"
   }, {
     name: "sign-in",
-    cssRule: "fa-sign-in"
+    cssRule: "fa fa-sign-in"
   }, {
     name: "trophy",
-    cssRule: "fa-trophy"
+    cssRule: "fa fa-trophy"
   }, {
     name: "github-square",
-    cssRule: "fa-github-square"
+    cssRule: "fa fa-github-square"
   }, {
     name: "upload",
-    cssRule: "fa-upload"
+    cssRule: "fa fa-upload"
   }, {
     name: "lemon-o",
-    cssRule: "fa-lemon-o"
+    cssRule: "fa fa-lemon-o"
   }, {
     name: "phone",
-    cssRule: "fa-phone"
+    cssRule: "fa fa-phone"
   }, {
     name: "square-o",
-    cssRule: "fa-square-o"
+    cssRule: "fa fa-square-o"
   }, {
     name: "bookmark-o",
-    cssRule: "fa-bookmark-o"
+    cssRule: "fa fa-bookmark-o"
   }, {
     name: "phone-square",
-    cssRule: "fa-phone-square"
+    cssRule: "fa fa-phone-square"
   }, {
     name: "twitter",
-    cssRule: "fa-twitter"
+    cssRule: "fa fa-twitter"
   }, {
     name: "facebook-f",
-    cssRule: "fa-facebook-f"
+    cssRule: "fa fa-facebook-f"
   }, {
     name: "facebook",
-    cssRule: "fa-facebook"
+    cssRule: "fa fa-facebook"
   }, {
     name: "github",
-    cssRule: "fa-github"
+    cssRule: "fa fa-github"
   }, {
     name: "unlock",
-    cssRule: "fa-unlock"
+    cssRule: "fa fa-unlock"
   }, {
     name: "credit-card",
-    cssRule: "fa-credit-card"
+    cssRule: "fa fa-credit-card"
   }, {
     name: "feed",
-    cssRule: "fa-feed"
+    cssRule: "fa fa-feed"
   }, {
     name: "rss",
-    cssRule: "fa-rss"
+    cssRule: "fa fa-rss"
   }, {
     name: "hdd-o",
-    cssRule: "fa-hdd-o"
+    cssRule: "fa fa-hdd-o"
   }, {
     name: "bullhorn",
-    cssRule: "fa-bullhorn"
+    cssRule: "fa fa-bullhorn"
   }, {
     name: "bell",
-    cssRule: "fa-bell"
+    cssRule: "fa fa-bell"
   }, {
     name: "certificate",
-    cssRule: "fa-certificate"
+    cssRule: "fa fa-certificate"
   }, {
     name: "hand-o-right",
-    cssRule: "fa-hand-o-right"
+    cssRule: "fa fa-hand-o-right"
   }, {
     name: "hand-o-left",
-    cssRule: "fa-hand-o-left"
+    cssRule: "fa fa-hand-o-left"
   }, {
     name: "hand-o-up",
-    cssRule: "fa-hand-o-up"
+    cssRule: "fa fa-hand-o-up"
   }, {
     name: "hand-o-down",
-    cssRule: "fa-hand-o-down"
+    cssRule: "fa fa-hand-o-down"
   }, {
     name: "arrow-circle-left",
-    cssRule: "fa-arrow-circle-left"
+    cssRule: "fa fa-arrow-circle-left"
   }, {
     name: "arrow-circle-right",
-    cssRule: "fa-arrow-circle-right"
+    cssRule: "fa fa-arrow-circle-right"
   }, {
     name: "arrow-circle-up",
-    cssRule: "fa-arrow-circle-up"
+    cssRule: "fa fa-arrow-circle-up"
   }, {
     name: "arrow-circle-down",
-    cssRule: "fa-arrow-circle-down"
+    cssRule: "fa fa-arrow-circle-down"
   }, {
     name: "globe",
-    cssRule: "fa-globe"
+    cssRule: "fa fa-globe"
   }, {
     name: "wrench",
-    cssRule: "fa-wrench"
+    cssRule: "fa fa-wrench"
   }, {
     name: "tasks",
-    cssRule: "fa-tasks"
+    cssRule: "fa fa-tasks"
   }, {
     name: "filter",
-    cssRule: "fa-filter"
+    cssRule: "fa fa-filter"
   }, {
     name: "briefcase",
-    cssRule: "fa-briefcase"
+    cssRule: "fa fa-briefcase"
   }, {
     name: "arrows-alt",
-    cssRule: "fa-arrows-alt"
+    cssRule: "fa fa-arrows-alt"
   }, {
     name: "group",
-    cssRule: "fa-group"
+    cssRule: "fa fa-group"
   }, {
     name: "users",
-    cssRule: "fa-users"
+    cssRule: "fa fa-users"
   }, {
     name: "chain",
-    cssRule: "fa-chain"
+    cssRule: "fa fa-chain"
   }, {
     name: "link",
-    cssRule: "fa-link"
+    cssRule: "fa fa-link"
   }, {
     name: "cloud",
-    cssRule: "fa-cloud"
+    cssRule: "fa fa-cloud"
   }, {
     name: "flask",
-    cssRule: "fa-flask"
+    cssRule: "fa fa-flask"
   }, {
     name: "cut",
-    cssRule: "fa-cut"
+    cssRule: "fa fa-cut"
   }, {
     name: "scissors",
-    cssRule: "fa-scissors"
+    cssRule: "fa fa-scissors"
   }, {
     name: "copy",
-    cssRule: "fa-copy"
+    cssRule: "fa fa-copy"
   }, {
     name: "files-o",
-    cssRule: "fa-files-o"
+    cssRule: "fa fa-files-o"
   }, {
     name: "paperclip",
-    cssRule: "fa-paperclip"
+    cssRule: "fa fa-paperclip"
   }, {
     name: "save",
-    cssRule: "fa-save"
+    cssRule: "fa fa-save"
   }, {
     name: "floppy-o",
-    cssRule: "fa-floppy-o"
+    cssRule: "fa fa-floppy-o"
   }, {
     name: "square",
-    cssRule: "fa-square"
+    cssRule: "fa fa-square"
   }, {
     name: "navicon",
-    cssRule: "fa-navicon"
+    cssRule: "fa fa-navicon"
   }, {
     name: "reorder",
-    cssRule: "fa-reorder"
+    cssRule: "fa fa-reorder"
   }, {
     name: "bars",
-    cssRule: "fa-bars"
+    cssRule: "fa fa-bars"
   }, {
     name: "list-ul",
-    cssRule: "fa-list-ul"
+    cssRule: "fa fa-list-ul"
   }, {
     name: "list-ol",
-    cssRule: "fa-list-ol"
+    cssRule: "fa fa-list-ol"
   }, {
     name: "strikethrough",
-    cssRule: "fa-strikethrough"
+    cssRule: "fa fa-strikethrough"
   }, {
     name: "underline",
-    cssRule: "fa-underline"
+    cssRule: "fa fa-underline"
   }, {
     name: "table",
-    cssRule: "fa-table"
+    cssRule: "fa fa-table"
   }, {
     name: "magic",
-    cssRule: "fa-magic"
+    cssRule: "fa fa-magic"
   }, {
     name: "truck",
-    cssRule: "fa-truck"
+    cssRule: "fa fa-truck"
   }, {
     name: "pinterest",
-    cssRule: "fa-pinterest"
+    cssRule: "fa fa-pinterest"
   }, {
     name: "pinterest-square",
-    cssRule: "fa-pinterest-square"
+    cssRule: "fa fa-pinterest-square"
   }, {
     name: "google-plus-square",
-    cssRule: "fa-google-plus-square"
+    cssRule: "fa fa-google-plus-square"
   }, {
     name: "google-plus",
-    cssRule: "fa-google-plus"
+    cssRule: "fa fa-google-plus"
   }, {
     name: "money",
-    cssRule: "fa-money"
+    cssRule: "fa fa-money"
   }, {
     name: "caret-down",
-    cssRule: "fa-caret-down"
+    cssRule: "fa fa-caret-down"
   }, {
     name: "caret-up",
-    cssRule: "fa-caret-up"
+    cssRule: "fa fa-caret-up"
   }, {
     name: "caret-left",
-    cssRule: "fa-caret-left"
+    cssRule: "fa fa-caret-left"
   }, {
     name: "caret-right",
-    cssRule: "fa-caret-right"
+    cssRule: "fa fa-caret-right"
   }, {
     name: "columns",
-    cssRule: "fa-columns"
+    cssRule: "fa fa-columns"
   }, {
     name: "unsorted",
-    cssRule: "fa-unsorted"
+    cssRule: "fa fa-unsorted"
   }, {
     name: "sort",
-    cssRule: "fa-sort"
+    cssRule: "fa fa-sort"
   }, {
     name: "sort-down",
-    cssRule: "fa-sort-down"
+    cssRule: "fa fa-sort-down"
   }, {
     name: "sort-desc",
-    cssRule: "fa-sort-desc"
+    cssRule: "fa fa-sort-desc"
   }, {
     name: "sort-up",
-    cssRule: "fa-sort-up"
+    cssRule: "fa fa-sort-up"
   }, {
     name: "sort-asc",
-    cssRule: "fa-sort-asc"
+    cssRule: "fa fa-sort-asc"
   }, {
     name: "envelope",
-    cssRule: "fa-envelope"
+    cssRule: "fa fa-envelope"
   }, {
     name: "linkedin",
-    cssRule: "fa-linkedin"
+    cssRule: "fa fa-linkedin"
   }, {
     name: "rotate-left",
-    cssRule: "fa-rotate-left"
+    cssRule: "fa fa-rotate-left"
   }, {
     name: "undo",
-    cssRule: "fa-undo"
+    cssRule: "fa fa-undo"
   }, {
     name: "legal",
-    cssRule: "fa-legal"
+    cssRule: "fa fa-legal"
   }, {
     name: "gavel",
-    cssRule: "fa-gavel"
+    cssRule: "fa fa-gavel"
   }, {
     name: "dashboard",
-    cssRule: "fa-dashboard"
+    cssRule: "fa fa-dashboard"
   }, {
     name: "tachometer",
-    cssRule: "fa-tachometer"
+    cssRule: "fa fa-tachometer"
   }, {
     name: "comment-o",
-    cssRule: "fa-comment-o"
+    cssRule: "fa fa-comment-o"
   }, {
     name: "comments-o",
-    cssRule: "fa-comments-o"
+    cssRule: "fa fa-comments-o"
   }, {
     name: "flash",
-    cssRule: "fa-flash"
+    cssRule: "fa fa-flash"
   }, {
     name: "bolt",
-    cssRule: "fa-bolt"
+    cssRule: "fa fa-bolt"
   }, {
     name: "sitemap",
-    cssRule: "fa-sitemap"
+    cssRule: "fa fa-sitemap"
   }, {
     name: "umbrella",
-    cssRule: "fa-umbrella"
+    cssRule: "fa fa-umbrella"
   }, {
     name: "paste",
-    cssRule: "fa-paste"
+    cssRule: "fa fa-paste"
   }, {
     name: "clipboard",
-    cssRule: "fa-clipboard"
+    cssRule: "fa fa-clipboard"
   }, {
     name: "lightbulb-o",
-    cssRule: "fa-lightbulb-o"
+    cssRule: "fa fa-lightbulb-o"
   }, {
     name: "exchange",
-    cssRule: "fa-exchange"
+    cssRule: "fa fa-exchange"
   }, {
     name: "cloud-download",
-    cssRule: "fa-cloud-download"
+    cssRule: "fa fa-cloud-download"
   }, {
     name: "cloud-upload",
-    cssRule: "fa-cloud-upload"
+    cssRule: "fa fa-cloud-upload"
   }, {
     name: "user-md",
-    cssRule: "fa-user-md"
+    cssRule: "fa fa-user-md"
   }, {
     name: "stethoscope",
-    cssRule: "fa-stethoscope"
+    cssRule: "fa fa-stethoscope"
   }, {
     name: "suitcase",
-    cssRule: "fa-suitcase"
+    cssRule: "fa fa-suitcase"
   }, {
     name: "bell-o",
-    cssRule: "fa-bell-o"
+    cssRule: "fa fa-bell-o"
   }, {
     name: "coffee",
-    cssRule: "fa-coffee"
+    cssRule: "fa fa-coffee"
   }, {
     name: "cutlery",
-    cssRule: "fa-cutlery"
+    cssRule: "fa fa-cutlery"
   }, {
     name: "file-text-o",
-    cssRule: "fa-file-text-o"
+    cssRule: "fa fa-file-text-o"
   }, {
     name: "building-o",
-    cssRule: "fa-building-o"
+    cssRule: "fa fa-building-o"
   }, {
     name: "hospital-o",
-    cssRule: "fa-hospital-o"
+    cssRule: "fa fa-hospital-o"
   }, {
     name: "ambulance",
-    cssRule: "fa-ambulance"
+    cssRule: "fa fa-ambulance"
   }, {
     name: "medkit",
-    cssRule: "fa-medkit"
+    cssRule: "fa fa-medkit"
   }, {
     name: "fighter-jet",
-    cssRule: "fa-fighter-jet"
+    cssRule: "fa fa-fighter-jet"
   }, {
     name: "beer",
-    cssRule: "fa-beer"
+    cssRule: "fa fa-beer"
   }, {
     name: "h-square",
-    cssRule: "fa-h-square"
+    cssRule: "fa fa-h-square"
   }, {
     name: "plus-square",
-    cssRule: "fa-plus-square"
+    cssRule: "fa fa-plus-square"
   }, {
     name: "angle-double-left",
-    cssRule: "fa-angle-double-left"
+    cssRule: "fa fa-angle-double-left"
   }, {
     name: "angle-double-right",
-    cssRule: "fa-angle-double-right"
+    cssRule: "fa fa-angle-double-right"
   }, {
     name: "angle-double-up",
-    cssRule: "fa-angle-double-up"
+    cssRule: "fa fa-angle-double-up"
   }, {
     name: "angle-double-down",
-    cssRule: "fa-angle-double-down"
+    cssRule: "fa fa-angle-double-down"
   }, {
     name: "angle-left",
-    cssRule: "fa-angle-left"
+    cssRule: "fa fa-angle-left"
   }, {
     name: "angle-right",
-    cssRule: "fa-angle-right"
+    cssRule: "fa fa-angle-right"
   }, {
     name: "angle-up",
-    cssRule: "fa-angle-up"
+    cssRule: "fa fa-angle-up"
   }, {
     name: "angle-down",
-    cssRule: "fa-angle-down"
+    cssRule: "fa fa-angle-down"
   }, {
     name: "desktop",
-    cssRule: "fa-desktop"
+    cssRule: "fa fa-desktop"
   }, {
     name: "laptop",
-    cssRule: "fa-laptop"
+    cssRule: "fa fa-laptop"
   }, {
     name: "tablet",
-    cssRule: "fa-tablet"
+    cssRule: "fa fa-tablet"
   }, {
     name: "mobile-phone",
-    cssRule: "fa-mobile-phone"
+    cssRule: "fa fa-mobile-phone"
   }, {
     name: "mobile",
-    cssRule: "fa-mobile"
+    cssRule: "fa fa-mobile"
   }, {
     name: "circle-o",
-    cssRule: "fa-circle-o"
+    cssRule: "fa fa-circle-o"
   }, {
     name: "quote-left",
-    cssRule: "fa-quote-left"
+    cssRule: "fa fa-quote-left"
   }, {
     name: "quote-right",
-    cssRule: "fa-quote-right"
+    cssRule: "fa fa-quote-right"
   }, {
     name: "spinner",
-    cssRule: "fa-spinner"
+    cssRule: "fa fa-spinner"
   }, {
     name: "circle",
-    cssRule: "fa-circle"
+    cssRule: "fa fa-circle"
   }, {
     name: "mail-reply",
-    cssRule: "fa-mail-reply"
+    cssRule: "fa fa-mail-reply"
   }, {
     name: "reply",
-    cssRule: "fa-reply"
+    cssRule: "fa fa-reply"
   }, {
     name: "github-alt",
-    cssRule: "fa-github-alt"
+    cssRule: "fa fa-github-alt"
   }, {
     name: "folder-o",
-    cssRule: "fa-folder-o"
+    cssRule: "fa fa-folder-o"
   }, {
     name: "folder-open-o",
-    cssRule: "fa-folder-open-o"
+    cssRule: "fa fa-folder-open-o"
   }, {
     name: "smile-o",
-    cssRule: "fa-smile-o"
+    cssRule: "fa fa-smile-o"
   }, {
     name: "frown-o",
-    cssRule: "fa-frown-o"
+    cssRule: "fa fa-frown-o"
   }, {
     name: "meh-o",
-    cssRule: "fa-meh-o"
+    cssRule: "fa fa-meh-o"
   }, {
     name: "gamepad",
-    cssRule: "fa-gamepad"
+    cssRule: "fa fa-gamepad"
   }, {
     name: "keyboard-o",
-    cssRule: "fa-keyboard-o"
+    cssRule: "fa fa-keyboard-o"
   }, {
     name: "flag-o",
-    cssRule: "fa-flag-o"
+    cssRule: "fa fa-flag-o"
   }, {
     name: "flag-checkered",
-    cssRule: "fa-flag-checkered"
+    cssRule: "fa fa-flag-checkered"
   }, {
     name: "terminal",
-    cssRule: "fa-terminal"
+    cssRule: "fa fa-terminal"
   }, {
     name: "code",
-    cssRule: "fa-code"
+    cssRule: "fa fa-code"
   }, {
     name: "mail-reply-all",
-    cssRule: "fa-mail-reply-all"
+    cssRule: "fa fa-mail-reply-all"
   }, {
     name: "reply-all",
-    cssRule: "fa-reply-all"
+    cssRule: "fa fa-reply-all"
   }, {
     name: "star-half-empty",
-    cssRule: "fa-star-half-empty"
+    cssRule: "fa fa-star-half-empty"
   }, {
     name: "star-half-full",
-    cssRule: "fa-star-half-full"
+    cssRule: "fa fa-star-half-full"
   }, {
     name: "star-half-o",
-    cssRule: "fa-star-half-o"
+    cssRule: "fa fa-star-half-o"
   }, {
     name: "location-arrow",
-    cssRule: "fa-location-arrow"
+    cssRule: "fa fa-location-arrow"
   }, {
     name: "crop",
-    cssRule: "fa-crop"
+    cssRule: "fa fa-crop"
   }, {
     name: "code-fork",
-    cssRule: "fa-code-fork"
+    cssRule: "fa fa-code-fork"
   }, {
     name: "unlink",
-    cssRule: "fa-unlink"
+    cssRule: "fa fa-unlink"
   }, {
     name: "chain-broken",
-    cssRule: "fa-chain-broken"
+    cssRule: "fa fa-chain-broken"
   }, {
     name: "question",
-    cssRule: "fa-question"
+    cssRule: "fa fa-question"
   }, {
     name: "info",
-    cssRule: "fa-info"
+    cssRule: "fa fa-info"
   }, {
     name: "exclamation",
-    cssRule: "fa-exclamation"
+    cssRule: "fa fa-exclamation"
   }, {
     name: "superscript",
-    cssRule: "fa-superscript"
+    cssRule: "fa fa-superscript"
   }, {
     name: "subscript",
-    cssRule: "fa-subscript"
+    cssRule: "fa fa-subscript"
   }, {
     name: "eraser",
-    cssRule: "fa-eraser"
+    cssRule: "fa fa-eraser"
   }, {
     name: "puzzle-piece",
-    cssRule: "fa-puzzle-piece"
+    cssRule: "fa fa-puzzle-piece"
   }, {
     name: "microphone",
-    cssRule: "fa-microphone"
+    cssRule: "fa fa-microphone"
   }, {
     name: "microphone-slash",
-    cssRule: "fa-microphone-slash"
+    cssRule: "fa fa-microphone-slash"
   }, {
     name: "shield",
-    cssRule: "fa-shield"
+    cssRule: "fa fa-shield"
   }, {
     name: "calendar-o",
-    cssRule: "fa-calendar-o"
+    cssRule: "fa fa-calendar-o"
   }, {
     name: "fire-extinguisher",
-    cssRule: "fa-fire-extinguisher"
+    cssRule: "fa fa-fire-extinguisher"
   }, {
     name: "rocket",
-    cssRule: "fa-rocket"
+    cssRule: "fa fa-rocket"
   }, {
     name: "maxcdn",
-    cssRule: "fa-maxcdn"
+    cssRule: "fa fa-maxcdn"
   }, {
     name: "chevron-circle-left",
-    cssRule: "fa-chevron-circle-left"
+    cssRule: "fa fa-chevron-circle-left"
   }, {
     name: "chevron-circle-right",
-    cssRule: "fa-chevron-circle-right"
+    cssRule: "fa fa-chevron-circle-right"
   }, {
     name: "chevron-circle-up",
-    cssRule: "fa-chevron-circle-up"
+    cssRule: "fa fa-chevron-circle-up"
   }, {
     name: "chevron-circle-down",
-    cssRule: "fa-chevron-circle-down"
+    cssRule: "fa fa-chevron-circle-down"
   }, {
     name: "html5",
-    cssRule: "fa-html5"
+    cssRule: "fa fa-html5"
   }, {
     name: "css3",
-    cssRule: "fa-css3"
+    cssRule: "fa fa-css3"
   }, {
     name: "anchor",
-    cssRule: "fa-anchor"
+    cssRule: "fa fa-anchor"
   }, {
     name: "unlock-alt",
-    cssRule: "fa-unlock-alt"
+    cssRule: "fa fa-unlock-alt"
   }, {
     name: "bullseye",
-    cssRule: "fa-bullseye"
+    cssRule: "fa fa-bullseye"
   }, {
     name: "ellipsis-h",
-    cssRule: "fa-ellipsis-h"
+    cssRule: "fa fa-ellipsis-h"
   }, {
     name: "ellipsis-v",
-    cssRule: "fa-ellipsis-v"
+    cssRule: "fa fa-ellipsis-v"
   }, {
     name: "rss-square",
-    cssRule: "fa-rss-square"
+    cssRule: "fa fa-rss-square"
   }, {
     name: "play-circle",
-    cssRule: "fa-play-circle"
+    cssRule: "fa fa-play-circle"
   }, {
     name: "ticket",
-    cssRule: "fa-ticket"
+    cssRule: "fa fa-ticket"
   }, {
     name: "minus-square",
-    cssRule: "fa-minus-square"
+    cssRule: "fa fa-minus-square"
   }, {
     name: "minus-square-o",
-    cssRule: "fa-minus-square-o"
+    cssRule: "fa fa-minus-square-o"
   }, {
     name: "level-up",
-    cssRule: "fa-level-up"
+    cssRule: "fa fa-level-up"
   }, {
     name: "level-down",
-    cssRule: "fa-level-down"
+    cssRule: "fa fa-level-down"
   }, {
     name: "check-square",
-    cssRule: "fa-check-square"
+    cssRule: "fa fa-check-square"
   }, {
     name: "pencil-square",
-    cssRule: "fa-pencil-square"
+    cssRule: "fa fa-pencil-square"
   }, {
     name: "external-link-square",
-    cssRule: "fa-external-link-square"
+    cssRule: "fa fa-external-link-square"
   }, {
     name: "share-square",
-    cssRule: "fa-share-square"
+    cssRule: "fa fa-share-square"
   }, {
     name: "compass",
-    cssRule: "fa-compass"
+    cssRule: "fa fa-compass"
   }, {
     name: "toggle-down",
-    cssRule: "fa-toggle-down"
+    cssRule: "fa fa-toggle-down"
   }, {
     name: "caret-square-o-down",
-    cssRule: "fa-caret-square-o-down"
+    cssRule: "fa fa-caret-square-o-down"
   }, {
     name: "toggle-up",
-    cssRule: "fa-toggle-up"
+    cssRule: "fa fa-toggle-up"
   }, {
     name: "caret-square-o-up",
-    cssRule: "fa-caret-square-o-up"
+    cssRule: "fa fa-caret-square-o-up"
   }, {
     name: "toggle-right",
-    cssRule: "fa-toggle-right"
+    cssRule: "fa fa-toggle-right"
   }, {
     name: "caret-square-o-right",
-    cssRule: "fa-caret-square-o-right"
+    cssRule: "fa fa-caret-square-o-right"
   }, {
     name: "euro",
-    cssRule: "fa-euro"
+    cssRule: "fa fa-euro"
   }, {
     name: "eur",
-    cssRule: "fa-eur"
+    cssRule: "fa fa-eur"
   }, {
     name: "gbp",
-    cssRule: "fa-gbp"
+    cssRule: "fa fa-gbp"
   }, {
     name: "dollar",
-    cssRule: "fa-dollar"
+    cssRule: "fa fa-dollar"
   }, {
     name: "usd",
-    cssRule: "fa-usd"
+    cssRule: "fa fa-usd"
   }, {
     name: "rupee",
-    cssRule: "fa-rupee"
+    cssRule: "fa fa-rupee"
   }, {
     name: "inr",
-    cssRule: "fa-inr"
+    cssRule: "fa fa-inr"
   }, {
     name: "cny",
-    cssRule: "fa-cny"
+    cssRule: "fa fa-cny"
   }, {
     name: "rmb",
-    cssRule: "fa-rmb"
+    cssRule: "fa fa-rmb"
   }, {
     name: "yen",
-    cssRule: "fa-yen"
+    cssRule: "fa fa-yen"
   }, {
     name: "jpy",
-    cssRule: "fa-jpy"
+    cssRule: "fa fa-jpy"
   }, {
     name: "ruble",
-    cssRule: "fa-ruble"
+    cssRule: "fa fa-ruble"
   }, {
     name: "rouble",
-    cssRule: "fa-rouble"
+    cssRule: "fa fa-rouble"
   }, {
     name: "rub",
-    cssRule: "fa-rub"
+    cssRule: "fa fa-rub"
   }, {
     name: "won",
-    cssRule: "fa-won"
+    cssRule: "fa fa-won"
   }, {
     name: "krw",
-    cssRule: "fa-krw"
+    cssRule: "fa fa-krw"
   }, {
     name: "bitcoin",
-    cssRule: "fa-bitcoin"
+    cssRule: "fa fa-bitcoin"
   }, {
     name: "btc",
-    cssRule: "fa-btc"
+    cssRule: "fa fa-btc"
   }, {
     name: "file",
-    cssRule: "fa-file"
+    cssRule: "fa fa-file"
   }, {
     name: "file-text",
-    cssRule: "fa-file-text"
+    cssRule: "fa fa-file-text"
   }, {
     name: "sort-alpha-asc",
-    cssRule: "fa-sort-alpha-asc"
+    cssRule: "fa fa-sort-alpha-asc"
   }, {
     name: "sort-alpha-desc",
-    cssRule: "fa-sort-alpha-desc"
+    cssRule: "fa fa-sort-alpha-desc"
   }, {
     name: "sort-amount-asc",
-    cssRule: "fa-sort-amount-asc"
+    cssRule: "fa fa-sort-amount-asc"
   }, {
     name: "sort-amount-desc",
-    cssRule: "fa-sort-amount-desc"
+    cssRule: "fa fa-sort-amount-desc"
   }, {
     name: "sort-numeric-asc",
-    cssRule: "fa-sort-numeric-asc"
+    cssRule: "fa fa-sort-numeric-asc"
   }, {
     name: "sort-numeric-desc",
-    cssRule: "fa-sort-numeric-desc"
+    cssRule: "fa fa-sort-numeric-desc"
   }, {
     name: "thumbs-up",
-    cssRule: "fa-thumbs-up"
+    cssRule: "fa fa-thumbs-up"
   }, {
     name: "thumbs-down",
-    cssRule: "fa-thumbs-down"
+    cssRule: "fa fa-thumbs-down"
   }, {
     name: "youtube-square",
-    cssRule: "fa-youtube-square"
+    cssRule: "fa fa-youtube-square"
   }, {
     name: "youtube",
-    cssRule: "fa-youtube"
+    cssRule: "fa fa-youtube"
   }, {
     name: "xing",
-    cssRule: "fa-xing"
+    cssRule: "fa fa-xing"
   }, {
     name: "xing-square",
-    cssRule: "fa-xing-square"
+    cssRule: "fa fa-xing-square"
   }, {
     name: "youtube-play",
-    cssRule: "fa-youtube-play"
+    cssRule: "fa fa-youtube-play"
   }, {
     name: "dropbox",
-    cssRule: "fa-dropbox"
+    cssRule: "fa fa-dropbox"
   }, {
     name: "stack-overflow",
-    cssRule: "fa-stack-overflow"
+    cssRule: "fa fa-stack-overflow"
   }, {
     name: "instagram",
-    cssRule: "fa-instagram"
+    cssRule: "fa fa-instagram"
   }, {
     name: "flickr",
-    cssRule: "fa-flickr"
+    cssRule: "fa fa-flickr"
   }, {
     name: "adn",
-    cssRule: "fa-adn"
+    cssRule: "fa fa-adn"
   }, {
     name: "bitbucket",
-    cssRule: "fa-bitbucket"
+    cssRule: "fa fa-bitbucket"
   }, {
     name: "bitbucket-square",
-    cssRule: "fa-bitbucket-square"
+    cssRule: "fa fa-bitbucket-square"
   }, {
     name: "tumblr",
-    cssRule: "fa-tumblr"
+    cssRule: "fa fa-tumblr"
   }, {
     name: "tumblr-square",
-    cssRule: "fa-tumblr-square"
+    cssRule: "fa fa-tumblr-square"
   }, {
     name: "long-arrow-down",
-    cssRule: "fa-long-arrow-down"
+    cssRule: "fa fa-long-arrow-down"
   }, {
     name: "long-arrow-up",
-    cssRule: "fa-long-arrow-up"
+    cssRule: "fa fa-long-arrow-up"
   }, {
     name: "long-arrow-left",
-    cssRule: "fa-long-arrow-left"
+    cssRule: "fa fa-long-arrow-left"
   }, {
     name: "long-arrow-right",
-    cssRule: "fa-long-arrow-right"
+    cssRule: "fa fa-long-arrow-right"
   }, {
     name: "apple",
-    cssRule: "fa-apple"
+    cssRule: "fa fa-apple"
   }, {
     name: "windows",
-    cssRule: "fa-windows"
+    cssRule: "fa fa-windows"
   }, {
     name: "android",
-    cssRule: "fa-android"
+    cssRule: "fa fa-android"
   }, {
     name: "linux",
-    cssRule: "fa-linux"
+    cssRule: "fa fa-linux"
   }, {
     name: "dribbble",
-    cssRule: "fa-dribbble"
+    cssRule: "fa fa-dribbble"
   }, {
     name: "skype",
-    cssRule: "fa-skype"
+    cssRule: "fa fa-skype"
   }, {
     name: "foursquare",
-    cssRule: "fa-foursquare"
+    cssRule: "fa fa-foursquare"
   }, {
     name: "trello",
-    cssRule: "fa-trello"
+    cssRule: "fa fa-trello"
   }, {
     name: "female",
-    cssRule: "fa-female"
+    cssRule: "fa fa-female"
   }, {
     name: "male",
-    cssRule: "fa-male"
+    cssRule: "fa fa-male"
   }, {
     name: "gittip",
-    cssRule: "fa-gittip"
+    cssRule: "fa fa-gittip"
   }, {
     name: "gratipay",
-    cssRule: "fa-gratipay"
+    cssRule: "fa fa-gratipay"
   }, {
     name: "sun-o",
-    cssRule: "fa-sun-o"
+    cssRule: "fa fa-sun-o"
   }, {
     name: "moon-o",
-    cssRule: "fa-moon-o"
+    cssRule: "fa fa-moon-o"
   }, {
     name: "archive",
-    cssRule: "fa-archive"
+    cssRule: "fa fa-archive"
   }, {
     name: "bug",
-    cssRule: "fa-bug"
+    cssRule: "fa fa-bug"
   }, {
     name: "vk",
-    cssRule: "fa-vk"
+    cssRule: "fa fa-vk"
   }, {
     name: "weibo",
-    cssRule: "fa-weibo"
+    cssRule: "fa fa-weibo"
   }, {
     name: "renren",
-    cssRule: "fa-renren"
+    cssRule: "fa fa-renren"
   }, {
     name: "pagelines",
-    cssRule: "fa-pagelines"
+    cssRule: "fa fa-pagelines"
   }, {
     name: "stack-exchange",
-    cssRule: "fa-stack-exchange"
+    cssRule: "fa fa-stack-exchange"
   }, {
     name: "arrow-circle-o-right",
-    cssRule: "fa-arrow-circle-o-right"
+    cssRule: "fa fa-arrow-circle-o-right"
   }, {
     name: "arrow-circle-o-left",
-    cssRule: "fa-arrow-circle-o-left"
+    cssRule: "fa fa-arrow-circle-o-left"
   }, {
     name: "toggle-left",
-    cssRule: "fa-toggle-left"
+    cssRule: "fa fa-toggle-left"
   }, {
     name: "caret-square-o-left",
-    cssRule: "fa-caret-square-o-left"
+    cssRule: "fa fa-caret-square-o-left"
   }, {
     name: "dot-circle-o",
-    cssRule: "fa-dot-circle-o"
+    cssRule: "fa fa-dot-circle-o"
   }, {
     name: "wheelchair",
-    cssRule: "fa-wheelchair"
+    cssRule: "fa fa-wheelchair"
   }, {
     name: "vimeo-square",
-    cssRule: "fa-vimeo-square"
+    cssRule: "fa fa-vimeo-square"
   }, {
     name: "turkish-lira",
-    cssRule: "fa-turkish-lira"
+    cssRule: "fa fa-turkish-lira"
   }, {
     name: "try",
-    cssRule: "fa-try"
+    cssRule: "fa fa-try"
   }, {
     name: "plus-square-o",
-    cssRule: "fa-plus-square-o"
+    cssRule: "fa fa-plus-square-o"
   }, {
     name: "space-shuttle",
-    cssRule: "fa-space-shuttle"
+    cssRule: "fa fa-space-shuttle"
   }, {
     name: "slack",
-    cssRule: "fa-slack"
+    cssRule: "fa fa-slack"
   }, {
     name: "envelope-square",
-    cssRule: "fa-envelope-square"
+    cssRule: "fa fa-envelope-square"
   }, {
     name: "wordpress",
-    cssRule: "fa-wordpress"
+    cssRule: "fa fa-wordpress"
   }, {
     name: "openid",
-    cssRule: "fa-openid"
+    cssRule: "fa fa-openid"
   }, {
     name: "institution",
-    cssRule: "fa-institution"
+    cssRule: "fa fa-institution"
   }, {
     name: "bank",
-    cssRule: "fa-bank"
+    cssRule: "fa fa-bank"
   }, {
     name: "university",
-    cssRule: "fa-university"
+    cssRule: "fa fa-university"
   }, {
     name: "mortar-board",
-    cssRule: "fa-mortar-board"
+    cssRule: "fa fa-mortar-board"
   }, {
     name: "graduation-cap",
-    cssRule: "fa-graduation-cap"
+    cssRule: "fa fa-graduation-cap"
   }, {
     name: "yahoo",
-    cssRule: "fa-yahoo"
+    cssRule: "fa fa-yahoo"
   }, {
     name: "google",
-    cssRule: "fa-google"
+    cssRule: "fa fa-google"
   }, {
     name: "reddit",
-    cssRule: "fa-reddit"
+    cssRule: "fa fa-reddit"
   }, {
     name: "reddit-square",
-    cssRule: "fa-reddit-square"
+    cssRule: "fa fa-reddit-square"
   }, {
     name: "stumbleupon-circle",
-    cssRule: "fa-stumbleupon-circle"
+    cssRule: "fa fa-stumbleupon-circle"
   }, {
     name: "stumbleupon",
-    cssRule: "fa-stumbleupon"
+    cssRule: "fa fa-stumbleupon"
   }, {
     name: "delicious",
-    cssRule: "fa-delicious"
+    cssRule: "fa fa-delicious"
   }, {
     name: "digg",
-    cssRule: "fa-digg"
+    cssRule: "fa fa-digg"
   }, {
     name: "pied-piper-pp",
-    cssRule: "fa-pied-piper-pp"
+    cssRule: "fa fa-pied-piper-pp"
   }, {
     name: "pied-piper-alt",
-    cssRule: "fa-pied-piper-alt"
+    cssRule: "fa fa-pied-piper-alt"
   }, {
     name: "drupal",
-    cssRule: "fa-drupal"
+    cssRule: "fa fa-drupal"
   }, {
     name: "joomla",
-    cssRule: "fa-joomla"
+    cssRule: "fa fa-joomla"
   }, {
     name: "language",
-    cssRule: "fa-language"
+    cssRule: "fa fa-language"
   }, {
     name: "fax",
-    cssRule: "fa-fax"
+    cssRule: "fa fa-fax"
   }, {
     name: "building",
-    cssRule: "fa-building"
+    cssRule: "fa fa-building"
   }, {
     name: "child",
-    cssRule: "fa-child"
+    cssRule: "fa fa-child"
   }, {
     name: "paw",
-    cssRule: "fa-paw"
+    cssRule: "fa fa-paw"
   }, {
     name: "spoon",
-    cssRule: "fa-spoon"
+    cssRule: "fa fa-spoon"
   }, {
     name: "cube",
-    cssRule: "fa-cube"
+    cssRule: "fa fa-cube"
   }, {
     name: "cubes",
-    cssRule: "fa-cubes"
+    cssRule: "fa fa-cubes"
   }, {
     name: "behance",
-    cssRule: "fa-behance"
+    cssRule: "fa fa-behance"
   }, {
     name: "behance-square",
-    cssRule: "fa-behance-square"
+    cssRule: "fa fa-behance-square"
   }, {
     name: "steam",
-    cssRule: "fa-steam"
+    cssRule: "fa fa-steam"
   }, {
     name: "steam-square",
-    cssRule: "fa-steam-square"
+    cssRule: "fa fa-steam-square"
   }, {
     name: "recycle",
-    cssRule: "fa-recycle"
+    cssRule: "fa fa-recycle"
   }, {
     name: "automobile",
-    cssRule: "fa-automobile"
+    cssRule: "fa fa-automobile"
   }, {
     name: "car",
-    cssRule: "fa-car"
+    cssRule: "fa fa-car"
   }, {
     name: "cab",
-    cssRule: "fa-cab"
+    cssRule: "fa fa-cab"
   }, {
     name: "taxi",
-    cssRule: "fa-taxi"
+    cssRule: "fa fa-taxi"
   }, {
     name: "tree",
-    cssRule: "fa-tree"
+    cssRule: "fa fa-tree"
   }, {
     name: "spotify",
-    cssRule: "fa-spotify"
+    cssRule: "fa fa-spotify"
   }, {
     name: "deviantart",
-    cssRule: "fa-deviantart"
+    cssRule: "fa fa-deviantart"
   }, {
     name: "soundcloud",
-    cssRule: "fa-soundcloud"
+    cssRule: "fa fa-soundcloud"
   }, {
     name: "database",
-    cssRule: "fa-database"
+    cssRule: "fa fa-database"
   }, {
     name: "file-pdf-o",
-    cssRule: "fa-file-pdf-o"
+    cssRule: "fa fa-file-pdf-o"
   }, {
     name: "file-word-o",
-    cssRule: "fa-file-word-o"
+    cssRule: "fa fa-file-word-o"
   }, {
     name: "file-excel-o",
-    cssRule: "fa-file-excel-o"
+    cssRule: "fa fa-file-excel-o"
   }, {
     name: "file-powerpoint-o",
-    cssRule: "fa-file-powerpoint-o"
+    cssRule: "fa fa-file-powerpoint-o"
   }, {
     name: "file-photo-o",
-    cssRule: "fa-file-photo-o"
+    cssRule: "fa fa-file-photo-o"
   }, {
     name: "file-picture-o",
-    cssRule: "fa-file-picture-o"
+    cssRule: "fa fa-file-picture-o"
   }, {
     name: "file-image-o",
-    cssRule: "fa-file-image-o"
+    cssRule: "fa fa-file-image-o"
   }, {
     name: "file-zip-o",
-    cssRule: "fa-file-zip-o"
+    cssRule: "fa fa-file-zip-o"
   }, {
     name: "file-archive-o",
-    cssRule: "fa-file-archive-o"
+    cssRule: "fa fa-file-archive-o"
   }, {
     name: "file-sound-o",
-    cssRule: "fa-file-sound-o"
+    cssRule: "fa fa-file-sound-o"
   }, {
     name: "file-audio-o",
-    cssRule: "fa-file-audio-o"
+    cssRule: "fa fa-file-audio-o"
   }, {
     name: "file-movie-o",
-    cssRule: "fa-file-movie-o"
+    cssRule: "fa fa-file-movie-o"
   }, {
     name: "file-video-o",
-    cssRule: "fa-file-video-o"
+    cssRule: "fa fa-file-video-o"
   }, {
     name: "file-code-o",
-    cssRule: "fa-file-code-o"
+    cssRule: "fa fa-file-code-o"
   }, {
     name: "vine",
-    cssRule: "fa-vine"
+    cssRule: "fa fa-vine"
   }, {
     name: "codepen",
-    cssRule: "fa-codepen"
+    cssRule: "fa fa-codepen"
   }, {
     name: "jsfiddle",
-    cssRule: "fa-jsfiddle"
+    cssRule: "fa fa-jsfiddle"
   }, {
     name: "life-bouy",
-    cssRule: "fa-life-bouy"
+    cssRule: "fa fa-life-bouy"
   }, {
     name: "life-buoy",
-    cssRule: "fa-life-buoy"
+    cssRule: "fa fa-life-buoy"
   }, {
     name: "life-saver",
-    cssRule: "fa-life-saver"
+    cssRule: "fa fa-life-saver"
   }, {
     name: "support",
-    cssRule: "fa-support"
+    cssRule: "fa fa-support"
   }, {
     name: "life-ring",
-    cssRule: "fa-life-ring"
+    cssRule: "fa fa-life-ring"
   }, {
     name: "circle-o-notch",
-    cssRule: "fa-circle-o-notch"
+    cssRule: "fa fa-circle-o-notch"
   }, {
     name: "ra",
-    cssRule: "fa-ra"
+    cssRule: "fa fa-ra"
   }, {
     name: "resistance",
-    cssRule: "fa-resistance"
+    cssRule: "fa fa-resistance"
   }, {
     name: "rebel",
-    cssRule: "fa-rebel"
+    cssRule: "fa fa-rebel"
   }, {
     name: "ge",
-    cssRule: "fa-ge"
+    cssRule: "fa fa-ge"
   }, {
     name: "empire",
-    cssRule: "fa-empire"
+    cssRule: "fa fa-empire"
   }, {
     name: "git-square",
-    cssRule: "fa-git-square"
+    cssRule: "fa fa-git-square"
   }, {
     name: "git",
-    cssRule: "fa-git"
+    cssRule: "fa fa-git"
   }, {
     name: "y-combinator-square",
-    cssRule: "fa-y-combinator-square"
+    cssRule: "fa fa-y-combinator-square"
   }, {
     name: "yc-square",
-    cssRule: "fa-yc-square"
+    cssRule: "fa fa-yc-square"
   }, {
     name: "hacker-news",
-    cssRule: "fa-hacker-news"
+    cssRule: "fa fa-hacker-news"
   }, {
     name: "tencent-weibo",
-    cssRule: "fa-tencent-weibo"
+    cssRule: "fa fa-tencent-weibo"
   }, {
     name: "qq",
-    cssRule: "fa-qq"
+    cssRule: "fa fa-qq"
   }, {
     name: "wechat",
-    cssRule: "fa-wechat"
+    cssRule: "fa fa-wechat"
   }, {
     name: "weixin",
-    cssRule: "fa-weixin"
+    cssRule: "fa fa-weixin"
   }, {
     name: "send",
-    cssRule: "fa-send"
+    cssRule: "fa fa-send"
   }, {
     name: "paper-plane",
-    cssRule: "fa-paper-plane"
+    cssRule: "fa fa-paper-plane"
   }, {
     name: "send-o",
-    cssRule: "fa-send-o"
+    cssRule: "fa fa-send-o"
   }, {
     name: "paper-plane-o",
-    cssRule: "fa-paper-plane-o"
+    cssRule: "fa fa-paper-plane-o"
   }, {
     name: "history",
-    cssRule: "fa-history"
+    cssRule: "fa fa-history"
   }, {
     name: "circle-thin",
-    cssRule: "fa-circle-thin"
+    cssRule: "fa fa-circle-thin"
   }, {
     name: "header",
-    cssRule: "fa-header"
+    cssRule: "fa fa-header"
   }, {
     name: "paragraph",
-    cssRule: "fa-paragraph"
+    cssRule: "fa fa-paragraph"
   }, {
     name: "sliders",
-    cssRule: "fa-sliders"
+    cssRule: "fa fa-sliders"
   }, {
     name: "share-alt",
-    cssRule: "fa-share-alt"
+    cssRule: "fa fa-share-alt"
   }, {
     name: "share-alt-square",
-    cssRule: "fa-share-alt-square"
+    cssRule: "fa fa-share-alt-square"
   }, {
     name: "bomb",
-    cssRule: "fa-bomb"
+    cssRule: "fa fa-bomb"
   }, {
     name: "soccer-ball-o",
-    cssRule: "fa-soccer-ball-o"
+    cssRule: "fa fa-soccer-ball-o"
   }, {
     name: "futbol-o",
-    cssRule: "fa-futbol-o"
+    cssRule: "fa fa-futbol-o"
   }, {
     name: "tty",
-    cssRule: "fa-tty"
+    cssRule: "fa fa-tty"
   }, {
     name: "binoculars",
-    cssRule: "fa-binoculars"
+    cssRule: "fa fa-binoculars"
   }, {
     name: "plug",
-    cssRule: "fa-plug"
+    cssRule: "fa fa-plug"
   }, {
     name: "slideshare",
-    cssRule: "fa-slideshare"
+    cssRule: "fa fa-slideshare"
   }, {
     name: "twitch",
-    cssRule: "fa-twitch"
+    cssRule: "fa fa-twitch"
   }, {
     name: "yelp",
-    cssRule: "fa-yelp"
+    cssRule: "fa fa-yelp"
   }, {
     name: "newspaper-o",
-    cssRule: "fa-newspaper-o"
+    cssRule: "fa fa-newspaper-o"
   }, {
     name: "wifi",
-    cssRule: "fa-wifi"
+    cssRule: "fa fa-wifi"
   }, {
     name: "calculator",
-    cssRule: "fa-calculator"
+    cssRule: "fa fa-calculator"
   }, {
     name: "paypal",
-    cssRule: "fa-paypal"
+    cssRule: "fa fa-paypal"
   }, {
     name: "google-wallet",
-    cssRule: "fa-google-wallet"
+    cssRule: "fa fa-google-wallet"
   }, {
     name: "cc-visa",
-    cssRule: "fa-cc-visa"
+    cssRule: "fa fa-cc-visa"
   }, {
     name: "cc-mastercard",
-    cssRule: "fa-cc-mastercard"
+    cssRule: "fa fa-cc-mastercard"
   }, {
     name: "cc-discover",
-    cssRule: "fa-cc-discover"
+    cssRule: "fa fa-cc-discover"
   }, {
     name: "cc-amex",
-    cssRule: "fa-cc-amex"
+    cssRule: "fa fa-cc-amex"
   }, {
     name: "cc-paypal",
-    cssRule: "fa-cc-paypal"
+    cssRule: "fa fa-cc-paypal"
   }, {
     name: "cc-stripe",
-    cssRule: "fa-cc-stripe"
+    cssRule: "fa fa-cc-stripe"
   }, {
     name: "bell-slash",
-    cssRule: "fa-bell-slash"
+    cssRule: "fa fa-bell-slash"
   }, {
     name: "bell-slash-o",
-    cssRule: "fa-bell-slash-o"
+    cssRule: "fa fa-bell-slash-o"
   }, {
     name: "trash",
-    cssRule: "fa-trash"
+    cssRule: "fa fa-trash"
   }, {
     name: "copyright",
-    cssRule: "fa-copyright"
+    cssRule: "fa fa-copyright"
   }, {
     name: "at",
-    cssRule: "fa-at"
+    cssRule: "fa fa-at"
   }, {
     name: "eyedropper",
-    cssRule: "fa-eyedropper"
+    cssRule: "fa fa-eyedropper"
   }, {
     name: "paint-brush",
-    cssRule: "fa-paint-brush"
+    cssRule: "fa fa-paint-brush"
   }, {
     name: "birthday-cake",
-    cssRule: "fa-birthday-cake"
+    cssRule: "fa fa-birthday-cake"
   }, {
     name: "area-chart",
-    cssRule: "fa-area-chart"
+    cssRule: "fa fa-area-chart"
   }, {
     name: "pie-chart",
-    cssRule: "fa-pie-chart"
+    cssRule: "fa fa-pie-chart"
   }, {
     name: "line-chart",
-    cssRule: "fa-line-chart"
+    cssRule: "fa fa-line-chart"
   }, {
     name: "lastfm",
-    cssRule: "fa-lastfm"
+    cssRule: "fa fa-lastfm"
   }, {
     name: "lastfm-square",
-    cssRule: "fa-lastfm-square"
+    cssRule: "fa fa-lastfm-square"
   }, {
     name: "toggle-off",
-    cssRule: "fa-toggle-off"
+    cssRule: "fa fa-toggle-off"
   }, {
     name: "toggle-on",
-    cssRule: "fa-toggle-on"
+    cssRule: "fa fa-toggle-on"
   }, {
     name: "bicycle",
-    cssRule: "fa-bicycle"
+    cssRule: "fa fa-bicycle"
   }, {
     name: "bus",
-    cssRule: "fa-bus"
+    cssRule: "fa fa-bus"
   }, {
     name: "ioxhost",
-    cssRule: "fa-ioxhost"
+    cssRule: "fa fa-ioxhost"
   }, {
     name: "angellist",
-    cssRule: "fa-angellist"
+    cssRule: "fa fa-angellist"
   }, {
     name: "cc",
-    cssRule: "fa-cc"
+    cssRule: "fa fa-cc"
   }, {
     name: "shekel",
-    cssRule: "fa-shekel"
+    cssRule: "fa fa-shekel"
   }, {
     name: "sheqel",
-    cssRule: "fa-sheqel"
+    cssRule: "fa fa-sheqel"
   }, {
     name: "ils",
-    cssRule: "fa-ils"
+    cssRule: "fa fa-ils"
   }, {
     name: "meanpath",
-    cssRule: "fa-meanpath"
+    cssRule: "fa fa-meanpath"
   }, {
     name: "buysellads",
-    cssRule: "fa-buysellads"
+    cssRule: "fa fa-buysellads"
   }, {
     name: "connectdevelop",
-    cssRule: "fa-connectdevelop"
+    cssRule: "fa fa-connectdevelop"
   }, {
     name: "dashcube",
-    cssRule: "fa-dashcube"
+    cssRule: "fa fa-dashcube"
   }, {
     name: "forumbee",
-    cssRule: "fa-forumbee"
+    cssRule: "fa fa-forumbee"
   }, {
     name: "leanpub",
-    cssRule: "fa-leanpub"
+    cssRule: "fa fa-leanpub"
   }, {
     name: "sellsy",
-    cssRule: "fa-sellsy"
+    cssRule: "fa fa-sellsy"
   }, {
     name: "shirtsinbulk",
-    cssRule: "fa-shirtsinbulk"
+    cssRule: "fa fa-shirtsinbulk"
   }, {
     name: "simplybuilt",
-    cssRule: "fa-simplybuilt"
+    cssRule: "fa fa-simplybuilt"
   }, {
     name: "skyatlas",
-    cssRule: "fa-skyatlas"
+    cssRule: "fa fa-skyatlas"
   }, {
     name: "cart-plus",
-    cssRule: "fa-cart-plus"
+    cssRule: "fa fa-cart-plus"
   }, {
     name: "cart-arrow-down",
-    cssRule: "fa-cart-arrow-down"
+    cssRule: "fa fa-cart-arrow-down"
   }, {
     name: "diamond",
-    cssRule: "fa-diamond"
+    cssRule: "fa fa-diamond"
   }, {
     name: "ship",
-    cssRule: "fa-ship"
+    cssRule: "fa fa-ship"
   }, {
     name: "user-secret",
-    cssRule: "fa-user-secret"
+    cssRule: "fa fa-user-secret"
   }, {
     name: "motorcycle",
-    cssRule: "fa-motorcycle"
+    cssRule: "fa fa-motorcycle"
   }, {
     name: "street-view",
-    cssRule: "fa-street-view"
+    cssRule: "fa fa-street-view"
   }, {
     name: "heartbeat",
-    cssRule: "fa-heartbeat"
+    cssRule: "fa fa-heartbeat"
   }, {
     name: "venus",
-    cssRule: "fa-venus"
+    cssRule: "fa fa-venus"
   }, {
     name: "mars",
-    cssRule: "fa-mars"
+    cssRule: "fa fa-mars"
   }, {
     name: "mercury",
-    cssRule: "fa-mercury"
+    cssRule: "fa fa-mercury"
   }, {
     name: "intersex",
-    cssRule: "fa-intersex"
+    cssRule: "fa fa-intersex"
   }, {
     name: "transgender",
-    cssRule: "fa-transgender"
+    cssRule: "fa fa-transgender"
   }, {
     name: "transgender-alt",
-    cssRule: "fa-transgender-alt"
+    cssRule: "fa fa-transgender-alt"
   }, {
     name: "venus-double",
-    cssRule: "fa-venus-double"
+    cssRule: "fa fa-venus-double"
   }, {
     name: "mars-double",
-    cssRule: "fa-mars-double"
+    cssRule: "fa fa-mars-double"
   }, {
     name: "venus-mars",
-    cssRule: "fa-venus-mars"
+    cssRule: "fa fa-venus-mars"
   }, {
     name: "mars-stroke",
-    cssRule: "fa-mars-stroke"
+    cssRule: "fa fa-mars-stroke"
   }, {
     name: "mars-stroke-v",
-    cssRule: "fa-mars-stroke-v"
+    cssRule: "fa fa-mars-stroke-v"
   }, {
     name: "mars-stroke-h",
-    cssRule: "fa-mars-stroke-h"
+    cssRule: "fa fa-mars-stroke-h"
   }, {
     name: "neuter",
-    cssRule: "fa-neuter"
+    cssRule: "fa fa-neuter"
   }, {
     name: "genderless",
-    cssRule: "fa-genderless"
+    cssRule: "fa fa-genderless"
   }, {
     name: "facebook-official",
-    cssRule: "fa-facebook-official"
+    cssRule: "fa fa-facebook-official"
   }, {
     name: "pinterest-p",
-    cssRule: "fa-pinterest-p"
+    cssRule: "fa fa-pinterest-p"
   }, {
     name: "whatsapp",
-    cssRule: "fa-whatsapp"
+    cssRule: "fa fa-whatsapp"
   }, {
     name: "server",
-    cssRule: "fa-server"
+    cssRule: "fa fa-server"
   }, {
     name: "user-plus",
-    cssRule: "fa-user-plus"
+    cssRule: "fa fa-user-plus"
   }, {
     name: "user-times",
-    cssRule: "fa-user-times"
+    cssRule: "fa fa-user-times"
   }, {
     name: "hotel",
-    cssRule: "fa-hotel"
+    cssRule: "fa fa-hotel"
   }, {
     name: "bed",
-    cssRule: "fa-bed"
+    cssRule: "fa fa-bed"
   }, {
     name: "viacoin",
-    cssRule: "fa-viacoin"
+    cssRule: "fa fa-viacoin"
   }, {
     name: "train",
-    cssRule: "fa-train"
+    cssRule: "fa fa-train"
   }, {
     name: "subway",
-    cssRule: "fa-subway"
+    cssRule: "fa fa-subway"
   }, {
     name: "medium",
-    cssRule: "fa-medium"
+    cssRule: "fa fa-medium"
   }, {
     name: "yc",
-    cssRule: "fa-yc"
+    cssRule: "fa fa-yc"
   }, {
     name: "y-combinator",
-    cssRule: "fa-y-combinator"
+    cssRule: "fa fa-y-combinator"
   }, {
     name: "optin-monster",
-    cssRule: "fa-optin-monster"
+    cssRule: "fa fa-optin-monster"
   }, {
     name: "opencart",
-    cssRule: "fa-opencart"
+    cssRule: "fa fa-opencart"
   }, {
     name: "expeditedssl",
-    cssRule: "fa-expeditedssl"
+    cssRule: "fa fa-expeditedssl"
   }, {
     name: "battery-4",
-    cssRule: "fa-battery-4"
+    cssRule: "fa fa-battery-4"
   }, {
     name: "battery",
-    cssRule: "fa-battery"
+    cssRule: "fa fa-battery"
   }, {
     name: "battery-full",
-    cssRule: "fa-battery-full"
+    cssRule: "fa fa-battery-full"
   }, {
     name: "battery-3",
-    cssRule: "fa-battery-3"
+    cssRule: "fa fa-battery-3"
   }, {
     name: "battery-three-quarters",
-    cssRule: "fa-battery-three-quarters"
+    cssRule: "fa fa-battery-three-quarters"
   }, {
     name: "battery-2",
-    cssRule: "fa-battery-2"
+    cssRule: "fa fa-battery-2"
   }, {
     name: "battery-half",
-    cssRule: "fa-battery-half"
+    cssRule: "fa fa-battery-half"
   }, {
     name: "battery-1",
-    cssRule: "fa-battery-1"
+    cssRule: "fa fa-battery-1"
   }, {
     name: "battery-quarter",
-    cssRule: "fa-battery-quarter"
+    cssRule: "fa fa-battery-quarter"
   }, {
     name: "battery-0",
-    cssRule: "fa-battery-0"
+    cssRule: "fa fa-battery-0"
   }, {
     name: "battery-empty",
-    cssRule: "fa-battery-empty"
+    cssRule: "fa fa-battery-empty"
   }, {
     name: "mouse-pointer",
-    cssRule: "fa-mouse-pointer"
+    cssRule: "fa fa-mouse-pointer"
   }, {
     name: "i-cursor",
-    cssRule: "fa-i-cursor"
+    cssRule: "fa fa-i-cursor"
   }, {
     name: "object-group",
-    cssRule: "fa-object-group"
+    cssRule: "fa fa-object-group"
   }, {
     name: "object-ungroup",
-    cssRule: "fa-object-ungroup"
+    cssRule: "fa fa-object-ungroup"
   }, {
     name: "sticky-note",
-    cssRule: "fa-sticky-note"
+    cssRule: "fa fa-sticky-note"
   }, {
     name: "sticky-note-o",
-    cssRule: "fa-sticky-note-o"
+    cssRule: "fa fa-sticky-note-o"
   }, {
     name: "cc-jcb",
-    cssRule: "fa-cc-jcb"
+    cssRule: "fa fa-cc-jcb"
   }, {
     name: "cc-diners-club",
-    cssRule: "fa-cc-diners-club"
+    cssRule: "fa fa-cc-diners-club"
   }, {
     name: "clone",
-    cssRule: "fa-clone"
+    cssRule: "fa fa-clone"
   }, {
     name: "balance-scale",
-    cssRule: "fa-balance-scale"
+    cssRule: "fa fa-balance-scale"
   }, {
     name: "hourglass-o",
-    cssRule: "fa-hourglass-o"
+    cssRule: "fa fa-hourglass-o"
   }, {
     name: "hourglass-1",
-    cssRule: "fa-hourglass-1"
+    cssRule: "fa fa-hourglass-1"
   }, {
     name: "hourglass-start",
-    cssRule: "fa-hourglass-start"
+    cssRule: "fa fa-hourglass-start"
   }, {
     name: "hourglass-2",
-    cssRule: "fa-hourglass-2"
+    cssRule: "fa fa-hourglass-2"
   }, {
     name: "hourglass-half",
-    cssRule: "fa-hourglass-half"
+    cssRule: "fa fa-hourglass-half"
   }, {
     name: "hourglass-3",
-    cssRule: "fa-hourglass-3"
+    cssRule: "fa fa-hourglass-3"
   }, {
     name: "hourglass-end",
-    cssRule: "fa-hourglass-end"
+    cssRule: "fa fa-hourglass-end"
   }, {
     name: "hourglass",
-    cssRule: "fa-hourglass"
+    cssRule: "fa fa-hourglass"
   }, {
     name: "hand-grab-o",
-    cssRule: "fa-hand-grab-o"
+    cssRule: "fa fa-hand-grab-o"
   }, {
     name: "hand-rock-o",
-    cssRule: "fa-hand-rock-o"
+    cssRule: "fa fa-hand-rock-o"
   }, {
     name: "hand-stop-o",
-    cssRule: "fa-hand-stop-o"
+    cssRule: "fa fa-hand-stop-o"
   }, {
     name: "hand-paper-o",
-    cssRule: "fa-hand-paper-o"
+    cssRule: "fa fa-hand-paper-o"
   }, {
     name: "hand-scissors-o",
-    cssRule: "fa-hand-scissors-o"
+    cssRule: "fa fa-hand-scissors-o"
   }, {
     name: "hand-lizard-o",
-    cssRule: "fa-hand-lizard-o"
+    cssRule: "fa fa-hand-lizard-o"
   }, {
     name: "hand-spock-o",
-    cssRule: "fa-hand-spock-o"
+    cssRule: "fa fa-hand-spock-o"
   }, {
     name: "hand-pointer-o",
-    cssRule: "fa-hand-pointer-o"
+    cssRule: "fa fa-hand-pointer-o"
   }, {
     name: "hand-peace-o",
-    cssRule: "fa-hand-peace-o"
+    cssRule: "fa fa-hand-peace-o"
   }, {
     name: "trademark",
-    cssRule: "fa-trademark"
+    cssRule: "fa fa-trademark"
   }, {
     name: "registered",
-    cssRule: "fa-registered"
+    cssRule: "fa fa-registered"
   }, {
     name: "creative-commons",
-    cssRule: "fa-creative-commons"
+    cssRule: "fa fa-creative-commons"
   }, {
     name: "gg",
-    cssRule: "fa-gg"
+    cssRule: "fa fa-gg"
   }, {
     name: "gg-circle",
-    cssRule: "fa-gg-circle"
+    cssRule: "fa fa-gg-circle"
   }, {
     name: "tripadvisor",
-    cssRule: "fa-tripadvisor"
+    cssRule: "fa fa-tripadvisor"
   }, {
     name: "odnoklassniki",
-    cssRule: "fa-odnoklassniki"
+    cssRule: "fa fa-odnoklassniki"
   }, {
     name: "odnoklassniki-square",
-    cssRule: "fa-odnoklassniki-square"
+    cssRule: "fa fa-odnoklassniki-square"
   }, {
     name: "get-pocket",
-    cssRule: "fa-get-pocket"
+    cssRule: "fa fa-get-pocket"
   }, {
     name: "wikipedia-w",
-    cssRule: "fa-wikipedia-w"
+    cssRule: "fa fa-wikipedia-w"
   }, {
     name: "safari",
-    cssRule: "fa-safari"
+    cssRule: "fa fa-safari"
   }, {
     name: "chrome",
-    cssRule: "fa-chrome"
+    cssRule: "fa fa-chrome"
   }, {
     name: "firefox",
-    cssRule: "fa-firefox"
+    cssRule: "fa fa-firefox"
   }, {
     name: "opera",
-    cssRule: "fa-opera"
+    cssRule: "fa fa-opera"
   }, {
     name: "internet-explorer",
-    cssRule: "fa-internet-explorer"
+    cssRule: "fa fa-internet-explorer"
   }, {
     name: "tv",
-    cssRule: "fa-tv"
+    cssRule: "fa fa-tv"
   }, {
     name: "television",
-    cssRule: "fa-television"
+    cssRule: "fa fa-television"
   }, {
     name: "contao",
-    cssRule: "fa-contao"
+    cssRule: "fa fa-contao"
   }, {
     name: "500px",
-    cssRule: "fa-500px"
+    cssRule: "fa fa-500px"
   }, {
     name: "amazon",
-    cssRule: "fa-amazon"
+    cssRule: "fa fa-amazon"
   }, {
     name: "calendar-plus-o",
-    cssRule: "fa-calendar-plus-o"
+    cssRule: "fa fa-calendar-plus-o"
   }, {
     name: "calendar-minus-o",
-    cssRule: "fa-calendar-minus-o"
+    cssRule: "fa fa-calendar-minus-o"
   }, {
     name: "calendar-times-o",
-    cssRule: "fa-calendar-times-o"
+    cssRule: "fa fa-calendar-times-o"
   }, {
     name: "calendar-check-o",
-    cssRule: "fa-calendar-check-o"
+    cssRule: "fa fa-calendar-check-o"
   }, {
     name: "industry",
-    cssRule: "fa-industry"
+    cssRule: "fa fa-industry"
   }, {
     name: "map-pin",
-    cssRule: "fa-map-pin"
+    cssRule: "fa fa-map-pin"
   }, {
     name: "map-signs",
-    cssRule: "fa-map-signs"
+    cssRule: "fa fa-map-signs"
   }, {
     name: "map-o",
-    cssRule: "fa-map-o"
+    cssRule: "fa fa-map-o"
   }, {
     name: "map",
-    cssRule: "fa-map"
+    cssRule: "fa fa-map"
   }, {
     name: "commenting",
-    cssRule: "fa-commenting"
+    cssRule: "fa fa-commenting"
   }, {
     name: "commenting-o",
-    cssRule: "fa-commenting-o"
+    cssRule: "fa fa-commenting-o"
   }, {
     name: "houzz",
-    cssRule: "fa-houzz"
+    cssRule: "fa fa-houzz"
   }, {
     name: "vimeo",
-    cssRule: "fa-vimeo"
+    cssRule: "fa fa-vimeo"
   }, {
     name: "black-tie",
-    cssRule: "fa-black-tie"
+    cssRule: "fa fa-black-tie"
   }, {
     name: "fonticons",
-    cssRule: "fa-fonticons"
+    cssRule: "fa fa-fonticons"
   }, {
     name: "reddit-alien",
-    cssRule: "fa-reddit-alien"
+    cssRule: "fa fa-reddit-alien"
   }, {
     name: "edge",
-    cssRule: "fa-edge"
+    cssRule: "fa fa-edge"
   }, {
     name: "credit-card-alt",
-    cssRule: "fa-credit-card-alt"
+    cssRule: "fa fa-credit-card-alt"
   }, {
     name: "codiepie",
-    cssRule: "fa-codiepie"
+    cssRule: "fa fa-codiepie"
   }, {
     name: "modx",
-    cssRule: "fa-modx"
+    cssRule: "fa fa-modx"
   }, {
     name: "fort-awesome",
-    cssRule: "fa-fort-awesome"
+    cssRule: "fa fa-fort-awesome"
   }, {
     name: "usb",
-    cssRule: "fa-usb"
+    cssRule: "fa fa-usb"
   }, {
     name: "product-hunt",
-    cssRule: "fa-product-hunt"
+    cssRule: "fa fa-product-hunt"
   }, {
     name: "mixcloud",
-    cssRule: "fa-mixcloud"
+    cssRule: "fa fa-mixcloud"
   }, {
     name: "scribd",
-    cssRule: "fa-scribd"
+    cssRule: "fa fa-scribd"
   }, {
     name: "pause-circle",
-    cssRule: "fa-pause-circle"
+    cssRule: "fa fa-pause-circle"
   }, {
     name: "pause-circle-o",
-    cssRule: "fa-pause-circle-o"
+    cssRule: "fa fa-pause-circle-o"
   }, {
     name: "stop-circle",
-    cssRule: "fa-stop-circle"
+    cssRule: "fa fa-stop-circle"
   }, {
     name: "stop-circle-o",
-    cssRule: "fa-stop-circle-o"
+    cssRule: "fa fa-stop-circle-o"
   }, {
     name: "shopping-bag",
-    cssRule: "fa-shopping-bag"
+    cssRule: "fa fa-shopping-bag"
   }, {
     name: "shopping-basket",
-    cssRule: "fa-shopping-basket"
+    cssRule: "fa fa-shopping-basket"
   }, {
     name: "hashtag",
-    cssRule: "fa-hashtag"
+    cssRule: "fa fa-hashtag"
   }, {
     name: "bluetooth",
-    cssRule: "fa-bluetooth"
+    cssRule: "fa fa-bluetooth"
   }, {
     name: "bluetooth-b",
-    cssRule: "fa-bluetooth-b"
+    cssRule: "fa fa-bluetooth-b"
   }, {
     name: "percent",
-    cssRule: "fa-percent"
+    cssRule: "fa fa-percent"
   }, {
     name: "gitlab",
-    cssRule: "fa-gitlab"
+    cssRule: "fa fa-gitlab"
   }, {
     name: "wpbeginner",
-    cssRule: "fa-wpbeginner"
+    cssRule: "fa fa-wpbeginner"
   }, {
     name: "wpforms",
-    cssRule: "fa-wpforms"
+    cssRule: "fa fa-wpforms"
   }, {
     name: "envira",
-    cssRule: "fa-envira"
+    cssRule: "fa fa-envira"
   }, {
     name: "universal-access",
-    cssRule: "fa-universal-access"
+    cssRule: "fa fa-universal-access"
   }, {
     name: "wheelchair-alt",
-    cssRule: "fa-wheelchair-alt"
+    cssRule: "fa fa-wheelchair-alt"
   }, {
     name: "question-circle-o",
-    cssRule: "fa-question-circle-o"
+    cssRule: "fa fa-question-circle-o"
   }, {
     name: "blind",
-    cssRule: "fa-blind"
+    cssRule: "fa fa-blind"
   }, {
     name: "audio-description",
-    cssRule: "fa-audio-description"
+    cssRule: "fa fa-audio-description"
   }, {
     name: "volume-control-phone",
-    cssRule: "fa-volume-control-phone"
+    cssRule: "fa fa-volume-control-phone"
   }, {
     name: "braille",
-    cssRule: "fa-braille"
+    cssRule: "fa fa-braille"
   }, {
     name: "assistive-listening-systems",
-    cssRule: "fa-assistive-listening-systems"
+    cssRule: "fa fa-assistive-listening-systems"
   }, {
     name: "asl-interpreting",
-    cssRule: "fa-asl-interpreting"
+    cssRule: "fa fa-asl-interpreting"
   }, {
     name: "american-sign-language-interpreting",
-    cssRule: "fa-american-sign-language-interpreting"
+    cssRule: "fa fa-american-sign-language-interpreting"
   }, {
     name: "deafness",
-    cssRule: "fa-deafness"
+    cssRule: "fa fa-deafness"
   }, {
     name: "hard-of-hearing",
-    cssRule: "fa-hard-of-hearing"
+    cssRule: "fa fa-hard-of-hearing"
   }, {
     name: "deaf",
-    cssRule: "fa-deaf"
+    cssRule: "fa fa-deaf"
   }, {
     name: "glide",
-    cssRule: "fa-glide"
+    cssRule: "fa fa-glide"
   }, {
     name: "glide-g",
-    cssRule: "fa-glide-g"
+    cssRule: "fa fa-glide-g"
   }, {
     name: "signing",
-    cssRule: "fa-signing"
+    cssRule: "fa fa-signing"
   }, {
     name: "sign-language",
-    cssRule: "fa-sign-language"
+    cssRule: "fa fa-sign-language"
   }, {
     name: "low-vision",
-    cssRule: "fa-low-vision"
+    cssRule: "fa fa-low-vision"
   }, {
     name: "viadeo",
-    cssRule: "fa-viadeo"
+    cssRule: "fa fa-viadeo"
   }, {
     name: "viadeo-square",
-    cssRule: "fa-viadeo-square"
+    cssRule: "fa fa-viadeo-square"
   }, {
     name: "snapchat",
-    cssRule: "fa-snapchat"
+    cssRule: "fa fa-snapchat"
   }, {
     name: "snapchat-ghost",
-    cssRule: "fa-snapchat-ghost"
+    cssRule: "fa fa-snapchat-ghost"
   }, {
     name: "snapchat-square",
-    cssRule: "fa-snapchat-square"
+    cssRule: "fa fa-snapchat-square"
   }, {
     name: "pied-piper",
-    cssRule: "fa-pied-piper"
+    cssRule: "fa fa-pied-piper"
   }, {
     name: "first-order",
-    cssRule: "fa-first-order"
+    cssRule: "fa fa-first-order"
   }, {
     name: "yoast",
-    cssRule: "fa-yoast"
+    cssRule: "fa fa-yoast"
   }, {
     name: "themeisle",
-    cssRule: "fa-themeisle"
+    cssRule: "fa fa-themeisle"
   }, {
     name: "google-plus-circle",
-    cssRule: "fa-google-plus-circle"
+    cssRule: "fa fa-google-plus-circle"
   }, {
     name: "google-plus-official",
-    cssRule: "fa-google-plus-official"
+    cssRule: "fa fa-google-plus-official"
   }, {
     name: "fa",
-    cssRule: "fa-fa"
+    cssRule: "fa fa-fa"
   }, {
     name: "font-awesome",
-    cssRule: "fa-font-awesome"
+    cssRule: "fa fa-font-awesome"
   }, {
     name: "handshake-o",
-    cssRule: "fa-handshake-o"
+    cssRule: "fa fa-handshake-o"
   }, {
     name: "envelope-open",
-    cssRule: "fa-envelope-open"
+    cssRule: "fa fa-envelope-open"
   }, {
     name: "envelope-open-o",
-    cssRule: "fa-envelope-open-o"
+    cssRule: "fa fa-envelope-open-o"
   }, {
     name: "linode",
-    cssRule: "fa-linode"
+    cssRule: "fa fa-linode"
   }, {
     name: "address-book",
-    cssRule: "fa-address-book"
+    cssRule: "fa fa-address-book"
   }, {
     name: "address-book-o",
-    cssRule: "fa-address-book-o"
+    cssRule: "fa fa-address-book-o"
   }, {
     name: "vcard",
-    cssRule: "fa-vcard"
+    cssRule: "fa fa-vcard"
   }, {
     name: "address-card",
-    cssRule: "fa-address-card"
+    cssRule: "fa fa-address-card"
   }, {
     name: "vcard-o",
-    cssRule: "fa-vcard-o"
+    cssRule: "fa fa-vcard-o"
   }, {
     name: "address-card-o",
-    cssRule: "fa-address-card-o"
+    cssRule: "fa fa-address-card-o"
   }, {
     name: "user-circle",
-    cssRule: "fa-user-circle"
+    cssRule: "fa fa-user-circle"
   }, {
     name: "user-circle-o",
-    cssRule: "fa-user-circle-o"
+    cssRule: "fa fa-user-circle-o"
   }, {
     name: "user-o",
-    cssRule: "fa-user-o"
+    cssRule: "fa fa-user-o"
   }, {
     name: "id-badge",
-    cssRule: "fa-id-badge"
+    cssRule: "fa fa-id-badge"
   }, {
     name: "drivers-license",
-    cssRule: "fa-drivers-license"
+    cssRule: "fa fa-drivers-license"
   }, {
     name: "id-card",
-    cssRule: "fa-id-card"
+    cssRule: "fa fa-id-card"
   }, {
     name: "drivers-license-o",
-    cssRule: "fa-drivers-license-o"
+    cssRule: "fa fa-drivers-license-o"
   }, {
     name: "id-card-o",
-    cssRule: "fa-id-card-o"
+    cssRule: "fa fa-id-card-o"
   }, {
     name: "quora",
-    cssRule: "fa-quora"
+    cssRule: "fa fa-quora"
   }, {
     name: "free-code-camp",
-    cssRule: "fa-free-code-camp"
+    cssRule: "fa fa-free-code-camp"
   }, {
     name: "telegram",
-    cssRule: "fa-telegram"
+    cssRule: "fa fa-telegram"
   }, {
     name: "thermometer-4",
-    cssRule: "fa-thermometer-4"
+    cssRule: "fa fa-thermometer-4"
   }, {
     name: "thermometer",
-    cssRule: "fa-thermometer"
+    cssRule: "fa fa-thermometer"
   }, {
     name: "thermometer-full",
-    cssRule: "fa-thermometer-full"
+    cssRule: "fa fa-thermometer-full"
   }, {
     name: "thermometer-3",
-    cssRule: "fa-thermometer-3"
+    cssRule: "fa fa-thermometer-3"
   }, {
     name: "thermometer-three-quarters",
-    cssRule: "fa-thermometer-three-quarters"
+    cssRule: "fa fa-thermometer-three-quarters"
   }, {
     name: "thermometer-2",
-    cssRule: "fa-thermometer-2"
+    cssRule: "fa fa-thermometer-2"
   }, {
     name: "thermometer-half",
-    cssRule: "fa-thermometer-half"
+    cssRule: "fa fa-thermometer-half"
   }, {
     name: "thermometer-1",
-    cssRule: "fa-thermometer-1"
+    cssRule: "fa fa-thermometer-1"
   }, {
     name: "thermometer-quarter",
-    cssRule: "fa-thermometer-quarter"
+    cssRule: "fa fa-thermometer-quarter"
   }, {
     name: "thermometer-0",
-    cssRule: "fa-thermometer-0"
+    cssRule: "fa fa-thermometer-0"
   }, {
     name: "thermometer-empty",
-    cssRule: "fa-thermometer-empty"
+    cssRule: "fa fa-thermometer-empty"
   }, {
     name: "shower",
-    cssRule: "fa-shower"
+    cssRule: "fa fa-shower"
   }, {
     name: "bathtub",
-    cssRule: "fa-bathtub"
+    cssRule: "fa fa-bathtub"
   }, {
     name: "s15",
-    cssRule: "fa-s15"
+    cssRule: "fa fa-s15"
   }, {
     name: "bath",
-    cssRule: "fa-bath"
+    cssRule: "fa fa-bath"
   }, {
     name: "podcast",
-    cssRule: "fa-podcast"
+    cssRule: "fa fa-podcast"
   }, {
     name: "window-maximize",
-    cssRule: "fa-window-maximize"
+    cssRule: "fa fa-window-maximize"
   }, {
     name: "window-minimize",
-    cssRule: "fa-window-minimize"
+    cssRule: "fa fa-window-minimize"
   }, {
     name: "window-restore",
-    cssRule: "fa-window-restore"
+    cssRule: "fa fa-window-restore"
   }, {
     name: "times-rectangle",
-    cssRule: "fa-times-rectangle"
+    cssRule: "fa fa-times-rectangle"
   }, {
     name: "window-close",
-    cssRule: "fa-window-close"
+    cssRule: "fa fa-window-close"
   }, {
     name: "times-rectangle-o",
-    cssRule: "fa-times-rectangle-o"
+    cssRule: "fa fa-times-rectangle-o"
   }, {
     name: "window-close-o",
-    cssRule: "fa-window-close-o"
+    cssRule: "fa fa-window-close-o"
   }, {
     name: "bandcamp",
-    cssRule: "fa-bandcamp"
+    cssRule: "fa fa-bandcamp"
   }, {
     name: "grav",
-    cssRule: "fa-grav"
+    cssRule: "fa fa-grav"
   }, {
     name: "etsy",
-    cssRule: "fa-etsy"
+    cssRule: "fa fa-etsy"
   }, {
     name: "imdb",
-    cssRule: "fa-imdb"
+    cssRule: "fa fa-imdb"
   }, {
     name: "ravelry",
-    cssRule: "fa-ravelry"
+    cssRule: "fa fa-ravelry"
   }, {
     name: "eercast",
-    cssRule: "fa-eercast"
+    cssRule: "fa fa-eercast"
   }, {
     name: "microchip",
-    cssRule: "fa-microchip"
+    cssRule: "fa fa-microchip"
   }, {
     name: "snowflake-o",
-    cssRule: "fa-snowflake-o"
+    cssRule: "fa fa-snowflake-o"
   }, {
     name: "superpowers",
-    cssRule: "fa-superpowers"
+    cssRule: "fa fa-superpowers"
   }, {
     name: "wpexplorer",
-    cssRule: "fa-wpexplorer"
+    cssRule: "fa fa-wpexplorer"
   }, {
     name: "meetup",
-    cssRule: "fa-meetup"
+    cssRule: "fa fa-meetup"
   }]
 }, {
   id: 'fontawesome6',
