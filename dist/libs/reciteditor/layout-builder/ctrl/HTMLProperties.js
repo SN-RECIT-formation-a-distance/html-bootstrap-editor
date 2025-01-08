@@ -1604,8 +1604,9 @@ var BsAddTabProperty = function (_HTMLProperty33) {
         tab.appendChild(nav);
         var link = document.createElement('a');
         link.classList.add('nav-link', 'active', 'show');
-        var tabid = tab.querySelectorAll('.nav-link').length + 1;
-        link.innerText = "Onglet ".concat(tabid);
+        var tabid = _RecitEditor.Utils.getRandomId();
+        var nbItems = items.length + 1;
+        link.innerText = "Onglet ".concat(nbItems);
         tabid = "tab".concat(tabid);
         link.setAttribute('data-toggle', 'tab');
         link.setAttribute('role', 'tab');
@@ -1618,7 +1619,7 @@ var BsAddTabProperty = function (_HTMLProperty33) {
         div.setAttribute('role', 'tabpanel');
         div.setAttribute('id', tabid);
         div.setAttribute('aria-labelledby', tabid);
-        div.innerHTML = "<p>Contenu " + tabid + "</p>";
+        div.innerHTML = "<p>Contenu " + nbItems + "</p>";
         content.appendChild(div);
         return {
           action: 'insert',
@@ -1666,11 +1667,12 @@ var BsAddAccordionProperty = function (_HTMLProperty34) {
         } finally {
           _iterator16.f();
         }
-        var id = items.length + 1;
+        var id = _RecitEditor.Utils.getRandomId();
+        var nbItems = items.length + 1;
         var nav = document.createElement('div');
         nav.classList.add('card');
         tab.appendChild(nav);
-        nav.innerHTML = "\n                    <div class=\"card-header\" id=\"heading".concat(id, "\">\n                      <h2 class=\"mb-0\">\n                        <a class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse").concat(id, "\" aria-expanded=\"false\" aria-controls=\"collapse").concat(id, "\">\n                          Item #").concat(id, "\n                        </a>\n                      </h2>\n                    </div>\n                    <div id=\"collapse").concat(id, "\" class=\"collapse\" aria-labelledby=\"heading").concat(id, "\" data-parent=\"#").concat(tab.id, "\">\n                      <div class=\"card-body\">\n                        Item #").concat(id, "\n                      </div>\n                    </div>");
+        nav.innerHTML = "\n                    <div class=\"card-header\" id=\"heading".concat(id, "\">\n                      <h2 class=\"mb-0\">\n                        <a class=\"btn btn-link btn-block text-left collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#collapse").concat(id, "\" aria-expanded=\"false\" aria-controls=\"collapse").concat(id, "\">\n                          Item #").concat(nbItems, "\n                        </a>\n                      </h2>\n                    </div>\n                    <div id=\"collapse").concat(id, "\" class=\"collapse\" aria-labelledby=\"heading").concat(id, "\" data-parent=\"#").concat(tab.id, "\">\n                      <div class=\"card-body\">\n                        Item #").concat(nbItems, "\n                      </div>\n                    </div>");
         return {
           action: 'insert',
           nodes: [nav]

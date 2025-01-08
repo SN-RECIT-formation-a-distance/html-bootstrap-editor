@@ -415,6 +415,10 @@ export class Utils{
 
         return url;
     }
+
+    static getRandomId(){
+        return Math.random().toString(36).replace(/^0\./, '_')
+    }
 }
 
 export class IWrapper {

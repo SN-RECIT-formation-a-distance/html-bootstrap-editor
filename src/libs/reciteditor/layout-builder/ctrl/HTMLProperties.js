@@ -1062,8 +1062,10 @@ export class BsAddTabProperty extends HTMLProperty{
                     let link = document.createElement('a');
                     link.classList.add('nav-link', 'active', 'show');
 
-                    let tabid = tab.querySelectorAll('.nav-link').length + 1;
-                    link.innerText = `Onglet ${tabid}`;
+                    let tabid = Utils.getRandomId();
+                    let nbItems = items.length + 1;
+
+                    link.innerText = `Onglet ${nbItems}`;
                     tabid = `tab${tabid}`;
 
                     link.setAttribute('data-toggle', 'tab');
@@ -1078,7 +1080,7 @@ export class BsAddTabProperty extends HTMLProperty{
                     div.setAttribute('role', 'tabpanel');
                     div.setAttribute('id', tabid);
                     div.setAttribute('aria-labelledby', tabid);
-                    div.innerHTML = "<p>Contenu "+tabid+"</p>";
+                    div.innerHTML = "<p>Contenu "+nbItems+"</p>";
                     content.appendChild(div);
     
                     return {action: 'insert', nodes: [nav,content]};
@@ -1109,7 +1111,8 @@ export class BsAddAccordionProperty extends HTMLProperty{
                     for(let it of items){
                         it.classList.remove('active', 'show');
                     }
-                    let id = items.length + 1;
+                    let id = Utils.getRandomId();
+                    let nbItems = items.length + 1;
                     
                     let nav = document.createElement('div');
                     nav.classList.add('card');
@@ -1118,13 +1121,13 @@ export class BsAddAccordionProperty extends HTMLProperty{
                     <div class="card-header" id="heading${id}">
                       <h2 class="mb-0">
                         <a class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}">
-                          Item #${id}
+                          Item #${nbItems}
                         </a>
                       </h2>
                     </div>
                     <div id="collapse${id}" class="collapse" aria-labelledby="heading${id}" data-parent="#${tab.id}">
                       <div class="card-body">
-                        Item #${id}
+                        Item #${nbItems}
                       </div>
                     </div>`;
                     

@@ -21,7 +21,7 @@
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
 
-import {i18n, Assets} from '../../RecitEditor';
+import {i18n, Assets, Utils} from '../../RecitEditor';
 import {HTMLPropertiesData} from './HTMLProperties';
  
  /**
@@ -871,71 +871,55 @@ class HTMLElement{
      }
  
      create(){
-         let slider = document.createElement("div");
-         slider.classList.add("carousel");
-         slider.classList.add("slide");
-         slider.setAttribute("data-ride", "carousel");
+        let slider = document.createElement("div");
+        slider.classList.add("carousel");
+        slider.classList.add("slide");
+        slider.setAttribute("data-ride", "carousel");
+
+        let carouselId = Utils.getRandomId();
+
+        slider.innerHTML = 
+            `
+            <div id="${carouselId}" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#${carouselId}" data-slide-to="0" class="active"></li>
+                    <li data-target="#${carouselId}" data-slide-to="1"></li>
+                    <li data-target="#${carouselId}" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" >
+                        <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="First slide">
+                        <div class="carousel-caption d-none d-md-block" >
+                            <h3 class="h5">Titre 1</h3>
+                            <p>Paragraphe 1</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="Second slide">
+                        <div class="carousel-caption d-none d-md-block">
+                        <h3 class="h5">Titre 2</h3>
+                        <p>Paragraphe 2</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="Third slide">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3 class="h5">Titre 3</h3>
+                            <p>Paragraphe 3</p>
+                        </div>
+                    </div>
+                </div>
+                 
+                <button class="carousel-control-prev" type="button" data-target="#${carouselId}" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#${carouselId}" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </button>
+            </div>`;
  
-         slider.innerHTML = 
-             `<div id="carouselInd" class="carousel slide" data-ride="carousel" data-tag-id="3">
-         <ol class="carousel-indicators" data-tag-id="4">
-             <li data-target="#carouselInd" data-slide-to="0" data-tag-id="5">
-             </li>
-             <li data-target="#carouselInd" data-slide-to="1" data-tag-id="6">
-             </li>
-             <li data-target="#carouselInd" data-slide-to="2" data-tag-id="7">
-             </li>
-         </ol>
-         <div class="carousel-inner" data-tag-id="8">
-             <div class="carousel-item active" data-tag-id="9">
-             <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="First slide" data-tag-id="10">
-             <div class="carousel-caption d-none d-md-block" data-tag-id="11">
-                 <h3 class="h5" data-tag-id="12">
-                 Titre 1
-                 </h3>
-                 <p data-tag-id="13">
-                 Paragraphe 1
-                 </p>
-             </div>
-             </div>
-             <div class="carousel-item" data-tag-id="14">
-             <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="Second slide" data-tag-id="15">
-             <div class="carousel-caption d-none d-md-block" data-tag-id="16">
-                 <h3 class="h5" data-tag-id="17">
-                 Titre 2
-                 </h3>
-                 <p data-tag-id="18">
-                 Paragraphe 2
-                 </p>
-             </div>
-             </div>
-             <div class="carousel-item" data-tag-id="19">
-             <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="Third slide" data-tag-id="20">
-             <div class="carousel-caption d-none d-md-block" data-tag-id="21">
-                 <h3 class="h5" data-tag-id="22">
-                 Titre 3
-                 </h3>
-                 <p data-tag-id="23">
-                 Paragraphe 3
-                 </p>
-             </div>
-             </div>
-         </div>
-         <a class="carousel-control-prev" href="#carouselInd" role="button" data-slide="prev" data-tag-id="24">
-             <i class="fa-3x fa fa-arrow-circle-left" data-tag-id="25"></i>
-             <span class="sr-only" data-tag-id="26">
-                 Précédent
-                 </span>
-         </a>
-         <a class="carousel-control-next" href="#carouselInd" role="button" data-slide="next" data-tag-id="27">
-             <i class="fa-3x fa fa-arrow-circle-right" data-tag-id="28"></i>
-             <span class="sr-only" data-tag-id="29">
-                 Suivant
-                 </span>
-         </a>
-         </div>`;
- 
-         return slider;
+        return slider;
      }
  
      onSelect(el){
@@ -978,41 +962,45 @@ class HTMLElement{
      }
  
      create(){
-         let slider = document.createElement("div");
-         slider.classList.add("tabs");
+        let slider = document.createElement("div");
+        slider.classList.add("tabs");
+
+        let id1 = Utils.getRandomId();
+        let id2 = Utils.getRandomId();
+        let id3 = Utils.getRandomId();
+
+        slider.innerHTML = 
+            `
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#${id1}" role="tab" aria-controls="${id1}">
+                    Onglet 1
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#${id2}" role="tab" aria-controls="${id2}">
+                    Onglet 2
+                </a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#${id3}" role="tab" aria-controls="${id3}">
+                    Onglet 3
+                </a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active mt-3" id="${id1}" role="tabpanel" aria-labelledby="${id1}">
+                    <p>Contenu de l'onglet 1</p>
+                </div>
+                <div class="tab-pane fade mt-3" id="${id2}" role="tabpanel" aria-labelledby="${id2}">
+                    <p>Contenu de l'onglet 2</p>
+                </div>
+                <div class="tab-pane fade mt-3" id="${id3}" role="tabpanel" aria-labelledby="${id3}">
+                    <p>Contenu de l'onglet 3</p>
+                </div>
+            </div>`;
  
-         slider.innerHTML = 
-             `
-             <ul class="nav nav-tabs" role="tablist">
-                 <li class="nav-item">
-                 <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1">
-                     Onglet 1
-                 </a>
-                 </li>
-                 <li class="nav-item">
-                 <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2">
-                     Onglet 2
-                 </a>
-                 </li>
-                 <li class="nav-item">
-                 <a class="nav-link" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3">
-                     Onglet 3
-                 </a>
-                 </li>
-             </ul>
-             <div class="tab-content">
-                 <div class="tab-pane fade show active mt-3" id="tab1" role="tabpanel" aria-labelledby="tab1">
-                     <p>Contenu de l'onglet 1</p>
-                 </div>
-                 <div class="tab-pane fade mt-3" id="tab2" role="tabpanel" aria-labelledby="tab2">
-                     <p>Contenu de l'onglet 2</p>
-                 </div>
-                 <div class="tab-pane fade mt-3" id="tab3" role="tabpanel" aria-labelledby="tab3">
-                     <p>Contenu de l'onglet 3</p>
-                 </div>
-             </div>`;
- 
-         return slider;
+        return slider;
      }
  }
  
@@ -1030,57 +1018,61 @@ class HTMLElement{
      }
  
      create(){
-         let slider = document.createElement("div");
-         slider.classList.add("accordion");
-         slider.id = "accordion-"+ Math.floor(Math.random() * 1000);
- 
-         slider.innerHTML = 
-             `
-             <div class="card">
-               <div class="card-header" id="headingOne">
-                 <h2 class="mb-0">
-                   <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                     Item #1
-                   </button>
-                 </h2>
-               </div>
-           
-               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#${slider.id}">
-                 <div class="card-body">
-                   Item #1
-                 </div>
-               </div>
-             </div>
-             <div class="card">
-               <div class="card-header" id="headingTwo">
-                 <h2 class="mb-0">
-                   <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                     Item #2
-                   </button>
-                 </h2>
-               </div>
-               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#${slider.id}">
-                 <div class="card-body">
-                   Item #2
-                 </div>
-               </div>
-             </div>
-             <div class="card">
-               <div class="card-header" id="headingThree">
-                 <h2 class="mb-0">
-                   <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                     Item #3
-                   </button>
-                 </h2>
-               </div>
-               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#${slider.id}">
-                 <div class="card-body">
-                   Item #3
-                 </div>
-               </div>
-             </div>`;
- 
-         return slider;
+        let slider = document.createElement("div");
+        slider.classList.add("accordion");
+        
+        slider.setAttribute('id', Utils.getRandomId());
+        let id1 = Utils.getRandomId();
+        let id2 = Utils.getRandomId();
+        let id3 = Utils.getRandomId();
+
+        slider.innerHTML = 
+            `
+            <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#${id1}" aria-expanded="true" aria-controls="${id1}">
+                    Item #1
+                </button>
+                </h2>
+            </div>
+        
+            <div id="${id1}" class="collapse show" aria-labelledby="headingOne" data-parent="#${slider.getAttribute('id')}">
+                <div class="card-body">
+                Item #1
+                </div>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#${id2}" aria-expanded="false" aria-controls="${id2}">
+                    Item #2
+                </button>
+                </h2>
+            </div>
+            <div id="${id2}" class="collapse" aria-labelledby="headingTwo" data-parent="#${slider.getAttribute('id')}">
+                <div class="card-body">
+                Item #2
+                </div>
+            </div>
+            </div>
+            <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#${id3}" aria-expanded="false" aria-controls="${id3}">
+                    Item #3
+                </button>
+                </h2>
+            </div>
+            <div id="${id3}" class="collapse" aria-labelledby="headingThree" data-parent="#${slider.getAttribute('id')}">
+                <div class="card-body">
+                Item #3
+                </div>
+            </div>
+            </div>`;
+
+        return slider;
      }
  }
  

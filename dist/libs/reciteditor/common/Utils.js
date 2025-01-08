@@ -340,6 +340,11 @@ var Utils = function () {
       }
       return url;
     }
+  }, {
+    key: "getRandomId",
+    value: function getRandomId() {
+      return Math.random().toString(36).replace(/^0\./, '_');
+    }
   }]);
   return Utils;
 }();
