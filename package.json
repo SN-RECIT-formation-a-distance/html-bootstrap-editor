@@ -1,6 +1,6 @@
 {
   "name": "@recit/html-bootstrap-editor",
-  "version": "1.23.3",
+  "version": "1.24.0",
   "description": "HTML Bootstrap Editor",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@codemirror/lang-html": "0.19.3",
+    "@emotion/babel-plugin": "^11.13.5",
     "@fortawesome/fontawesome-svg-core": "1.2.35",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@fortawesome/react-fontawesome": "0.2.0",

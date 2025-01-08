@@ -1,6 +1,6 @@
 import { faParagraph, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import ReactQuill, {Quill} from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -33,7 +33,15 @@ export class TextEditorModal extends React.Component {
 
     };
 
-    static isTagEditable(tag){
+    static isTagEditable(tag, html = null){
+        // avoid tag i edition because this editor modifies it from i to em
+        if(html !== null){
+            let els = html.querySelectorAll("i[class]");
+            if (els.length > 0){
+                return false;
+            }
+        }
+
         return TextEditorModal.allowedTags[tag.toLowerCase()] ? true : false;
     }
 
@@ -103,40 +111,14 @@ export class TextEditorModal extends React.Component {
 
     preProcess(html){
         let el = document.createElement('div');
-        el.innerHTML = html;
-        let els = el.querySelectorAll(this.getIconQuery());
-        if (els.length > 0){
-            for (let i of els){
-                i.innerHTML = i.getAttribute('class');//keep class in inner as editor will remove class attribute, will be readded in postprocess
-                i.classList.add('iconrecit')
-            }
-        }
+        el.innerHTML = html;                
         return el.innerHTML;
     }
 
     postProcess(html){
         let el = document.createElement('div');
-        el.innerHTML = html;
-        let els = el.querySelectorAll('i.iconrecit');
-        if (els.length > 0){
-            for (let i of els){
-                i.setAttribute('class', i.innerText);
-                i.innerHTML = '';
-                if (i.parentElement.tagName == 'EM'){
-                    i.parentElement.replaceWith(i)
-                }
-            }
-        }
+        el.innerHTML = html;        
         return el.innerHTML;
-    }
-
-    getIconQuery(){
-        let q = "";
-        if (this.iconClass.length == 0) return 'i.fa';
-        for (let c of this.iconClass){
-            q = q + "i[class*=\""+c.substring(1)+"\"],";
-        }
-        return q.substring(0, q.length-1);
     }
 
     onDataChange(val){
@@ -163,17 +145,6 @@ export class TextEditorModal extends React.Component {
     }
 
     initModules(){
-        let settings = IWrapper.getSettings();
-        this.iconClass = [];
-        if (settings.iconclass){
-            let config = settings.iconclass;
-            config = config.split(',');
-            for (let c of config){
-                let data = c.split('=');
-                this.iconClass.push(data[1]);
-            }
-        }
-
         let that = this;
         this.modules = {
             toolbar: {

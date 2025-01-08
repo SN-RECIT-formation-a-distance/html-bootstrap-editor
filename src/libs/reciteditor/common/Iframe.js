@@ -25,28 +25,41 @@ import React, { Component } from 'react'
 import { createPortal } from 'react-dom'
 
 export class IFrame extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      mountNode: null
-    }
-    this.setContentRef = (e) => {
-      if (!e.target.contentDocument) return;
-      this.setState({mountNode: e.target.contentDocument.body})
-    }
-  }
+    static defaultProps = {
+        style: null,
+        children: null,
+        head: []
+    };
 
-  render() {
-    const { children, ...props } = this.props
-    const { mountNode } = this.state
-    return (
-      <iframe
-        srcDoc={`<!DOCTYPE html>`}
-        {...props}
-        onLoad={this.setContentRef}
-      >
-        {mountNode && createPortal(children, mountNode)}
-      </iframe>
-    )
-  }
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            mountNode: null
+        }
+
+        this.ref = React.createRef();
+    }
+
+    componentDidMount(){
+        let iFrameDocument = this.ref.current.contentDocument;
+
+        for(let item of this.props.head){
+            let link = iFrameDocument.createElement('link');
+            link.setAttribute('rel', "stylesheet");
+            link.setAttribute('href', item);
+            iFrameDocument.head.append(link);
+        }
+        
+        this.setState({mountNode: iFrameDocument.body});
+    }
+
+    render() {
+        let main = 
+            <iframe ref={this.ref} style={this.props.style}>
+                {this.state.mountNode && createPortal(this.props.children, this.state.mountNode)}
+            </iframe>;
+
+        return main;
+    }
 }

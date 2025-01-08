@@ -556,7 +556,7 @@ export class DesignerState extends CanvasState{
             return; 
         }
         
-        if (TextEditorModal.isTagEditable(selectedElement.tagName) && !dbClick){
+        if (TextEditorModal.isTagEditable(selectedElement.tagName, selectedElement) && !dbClick){
             this.editingElement = selectedElement;
         }else{
             let that = this;     

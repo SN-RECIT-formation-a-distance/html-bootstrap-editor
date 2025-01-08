@@ -653,7 +653,7 @@ var DesignerState = function (_CanvasState2) {
       if (selectedElement === null) {
         return;
       }
-      if (_TextEditor.TextEditorModal.isTagEditable(selectedElement.tagName) && !dbClick) {
+      if (_TextEditor.TextEditorModal.isTagEditable(selectedElement.tagName, selectedElement) && !dbClick) {
         this.editingElement = selectedElement;
       } else {
         var that = this;

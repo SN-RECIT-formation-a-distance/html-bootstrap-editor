@@ -25,7 +25,7 @@ import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { faCheck} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {$glVars, IWrapper} from '../../RecitEditor';
+import {$glVars} from '../../RecitEditor';
 
 export class ColorSelector extends Component {
     static defaultProps = {

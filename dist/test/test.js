@@ -20,7 +20,7 @@ IWrapper.getSettings = function () {
   var result = {};
   result.wwwroot = '/';
   result.showcase_url = 'https://sn-recit-formation-a-distance.github.io/html-bootstrap-editor-showcase/index.html';
-  result.iconclass = 'fontawesome=.fa';
+  result.iconclass = ['fontawesome6', 'fontawesome4'];
   result.pixabaykey = 'key';
   return result;
 };
@@ -37,7 +37,7 @@ IWrapper.getThemeCssRules = function (returnAllRules) {
 };
 IWrapper.getAdditionalHTMLHead = function () {
   var result = {
-    css: ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0'],
+    css: ['https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css', 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0'],
     js: []
   };
   return result;

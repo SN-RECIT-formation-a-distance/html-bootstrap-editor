@@ -16,7 +16,7 @@ var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
 var _reactBootstrap = require("react-bootstrap");
 var _reactQuill = _interopRequireWildcard(require("react-quill"));
 require("react-quill/dist/quill.snow.css");
@@ -154,22 +154,6 @@ var TextEditorModal = function (_React$Component) {
     value: function preProcess(html) {
       var el = document.createElement('div');
       el.innerHTML = html;
-      var els = el.querySelectorAll(this.getIconQuery());
-      if (els.length > 0) {
-        var _iterator = _createForOfIteratorHelper(els),
-          _step;
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var i = _step.value;
-            i.innerHTML = i.getAttribute('class');
-            i.classList.add('iconrecit');
-          }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
-      }
       return el.innerHTML;
     }
   }, {
@@ -177,45 +161,7 @@ var TextEditorModal = function (_React$Component) {
     value: function postProcess(html) {
       var el = document.createElement('div');
       el.innerHTML = html;
-      var els = el.querySelectorAll('i.iconrecit');
-      if (els.length > 0) {
-        var _iterator2 = _createForOfIteratorHelper(els),
-          _step2;
-        try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var i = _step2.value;
-            i.setAttribute('class', i.innerText);
-            i.innerHTML = '';
-            if (i.parentElement.tagName == 'EM') {
-              i.parentElement.replaceWith(i);
-            }
-          }
-        } catch (err) {
-          _iterator2.e(err);
-        } finally {
-          _iterator2.f();
-        }
-      }
       return el.innerHTML;
-    }
-  }, {
-    key: "getIconQuery",
-    value: function getIconQuery() {
-      var q = "";
-      if (this.iconClass.length == 0) return 'i.fa';
-      var _iterator3 = _createForOfIteratorHelper(this.iconClass),
-        _step3;
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var c = _step3.value;
-          q = q + "i[class*=\"" + c.substring(1) + "\"],";
-        }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
-      }
-      return q.substring(0, q.length - 1);
     }
   }, {
     key: "onDataChange",
@@ -247,25 +193,6 @@ var TextEditorModal = function (_React$Component) {
   }, {
     key: "initModules",
     value: function initModules() {
-      var settings = _Utils.IWrapper.getSettings();
-      this.iconClass = [];
-      if (settings.iconclass) {
-        var config = settings.iconclass;
-        config = config.split(',');
-        var _iterator4 = _createForOfIteratorHelper(config),
-          _step4;
-        try {
-          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-            var c = _step4.value;
-            var data = c.split('=');
-            this.iconClass.push(data[1]);
-          }
-        } catch (err) {
-          _iterator4.e(err);
-        } finally {
-          _iterator4.f();
-        }
-      }
       var that = this;
       this.modules = {
         toolbar: {
@@ -284,6 +211,13 @@ var TextEditorModal = function (_React$Component) {
   }], [{
     key: "isTagEditable",
     value: function isTagEditable(tag) {
+      var html = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      if (html !== null) {
+        var els = html.querySelectorAll("i[class]");
+        if (els.length > 0) {
+          return false;
+        }
+      }
       return TextEditorModal.allowedTags[tag.toLowerCase()] ? true : false;
     }
   }]);
@@ -360,11 +294,11 @@ var EditorModuleNonBreakingSpace = function () {
   }, {
     key: "replaceNonBreakingSpace",
     value: function replaceNonBreakingSpace(el) {
-      var _iterator5 = _createForOfIteratorHelper(el.childNodes),
-        _step5;
+      var _iterator = _createForOfIteratorHelper(el.childNodes),
+        _step;
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var t = _step5.value;
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var t = _step.value;
           if (t.innerHTML) {
             t.innerHTML = _Utils.UtilsString.replaceNonBreakingSpace(t.innerHTML);
           } else {
@@ -372,9 +306,9 @@ var EditorModuleNonBreakingSpace = function () {
           }
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator.e(err);
       } finally {
-        _iterator5.f();
+        _iterator.f();
       }
     }
   }]);
