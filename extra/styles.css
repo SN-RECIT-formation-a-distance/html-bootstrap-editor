@@ -21,6 +21,6 @@
 .htmlbootstrapeditor_flipcard2 {  cursor: pointer;  perspective: 1000px;}
 .htmlbootstrapeditor_flipcard2 .flipcard-inner {  position: relative;  width: 100%;  height: 100%;  text-align: center;  transition: transform 0.6s;  transform-style: preserve-3d;  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);}
 .htmlbootstrapeditor_flipcard2.hover2 .flipcard-inner {  transform: rotateY(180deg);}
-.htmlbootstrapeditor_flipcard2 .back, .htmlbootstrapeditor_flipcard2 .front {  width: 100%;  height: 100%;  -webkit-backface-visibility: hidden; /* Safari */  backface-visibility: hidden;}
+.htmlbootstrapeditor_flipcard2 .back, .htmlbootstrapeditor_flipcard2 .front {  width: 100%;  height: 100%;  -webkit-backface-visibility: hidden; /* Safari */  backface-visibility: hidden; transform: rotateX(0); }
 .htmlbootstrapeditor_flipcard2 .back {  position: absolute;  top: 0px;  transform: rotateY(180deg);}
 /* End RÉCIT Éditor */
