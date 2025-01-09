@@ -897,8 +897,9 @@ class HTMLElement{
                     <div class="carousel-item">
                         <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
-                        <h3 class="h5">Titre 2</h3>
-                        <p>Paragraphe 2</p>
+                            <h3 class="h5">Titre 2</h3>
+                            <p>Paragraphe 2</p>
+                        </div>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="https://picsum.photos/1500/480" alt="Third slide">
