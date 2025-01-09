@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ModalGridProperty = exports.HTMLWidthProperty = exports.HTMLVideoSourceProperty = exports.HTMLVideoButtonProperty = exports.HTMLTargetProperty = exports.HTMLStyleProperty = exports.HTMLSourceProperty = exports.HTMLPropertiesData = exports.HTMLOuterHTMLProperty = exports.HTMLMarginBorderPaddingProperty = exports.HTMLImageBankProperty = exports.HTMLIdProperty = exports.HTMLHrefProperty = exports.HTMLHeightProperty = exports.HTMLFontSizeProperty = exports.HTMLFontFamilyProperty = exports.HTMLEmbedProperty = exports.HTMLColorProperty = exports.HTMLCodeProperty = exports.HTMLClassProperty = exports.HTMLBackgroundProperty = exports.HTMLBackgroundCoverProperty = exports.HTMLAltProperty = exports.BsTextColorProperty = exports.BsTextAlignmentProperty = exports.BsTableStripedProperty = exports.BsTableCellActionProperty = exports.BsTableBorderProperty = exports.BsTableActionProperty = exports.BsTabProperty = exports.BsTabJustifyProperty = exports.BsShadowProperty = exports.BsPaddingProperty = exports.BsMarginProperty = exports.BsIconSizeProperty = exports.BsIconProperty = exports.BsHeadingProperty = exports.BsGridVerticalAlignProperty = exports.BsGridResponsiveProperty = exports.BsGridPaddingProperty = exports.BsFullHeightProperty = exports.BsBtnSizeProperty = exports.BsBtnOutlineProperty = exports.BsBtnBlockProperty = exports.BsBorderStyleProperty = exports.BsBorderRadiusProperty = exports.BsBorderProperty = exports.BsBorderColorProperty = exports.BsBackgroundProperty = exports.BsBackgroundImageProperty = exports.BsAddTabProperty = exports.BsAddAccordionProperty = void 0;
+exports.ModalGridProperty = exports.HTMLWidthProperty = exports.HTMLVideoSourceProperty = exports.HTMLVideoButtonProperty = exports.HTMLTargetProperty = exports.HTMLStyleProperty = exports.HTMLSourceProperty = exports.HTMLPropertiesData = exports.HTMLOuterHTMLProperty = exports.HTMLMarginBorderPaddingProperty = exports.HTMLImageBankProperty = exports.HTMLIdProperty = exports.HTMLHrefProperty = exports.HTMLHeightProperty = exports.HTMLFontSizeProperty = exports.HTMLFontFamilyProperty = exports.HTMLEmbedRatio = exports.HTMLEmbedProperty = exports.HTMLColorProperty = exports.HTMLCodeProperty = exports.HTMLClassProperty = exports.HTMLBackgroundProperty = exports.HTMLBackgroundCoverProperty = exports.HTMLAltProperty = exports.BsTextColorProperty = exports.BsTextAlignmentProperty = exports.BsTableStripedProperty = exports.BsTableCellActionProperty = exports.BsTableBorderProperty = exports.BsTableActionProperty = exports.BsTabProperty = exports.BsTabJustifyProperty = exports.BsShadowProperty = exports.BsPaddingProperty = exports.BsMarginProperty = exports.BsIconSizeProperty = exports.BsIconProperty = exports.BsHeadingProperty = exports.BsGridVerticalAlignProperty = exports.BsGridResponsiveProperty = exports.BsGridPaddingProperty = exports.BsFullHeightProperty = exports.BsBtnSizeProperty = exports.BsBtnOutlineProperty = exports.BsBtnBlockProperty = exports.BsBorderStyleProperty = exports.BsBorderRadiusProperty = exports.BsBorderProperty = exports.BsBorderColorProperty = exports.BsBackgroundProperty = exports.BsBackgroundImageProperty = exports.BsAddTabProperty = exports.BsAddAccordionProperty = void 0;
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
@@ -718,21 +718,96 @@ var HTMLEmbedProperty = function (_HTMLProperty17) {
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      el.innerHTML = value;
+      value = new DOMParser().parseFromString(value, "text/html").body.firstElementChild;
+      if (!value.classList.contains('embed-responsive-item')) {
+        value.classList.add('embed-responsive-item');
+      }
+      while (el.firstChild) {
+        el.removeChild(el.lastChild);
+      }
+      el.appendChild(value);
     }
   }]);
   return HTMLEmbedProperty;
 }(HTMLProperty);
 exports.HTMLEmbedProperty = HTMLEmbedProperty;
-var HTMLCodeProperty = function (_HTMLProperty18) {
-  (0, _inherits2["default"])(HTMLCodeProperty, _HTMLProperty18);
-  var _super18 = _createSuper(HTMLCodeProperty);
-  function HTMLCodeProperty() {
+var HTMLEmbedRatio = function (_HTMLProperty18) {
+  (0, _inherits2["default"])(HTMLEmbedRatio, _HTMLProperty18);
+  var _super18 = _createSuper(HTMLEmbedRatio);
+  function HTMLEmbedRatio() {
     var _this13;
-    (0, _classCallCheck2["default"])(this, HTMLCodeProperty);
-    _this13 = _super18.call(this, 'htmlcode', _RecitEditor.i18n.get_string('htmlcode'));
-    _this13.input = new TextArea(_this13.onChange.bind((0, _assertThisInitialized2["default"])(_this13)));
+    (0, _classCallCheck2["default"])(this, HTMLEmbedRatio);
+    _this13 = _super18.call(this, 'aspectratio', _RecitEditor.i18n.get_string('size'));
+    _this13.options = [{
+      text: "21by9",
+      value: "embed-responsive-21by9"
+    }, {
+      text: "16by9",
+      value: "embed-responsive-16by9"
+    }, {
+      text: "4by3",
+      value: "embed-responsive-4by3"
+    }, {
+      text: "1by1",
+      value: "embed-responsive-1by1"
+    }];
+    _this13.input = new ComboBox(_this13.options, _this13.onChange.bind((0, _assertThisInitialized2["default"])(_this13)));
     return _this13;
+  }
+  (0, _createClass2["default"])(HTMLEmbedRatio, [{
+    key: "getValue",
+    value: function getValue(el, data) {
+      var result = "";
+      var classList = (0, _toConsumableArray2["default"])(el.classList);
+      var _iterator2 = _createForOfIteratorHelper(data.input.options),
+        _step2;
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var item = _step2.value;
+          if (classList.includes(item.value)) {
+            result = item.value;
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+      return result;
+    }
+  }, {
+    key: "onChange",
+    value: function onChange(el, value, data) {
+      var _iterator3 = _createForOfIteratorHelper(data.input.options),
+        _step3;
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var item = _step3.value;
+          el.classList.remove(item.value);
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+      if (value.length > 0) {
+        el.classList.add(value);
+      }
+    }
+  }]);
+  return HTMLEmbedRatio;
+}(HTMLProperty);
+exports.HTMLEmbedRatio = HTMLEmbedRatio;
+var HTMLCodeProperty = function (_HTMLProperty19) {
+  (0, _inherits2["default"])(HTMLCodeProperty, _HTMLProperty19);
+  var _super19 = _createSuper(HTMLCodeProperty);
+  function HTMLCodeProperty() {
+    var _this14;
+    (0, _classCallCheck2["default"])(this, HTMLCodeProperty);
+    _this14 = _super19.call(this, 'htmlcode', _RecitEditor.i18n.get_string('htmlcode'));
+    _this14.input = new TextArea(_this14.onChange.bind((0, _assertThisInitialized2["default"])(_this14)));
+    return _this14;
   }
   (0, _createClass2["default"])(HTMLCodeProperty, [{
     key: "getValue",
@@ -749,15 +824,15 @@ var HTMLCodeProperty = function (_HTMLProperty18) {
   return HTMLCodeProperty;
 }(HTMLProperty);
 exports.HTMLCodeProperty = HTMLCodeProperty;
-var HTMLClassProperty = function (_HTMLProperty19) {
-  (0, _inherits2["default"])(HTMLClassProperty, _HTMLProperty19);
-  var _super19 = _createSuper(HTMLClassProperty);
+var HTMLClassProperty = function (_HTMLProperty20) {
+  (0, _inherits2["default"])(HTMLClassProperty, _HTMLProperty20);
+  var _super20 = _createSuper(HTMLClassProperty);
   function HTMLClassProperty() {
-    var _this14;
+    var _this15;
     (0, _classCallCheck2["default"])(this, HTMLClassProperty);
-    _this14 = _super19.call(this, 'classlist', _RecitEditor.i18n.get_string('classlist'));
-    _this14.input = new MultiSelect([], _this14.onChange.bind((0, _assertThisInitialized2["default"])(_this14)));
-    return _this14;
+    _this15 = _super20.call(this, 'classlist', _RecitEditor.i18n.get_string('classlist'));
+    _this15.input = new MultiSelect([], _this15.onChange.bind((0, _assertThisInitialized2["default"])(_this15)));
+    return _this15;
   }
   (0, _createClass2["default"])(HTMLClassProperty, [{
     key: "getFlags",
@@ -771,20 +846,20 @@ var HTMLClassProperty = function (_HTMLProperty19) {
     key: "getValue",
     value: function getValue(el, data) {
       var list = [];
-      var _iterator2 = _createForOfIteratorHelper(el.classList),
-        _step2;
+      var _iterator4 = _createForOfIteratorHelper(el.classList),
+        _step4;
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var c = _step2.value;
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var c = _step4.value;
           list.push({
             value: c,
             text: c
           });
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator4.e(err);
       } finally {
-        _iterator2.f();
+        _iterator4.f();
       }
       return list;
     }
@@ -797,16 +872,16 @@ var HTMLClassProperty = function (_HTMLProperty19) {
   return HTMLClassProperty;
 }(HTMLProperty);
 exports.HTMLClassProperty = HTMLClassProperty;
-var HTMLMarginBorderPaddingProperty = function (_HTMLProperty20) {
-  (0, _inherits2["default"])(HTMLMarginBorderPaddingProperty, _HTMLProperty20);
-  var _super20 = _createSuper(HTMLMarginBorderPaddingProperty);
+var HTMLMarginBorderPaddingProperty = function (_HTMLProperty21) {
+  (0, _inherits2["default"])(HTMLMarginBorderPaddingProperty, _HTMLProperty21);
+  var _super21 = _createSuper(HTMLMarginBorderPaddingProperty);
   function HTMLMarginBorderPaddingProperty() {
-    var _this15;
+    var _this16;
     (0, _classCallCheck2["default"])(this, HTMLMarginBorderPaddingProperty);
-    _this15 = _super20.call(this, 'layoutspacing', _RecitEditor.i18n.get_string('spacing'));
-    _this15.defaultValue = '';
-    _this15.input = new LayoutSpacingEditor(_this15.onChange.bind((0, _assertThisInitialized2["default"])(_this15)));
-    return _this15;
+    _this16 = _super21.call(this, 'layoutspacing', _RecitEditor.i18n.get_string('spacing'));
+    _this16.defaultValue = '';
+    _this16.input = new LayoutSpacingEditor(_this16.onChange.bind((0, _assertThisInitialized2["default"])(_this16)));
+    return _this16;
   }
   (0, _createClass2["default"])(HTMLMarginBorderPaddingProperty, [{
     key: "getFlags",
@@ -819,11 +894,11 @@ var HTMLMarginBorderPaddingProperty = function (_HTMLProperty20) {
     key: "getValue",
     value: function getValue(el, data) {
       var list = {};
-      var _iterator3 = _createForOfIteratorHelper(_RecitEditor.LayoutSpacingEditor.styleKeys),
-        _step3;
+      var _iterator5 = _createForOfIteratorHelper(_RecitEditor.LayoutSpacingEditor.styleKeys),
+        _step5;
       try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var c = _step3.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var c = _step5.value;
           if (el.style[c]) {
             list[c] = el.style[c];
           } else {
@@ -831,9 +906,9 @@ var HTMLMarginBorderPaddingProperty = function (_HTMLProperty20) {
           }
         }
       } catch (err) {
-        _iterator3.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator3.f();
+        _iterator5.f();
       }
       return list;
     }
@@ -846,14 +921,14 @@ var HTMLMarginBorderPaddingProperty = function (_HTMLProperty20) {
   return HTMLMarginBorderPaddingProperty;
 }(HTMLProperty);
 exports.HTMLMarginBorderPaddingProperty = HTMLMarginBorderPaddingProperty;
-var BsBackgroundProperty = function (_HTMLProperty21) {
-  (0, _inherits2["default"])(BsBackgroundProperty, _HTMLProperty21);
-  var _super21 = _createSuper(BsBackgroundProperty);
+var BsBackgroundProperty = function (_HTMLProperty22) {
+  (0, _inherits2["default"])(BsBackgroundProperty, _HTMLProperty22);
+  var _super22 = _createSuper(BsBackgroundProperty);
   function BsBackgroundProperty() {
-    var _this16;
+    var _this17;
     (0, _classCallCheck2["default"])(this, BsBackgroundProperty);
-    _this16 = _super21.call(this, 'bsBackground', _RecitEditor.i18n.get_string('backgroundcolor'));
-    _this16.options = [{
+    _this17 = _super22.call(this, 'bsBackground', _RecitEditor.i18n.get_string('backgroundcolor'));
+    _this17.options = [{
       text: "",
       value: "primary"
     }, {
@@ -881,8 +956,8 @@ var BsBackgroundProperty = function (_HTMLProperty21) {
       text: "",
       value: "white"
     }];
-    _this16.input = new ColorSelectorInput(_this16.options, _this16.onChange.bind((0, _assertThisInitialized2["default"])(_this16)));
-    return _this16;
+    _this17.input = new ColorSelectorInput(_this17.options, _this17.onChange.bind((0, _assertThisInitialized2["default"])(_this17)));
+    return _this17;
   }
   (0, _createClass2["default"])(BsBackgroundProperty, [{
     key: "getFlags",
@@ -901,11 +976,11 @@ var BsBackgroundProperty = function (_HTMLProperty21) {
       var elClass = _HTMLElementData.HTMLElementData.getInstance().getElementClass(null, el);
       var prefix = elClass ? "".concat(elClass.cssProp.prefix) : 'bg';
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator4 = _createForOfIteratorHelper(data.input.options),
-        _step4;
+      var _iterator6 = _createForOfIteratorHelper(data.input.options),
+        _step6;
       try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var item = _step4.value;
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var item = _step6.value;
           if (classList.includes("".concat(prefix, "-").concat(item.value))) {
             result = item.value;
             break;
@@ -916,9 +991,9 @@ var BsBackgroundProperty = function (_HTMLProperty21) {
           }
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator4.f();
+        _iterator6.f();
       }
       return result;
     }
@@ -928,11 +1003,11 @@ var BsBackgroundProperty = function (_HTMLProperty21) {
       var elClass = _HTMLElementData.HTMLElementData.getInstance().getElementClass(null, el);
       var prefix = elClass ? "".concat(elClass.cssProp.prefix) : 'bg';
       var middlefix = '';
-      var _iterator5 = _createForOfIteratorHelper(data.input.options),
-        _step5;
+      var _iterator7 = _createForOfIteratorHelper(data.input.options),
+        _step7;
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var item = _step5.value;
+        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+          var item = _step7.value;
           if (el.classList.contains("".concat(prefix, "-").concat(item.value))) {
             el.classList.remove("".concat(prefix, "-").concat(item.value));
           }
@@ -942,9 +1017,9 @@ var BsBackgroundProperty = function (_HTMLProperty21) {
           }
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator7.e(err);
       } finally {
-        _iterator5.f();
+        _iterator7.f();
       }
       if (value.length > 0) {
         el.classList.add("".concat(prefix).concat(middlefix, "-").concat(value));
@@ -954,15 +1029,15 @@ var BsBackgroundProperty = function (_HTMLProperty21) {
   return BsBackgroundProperty;
 }(HTMLProperty);
 exports.BsBackgroundProperty = BsBackgroundProperty;
-var BsBackgroundImageProperty = function (_HTMLProperty22) {
-  (0, _inherits2["default"])(BsBackgroundImageProperty, _HTMLProperty22);
-  var _super22 = _createSuper(BsBackgroundImageProperty);
+var BsBackgroundImageProperty = function (_HTMLProperty23) {
+  (0, _inherits2["default"])(BsBackgroundImageProperty, _HTMLProperty23);
+  var _super23 = _createSuper(BsBackgroundImageProperty);
   function BsBackgroundImageProperty() {
-    var _this17;
+    var _this18;
     (0, _classCallCheck2["default"])(this, BsBackgroundImageProperty);
-    _this17 = _super22.call(this, 'backgroundimage', _RecitEditor.i18n.get_string('backgroundimage'));
-    _this17.input = new ImageSrc(_this17.onChange.bind((0, _assertThisInitialized2["default"])(_this17)));
-    return _this17;
+    _this18 = _super23.call(this, 'backgroundimage', _RecitEditor.i18n.get_string('backgroundimage'));
+    _this18.input = new ImageSrc(_this18.onChange.bind((0, _assertThisInitialized2["default"])(_this18)));
+    return _this18;
   }
   (0, _createClass2["default"])(BsBackgroundImageProperty, [{
     key: "getValue",
@@ -986,28 +1061,28 @@ var BsBackgroundImageProperty = function (_HTMLProperty22) {
   return BsBackgroundImageProperty;
 }(HTMLProperty);
 exports.BsBackgroundImageProperty = BsBackgroundImageProperty;
-var HTMLBackgroundCoverProperty = function (_HTMLProperty23) {
-  (0, _inherits2["default"])(HTMLBackgroundCoverProperty, _HTMLProperty23);
-  var _super23 = _createSuper(HTMLBackgroundCoverProperty);
+var HTMLBackgroundCoverProperty = function (_HTMLProperty24) {
+  (0, _inherits2["default"])(HTMLBackgroundCoverProperty, _HTMLProperty24);
+  var _super24 = _createSuper(HTMLBackgroundCoverProperty);
   function HTMLBackgroundCoverProperty() {
-    var _this18;
+    var _this19;
     (0, _classCallCheck2["default"])(this, HTMLBackgroundCoverProperty);
-    _this18 = _super23.call(this, 'backgroundcover', _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('backgroundcover'), " ", _react["default"].createElement(_reactBootstrap.OverlayTrigger, {
+    _this19 = _super24.call(this, 'backgroundcover', _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('backgroundcover'), " ", _react["default"].createElement(_reactBootstrap.OverlayTrigger, {
       overlay: _react["default"].createElement(_reactBootstrap.Tooltip, null, _RecitEditor.i18n.get_string('appliedasstyle'))
     }, _react["default"].createElement("a", {
       className: "color-primary"
     }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
       icon: _freeSolidSvgIcons.faInfoCircle
     }), " "))));
-    _this18.options = [{
+    _this19.options = [{
       text: _RecitEditor.i18n.get_string('yes'),
       value: "cover"
     }, {
       text: _RecitEditor.i18n.get_string('no'),
       value: ""
     }];
-    _this18.input = new RadioButton(_this18.options, _this18.onChange.bind((0, _assertThisInitialized2["default"])(_this18)));
-    return _this18;
+    _this19.input = new RadioButton(_this19.options, _this19.onChange.bind((0, _assertThisInitialized2["default"])(_this19)));
+    return _this19;
   }
   (0, _createClass2["default"])(HTMLBackgroundCoverProperty, [{
     key: "getValue",
@@ -1031,25 +1106,25 @@ var HTMLBackgroundCoverProperty = function (_HTMLProperty23) {
   return HTMLBackgroundCoverProperty;
 }(HTMLProperty);
 exports.HTMLBackgroundCoverProperty = HTMLBackgroundCoverProperty;
-var BsFullHeightProperty = function (_HTMLProperty24) {
-  (0, _inherits2["default"])(BsFullHeightProperty, _HTMLProperty24);
-  var _super24 = _createSuper(BsFullHeightProperty);
+var BsFullHeightProperty = function (_HTMLProperty25) {
+  (0, _inherits2["default"])(BsFullHeightProperty, _HTMLProperty25);
+  var _super25 = _createSuper(BsFullHeightProperty);
   function BsFullHeightProperty() {
-    var _this19;
+    var _this20;
     (0, _classCallCheck2["default"])(this, BsFullHeightProperty);
-    _this19 = _super24.call(this, 'fullheight', _RecitEditor.i18n.get_string('fullheight'));
-    _this19.custom = {
+    _this20 = _super25.call(this, 'fullheight', _RecitEditor.i18n.get_string('fullheight'));
+    _this20.custom = {
       className: "h-100"
     };
-    _this19.options = [{
+    _this20.options = [{
       text: _RecitEditor.i18n.get_string('yes'),
-      value: _this19.custom.className
+      value: _this20.custom.className
     }, {
       text: _RecitEditor.i18n.get_string('no'),
       value: ""
     }];
-    _this19.input = new RadioButton(_this19.options, _this19.onChange.bind((0, _assertThisInitialized2["default"])(_this19)));
-    return _this19;
+    _this20.input = new RadioButton(_this20.options, _this20.onChange.bind((0, _assertThisInitialized2["default"])(_this20)));
+    return _this20;
   }
   (0, _createClass2["default"])(BsFullHeightProperty, [{
     key: "getValue",
@@ -1073,14 +1148,14 @@ var BsFullHeightProperty = function (_HTMLProperty24) {
   return BsFullHeightProperty;
 }(HTMLProperty);
 exports.BsFullHeightProperty = BsFullHeightProperty;
-var BsShadowProperty = function (_HTMLProperty25) {
-  (0, _inherits2["default"])(BsShadowProperty, _HTMLProperty25);
-  var _super25 = _createSuper(BsShadowProperty);
+var BsShadowProperty = function (_HTMLProperty26) {
+  (0, _inherits2["default"])(BsShadowProperty, _HTMLProperty26);
+  var _super26 = _createSuper(BsShadowProperty);
   function BsShadowProperty() {
-    var _this20;
+    var _this21;
     (0, _classCallCheck2["default"])(this, BsShadowProperty);
-    _this20 = _super25.call(this, 'shadow', _RecitEditor.i18n.get_string('shadow'));
-    _this20.options = [{
+    _this21 = _super26.call(this, 'shadow', _RecitEditor.i18n.get_string('shadow'));
+    _this21.options = [{
       text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat,
         title: _RecitEditor.i18n.get_string('removeformat')
@@ -1099,45 +1174,45 @@ var BsShadowProperty = function (_HTMLProperty25) {
       text: "LG",
       value: "shadow-lg"
     }];
-    _this20.input = new RadioButton(_this20.options, _this20.onChange.bind((0, _assertThisInitialized2["default"])(_this20)), ['default']);
-    return _this20;
+    _this21.input = new RadioButton(_this21.options, _this21.onChange.bind((0, _assertThisInitialized2["default"])(_this21)), ['default']);
+    return _this21;
   }
   (0, _createClass2["default"])(BsShadowProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = data.input.defaultValue;
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator6 = _createForOfIteratorHelper(data.input.options),
-        _step6;
+      var _iterator8 = _createForOfIteratorHelper(data.input.options),
+        _step8;
       try {
-        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-          var item = _step6.value;
+        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+          var item = _step8.value;
           if (classList.includes(item.value)) {
             result = [item.value];
             break;
           }
         }
       } catch (err) {
-        _iterator6.e(err);
+        _iterator8.e(err);
       } finally {
-        _iterator6.f();
+        _iterator8.f();
       }
       return result;
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var _iterator7 = _createForOfIteratorHelper(data.input.options),
-        _step7;
+      var _iterator9 = _createForOfIteratorHelper(data.input.options),
+        _step9;
       try {
-        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-          var item = _step7.value;
+        for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
+          var item = _step9.value;
           el.classList.remove(item.value);
         }
       } catch (err) {
-        _iterator7.e(err);
+        _iterator9.e(err);
       } finally {
-        _iterator7.f();
+        _iterator9.f();
       }
       if (value.length > 0 && value !== data.input.defaultValue[0]) {
         el.classList.add(value);
@@ -1147,12 +1222,12 @@ var BsShadowProperty = function (_HTMLProperty25) {
   return BsShadowProperty;
 }(HTMLProperty);
 exports.BsShadowProperty = BsShadowProperty;
-var BsIconProperty = function (_HTMLProperty26) {
-  (0, _inherits2["default"])(BsIconProperty, _HTMLProperty26);
-  var _super26 = _createSuper(BsIconProperty);
+var BsIconProperty = function (_HTMLProperty27) {
+  (0, _inherits2["default"])(BsIconProperty, _HTMLProperty27);
+  var _super27 = _createSuper(BsIconProperty);
   function BsIconProperty() {
     (0, _classCallCheck2["default"])(this, BsIconProperty);
-    return _super26.call(this, 'icon', '', new IconPicker());
+    return _super27.call(this, 'icon', '', new IconPicker());
   }
   (0, _createClass2["default"])(BsIconProperty, [{
     key: "getFlags",
@@ -1171,12 +1246,12 @@ var BsIconProperty = function (_HTMLProperty26) {
   return BsIconProperty;
 }(HTMLProperty);
 exports.BsIconProperty = BsIconProperty;
-var ModalGridProperty = function (_HTMLProperty27) {
-  (0, _inherits2["default"])(ModalGridProperty, _HTMLProperty27);
-  var _super27 = _createSuper(ModalGridProperty);
+var ModalGridProperty = function (_HTMLProperty28) {
+  (0, _inherits2["default"])(ModalGridProperty, _HTMLProperty28);
+  var _super28 = _createSuper(ModalGridProperty);
   function ModalGridProperty() {
     (0, _classCallCheck2["default"])(this, ModalGridProperty);
-    return _super27.call(this, 'grid', _RecitEditor.i18n.get_string('grid'), new GridBuilder());
+    return _super28.call(this, 'grid', _RecitEditor.i18n.get_string('grid'), new GridBuilder());
   }
   (0, _createClass2["default"])(ModalGridProperty, [{
     key: "getValue",
@@ -1194,14 +1269,14 @@ var ModalGridProperty = function (_HTMLProperty27) {
   return ModalGridProperty;
 }(HTMLProperty);
 exports.ModalGridProperty = ModalGridProperty;
-var BsIconSizeProperty = function (_HTMLProperty28) {
-  (0, _inherits2["default"])(BsIconSizeProperty, _HTMLProperty28);
-  var _super28 = _createSuper(BsIconSizeProperty);
+var BsIconSizeProperty = function (_HTMLProperty29) {
+  (0, _inherits2["default"])(BsIconSizeProperty, _HTMLProperty29);
+  var _super29 = _createSuper(BsIconSizeProperty);
   function BsIconSizeProperty() {
-    var _this21;
+    var _this22;
     (0, _classCallCheck2["default"])(this, BsIconSizeProperty);
-    _this21 = _super28.call(this, 'iconsize', _RecitEditor.i18n.get_string('iconsize'));
-    _this21.options = [{
+    _this22 = _super29.call(this, 'iconsize', _RecitEditor.i18n.get_string('iconsize'));
+    _this22.options = [{
       text: "fa-lg",
       value: "fa-lg"
     }, {
@@ -1229,45 +1304,45 @@ var BsIconSizeProperty = function (_HTMLProperty28) {
       text: "fa-fw",
       value: "fa-fw"
     }];
-    _this21.input = new ComboBox(_this21.options, _this21.onChange.bind((0, _assertThisInitialized2["default"])(_this21)));
-    return _this21;
+    _this22.input = new ComboBox(_this22.options, _this22.onChange.bind((0, _assertThisInitialized2["default"])(_this22)));
+    return _this22;
   }
   (0, _createClass2["default"])(BsIconSizeProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = "";
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator8 = _createForOfIteratorHelper(data.input.options),
-        _step8;
+      var _iterator10 = _createForOfIteratorHelper(data.input.options),
+        _step10;
       try {
-        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
-          var item = _step8.value;
+        for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
+          var item = _step10.value;
           if (classList.includes(item.value)) {
             result = item.value;
             break;
           }
         }
       } catch (err) {
-        _iterator8.e(err);
+        _iterator10.e(err);
       } finally {
-        _iterator8.f();
+        _iterator10.f();
       }
       return result;
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var _iterator9 = _createForOfIteratorHelper(data.input.options),
-        _step9;
+      var _iterator11 = _createForOfIteratorHelper(data.input.options),
+        _step11;
       try {
-        for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
-          var item = _step9.value;
+        for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
+          var item = _step11.value;
           el.classList.remove(item.value);
         }
       } catch (err) {
-        _iterator9.e(err);
+        _iterator11.e(err);
       } finally {
-        _iterator9.f();
+        _iterator11.f();
       }
       if (value.length > 0) {
         el.classList.add(value);
@@ -1277,15 +1352,15 @@ var BsIconSizeProperty = function (_HTMLProperty28) {
   return BsIconSizeProperty;
 }(HTMLProperty);
 exports.BsIconSizeProperty = BsIconSizeProperty;
-var BsMarginProperty = function (_HTMLProperty29) {
-  (0, _inherits2["default"])(BsMarginProperty, _HTMLProperty29);
-  var _super29 = _createSuper(BsMarginProperty);
+var BsMarginProperty = function (_HTMLProperty30) {
+  (0, _inherits2["default"])(BsMarginProperty, _HTMLProperty30);
+  var _super30 = _createSuper(BsMarginProperty);
   function BsMarginProperty() {
-    var _this22;
+    var _this23;
     (0, _classCallCheck2["default"])(this, BsMarginProperty);
-    _this22 = _super29.call(this, 'margin', _RecitEditor.i18n.get_string('margin'));
+    _this23 = _super30.call(this, 'margin', _RecitEditor.i18n.get_string('margin'));
     var items = [0, 1, 2, 3, 4, 5];
-    _this22.options = [{
+    _this23.options = [{
       name: "mt",
       items: items
     }, {
@@ -1301,19 +1376,19 @@ var BsMarginProperty = function (_HTMLProperty29) {
       name: "m",
       items: items
     }];
-    _this22.input = new LayoutSpacing(_this22.options, _this22.onChange.bind((0, _assertThisInitialized2["default"])(_this22)));
-    return _this22;
+    _this23.input = new LayoutSpacing(_this23.options, _this23.onChange.bind((0, _assertThisInitialized2["default"])(_this23)));
+    return _this23;
   }
   (0, _createClass2["default"])(BsMarginProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = [];
       for (var i = 0; i <= 5; i++) {
-        var _iterator10 = _createForOfIteratorHelper(data.input.options),
-          _step10;
+        var _iterator12 = _createForOfIteratorHelper(data.input.options),
+          _step12;
         try {
-          for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
-            var item = _step10.value;
+          for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
+            var item = _step12.value;
             var className = "".concat(item.name, "-").concat(i);
             if (el.classList.contains(className)) {
               result.push({
@@ -1323,9 +1398,9 @@ var BsMarginProperty = function (_HTMLProperty29) {
             }
           }
         } catch (err) {
-          _iterator10.e(err);
+          _iterator12.e(err);
         } finally {
-          _iterator10.f();
+          _iterator12.f();
         }
       }
       return result;
@@ -1346,15 +1421,15 @@ var BsMarginProperty = function (_HTMLProperty29) {
   return BsMarginProperty;
 }(HTMLProperty);
 exports.BsMarginProperty = BsMarginProperty;
-var BsPaddingProperty = function (_HTMLProperty30) {
-  (0, _inherits2["default"])(BsPaddingProperty, _HTMLProperty30);
-  var _super30 = _createSuper(BsPaddingProperty);
+var BsPaddingProperty = function (_HTMLProperty31) {
+  (0, _inherits2["default"])(BsPaddingProperty, _HTMLProperty31);
+  var _super31 = _createSuper(BsPaddingProperty);
   function BsPaddingProperty() {
-    var _this23;
+    var _this24;
     (0, _classCallCheck2["default"])(this, BsPaddingProperty);
-    _this23 = _super30.call(this, 'padding', _RecitEditor.i18n.get_string('padding'));
+    _this24 = _super31.call(this, 'padding', _RecitEditor.i18n.get_string('padding'));
     var items = [0, 1, 2, 3, 4, 5];
-    _this23.options = [{
+    _this24.options = [{
       name: "pt",
       items: items
     }, {
@@ -1370,19 +1445,19 @@ var BsPaddingProperty = function (_HTMLProperty30) {
       name: "p",
       items: items
     }];
-    _this23.input = new LayoutSpacing(_this23.options, _this23.onChange.bind((0, _assertThisInitialized2["default"])(_this23)));
-    return _this23;
+    _this24.input = new LayoutSpacing(_this24.options, _this24.onChange.bind((0, _assertThisInitialized2["default"])(_this24)));
+    return _this24;
   }
   (0, _createClass2["default"])(BsPaddingProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = [];
       for (var i = 0; i <= 5; i++) {
-        var _iterator11 = _createForOfIteratorHelper(data.input.options),
-          _step11;
+        var _iterator13 = _createForOfIteratorHelper(data.input.options),
+          _step13;
         try {
-          for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
-            var item = _step11.value;
+          for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
+            var item = _step13.value;
             var className = "".concat(item.name, "-").concat(i);
             if (el.classList.contains(className)) {
               result.push({
@@ -1392,9 +1467,9 @@ var BsPaddingProperty = function (_HTMLProperty30) {
             }
           }
         } catch (err) {
-          _iterator11.e(err);
+          _iterator13.e(err);
         } finally {
-          _iterator11.f();
+          _iterator13.f();
         }
       }
       return result;
@@ -1415,14 +1490,14 @@ var BsPaddingProperty = function (_HTMLProperty30) {
   return BsPaddingProperty;
 }(HTMLProperty);
 exports.BsPaddingProperty = BsPaddingProperty;
-var BsTabProperty = function (_HTMLProperty31) {
-  (0, _inherits2["default"])(BsTabProperty, _HTMLProperty31);
-  var _super31 = _createSuper(BsTabProperty);
+var BsTabProperty = function (_HTMLProperty32) {
+  (0, _inherits2["default"])(BsTabProperty, _HTMLProperty32);
+  var _super32 = _createSuper(BsTabProperty);
   function BsTabProperty() {
-    var _this24;
+    var _this25;
     (0, _classCallCheck2["default"])(this, BsTabProperty);
-    _this24 = _super31.call(this, 'style', _RecitEditor.i18n.get_string('style'));
-    _this24.options = [{
+    _this25 = _super32.call(this, 'style', _RecitEditor.i18n.get_string('style'));
+    _this25.options = [{
       text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faFolder,
         title: _RecitEditor.i18n.get_string('tab')
@@ -1435,8 +1510,8 @@ var BsTabProperty = function (_HTMLProperty31) {
       }),
       value: 'nav-pills'
     }];
-    _this24.input = new RadioButton(_this24.options, _this24.onChange.bind((0, _assertThisInitialized2["default"])(_this24)));
-    return _this24;
+    _this25.input = new RadioButton(_this25.options, _this25.onChange.bind((0, _assertThisInitialized2["default"])(_this25)));
+    return _this25;
   }
   (0, _createClass2["default"])(BsTabProperty, [{
     key: "getValue",
@@ -1465,14 +1540,14 @@ var BsTabProperty = function (_HTMLProperty31) {
   return BsTabProperty;
 }(HTMLProperty);
 exports.BsTabProperty = BsTabProperty;
-var BsTabJustifyProperty = function (_HTMLProperty32) {
-  (0, _inherits2["default"])(BsTabJustifyProperty, _HTMLProperty32);
-  var _super32 = _createSuper(BsTabJustifyProperty);
+var BsTabJustifyProperty = function (_HTMLProperty33) {
+  (0, _inherits2["default"])(BsTabJustifyProperty, _HTMLProperty33);
+  var _super33 = _createSuper(BsTabJustifyProperty);
   function BsTabJustifyProperty() {
-    var _this25;
+    var _this26;
     (0, _classCallCheck2["default"])(this, BsTabJustifyProperty);
-    _this25 = _super32.call(this, 'justify', _RecitEditor.i18n.get_string('justify'));
-    _this25.options = [{
+    _this26 = _super33.call(this, 'justify', _RecitEditor.i18n.get_string('justify'));
+    _this26.options = [{
       text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faAlignLeft,
         title: _RecitEditor.i18n.get_string('left')
@@ -1503,8 +1578,8 @@ var BsTabJustifyProperty = function (_HTMLProperty32) {
       }),
       value: 'flex-column'
     }];
-    _this25.input = new RadioButton(_this25.options, _this25.onChange.bind((0, _assertThisInitialized2["default"])(_this25)));
-    return _this25;
+    _this26.input = new RadioButton(_this26.options, _this26.onChange.bind((0, _assertThisInitialized2["default"])(_this26)));
+    return _this26;
   }
   (0, _createClass2["default"])(BsTabJustifyProperty, [{
     key: "getValue",
@@ -1513,17 +1588,17 @@ var BsTabJustifyProperty = function (_HTMLProperty32) {
       if (el.classList.contains('nav-link')) tab = el.parentElement.parentElement;
       if (el.classList.contains('tab-pane')) tab = el.parentElement.parentElement.querySelector('.nav');
       if (el.classList.contains('tabs')) tab = el.querySelector('.nav');
-      var _iterator12 = _createForOfIteratorHelper(data.input.options),
-        _step12;
+      var _iterator14 = _createForOfIteratorHelper(data.input.options),
+        _step14;
       try {
-        for (_iterator12.s(); !(_step12 = _iterator12.n()).done;) {
-          var item = _step12.value;
+        for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
+          var item = _step14.value;
           if (tab.classList.contains(item.value)) return item.value;
         }
       } catch (err) {
-        _iterator12.e(err);
+        _iterator14.e(err);
       } finally {
-        _iterator12.f();
+        _iterator14.f();
       }
       return '';
     }
@@ -1536,17 +1611,17 @@ var BsTabJustifyProperty = function (_HTMLProperty32) {
       if (el.classList.contains('tabs')) tab = el.querySelector('.nav');
       if (tab) {
         if (tab.classList.length > 0) {
-          var _iterator13 = _createForOfIteratorHelper(data.input.options),
-            _step13;
+          var _iterator15 = _createForOfIteratorHelper(data.input.options),
+            _step15;
           try {
-            for (_iterator13.s(); !(_step13 = _iterator13.n()).done;) {
-              var item = _step13.value;
+            for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
+              var item = _step15.value;
               if (item.value.length > 0) tab.classList.remove(item.value);
             }
           } catch (err) {
-            _iterator13.e(err);
+            _iterator15.e(err);
           } finally {
-            _iterator13.f();
+            _iterator15.f();
           }
         }
         tab.classList.add(value);
@@ -1556,14 +1631,14 @@ var BsTabJustifyProperty = function (_HTMLProperty32) {
   return BsTabJustifyProperty;
 }(HTMLProperty);
 exports.BsTabJustifyProperty = BsTabJustifyProperty;
-var BsAddTabProperty = function (_HTMLProperty33) {
-  (0, _inherits2["default"])(BsAddTabProperty, _HTMLProperty33);
-  var _super33 = _createSuper(BsAddTabProperty);
+var BsAddTabProperty = function (_HTMLProperty34) {
+  (0, _inherits2["default"])(BsAddTabProperty, _HTMLProperty34);
+  var _super34 = _createSuper(BsAddTabProperty);
   function BsAddTabProperty() {
-    var _this26;
+    var _this27;
     (0, _classCallCheck2["default"])(this, BsAddTabProperty);
-    _this26 = _super33.call(this, 'addtab', _RecitEditor.i18n.get_string('actions'));
-    _this26.options = [{
+    _this27 = _super34.call(this, 'addtab', _RecitEditor.i18n.get_string('actions'));
+    _this27.options = [{
       text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus,
         title: _RecitEditor.i18n.get_string('addtab')
@@ -1574,30 +1649,30 @@ var BsAddTabProperty = function (_HTMLProperty33) {
         if (el.classList.contains('tab-pane')) tab = el.parentElement.parentElement.querySelector('.nav');
         if (el.classList.contains('tabs')) tab = el.querySelector('.nav');
         var items = tab.parentElement.querySelectorAll('.tab-pane');
-        var _iterator14 = _createForOfIteratorHelper(items),
-          _step14;
+        var _iterator16 = _createForOfIteratorHelper(items),
+          _step16;
         try {
-          for (_iterator14.s(); !(_step14 = _iterator14.n()).done;) {
-            var it = _step14.value;
+          for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
+            var it = _step16.value;
             it.classList.remove('active', 'show');
           }
         } catch (err) {
-          _iterator14.e(err);
+          _iterator16.e(err);
         } finally {
-          _iterator14.f();
+          _iterator16.f();
         }
         items = tab.parentElement.querySelectorAll('.nav-link');
-        var _iterator15 = _createForOfIteratorHelper(items),
-          _step15;
+        var _iterator17 = _createForOfIteratorHelper(items),
+          _step17;
         try {
-          for (_iterator15.s(); !(_step15 = _iterator15.n()).done;) {
-            var _it = _step15.value;
+          for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
+            var _it = _step17.value;
             _it.classList.remove('active', 'show');
           }
         } catch (err) {
-          _iterator15.e(err);
+          _iterator17.e(err);
         } finally {
-          _iterator15.f();
+          _iterator17.f();
         }
         var nav = document.createElement('li');
         nav.classList.add('nav-item');
@@ -1627,8 +1702,8 @@ var BsAddTabProperty = function (_HTMLProperty33) {
         };
       }
     }];
-    _this26.input = new ButtonGroup(_this26.options);
-    return _this26;
+    _this27.input = new ButtonGroup(_this27.options);
+    return _this27;
   }
   (0, _createClass2["default"])(BsAddTabProperty, [{
     key: "getValue",
@@ -1639,14 +1714,14 @@ var BsAddTabProperty = function (_HTMLProperty33) {
   return BsAddTabProperty;
 }(HTMLProperty);
 exports.BsAddTabProperty = BsAddTabProperty;
-var BsAddAccordionProperty = function (_HTMLProperty34) {
-  (0, _inherits2["default"])(BsAddAccordionProperty, _HTMLProperty34);
-  var _super34 = _createSuper(BsAddAccordionProperty);
+var BsAddAccordionProperty = function (_HTMLProperty35) {
+  (0, _inherits2["default"])(BsAddAccordionProperty, _HTMLProperty35);
+  var _super35 = _createSuper(BsAddAccordionProperty);
   function BsAddAccordionProperty() {
-    var _this27;
+    var _this28;
     (0, _classCallCheck2["default"])(this, BsAddAccordionProperty);
-    _this27 = _super34.call(this, 'addaccordion', _RecitEditor.i18n.get_string('actions'));
-    _this27.options = [{
+    _this28 = _super35.call(this, 'addaccordion', _RecitEditor.i18n.get_string('actions'));
+    _this28.options = [{
       text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus,
         title: _RecitEditor.i18n.get_string('add')
@@ -1655,17 +1730,17 @@ var BsAddAccordionProperty = function (_HTMLProperty34) {
         var tab = el;
         if (el.classList.contains('btn')) tab = el.parentElement.parentElement.parentElement.parentElement;
         var items = tab.parentElement.querySelectorAll('.collapse');
-        var _iterator16 = _createForOfIteratorHelper(items),
-          _step16;
+        var _iterator18 = _createForOfIteratorHelper(items),
+          _step18;
         try {
-          for (_iterator16.s(); !(_step16 = _iterator16.n()).done;) {
-            var it = _step16.value;
+          for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
+            var it = _step18.value;
             it.classList.remove('active', 'show');
           }
         } catch (err) {
-          _iterator16.e(err);
+          _iterator18.e(err);
         } finally {
-          _iterator16.f();
+          _iterator18.f();
         }
         var id = _RecitEditor.Utils.getRandomId();
         var nbItems = items.length + 1;
@@ -1679,8 +1754,8 @@ var BsAddAccordionProperty = function (_HTMLProperty34) {
         };
       }
     }];
-    _this27.input = new ButtonGroup(_this27.options);
-    return _this27;
+    _this28.input = new ButtonGroup(_this28.options);
+    return _this28;
   }
   (0, _createClass2["default"])(BsAddAccordionProperty, [{
     key: "getValue",
@@ -1691,20 +1766,20 @@ var BsAddAccordionProperty = function (_HTMLProperty34) {
   return BsAddAccordionProperty;
 }(HTMLProperty);
 exports.BsAddAccordionProperty = BsAddAccordionProperty;
-var BsBorderProperty = function (_HTMLProperty35) {
-  (0, _inherits2["default"])(BsBorderProperty, _HTMLProperty35);
-  var _super35 = _createSuper(BsBorderProperty);
+var BsBorderProperty = function (_HTMLProperty36) {
+  (0, _inherits2["default"])(BsBorderProperty, _HTMLProperty36);
+  var _super36 = _createSuper(BsBorderProperty);
   function BsBorderProperty() {
-    var _this28;
+    var _this29;
     (0, _classCallCheck2["default"])(this, BsBorderProperty);
-    _this28 = _super35.call(this, 'border', _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('border'), " ", _react["default"].createElement(_reactBootstrap.OverlayTrigger, {
+    _this29 = _super36.call(this, 'border', _react["default"].createElement(_react["default"].Fragment, null, _RecitEditor.i18n.get_string('border'), " ", _react["default"].createElement(_reactBootstrap.OverlayTrigger, {
       overlay: _react["default"].createElement(_reactBootstrap.Tooltip, null, _RecitEditor.i18n.get_string('appliedasstyle'))
     }, _react["default"].createElement("a", {
       className: "color-primary"
     }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
       icon: _freeSolidSvgIcons.faInfoCircle
     }), " "))));
-    _this28.options = [{
+    _this29.options = [{
       name: "-top",
       items: ['0px', '1px', '2px', '5px', '10px', '20px']
     }, {
@@ -1720,19 +1795,19 @@ var BsBorderProperty = function (_HTMLProperty35) {
       name: "",
       items: ['0px', '1px', '2px', '5px', '10px', '20px']
     }];
-    _this28.input = new LayoutSpacing(_this28.options, _this28.onChange.bind((0, _assertThisInitialized2["default"])(_this28)));
-    return _this28;
+    _this29.input = new LayoutSpacing(_this29.options, _this29.onChange.bind((0, _assertThisInitialized2["default"])(_this29)));
+    return _this29;
   }
   (0, _createClass2["default"])(BsBorderProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = [];
       for (var i = 0; i <= 5; i++) {
-        var _iterator17 = _createForOfIteratorHelper(data.input.options),
-          _step17;
+        var _iterator19 = _createForOfIteratorHelper(data.input.options),
+          _step19;
         try {
-          for (_iterator17.s(); !(_step17 = _iterator17.n()).done;) {
-            var item = _step17.value;
+          for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
+            var item = _step19.value;
             if (el.style['border' + item.name + '-width'] == item.items[i]) {
               result.push({
                 name: item.name,
@@ -1741,9 +1816,9 @@ var BsBorderProperty = function (_HTMLProperty35) {
             }
           }
         } catch (err) {
-          _iterator17.e(err);
+          _iterator19.e(err);
         } finally {
-          _iterator17.f();
+          _iterator19.f();
         }
       }
       return result;
@@ -1768,14 +1843,14 @@ var BsBorderProperty = function (_HTMLProperty35) {
   return BsBorderProperty;
 }(HTMLProperty);
 exports.BsBorderProperty = BsBorderProperty;
-var BsHeadingProperty = function (_HTMLProperty36) {
-  (0, _inherits2["default"])(BsHeadingProperty, _HTMLProperty36);
-  var _super36 = _createSuper(BsHeadingProperty);
+var BsHeadingProperty = function (_HTMLProperty37) {
+  (0, _inherits2["default"])(BsHeadingProperty, _HTMLProperty37);
+  var _super37 = _createSuper(BsHeadingProperty);
   function BsHeadingProperty() {
-    var _this29;
+    var _this30;
     (0, _classCallCheck2["default"])(this, BsHeadingProperty);
-    _this29 = _super36.call(this, 'headingprop', _RecitEditor.i18n.get_string('headingstyle'));
-    _this29.options = [{
+    _this30 = _super37.call(this, 'headingprop', _RecitEditor.i18n.get_string('headingstyle'));
+    _this30.options = [{
       text: 'h1',
       value: "h1"
     }, {
@@ -1794,45 +1869,45 @@ var BsHeadingProperty = function (_HTMLProperty36) {
       text: 'h6',
       value: "h6"
     }];
-    _this29.input = new RadioButton(_this29.options, _this29.onChange.bind((0, _assertThisInitialized2["default"])(_this29)));
-    return _this29;
+    _this30.input = new RadioButton(_this30.options, _this30.onChange.bind((0, _assertThisInitialized2["default"])(_this30)));
+    return _this30;
   }
   (0, _createClass2["default"])(BsHeadingProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = "";
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator18 = _createForOfIteratorHelper(data.input.options),
-        _step18;
+      var _iterator20 = _createForOfIteratorHelper(data.input.options),
+        _step20;
       try {
-        for (_iterator18.s(); !(_step18 = _iterator18.n()).done;) {
-          var item = _step18.value;
+        for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
+          var item = _step20.value;
           if (classList.includes("".concat(item.value))) {
             result = item.value;
             break;
           }
         }
       } catch (err) {
-        _iterator18.e(err);
+        _iterator20.e(err);
       } finally {
-        _iterator18.f();
+        _iterator20.f();
       }
       return result;
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var _iterator19 = _createForOfIteratorHelper(data.input.options),
-        _step19;
+      var _iterator21 = _createForOfIteratorHelper(data.input.options),
+        _step21;
       try {
-        for (_iterator19.s(); !(_step19 = _iterator19.n()).done;) {
-          var item = _step19.value;
+        for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
+          var item = _step21.value;
           el.classList.remove("".concat(item.value));
         }
       } catch (err) {
-        _iterator19.e(err);
+        _iterator21.e(err);
       } finally {
-        _iterator19.f();
+        _iterator21.f();
       }
       if (value.length > 0) {
         el.classList.add("".concat(value));
@@ -1842,14 +1917,14 @@ var BsHeadingProperty = function (_HTMLProperty36) {
   return BsHeadingProperty;
 }(HTMLProperty);
 exports.BsHeadingProperty = BsHeadingProperty;
-var BsBorderColorProperty = function (_HTMLProperty37) {
-  (0, _inherits2["default"])(BsBorderColorProperty, _HTMLProperty37);
-  var _super37 = _createSuper(BsBorderColorProperty);
+var BsBorderColorProperty = function (_HTMLProperty38) {
+  (0, _inherits2["default"])(BsBorderColorProperty, _HTMLProperty38);
+  var _super38 = _createSuper(BsBorderColorProperty);
   function BsBorderColorProperty() {
-    var _this30;
+    var _this31;
     (0, _classCallCheck2["default"])(this, BsBorderColorProperty);
-    _this30 = _super37.call(this, 'bordercolor', _RecitEditor.i18n.get_string('bordercolor'));
-    _this30.options = [{
+    _this31 = _super38.call(this, 'bordercolor', _RecitEditor.i18n.get_string('bordercolor'));
+    _this31.options = [{
       text: "",
       value: "primary"
     }, {
@@ -1877,8 +1952,8 @@ var BsBorderColorProperty = function (_HTMLProperty37) {
       text: "",
       value: "white"
     }];
-    _this30.input = new ColorSelectorInput(_this30.options, _this30.onChange.bind((0, _assertThisInitialized2["default"])(_this30)));
-    return _this30;
+    _this31.input = new ColorSelectorInput(_this31.options, _this31.onChange.bind((0, _assertThisInitialized2["default"])(_this31)));
+    return _this31;
   }
   (0, _createClass2["default"])(BsBorderColorProperty, [{
     key: "getFlags",
@@ -1893,37 +1968,37 @@ var BsBorderColorProperty = function (_HTMLProperty37) {
     value: function getValue(el, data) {
       var result = "";
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator20 = _createForOfIteratorHelper(data.input.options),
-        _step20;
+      var _iterator22 = _createForOfIteratorHelper(data.input.options),
+        _step22;
       try {
-        for (_iterator20.s(); !(_step20 = _iterator20.n()).done;) {
-          var item = _step20.value;
+        for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
+          var item = _step22.value;
           if (classList.includes("border-".concat(item.value))) {
             result = item.value;
             break;
           }
         }
       } catch (err) {
-        _iterator20.e(err);
+        _iterator22.e(err);
       } finally {
-        _iterator20.f();
+        _iterator22.f();
       }
       return result;
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var _iterator21 = _createForOfIteratorHelper(data.input.options),
-        _step21;
+      var _iterator23 = _createForOfIteratorHelper(data.input.options),
+        _step23;
       try {
-        for (_iterator21.s(); !(_step21 = _iterator21.n()).done;) {
-          var item = _step21.value;
+        for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
+          var item = _step23.value;
           el.classList.remove("border-".concat(item.value));
         }
       } catch (err) {
-        _iterator21.e(err);
+        _iterator23.e(err);
       } finally {
-        _iterator21.f();
+        _iterator23.f();
       }
       if (value.length > 0) {
         el.classList.add("border-".concat(value));
@@ -1933,14 +2008,14 @@ var BsBorderColorProperty = function (_HTMLProperty37) {
   return BsBorderColorProperty;
 }(HTMLProperty);
 exports.BsBorderColorProperty = BsBorderColorProperty;
-var BsBorderStyleProperty = function (_HTMLProperty38) {
-  (0, _inherits2["default"])(BsBorderStyleProperty, _HTMLProperty38);
-  var _super38 = _createSuper(BsBorderStyleProperty);
+var BsBorderStyleProperty = function (_HTMLProperty39) {
+  (0, _inherits2["default"])(BsBorderStyleProperty, _HTMLProperty39);
+  var _super39 = _createSuper(BsBorderStyleProperty);
   function BsBorderStyleProperty() {
-    var _this31;
+    var _this32;
     (0, _classCallCheck2["default"])(this, BsBorderStyleProperty);
-    _this31 = _super38.call(this, 'borderstyle', _RecitEditor.i18n.get_string('borderstyle'));
-    _this31.options = [{
+    _this32 = _super39.call(this, 'borderstyle', _RecitEditor.i18n.get_string('borderstyle'));
+    _this32.options = [{
       text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         className: "mr-1",
         icon: _freeSolidSvgIcons.faRemoveFormat,
@@ -1976,8 +2051,8 @@ var BsBorderStyleProperty = function (_HTMLProperty38) {
       }),
       value: 'double'
     }];
-    _this31.input = new RadioButton(_this31.options, _this31.onChange.bind((0, _assertThisInitialized2["default"])(_this31)));
-    return _this31;
+    _this32.input = new RadioButton(_this32.options, _this32.onChange.bind((0, _assertThisInitialized2["default"])(_this32)));
+    return _this32;
   }
   (0, _createClass2["default"])(BsBorderStyleProperty, [{
     key: "getValue",
@@ -1997,14 +2072,14 @@ var BsBorderStyleProperty = function (_HTMLProperty38) {
   return BsBorderStyleProperty;
 }(HTMLProperty);
 exports.BsBorderStyleProperty = BsBorderStyleProperty;
-var BsBorderRadiusProperty = function (_HTMLProperty39) {
-  (0, _inherits2["default"])(BsBorderRadiusProperty, _HTMLProperty39);
-  var _super39 = _createSuper(BsBorderRadiusProperty);
+var BsBorderRadiusProperty = function (_HTMLProperty40) {
+  (0, _inherits2["default"])(BsBorderRadiusProperty, _HTMLProperty40);
+  var _super40 = _createSuper(BsBorderRadiusProperty);
   function BsBorderRadiusProperty() {
-    var _this32;
+    var _this33;
     (0, _classCallCheck2["default"])(this, BsBorderRadiusProperty);
-    _this32 = _super39.call(this, 'borderradius', _RecitEditor.i18n.get_string('borderradius'));
-    _this32.options = [{
+    _this33 = _super40.call(this, 'borderradius', _RecitEditor.i18n.get_string('borderradius'));
+    _this33.options = [{
       text: "Rounded",
       value: "rounded"
     }, {
@@ -2029,45 +2104,45 @@ var BsBorderRadiusProperty = function (_HTMLProperty39) {
       text: "Rounded-0",
       value: "rounded-0"
     }];
-    _this32.input = new ComboBox(_this32.options, _this32.onChange.bind((0, _assertThisInitialized2["default"])(_this32)));
-    return _this32;
+    _this33.input = new ComboBox(_this33.options, _this33.onChange.bind((0, _assertThisInitialized2["default"])(_this33)));
+    return _this33;
   }
   (0, _createClass2["default"])(BsBorderRadiusProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = "";
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator22 = _createForOfIteratorHelper(data.input.options),
-        _step22;
+      var _iterator24 = _createForOfIteratorHelper(data.input.options),
+        _step24;
       try {
-        for (_iterator22.s(); !(_step22 = _iterator22.n()).done;) {
-          var item = _step22.value;
+        for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
+          var item = _step24.value;
           if (classList.includes(item.value)) {
             result = item.value;
             break;
           }
         }
       } catch (err) {
-        _iterator22.e(err);
+        _iterator24.e(err);
       } finally {
-        _iterator22.f();
+        _iterator24.f();
       }
       return result;
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var _iterator23 = _createForOfIteratorHelper(data.input.options),
-        _step23;
+      var _iterator25 = _createForOfIteratorHelper(data.input.options),
+        _step25;
       try {
-        for (_iterator23.s(); !(_step23 = _iterator23.n()).done;) {
-          var item = _step23.value;
+        for (_iterator25.s(); !(_step25 = _iterator25.n()).done;) {
+          var item = _step25.value;
           el.classList.remove(item.value);
         }
       } catch (err) {
-        _iterator23.e(err);
+        _iterator25.e(err);
       } finally {
-        _iterator23.f();
+        _iterator25.f();
       }
       if (value.length > 0) {
         el.classList.add(value);
@@ -2077,14 +2152,14 @@ var BsBorderRadiusProperty = function (_HTMLProperty39) {
   return BsBorderRadiusProperty;
 }(HTMLProperty);
 exports.BsBorderRadiusProperty = BsBorderRadiusProperty;
-var BsTextColorProperty = function (_HTMLProperty40) {
-  (0, _inherits2["default"])(BsTextColorProperty, _HTMLProperty40);
-  var _super40 = _createSuper(BsTextColorProperty);
+var BsTextColorProperty = function (_HTMLProperty41) {
+  (0, _inherits2["default"])(BsTextColorProperty, _HTMLProperty41);
+  var _super41 = _createSuper(BsTextColorProperty);
   function BsTextColorProperty() {
-    var _this33;
+    var _this34;
     (0, _classCallCheck2["default"])(this, BsTextColorProperty);
-    _this33 = _super40.call(this, 'color', _RecitEditor.i18n.get_string('textcolor'));
-    _this33.options = [{
+    _this34 = _super41.call(this, 'color', _RecitEditor.i18n.get_string('textcolor'));
+    _this34.options = [{
       text: "",
       value: "primary"
     }, {
@@ -2112,8 +2187,8 @@ var BsTextColorProperty = function (_HTMLProperty40) {
       text: "",
       value: "white"
     }];
-    _this33.input = new ColorSelectorInput(_this33.options, _this33.onChange.bind((0, _assertThisInitialized2["default"])(_this33)));
-    return _this33;
+    _this34.input = new ColorSelectorInput(_this34.options, _this34.onChange.bind((0, _assertThisInitialized2["default"])(_this34)));
+    return _this34;
   }
   (0, _createClass2["default"])(BsTextColorProperty, [{
     key: "getFlags",
@@ -2128,37 +2203,37 @@ var BsTextColorProperty = function (_HTMLProperty40) {
     value: function getValue(el, data) {
       var result = "";
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator24 = _createForOfIteratorHelper(data.input.options),
-        _step24;
+      var _iterator26 = _createForOfIteratorHelper(data.input.options),
+        _step26;
       try {
-        for (_iterator24.s(); !(_step24 = _iterator24.n()).done;) {
-          var item = _step24.value;
+        for (_iterator26.s(); !(_step26 = _iterator26.n()).done;) {
+          var item = _step26.value;
           if (classList.includes("text-".concat(item.value))) {
             result = item.value;
             break;
           }
         }
       } catch (err) {
-        _iterator24.e(err);
+        _iterator26.e(err);
       } finally {
-        _iterator24.f();
+        _iterator26.f();
       }
       return result;
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var _iterator25 = _createForOfIteratorHelper(data.input.options),
-        _step25;
+      var _iterator27 = _createForOfIteratorHelper(data.input.options),
+        _step27;
       try {
-        for (_iterator25.s(); !(_step25 = _iterator25.n()).done;) {
-          var item = _step25.value;
+        for (_iterator27.s(); !(_step27 = _iterator27.n()).done;) {
+          var item = _step27.value;
           el.classList.remove("text-".concat(item.value));
         }
       } catch (err) {
-        _iterator25.e(err);
+        _iterator27.e(err);
       } finally {
-        _iterator25.f();
+        _iterator27.f();
       }
       if (value.length > 0) {
         el.classList.add("text-".concat(value));
@@ -2168,14 +2243,14 @@ var BsTextColorProperty = function (_HTMLProperty40) {
   return BsTextColorProperty;
 }(HTMLProperty);
 exports.BsTextColorProperty = BsTextColorProperty;
-var BsTextAlignmentProperty = function (_HTMLProperty41) {
-  (0, _inherits2["default"])(BsTextAlignmentProperty, _HTMLProperty41);
-  var _super41 = _createSuper(BsTextAlignmentProperty);
+var BsTextAlignmentProperty = function (_HTMLProperty42) {
+  (0, _inherits2["default"])(BsTextAlignmentProperty, _HTMLProperty42);
+  var _super42 = _createSuper(BsTextAlignmentProperty);
   function BsTextAlignmentProperty() {
-    var _this34;
+    var _this35;
     (0, _classCallCheck2["default"])(this, BsTextAlignmentProperty);
-    _this34 = _super41.call(this, 'alignment', _RecitEditor.i18n.get_string('alignment'));
-    _this34.options = [{
+    _this35 = _super42.call(this, 'alignment', _RecitEditor.i18n.get_string('alignment'));
+    _this35.options = [{
       text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat,
         title: _RecitEditor.i18n.get_string('default')
@@ -2206,25 +2281,25 @@ var BsTextAlignmentProperty = function (_HTMLProperty41) {
       }),
       value: 'text-justify'
     }];
-    _this34.input = new RadioButton(_this34.options, _this34.onChange.bind((0, _assertThisInitialized2["default"])(_this34)), ['default']);
-    return _this34;
+    _this35.input = new RadioButton(_this35.options, _this35.onChange.bind((0, _assertThisInitialized2["default"])(_this35)), ['default']);
+    return _this35;
   }
   (0, _createClass2["default"])(BsTextAlignmentProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
-      var _iterator26 = _createForOfIteratorHelper(data.input.options),
-        _step26;
+      var _iterator28 = _createForOfIteratorHelper(data.input.options),
+        _step28;
       try {
-        for (_iterator26.s(); !(_step26 = _iterator26.n()).done;) {
-          var option = _step26.value;
+        for (_iterator28.s(); !(_step28 = _iterator28.n()).done;) {
+          var option = _step28.value;
           if (el.classList.contains(option.value)) {
             return [option.value];
           }
         }
       } catch (err) {
-        _iterator26.e(err);
+        _iterator28.e(err);
       } finally {
-        _iterator26.f();
+        _iterator28.f();
       }
       return data.input.defaultValue;
     }
@@ -2232,17 +2307,17 @@ var BsTextAlignmentProperty = function (_HTMLProperty41) {
     key: "onChange",
     value: function onChange(el, value, data) {
       if (el.classList.length > 0) {
-        var _iterator27 = _createForOfIteratorHelper(data.input.options),
-          _step27;
+        var _iterator29 = _createForOfIteratorHelper(data.input.options),
+          _step29;
         try {
-          for (_iterator27.s(); !(_step27 = _iterator27.n()).done;) {
-            var option = _step27.value;
+          for (_iterator29.s(); !(_step29 = _iterator29.n()).done;) {
+            var option = _step29.value;
             el.classList.remove(option.value);
           }
         } catch (err) {
-          _iterator27.e(err);
+          _iterator29.e(err);
         } finally {
-          _iterator27.f();
+          _iterator29.f();
         }
       }
       if (data.input.defaultValue.join() === value) {
@@ -2254,22 +2329,22 @@ var BsTextAlignmentProperty = function (_HTMLProperty41) {
   return BsTextAlignmentProperty;
 }(HTMLProperty);
 exports.BsTextAlignmentProperty = BsTextAlignmentProperty;
-var BsBtnBlockProperty = function (_HTMLProperty42) {
-  (0, _inherits2["default"])(BsBtnBlockProperty, _HTMLProperty42);
-  var _super42 = _createSuper(BsBtnBlockProperty);
+var BsBtnBlockProperty = function (_HTMLProperty43) {
+  (0, _inherits2["default"])(BsBtnBlockProperty, _HTMLProperty43);
+  var _super43 = _createSuper(BsBtnBlockProperty);
   function BsBtnBlockProperty() {
-    var _this35;
+    var _this36;
     (0, _classCallCheck2["default"])(this, BsBtnBlockProperty);
-    _this35 = _super42.call(this, 'btnblock', _RecitEditor.i18n.get_string('buttonfullwidth'));
-    _this35.options = [{
+    _this36 = _super43.call(this, 'btnblock', _RecitEditor.i18n.get_string('buttonfullwidth'));
+    _this36.options = [{
       text: _RecitEditor.i18n.get_string('yes'),
       value: "btn-block"
     }, {
       text: _RecitEditor.i18n.get_string('no'),
       value: ""
     }];
-    _this35.input = new RadioButton(_this35.options, _this35.onChange.bind((0, _assertThisInitialized2["default"])(_this35)));
-    return _this35;
+    _this36.input = new RadioButton(_this36.options, _this36.onChange.bind((0, _assertThisInitialized2["default"])(_this36)));
+    return _this36;
   }
   (0, _createClass2["default"])(BsBtnBlockProperty, [{
     key: "getValue",
@@ -2294,22 +2369,22 @@ var BsBtnBlockProperty = function (_HTMLProperty42) {
   return BsBtnBlockProperty;
 }(HTMLProperty);
 exports.BsBtnBlockProperty = BsBtnBlockProperty;
-var BsGridResponsiveProperty = function (_HTMLProperty43) {
-  (0, _inherits2["default"])(BsGridResponsiveProperty, _HTMLProperty43);
-  var _super43 = _createSuper(BsGridResponsiveProperty);
+var BsGridResponsiveProperty = function (_HTMLProperty44) {
+  (0, _inherits2["default"])(BsGridResponsiveProperty, _HTMLProperty44);
+  var _super44 = _createSuper(BsGridResponsiveProperty);
   function BsGridResponsiveProperty() {
-    var _this36;
+    var _this37;
     (0, _classCallCheck2["default"])(this, BsGridResponsiveProperty);
-    _this36 = _super43.call(this, 'gridresponsive', _RecitEditor.i18n.get_string('reverserow'));
-    _this36.options = [{
+    _this37 = _super44.call(this, 'gridresponsive', _RecitEditor.i18n.get_string('reverserow'));
+    _this37.options = [{
       text: _RecitEditor.i18n.get_string('yes'),
       value: "flex-md-row-reverse"
     }, {
       text: _RecitEditor.i18n.get_string('no'),
       value: ""
     }];
-    _this36.input = new RadioButton(_this36.options, _this36.onChange.bind((0, _assertThisInitialized2["default"])(_this36)));
-    return _this36;
+    _this37.input = new RadioButton(_this37.options, _this37.onChange.bind((0, _assertThisInitialized2["default"])(_this37)));
+    return _this37;
   }
   (0, _createClass2["default"])(BsGridResponsiveProperty, [{
     key: "getValue",
@@ -2337,22 +2412,22 @@ var BsGridResponsiveProperty = function (_HTMLProperty43) {
   return BsGridResponsiveProperty;
 }(HTMLProperty);
 exports.BsGridResponsiveProperty = BsGridResponsiveProperty;
-var BsGridVerticalAlignProperty = function (_HTMLProperty44) {
-  (0, _inherits2["default"])(BsGridVerticalAlignProperty, _HTMLProperty44);
-  var _super44 = _createSuper(BsGridVerticalAlignProperty);
+var BsGridVerticalAlignProperty = function (_HTMLProperty45) {
+  (0, _inherits2["default"])(BsGridVerticalAlignProperty, _HTMLProperty45);
+  var _super45 = _createSuper(BsGridVerticalAlignProperty);
   function BsGridVerticalAlignProperty() {
-    var _this37;
+    var _this38;
     (0, _classCallCheck2["default"])(this, BsGridVerticalAlignProperty);
-    _this37 = _super44.call(this, 'gridalign', _RecitEditor.i18n.get_string('verticalalign'));
-    _this37.options = [{
+    _this38 = _super45.call(this, 'gridalign', _RecitEditor.i18n.get_string('verticalalign'));
+    _this38.options = [{
       text: _RecitEditor.i18n.get_string('yes'),
       value: "align-self-center"
     }, {
       text: _RecitEditor.i18n.get_string('no'),
       value: ""
     }];
-    _this37.input = new RadioButton(_this37.options, _this37.onChange.bind((0, _assertThisInitialized2["default"])(_this37)));
-    return _this37;
+    _this38.input = new RadioButton(_this38.options, _this38.onChange.bind((0, _assertThisInitialized2["default"])(_this38)));
+    return _this38;
   }
   (0, _createClass2["default"])(BsGridVerticalAlignProperty, [{
     key: "getValue",
@@ -2377,14 +2452,14 @@ var BsGridVerticalAlignProperty = function (_HTMLProperty44) {
   return BsGridVerticalAlignProperty;
 }(HTMLProperty);
 exports.BsGridVerticalAlignProperty = BsGridVerticalAlignProperty;
-var BsGridPaddingProperty = function (_HTMLProperty45) {
-  (0, _inherits2["default"])(BsGridPaddingProperty, _HTMLProperty45);
-  var _super45 = _createSuper(BsGridPaddingProperty);
+var BsGridPaddingProperty = function (_HTMLProperty46) {
+  (0, _inherits2["default"])(BsGridPaddingProperty, _HTMLProperty46);
+  var _super46 = _createSuper(BsGridPaddingProperty);
   function BsGridPaddingProperty() {
-    var _this38;
+    var _this39;
     (0, _classCallCheck2["default"])(this, BsGridPaddingProperty);
-    _this38 = _super45.call(this, 'gridpadding', _RecitEditor.i18n.get_string('paddingtype'));
-    _this38.options = [{
+    _this39 = _super46.call(this, 'gridpadding', _RecitEditor.i18n.get_string('paddingtype'));
+    _this39.options = [{
       text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat
       }),
@@ -2399,8 +2474,8 @@ var BsGridPaddingProperty = function (_HTMLProperty45) {
       text: _RecitEditor.i18n.get_string('lateral'),
       value: "lateral"
     }];
-    _this38.input = new CheckboxButton(_this38.options, _this38.onChange.bind((0, _assertThisInitialized2["default"])(_this38)));
-    return _this38;
+    _this39.input = new CheckboxButton(_this39.options, _this39.onChange.bind((0, _assertThisInitialized2["default"])(_this39)));
+    return _this39;
   }
   (0, _createClass2["default"])(BsGridPaddingProperty, [{
     key: "getValue",
@@ -2408,19 +2483,19 @@ var BsGridPaddingProperty = function (_HTMLProperty45) {
       var result = [];
       for (var v in BsGridPaddingProperty.classList) {
         var exists = true;
-        var _iterator28 = _createForOfIteratorHelper(BsGridPaddingProperty.classList[v]),
-          _step28;
+        var _iterator30 = _createForOfIteratorHelper(BsGridPaddingProperty.classList[v]),
+          _step30;
         try {
-          for (_iterator28.s(); !(_step28 = _iterator28.n()).done;) {
-            var cl = _step28.value;
+          for (_iterator30.s(); !(_step30 = _iterator30.n()).done;) {
+            var cl = _step30.value;
             if (!el.classList.contains(cl)) {
               exists = false;
             }
           }
         } catch (err) {
-          _iterator28.e(err);
+          _iterator30.e(err);
         } finally {
-          _iterator28.f();
+          _iterator30.f();
         }
         if (exists) {
           result.push(v);
@@ -2438,44 +2513,44 @@ var BsGridPaddingProperty = function (_HTMLProperty45) {
         return;
       }
       for (var v in BsGridPaddingProperty.classList) {
-        var _iterator29 = _createForOfIteratorHelper(BsGridPaddingProperty.classList[v]),
-          _step29;
+        var _iterator31 = _createForOfIteratorHelper(BsGridPaddingProperty.classList[v]),
+          _step31;
         try {
-          for (_iterator29.s(); !(_step29 = _iterator29.n()).done;) {
-            var cl = _step29.value;
+          for (_iterator31.s(); !(_step31 = _iterator31.n()).done;) {
+            var cl = _step31.value;
             if (el.classList.contains(cl)) {
               el.classList.remove(cl);
             }
           }
         } catch (err) {
-          _iterator29.e(err);
+          _iterator31.e(err);
         } finally {
-          _iterator29.f();
+          _iterator31.f();
         }
       }
       if (values.length > 0) {
-        var _iterator30 = _createForOfIteratorHelper(values),
-          _step30;
+        var _iterator32 = _createForOfIteratorHelper(values),
+          _step32;
         try {
-          for (_iterator30.s(); !(_step30 = _iterator30.n()).done;) {
-            var _v = _step30.value;
-            var _iterator31 = _createForOfIteratorHelper(BsGridPaddingProperty.classList[_v]),
-              _step31;
+          for (_iterator32.s(); !(_step32 = _iterator32.n()).done;) {
+            var _v = _step32.value;
+            var _iterator33 = _createForOfIteratorHelper(BsGridPaddingProperty.classList[_v]),
+              _step33;
             try {
-              for (_iterator31.s(); !(_step31 = _iterator31.n()).done;) {
-                var _cl = _step31.value;
+              for (_iterator33.s(); !(_step33 = _iterator33.n()).done;) {
+                var _cl = _step33.value;
                 el.classList.add(_cl);
               }
             } catch (err) {
-              _iterator31.e(err);
+              _iterator33.e(err);
             } finally {
-              _iterator31.f();
+              _iterator33.f();
             }
           }
         } catch (err) {
-          _iterator30.e(err);
+          _iterator32.e(err);
         } finally {
-          _iterator30.f();
+          _iterator32.f();
         }
       }
     }
@@ -2483,11 +2558,11 @@ var BsGridPaddingProperty = function (_HTMLProperty45) {
     key: "getPaddingClassList",
     value: function getPaddingClassList() {
       var result = [];
-      var _iterator32 = _createForOfIteratorHelper(BsGridPaddingProperty.classList['remove']),
-        _step32;
+      var _iterator34 = _createForOfIteratorHelper(BsGridPaddingProperty.classList['remove']),
+        _step34;
       try {
-        for (_iterator32.s(); !(_step32 = _iterator32.n()).done;) {
-          var item = _step32.value;
+        for (_iterator34.s(); !(_step34 = _iterator34.n()).done;) {
+          var item = _step34.value;
           for (var i = 0; i < 6; i++) {
             result.push(item + i);
             result.push("".concat(item, "md-").concat(i));
@@ -2495,9 +2570,9 @@ var BsGridPaddingProperty = function (_HTMLProperty45) {
           }
         }
       } catch (err) {
-        _iterator32.e(err);
+        _iterator34.e(err);
       } finally {
-        _iterator32.f();
+        _iterator34.f();
       }
       return result;
     }
@@ -2511,39 +2586,39 @@ BsGridPaddingProperty.classList = {
   lateral: ['px-3', 'px-md-4', 'px-lg-5'],
   remove: ['p-', 'pb-', 'pt-', 'pl-', 'pr-', 'px-', 'py-']
 };
-var BsBtnOutlineProperty = function (_HTMLProperty46) {
-  (0, _inherits2["default"])(BsBtnOutlineProperty, _HTMLProperty46);
-  var _super46 = _createSuper(BsBtnOutlineProperty);
+var BsBtnOutlineProperty = function (_HTMLProperty47) {
+  (0, _inherits2["default"])(BsBtnOutlineProperty, _HTMLProperty47);
+  var _super47 = _createSuper(BsBtnOutlineProperty);
   function BsBtnOutlineProperty() {
-    var _this39;
+    var _this40;
     (0, _classCallCheck2["default"])(this, BsBtnOutlineProperty);
-    _this39 = _super46.call(this, 'btnoutline', _RecitEditor.i18n.get_string('btnoutline'));
-    _this39.options = [{
+    _this40 = _super47.call(this, 'btnoutline', _RecitEditor.i18n.get_string('btnoutline'));
+    _this40.options = [{
       text: _RecitEditor.i18n.get_string('yes'),
       value: true
     }, {
       text: _RecitEditor.i18n.get_string('no'),
       value: false
     }];
-    _this39.input = new RadioButton(_this39.options, _this39.onChange.bind((0, _assertThisInitialized2["default"])(_this39)));
-    return _this39;
+    _this40.input = new RadioButton(_this40.options, _this40.onChange.bind((0, _assertThisInitialized2["default"])(_this40)));
+    return _this40;
   }
   (0, _createClass2["default"])(BsBtnOutlineProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
-      var _iterator33 = _createForOfIteratorHelper(el.classList),
-        _step33;
+      var _iterator35 = _createForOfIteratorHelper(el.classList),
+        _step35;
       try {
-        for (_iterator33.s(); !(_step33 = _iterator33.n()).done;) {
-          var c = _step33.value;
+        for (_iterator35.s(); !(_step35 = _iterator35.n()).done;) {
+          var c = _step35.value;
           if (c.includes('btn-outline')) {
             return true;
           }
         }
       } catch (err) {
-        _iterator33.e(err);
+        _iterator35.e(err);
       } finally {
-        _iterator33.f();
+        _iterator35.f();
       }
       return false;
     }
@@ -2551,11 +2626,11 @@ var BsBtnOutlineProperty = function (_HTMLProperty46) {
     key: "onChange",
     value: function onChange(el, value, data) {
       if (value == false) {
-        var _iterator34 = _createForOfIteratorHelper(el.classList),
-          _step34;
+        var _iterator36 = _createForOfIteratorHelper(el.classList),
+          _step36;
         try {
-          for (_iterator34.s(); !(_step34 = _iterator34.n()).done;) {
-            var c = _step34.value;
+          for (_iterator36.s(); !(_step36 = _iterator36.n()).done;) {
+            var c = _step36.value;
             if (c.includes('btn-outline')) {
               var classN = c.replace('outline-', '');
               el.classList.remove(c);
@@ -2563,16 +2638,16 @@ var BsBtnOutlineProperty = function (_HTMLProperty46) {
             }
           }
         } catch (err) {
-          _iterator34.e(err);
+          _iterator36.e(err);
         } finally {
-          _iterator34.f();
+          _iterator36.f();
         }
       } else {
-        var _iterator35 = _createForOfIteratorHelper(el.classList),
-          _step35;
+        var _iterator37 = _createForOfIteratorHelper(el.classList),
+          _step37;
         try {
-          for (_iterator35.s(); !(_step35 = _iterator35.n()).done;) {
-            var _c = _step35.value;
+          for (_iterator37.s(); !(_step37 = _iterator37.n()).done;) {
+            var _c = _step37.value;
             if (_c.includes('btn-')) {
               var _classN = _c.replace('btn-', 'btn-outline-');
               el.classList.remove(_c);
@@ -2580,9 +2655,9 @@ var BsBtnOutlineProperty = function (_HTMLProperty46) {
             }
           }
         } catch (err) {
-          _iterator35.e(err);
+          _iterator37.e(err);
         } finally {
-          _iterator35.f();
+          _iterator37.f();
         }
       }
     }
@@ -2590,14 +2665,14 @@ var BsBtnOutlineProperty = function (_HTMLProperty46) {
   return BsBtnOutlineProperty;
 }(HTMLProperty);
 exports.BsBtnOutlineProperty = BsBtnOutlineProperty;
-var BsBtnSizeProperty = function (_HTMLProperty47) {
-  (0, _inherits2["default"])(BsBtnSizeProperty, _HTMLProperty47);
-  var _super47 = _createSuper(BsBtnSizeProperty);
+var BsBtnSizeProperty = function (_HTMLProperty48) {
+  (0, _inherits2["default"])(BsBtnSizeProperty, _HTMLProperty48);
+  var _super48 = _createSuper(BsBtnSizeProperty);
   function BsBtnSizeProperty() {
-    var _this40;
+    var _this41;
     (0, _classCallCheck2["default"])(this, BsBtnSizeProperty);
-    _this40 = _super47.call(this, 'btnsize', _RecitEditor.i18n.get_string('size'));
-    _this40.options = [{
+    _this41 = _super48.call(this, 'btnsize', _RecitEditor.i18n.get_string('size'));
+    _this41.options = [{
       text: _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faRemoveFormat
       }),
@@ -2609,47 +2684,47 @@ var BsBtnSizeProperty = function (_HTMLProperty47) {
       text: _RecitEditor.i18n.get_string('small'),
       value: "btn-sm"
     }];
-    _this40.input = new RadioButton(_this40.options, _this40.onChange.bind((0, _assertThisInitialized2["default"])(_this40)));
-    return _this40;
+    _this41.input = new RadioButton(_this41.options, _this41.onChange.bind((0, _assertThisInitialized2["default"])(_this41)));
+    return _this41;
   }
   (0, _createClass2["default"])(BsBtnSizeProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
       var result = "";
       var classList = (0, _toConsumableArray2["default"])(el.classList);
-      var _iterator36 = _createForOfIteratorHelper(data.input.options),
-        _step36;
+      var _iterator38 = _createForOfIteratorHelper(data.input.options),
+        _step38;
       try {
-        for (_iterator36.s(); !(_step36 = _iterator36.n()).done;) {
-          var item = _step36.value;
+        for (_iterator38.s(); !(_step38 = _iterator38.n()).done;) {
+          var item = _step38.value;
           if (classList.includes(item.value)) {
             result = item.value;
             break;
           }
         }
       } catch (err) {
-        _iterator36.e(err);
+        _iterator38.e(err);
       } finally {
-        _iterator36.f();
+        _iterator38.f();
       }
       return result;
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      var _iterator37 = _createForOfIteratorHelper(data.input.options),
-        _step37;
+      var _iterator39 = _createForOfIteratorHelper(data.input.options),
+        _step39;
       try {
-        for (_iterator37.s(); !(_step37 = _iterator37.n()).done;) {
-          var item = _step37.value;
+        for (_iterator39.s(); !(_step39 = _iterator39.n()).done;) {
+          var item = _step39.value;
           if (item.value.length > 0) {
             el.classList.remove(item.value);
           }
         }
       } catch (err) {
-        _iterator37.e(err);
+        _iterator39.e(err);
       } finally {
-        _iterator37.f();
+        _iterator39.f();
       }
       if (value.length > 0) {
         el.classList.add(value);
@@ -2659,14 +2734,14 @@ var BsBtnSizeProperty = function (_HTMLProperty47) {
   return BsBtnSizeProperty;
 }(HTMLProperty);
 exports.BsBtnSizeProperty = BsBtnSizeProperty;
-var BsTableActionProperty = function (_HTMLProperty48) {
-  (0, _inherits2["default"])(BsTableActionProperty, _HTMLProperty48);
-  var _super48 = _createSuper(BsTableActionProperty);
+var BsTableActionProperty = function (_HTMLProperty49) {
+  (0, _inherits2["default"])(BsTableActionProperty, _HTMLProperty49);
+  var _super49 = _createSuper(BsTableActionProperty);
   function BsTableActionProperty() {
-    var _this41;
+    var _this42;
     (0, _classCallCheck2["default"])(this, BsTableActionProperty);
-    _this41 = _super48.call(this, 'tableaction', _RecitEditor.i18n.get_string('actions'));
-    _this41.options = [{
+    _this42 = _super49.call(this, 'tableaction', _RecitEditor.i18n.get_string('actions'));
+    _this42.options = [{
       text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faPlus
       }), " Colonne"),
@@ -2695,8 +2770,8 @@ var BsTableActionProperty = function (_HTMLProperty48) {
         return result;
       }
     }];
-    _this41.input = new ButtonGroup(_this41.options);
-    return _this41;
+    _this42.input = new ButtonGroup(_this42.options);
+    return _this42;
   }
   (0, _createClass2["default"])(BsTableActionProperty, [{
     key: "getValue",
@@ -2707,22 +2782,22 @@ var BsTableActionProperty = function (_HTMLProperty48) {
   return BsTableActionProperty;
 }(HTMLProperty);
 exports.BsTableActionProperty = BsTableActionProperty;
-var BsTableBorderProperty = function (_HTMLProperty49) {
-  (0, _inherits2["default"])(BsTableBorderProperty, _HTMLProperty49);
-  var _super49 = _createSuper(BsTableBorderProperty);
+var BsTableBorderProperty = function (_HTMLProperty50) {
+  (0, _inherits2["default"])(BsTableBorderProperty, _HTMLProperty50);
+  var _super50 = _createSuper(BsTableBorderProperty);
   function BsTableBorderProperty() {
-    var _this42;
+    var _this43;
     (0, _classCallCheck2["default"])(this, BsTableBorderProperty);
-    _this42 = _super49.call(this, 'tableborder', _RecitEditor.i18n.get_string('border'));
-    _this42.options = [{
+    _this43 = _super50.call(this, 'tableborder', _RecitEditor.i18n.get_string('border'));
+    _this43.options = [{
       text: _RecitEditor.i18n.get_string('no'),
       value: 0
     }, {
       text: _RecitEditor.i18n.get_string('yes'),
       value: 1
     }];
-    _this42.input = new RadioButton(_this42.options, _this42.onChange.bind((0, _assertThisInitialized2["default"])(_this42)));
-    return _this42;
+    _this43.input = new RadioButton(_this43.options, _this43.onChange.bind((0, _assertThisInitialized2["default"])(_this43)));
+    return _this43;
   }
   (0, _createClass2["default"])(BsTableBorderProperty, [{
     key: "getValue",
@@ -2742,22 +2817,22 @@ var BsTableBorderProperty = function (_HTMLProperty49) {
   return BsTableBorderProperty;
 }(HTMLProperty);
 exports.BsTableBorderProperty = BsTableBorderProperty;
-var BsTableStripedProperty = function (_HTMLProperty50) {
-  (0, _inherits2["default"])(BsTableStripedProperty, _HTMLProperty50);
-  var _super50 = _createSuper(BsTableStripedProperty);
+var BsTableStripedProperty = function (_HTMLProperty51) {
+  (0, _inherits2["default"])(BsTableStripedProperty, _HTMLProperty51);
+  var _super51 = _createSuper(BsTableStripedProperty);
   function BsTableStripedProperty() {
-    var _this43;
+    var _this44;
     (0, _classCallCheck2["default"])(this, BsTableStripedProperty);
-    _this43 = _super50.call(this, 'tablestriped', _RecitEditor.i18n.get_string('striped'));
-    _this43.options = [{
+    _this44 = _super51.call(this, 'tablestriped', _RecitEditor.i18n.get_string('striped'));
+    _this44.options = [{
       text: _RecitEditor.i18n.get_string('no'),
       value: 0
     }, {
       text: _RecitEditor.i18n.get_string('yes'),
       value: 1
     }];
-    _this43.input = new RadioButton(_this43.options, _this43.onChange.bind((0, _assertThisInitialized2["default"])(_this43)));
-    return _this43;
+    _this44.input = new RadioButton(_this44.options, _this44.onChange.bind((0, _assertThisInitialized2["default"])(_this44)));
+    return _this44;
   }
   (0, _createClass2["default"])(BsTableStripedProperty, [{
     key: "getValue",
@@ -2777,24 +2852,24 @@ var BsTableStripedProperty = function (_HTMLProperty50) {
   return BsTableStripedProperty;
 }(HTMLProperty);
 exports.BsTableStripedProperty = BsTableStripedProperty;
-var BsTableCellActionProperty = function (_HTMLProperty51) {
-  (0, _inherits2["default"])(BsTableCellActionProperty, _HTMLProperty51);
-  var _super51 = _createSuper(BsTableCellActionProperty);
+var BsTableCellActionProperty = function (_HTMLProperty52) {
+  (0, _inherits2["default"])(BsTableCellActionProperty, _HTMLProperty52);
+  var _super52 = _createSuper(BsTableCellActionProperty);
   function BsTableCellActionProperty() {
-    var _this44;
+    var _this45;
     (0, _classCallCheck2["default"])(this, BsTableCellActionProperty);
-    _this44 = _super51.call(this, 'tablecellaction', _RecitEditor.i18n.get_string('actions'));
-    _this44.options = [{
+    _this45 = _super52.call(this, 'tablecellaction', _RecitEditor.i18n.get_string('actions'));
+    _this45.options = [{
       text: _react["default"].createElement("span", null, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faMinus
       }), " ", _RecitEditor.i18n.get_string('line')),
       onClick: function onClick(el) {
         var table = el.parentElement.parentElement;
-        var _iterator38 = _createForOfIteratorHelper(table.rows),
-          _step38;
+        var _iterator40 = _createForOfIteratorHelper(table.rows),
+          _step40;
         try {
-          for (_iterator38.s(); !(_step38 = _iterator38.n()).done;) {
-            var row = _step38.value;
+          for (_iterator40.s(); !(_step40 = _iterator40.n()).done;) {
+            var row = _step40.value;
             try {
               el.deleted = true;
               row.deleteCell(el.cellIndex);
@@ -2803,9 +2878,9 @@ var BsTableCellActionProperty = function (_HTMLProperty51) {
             }
           }
         } catch (err) {
-          _iterator38.e(err);
+          _iterator40.e(err);
         } finally {
-          _iterator38.f();
+          _iterator40.f();
         }
         return {
           action: 'delete',
@@ -2844,8 +2919,8 @@ var BsTableCellActionProperty = function (_HTMLProperty51) {
         };
       }
     }];
-    _this44.input = new ButtonGroup(_this44.options);
-    return _this44;
+    _this45.input = new ButtonGroup(_this45.options);
+    return _this45;
   }
   (0, _createClass2["default"])(BsTableCellActionProperty, [{
     key: "getValue",

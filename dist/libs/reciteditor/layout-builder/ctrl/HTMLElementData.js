@@ -143,7 +143,7 @@ var HTMLElementData = function () {
       }, {
         name: 'embed',
         description: _RecitEditor.i18n.get_string('properties'),
-        children: [new _HTMLProperties.HTMLEmbedProperty()]
+        children: [new _HTMLProperties.HTMLEmbedProperty(), new _HTMLProperties.HTMLEmbedRatio()]
       }, {
         name: 'htmlcode',
         description: _RecitEditor.i18n.get_string('htmlcode'),

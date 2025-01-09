@@ -763,7 +763,7 @@ var TemplateList = function (_Component5) {
       var _this9 = this;
       if (this.props.type === 'l') {
         return _react["default"].createElement(TokenTemplate, {
-          showMenu: this.state.hovering == item.id,
+          showMenu: this.state.showMenu,
           data: item,
           key: index,
           onDragEnd: this.props.onDragEnd,
