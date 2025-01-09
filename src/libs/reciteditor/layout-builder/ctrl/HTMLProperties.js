@@ -509,14 +509,66 @@ export class HTMLEmbedProperty extends HTMLProperty{
     constructor(){
         super('src',  i18n.get_string('htmlcode'));
         this.input = new TextArea(this.onChange.bind(this));
+        
     }
 
-    getValue(el, data){
+    getValue(el, data){        
         return el.innerHTML;
     }
 
-    onChange(el, value, data){       
-        el.innerHTML = value;
+    onChange(el, value, data){  
+        value = new DOMParser().parseFromString(value, "text/html").body.firstElementChild;   
+        
+        if(!value.classList.contains('embed-responsive-item')){
+            value.classList.add('embed-responsive-item');
+        }
+        
+        while (el.firstChild) {
+            el.removeChild(el.lastChild);
+        }
+
+        el.appendChild(value);
+    }
+}
+
+export class HTMLEmbedRatio extends HTMLProperty{
+    constructor(){
+        super('aspectratio',  i18n.get_string('size'));
+        
+        this.options = [
+            {text:"21by9", value: "embed-responsive-21by9"},
+            {text:"16by9", value: "embed-responsive-16by9"},
+            {text:"4by3", value: "embed-responsive-4by3"},
+            {text:"1by1", value: "embed-responsive-1by1"}
+        ];
+
+        this.input = new ComboBox(this.options, this.onChange.bind(this));
+        
+    }
+
+    getValue(el, data){
+        let result = "";
+    
+        let classList = [...el.classList]
+
+        for(let item of data.input.options){
+            if(classList.includes(item.value)){
+                result = item.value;
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    onChange(el, value, data){                       
+        for(let item of data.input.options){
+            el.classList.remove(item.value);
+        }
+
+        if(value.length > 0){
+            el.classList.add(value);
+        }
     }
 }
 

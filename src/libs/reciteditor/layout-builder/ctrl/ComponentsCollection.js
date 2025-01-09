@@ -580,7 +580,7 @@ class TemplateList extends Component{
 
     getToken(item, index, editable){
         if(this.props.type === 'l'){
-            return <TokenTemplate showMenu={this.state.hovering == item.id} data={item} key={index} onDragEnd={this.props.onDragEnd} onInsert={this.props.onInsert} onHover={() => this.setState({hovering: item.id})} onMouseLeave={() => this.setState({hovering: null})}
+            return <TokenTemplate showMenu={this.state.showMenu} data={item} key={index} onDragEnd={this.props.onDragEnd} onInsert={this.props.onInsert} onHover={() => this.setState({hovering: item.id})} onMouseLeave={() => this.setState({hovering: null})}
                         onExport={(event) => this.onExport(event, item)} onDelete={(event) => this.onDelete(event, item)}/>
         }
         else{

@@ -312,14 +312,17 @@ class HTMLElement{
  
      create(){ 
          let el = document.createElement('div');
-         el.classList.add('embedelement');
+         el.classList.add('embed-element');
+         el.classList.add('embed-responsive');
+         el.classList.add('embed-responsive-16by9');
+
          return el;
      }
  
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('embedelement'));
+         return (el.classList.contains('embed-element'));
      }
  }
  
