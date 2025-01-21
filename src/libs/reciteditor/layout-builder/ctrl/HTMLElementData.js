@@ -240,8 +240,8 @@ export class HTMLElementData{
                 {
                     name: 'embed', description: i18n.get_string('properties'), 
                     children: [
-                        new HTMLEmbedProperty(),
-                        new HTMLEmbedRatio()
+                        new HTMLEmbedRatio(),
+                        new HTMLEmbedProperty()
                     ]
                 },
                 {
