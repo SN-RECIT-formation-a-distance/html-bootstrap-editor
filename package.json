@@ -14,19 +14,18 @@
     "url": "git+https://github.com/SN-RECIT-formation-a-distance/html-bootstrap-editor.git"
   },
   "dependencies": {
-    "@codemirror/lang-html": "0.19.3",
+    "@codemirror/lang-html": "^6.4.9",
     "@emotion/babel-plugin": "^11.13.5",
     "@fortawesome/fontawesome-svg-core": "1.2.35",
     "@fortawesome/free-solid-svg-icons": "5.15.3",
     "@fortawesome/react-fontawesome": "0.2.0",
-    "@uiw/react-codemirror": "4.2.4",
+    "@uiw/react-codemirror": "^4.23.7",
     "bootstrap": "4.6.1",
     "html2canvas": "1.0.0-rc.7",
-    "lib": "4.3.3",
     "parchment": "2.0.1",
     "pretty": "2.0.0",
     "react-bootstrap": "1.6.6",
-    "react-quill": "2.0.0"
+    "react-quill": "^2.0.0"
   },
   "eslintConfig": {
     "extends": [
@@ -50,7 +49,7 @@
     "@babel/plugin-transform-runtime": "^7.19.6",
     "@babel/preset-react": "^7.18.6",
     "@babel/preset-typescript": "^7.18.6",
-    "ajv": "^7.2.4",
+    "ajv": "^8.17.1",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",

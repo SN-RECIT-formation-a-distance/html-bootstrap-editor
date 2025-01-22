@@ -280,7 +280,7 @@ export class DesignerState extends CanvasState{
             console.log("Loading designer iframe...");
 
             if(this.loadCount > 20){
-                console.log("Exiting because it was impossible to load the designer canvas.");
+                console.log("Exiting because it was impossible to load the designer iframe.");
                 return;
             }
 
@@ -537,14 +537,22 @@ export class DesignerState extends CanvasState{
     setData(value, selectedElement){
         let that = this;
 
+        let counter = 0;
         let loading = function(){
             if(that.window){
                 let body = that.window.document.body;
                 body.innerHTML = value;
                 CanvasElement.create(body, that.mainView.onSelectElement, that.mainView.onDrop, that.mainView.onStartEditingNodeText);
-            }
+            }            
             else{
-                console.log("Loading designer canvas...");
+                counter++;
+
+                if(counter > 20){
+                    console.log('Exiting because it was impossible to setData.');
+                    return;
+                }
+
+                console.log("Setting data on designer-canvas...");
                 setTimeout(loading, 500);
             }
         }

@@ -24,9 +24,9 @@
 import React, { Component } from 'react';
 import CodeMirror from '@uiw/react-codemirror';
 import { EditorView } from '@codemirror/view';
-import { searchConfig } from '@codemirror/search';
+import { search, searchConfig } from '@codemirror/search';
 import { lintGutter } from '@codemirror/lint';
-import { html, htmlCompletion, autoCloseTags } from '@codemirror/lang-html';
+import { html, autoCloseTags, htmlCompletionSource } from '@codemirror/lang-html';
 //import 'codemirror/lib/codemirror.css';
 //import 'codemirror/theme/material.css';
 var beautifyingHTML = require("pretty");
@@ -78,7 +78,8 @@ export class SourceCodeEditor extends Component{
     render(){
         let main = 
             <div style={this.props.style} className="react-codemirror">
-                <CodeMirror ref={this.codeMirror} value={this.state.data} theme="dark" extensions={[html(), EditorView.lineWrapping, lintGutter(), htmlCompletion, autoCloseTags, searchConfig({matchCase:false})]} onChange={this.onChange}/>
+                <CodeMirror ref={this.codeMirror} value={this.state.data} theme="dark" 
+                extensions={[html(), EditorView.lineWrapping, lintGutter(), autoCloseTags, search({caseSensitive:false})]} onChange={this.onChange}/>
             </div>;
 
         return main;
