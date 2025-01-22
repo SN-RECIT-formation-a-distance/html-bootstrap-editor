@@ -10,10 +10,9 @@ var _get2 = _interopRequireDefault(require("@babel/runtime/helpers/get"));
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 var _react = _interopRequireDefault(require("react"));
@@ -21,21 +20,20 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactQuill = _interopRequireWildcard(require("react-quill"));
 require("react-quill/dist/quill.snow.css");
 var _Utils = require("./Utils");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-var TextEditorModal = function (_React$Component) {
-  (0, _inherits2["default"])(TextEditorModal, _React$Component);
-  var _super = _createSuper(TextEditorModal);
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _superPropGet(t, o, e, r) { var p = (0, _get2["default"])((0, _getPrototypeOf2["default"])(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+var TextEditorModal = exports.TextEditorModal = function (_React$Component) {
   function TextEditorModal(props) {
     var _this;
     (0, _classCallCheck2["default"])(this, TextEditorModal);
-    _this = _super.call(this, props);
-    _this.onDataChange = _this.onDataChange.bind((0, _assertThisInitialized2["default"])(_this));
+    _this = _callSuper(this, TextEditorModal, [props]);
+    _this.onDataChange = _this.onDataChange.bind(_this);
     _this.editorRef = _react["default"].createRef();
     var tag = TextEditorModal.allowedTags[props.element.tagName.toLowerCase()];
     if (!tag) console.error('Text editor received unknown tag');
@@ -48,7 +46,8 @@ var TextEditorModal = function (_React$Component) {
     };
     return _this;
   }
-  (0, _createClass2["default"])(TextEditorModal, [{
+  (0, _inherits2["default"])(TextEditorModal, _React$Component);
+  return (0, _createClass2["default"])(TextEditorModal, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -221,9 +220,7 @@ var TextEditorModal = function (_React$Component) {
       return TextEditorModal.allowedTags[tag.toLowerCase()] ? true : false;
     }
   }]);
-  return TextEditorModal;
 }(_react["default"].Component);
-exports.TextEditorModal = TextEditorModal;
 TextEditorModal.defaultProps = {
   onClose: null,
   onSave: null,
@@ -283,7 +280,7 @@ var EditorModuleNonBreakingSpace = function () {
   function EditorModuleNonBreakingSpace() {
     (0, _classCallCheck2["default"])(this, EditorModuleNonBreakingSpace);
   }
-  (0, _createClass2["default"])(EditorModuleNonBreakingSpace, null, [{
+  return (0, _createClass2["default"])(EditorModuleNonBreakingSpace, null, [{
     key: "process",
     value: function process(text) {
       var el = document.createElement('div');
@@ -312,32 +309,28 @@ var EditorModuleNonBreakingSpace = function () {
       }
     }
   }]);
-  return EditorModuleNonBreakingSpace;
 }();
 var Inline = _reactQuill.Quill["import"]('blots/inline');
-var FaRule = function (_Inline) {
-  (0, _inherits2["default"])(FaRule, _Inline);
-  var _super2 = _createSuper(FaRule);
+var FaRule = exports.FaRule = function (_Inline) {
   function FaRule() {
     (0, _classCallCheck2["default"])(this, FaRule);
-    return _super2.apply(this, arguments);
+    return _callSuper(this, FaRule, arguments);
   }
-  (0, _createClass2["default"])(FaRule, [{
+  (0, _inherits2["default"])(FaRule, _Inline);
+  return (0, _createClass2["default"])(FaRule, [{
     key: "optimize",
     value: function optimize(c) {}
   }], [{
     key: "create",
     value: function create(value) {
-      var node = (0, _get2["default"])((0, _getPrototypeOf2["default"])(FaRule), "create", this).call(this);
+      var node = _superPropGet(FaRule, "create", this, 2)([]);
       Object.getOwnPropertyNames(value).forEach(function (attribute_name) {
         node.setAttribute(attribute_name, value[attribute_name]);
       });
       return node;
     }
   }]);
-  return FaRule;
 }(Inline);
-exports.FaRule = FaRule;
 FaRule.blotName = 'fa';
 FaRule.tagName = 'i';
 FaRule.className = 'iconrecit';
@@ -346,27 +339,25 @@ var Align = new Parchment.Attributor.Class('fa', 'iconrecit');
 Parchment.register(Align);
 _reactQuill.Quill.register(FaRule);
 var IndentAttributor = function (_Parchment$Attributor) {
-  (0, _inherits2["default"])(IndentAttributor, _Parchment$Attributor);
-  var _super3 = _createSuper(IndentAttributor);
   function IndentAttributor(name, style, params) {
     var _this3;
     (0, _classCallCheck2["default"])(this, IndentAttributor);
-    _this3 = _super3.call(this, name, style, params);
+    _this3 = _callSuper(this, IndentAttributor, [name, style, params]);
     _this3.multiplier = 2;
     return _this3;
   }
-  (0, _createClass2["default"])(IndentAttributor, [{
+  (0, _inherits2["default"])(IndentAttributor, _Parchment$Attributor);
+  return (0, _createClass2["default"])(IndentAttributor, [{
     key: "add",
     value: function add(node, value) {
-      return (0, _get2["default"])((0, _getPrototypeOf2["default"])(IndentAttributor.prototype), "add", this).call(this, node, "".concat(value * this.multiplier, "rem"));
+      return _superPropGet(IndentAttributor, "add", this, 3)([node, "".concat(value * this.multiplier, "rem")]);
     }
   }, {
     key: "value",
     value: function value(node) {
-      return parseFloat((0, _get2["default"])((0, _getPrototypeOf2["default"])(IndentAttributor.prototype), "value", this).call(this, node)) / this.multiplier || undefined;
+      return parseFloat(_superPropGet(IndentAttributor, "value", this, 3)([node])) / this.multiplier || undefined;
     }
   }]);
-  return IndentAttributor;
 }(Parchment.Attributor.Style);
 var levels = [1, 2, 3, 4, 5];
 var multiplier = 2;

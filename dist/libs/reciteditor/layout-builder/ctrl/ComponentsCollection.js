@@ -6,12 +6,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.VisualComponentList = exports.TemplateForm = exports.ComponentProperties = void 0;
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _react = _interopRequireWildcard(require("react"));
 var _reactBootstrap = require("react-bootstrap");
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
@@ -20,24 +19,23 @@ var _RecitEditor = require("../../RecitEditor");
 var _HTMLElementData = require("./HTMLElementData");
 var _GridBuilder = require("../components/GridBuilder");
 var _ImagePixaBay = require("../../common/ImagePixaBay");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /**
  * Atto HTML editor
  *
  * @package    atto_reciteditor
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var ComponentProperties = function (_Component) {
-  (0, _inherits2["default"])(ComponentProperties, _Component);
-  var _super = _createSuper(ComponentProperties);
+var ComponentProperties = exports.ComponentProperties = function (_Component) {
   function ComponentProperties() {
     (0, _classCallCheck2["default"])(this, ComponentProperties);
-    return _super.apply(this, arguments);
+    return _callSuper(this, ComponentProperties, arguments);
   }
-  (0, _createClass2["default"])(ComponentProperties, [{
+  (0, _inherits2["default"])(ComponentProperties, _Component);
+  return (0, _createClass2["default"])(ComponentProperties, [{
     key: "render",
     value: function render() {
       var title = _react["default"].createElement(_react["default"].Fragment, null);
@@ -126,9 +124,7 @@ var ComponentProperties = function (_Component) {
       return result;
     }
   }]);
-  return ComponentProperties;
 }(_react.Component);
-exports.ComponentProperties = ComponentProperties;
 ComponentProperties.defaultProps = {
   element: null,
   onAfterInsertNode: null,
@@ -138,17 +134,16 @@ ComponentProperties.defaultProps = {
   tab: 'bm'
 };
 var FormProperties = function (_Component2) {
-  (0, _inherits2["default"])(FormProperties, _Component2);
-  var _super2 = _createSuper(FormProperties);
   function FormProperties(props) {
     var _this;
     (0, _classCallCheck2["default"])(this, FormProperties);
-    _this = _super2.call(this, props);
-    _this.onSubmit = _this.onSubmit.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onDataChange = _this.onDataChange.bind((0, _assertThisInitialized2["default"])(_this));
+    _this = _callSuper(this, FormProperties, [props]);
+    _this.onSubmit = _this.onSubmit.bind(_this);
+    _this.onDataChange = _this.onDataChange.bind(_this);
     return _this;
   }
-  (0, _createClass2["default"])(FormProperties, [{
+  (0, _inherits2["default"])(FormProperties, _Component2);
+  return (0, _createClass2["default"])(FormProperties, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -396,7 +391,6 @@ var FormProperties = function (_Component2) {
       event.preventDefault();
     }
   }]);
-  return FormProperties;
 }(_react.Component);
 FormProperties.defaultProps = {
   element: null,
@@ -407,17 +401,16 @@ FormProperties.defaultProps = {
   onDeleteElement: null,
   onReplaceNode: null
 };
-var VisualComponentList = function (_Component3) {
-  (0, _inherits2["default"])(VisualComponentList, _Component3);
-  var _super3 = _createSuper(VisualComponentList);
+var VisualComponentList = exports.VisualComponentList = function (_Component3) {
   function VisualComponentList(props) {
     var _this4;
     (0, _classCallCheck2["default"])(this, VisualComponentList);
-    _this4 = _super3.call(this, props);
-    _this4.loadTemplates = _this4.loadTemplates.bind((0, _assertThisInitialized2["default"])(_this4));
+    _this4 = _callSuper(this, VisualComponentList, [props]);
+    _this4.loadTemplates = _this4.loadTemplates.bind(_this4);
     return _this4;
   }
-  (0, _createClass2["default"])(VisualComponentList, [{
+  (0, _inherits2["default"])(VisualComponentList, _Component3);
+  return (0, _createClass2["default"])(VisualComponentList, [{
     key: "render",
     value: function render() {
       var main = _react["default"].createElement("div", {
@@ -467,9 +460,7 @@ var VisualComponentList = function (_Component3) {
       });
     }
   }]);
-  return VisualComponentList;
 }(_react.Component);
-exports.VisualComponentList = VisualComponentList;
 VisualComponentList.defaultProps = {
   onDragEnd: null,
   onSaveTemplate: null,
@@ -477,19 +468,18 @@ VisualComponentList.defaultProps = {
   tab: 'tpl'
 };
 var TokenList = function (_Component4) {
-  (0, _inherits2["default"])(TokenList, _Component4);
-  var _super4 = _createSuper(TokenList);
   function TokenList(props) {
     var _this5;
     (0, _classCallCheck2["default"])(this, TokenList);
-    _this5 = _super4.call(this, props);
-    _this5.onCollapse = _this5.onCollapse.bind((0, _assertThisInitialized2["default"])(_this5));
+    _this5 = _callSuper(this, TokenList, [props]);
+    _this5.onCollapse = _this5.onCollapse.bind(_this5);
     _this5.state = {
       collapsed: {}
     };
     return _this5;
   }
-  (0, _createClass2["default"])(TokenList, [{
+  (0, _inherits2["default"])(TokenList, _Component4);
+  return (0, _createClass2["default"])(TokenList, [{
     key: "render",
     value: function render() {
       var _this6 = this;
@@ -535,7 +525,6 @@ var TokenList = function (_Component4) {
       });
     }
   }]);
-  return TokenList;
 }(_react.Component);
 TokenList.defaultProps = {
   dataProvider: [],
@@ -543,21 +532,19 @@ TokenList.defaultProps = {
   onInsert: null
 };
 var TemplateList = function (_Component5) {
-  (0, _inherits2["default"])(TemplateList, _Component5);
-  var _super5 = _createSuper(TemplateList);
   function TemplateList(props) {
     var _this7;
     (0, _classCallCheck2["default"])(this, TemplateList);
-    _this7 = _super5.call(this, props);
-    _this7.onImport = _this7.onImport.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.onExport = _this7.onExport.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.showMenu = _this7.showMenu.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.showImport = _this7.showImport.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.onDelete = _this7.onDelete.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.showShowcase = _this7.showShowcase.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.receiveMessageFromIframe = _this7.receiveMessageFromIframe.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.showModal = _this7.showModal.bind((0, _assertThisInitialized2["default"])(_this7));
-    _this7.onSaveTemplate = _this7.onSaveTemplate.bind((0, _assertThisInitialized2["default"])(_this7));
+    _this7 = _callSuper(this, TemplateList, [props]);
+    _this7.onImport = _this7.onImport.bind(_this7);
+    _this7.onExport = _this7.onExport.bind(_this7);
+    _this7.showMenu = _this7.showMenu.bind(_this7);
+    _this7.showImport = _this7.showImport.bind(_this7);
+    _this7.onDelete = _this7.onDelete.bind(_this7);
+    _this7.showShowcase = _this7.showShowcase.bind(_this7);
+    _this7.receiveMessageFromIframe = _this7.receiveMessageFromIframe.bind(_this7);
+    _this7.showModal = _this7.showModal.bind(_this7);
+    _this7.onSaveTemplate = _this7.onSaveTemplate.bind(_this7);
     var url = false;
     var settings = _RecitEditor.IWrapper.getSettings();
     if (settings.showcase_url && settings.showcase_url.length > 0) {
@@ -574,7 +561,8 @@ var TemplateList = function (_Component5) {
     };
     return _this7;
   }
-  (0, _createClass2["default"])(TemplateList, [{
+  (0, _inherits2["default"])(TemplateList, _Component5);
+  return (0, _createClass2["default"])(TemplateList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       window.addEventListener("message", this.receiveMessageFromIframe, false);
@@ -823,7 +811,6 @@ var TemplateList = function (_Component5) {
       }
     }
   }]);
-  return TemplateList;
 }(_react.Component);
 TemplateList.defaultProps = {
   dataProvider: [],
@@ -834,21 +821,20 @@ TemplateList.defaultProps = {
   onSaveTemplate: null
 };
 var Token = function (_Component6) {
-  (0, _inherits2["default"])(Token, _Component6);
-  var _super6 = _createSuper(Token);
   function Token(props) {
     var _this10;
     (0, _classCallCheck2["default"])(this, Token);
-    _this10 = _super6.call(this, props);
-    _this10.onDragStart = _this10.onDragStart.bind((0, _assertThisInitialized2["default"])(_this10));
-    _this10.onDragEnd = _this10.onDragEnd.bind((0, _assertThisInitialized2["default"])(_this10));
-    _this10.onMouseLeave = _this10.onMouseLeave.bind((0, _assertThisInitialized2["default"])(_this10));
+    _this10 = _callSuper(this, Token, [props]);
+    _this10.onDragStart = _this10.onDragStart.bind(_this10);
+    _this10.onDragEnd = _this10.onDragEnd.bind(_this10);
+    _this10.onMouseLeave = _this10.onMouseLeave.bind(_this10);
     _this10.state = {
       imagePreview: false
     };
     return _this10;
   }
-  (0, _createClass2["default"])(Token, [{
+  (0, _inherits2["default"])(Token, _Component6);
+  return (0, _createClass2["default"])(Token, [{
     key: "render",
     value: function render() {
       var _this11 = this;
@@ -923,7 +909,6 @@ var Token = function (_Component6) {
       });
     }
   }]);
-  return Token;
 }(_react.Component);
 Token.defaultProps = {
   data: null,
@@ -936,14 +921,13 @@ Token.defaultProps = {
   onHover: null,
   onMouseLeave: null
 };
-var TokenTemplate = function (_Token) {
-  (0, _inherits2["default"])(TokenTemplate, _Token);
-  var _super7 = _createSuper(TokenTemplate);
+var TokenTemplate = function (_Token2) {
   function TokenTemplate() {
     (0, _classCallCheck2["default"])(this, TokenTemplate);
-    return _super7.apply(this, arguments);
+    return _callSuper(this, TokenTemplate, arguments);
   }
-  (0, _createClass2["default"])(TokenTemplate, [{
+  (0, _inherits2["default"])(TokenTemplate, _Token2);
+  return (0, _createClass2["default"])(TokenTemplate, [{
     key: "render",
     value: function render() {
       var _this12 = this;
@@ -1004,16 +988,13 @@ var TokenTemplate = function (_Token) {
       _RecitEditor.$glVars.feedback.showInfo(_RecitEditor.i18n.get_string('pluginname'), _RecitEditor.i18n.get_string('templateadded'), 3);
     }
   }]);
-  return TokenTemplate;
 }(Token);
-var TemplateForm = function (_Component7) {
-  (0, _inherits2["default"])(TemplateForm, _Component7);
-  var _super8 = _createSuper(TemplateForm);
+var TemplateForm = exports.TemplateForm = function (_Component7) {
   function TemplateForm(props) {
     var _this13;
     (0, _classCallCheck2["default"])(this, TemplateForm);
-    _this13 = _super8.call(this, props);
-    _this13.onDataChange = _this13.onDataChange.bind((0, _assertThisInitialized2["default"])(_this13));
+    _this13 = _callSuper(this, TemplateForm, [props]);
+    _this13.onDataChange = _this13.onDataChange.bind(_this13);
     _this13.state = {
       data: {
         name: ""
@@ -1021,7 +1002,8 @@ var TemplateForm = function (_Component7) {
     };
     return _this13;
   }
-  (0, _createClass2["default"])(TemplateForm, [{
+  (0, _inherits2["default"])(TemplateForm, _Component7);
+  return (0, _createClass2["default"])(TemplateForm, [{
     key: "render",
     value: function render() {
       var _this14 = this;
@@ -1071,9 +1053,7 @@ var TemplateForm = function (_Component7) {
       });
     }
   }]);
-  return TemplateForm;
 }(_react.Component);
-exports.TemplateForm = TemplateForm;
 TemplateForm.defaultProps = {
   onClose: null,
   onSave: null,

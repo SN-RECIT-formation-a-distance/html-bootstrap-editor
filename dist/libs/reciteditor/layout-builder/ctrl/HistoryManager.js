@@ -14,7 +14,7 @@ var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/creat
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var HistoryManager = function () {
+var HistoryManager = exports.HistoryManager = function () {
   function HistoryManager() {
     (0, _classCallCheck2["default"])(this, HistoryManager);
     this.history = {
@@ -26,7 +26,7 @@ var HistoryManager = function () {
     this.onUndo = this.onUndo.bind(this);
     this.addHistoryItem = this.addHistoryItem.bind(this);
   }
-  (0, _createClass2["default"])(HistoryManager, [{
+  return (0, _createClass2["default"])(HistoryManager, [{
     key: "onContentChange",
     value: function onContentChange(oldContent) {
       this.addHistoryItem(oldContent);
@@ -66,7 +66,5 @@ var HistoryManager = function () {
       }
     }
   }]);
-  return HistoryManager;
 }();
-exports.HistoryManager = HistoryManager;
 HistoryManager.MAX_HISTORY = 50;

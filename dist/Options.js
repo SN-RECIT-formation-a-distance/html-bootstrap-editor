@@ -15,11 +15,11 @@ var _package = _interopRequireDefault(require("../package.json"));
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var Options = function () {
+var Options = exports.Options = function () {
   function Options() {
     (0, _classCallCheck2["default"])(this, Options);
   }
-  (0, _createClass2["default"])(Options, null, [{
+  return (0, _createClass2["default"])(Options, null, [{
     key: "appName",
     value: function appName() {
       return _package["default"].description;
@@ -44,9 +44,7 @@ var Options = function () {
       return this.appName() + " | v" + this.appVersion();
     }
   }]);
-  return Options;
 }();
-exports.Options = Options;
 Options.versionHistory = [{
   version: "0.0.1",
   description: "",

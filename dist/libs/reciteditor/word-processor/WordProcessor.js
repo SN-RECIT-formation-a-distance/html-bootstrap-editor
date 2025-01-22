@@ -8,21 +8,20 @@ Object.defineProperty(exports, "__esModule", {
 exports.WordProcessor = void 0;
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _react = _interopRequireWildcard(require("react"));
 var _reactCodemirror = _interopRequireDefault(require("@uiw/react-codemirror"));
 var _RecitEditor = require("../RecitEditor");
 var _langHtml = require("@codemirror/lang-html");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /**
  * Atto HTML editor
  *
  * @package    atto_reciteditor
@@ -30,24 +29,22 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
 var beautifyingHTML = require("pretty");
-var WordProcessor = function (_Component) {
-  (0, _inherits2["default"])(WordProcessor, _Component);
-  var _super = _createSuper(WordProcessor);
+var WordProcessor = exports.WordProcessor = function (_Component) {
   function WordProcessor(props) {
     var _this;
     (0, _classCallCheck2["default"])(this, WordProcessor);
-    _this = _super.call(this, props);
-    _this.onSelect = _this.onSelect.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onAfterSelection = _this.onAfterSelection.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onChange = _this.onChange.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onTextAreaDidMount = _this.onTextAreaDidMount.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onChangeTmpContent = _this.onChangeTmpContent.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onSetFlag = _this.onSetFlag.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.updateHistory = _this.updateHistory.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.undoHistory = _this.undoHistory.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.redoHistory = _this.redoHistory.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onCodeSource = _this.onCodeSource.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onAddImage = _this.onAddImage.bind((0, _assertThisInitialized2["default"])(_this));
+    _this = _callSuper(this, WordProcessor, [props]);
+    _this.onSelect = _this.onSelect.bind(_this);
+    _this.onAfterSelection = _this.onAfterSelection.bind(_this);
+    _this.onChange = _this.onChange.bind(_this);
+    _this.onTextAreaDidMount = _this.onTextAreaDidMount.bind(_this);
+    _this.onChangeTmpContent = _this.onChangeTmpContent.bind(_this);
+    _this.onSetFlag = _this.onSetFlag.bind(_this);
+    _this.updateHistory = _this.updateHistory.bind(_this);
+    _this.undoHistory = _this.undoHistory.bind(_this);
+    _this.redoHistory = _this.redoHistory.bind(_this);
+    _this.onCodeSource = _this.onCodeSource.bind(_this);
+    _this.onAddImage = _this.onAddImage.bind(_this);
     _this.state = {
       selection: null,
       history: {
@@ -65,7 +62,8 @@ var WordProcessor = function (_Component) {
     _this.editorRef = null;
     return _this;
   }
-  (0, _createClass2["default"])(WordProcessor, [{
+  (0, _inherits2["default"])(WordProcessor, _Component);
+  return (0, _createClass2["default"])(WordProcessor, [{
     key: "render",
     value: function render() {
       return null;
@@ -328,9 +326,7 @@ var WordProcessor = function (_Component) {
       });
     }
   }]);
-  return WordProcessor;
 }(_react.Component);
-exports.WordProcessor = WordProcessor;
 WordProcessor.defaultProps = {
   content: "",
   onSelectBuilder: null,
@@ -342,13 +338,12 @@ WordProcessor.Assets = {
   brand: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAB0CAMAAABnsTYoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURQAAAABpvwJqvyp9vwRrwAZswAduwAhtwQhuwQtvwgtwwQ5wwQ1wwg5xww9ywxBywxJ0wxN0xBd1whR1xBZ2xBl2wRh3xRp4xR95wR56xR56xh97xyJ8xyV8wiR9xyV+yCZ/yTKBvz+HvSeAySiAySyCyi6Dyy+Eyi+EyzCFyzKGyzaIzDeJzTiJzTiKzTuMzj2MzkGGu2WTr3KVpkCOz0KQz0OR0ESQ0EaS0EeS0UmT0UqU0UyV0kyW0U2W0k6X01KZ01Oa01Oa1FWa1Fid1Vqd1lqe1Vue1l6g1l+h12Ki12Sj2Gak2Gqn2Wqn2muo2Wuo2m2o2m6q2nGq23Ks23St3Hau3Hev3Xiv3Xqw3Xux3n6y3n+03rugbPGgL/qiKvmiK/qjLPqjLfqjLvqkL/qnNfqoOPmqP8efXtqfSMOfYcKfZNegS9GgVdWgUNupX9eoYeGgQvqrQPqsQvquR/qvSPqvSfqwS/qzUfqzUvuzVPu1V/u2V/u2WPu4Xfu5X/u6YPu6Yvu+a/u+bPvEePvEefvGfPzEePzEeZacjJychZidjKGvroC034O24Ia34Ie44Ie44Ym64Yy74o284o+945C945C+45TA5JfB5ZfC5JjC5JrC5ZrE5ZvE5pzF5p/G56DH5qDG56HI56PJ6KTJ6KXK6KjM6arN6qzO6q/Q6q/Q67DQ6rLR67PS7LTT7LbU7LjV7brW7bzX7r3Y7r7Z77/a7/vHgPzIgvzJhPzJhfzKhfzKhvzKh/zLiPzLivzOj/zPk/zQk/zQlPzRlf3ZqP3brv3guf3iu/3hvP3ivMDa78Pb8MPc8Mbd8Mfe8Mje8cvg8szg8s7i89Ll89Lk9NTm89bm9Nno9dvq9d3q9t7s9v7kwP3nyf3oy/7r0v7s0/7t1v7t1/7w3eHt9+Pu+OTv+OXw+Obw+ejx+eny+erz+uz0+u71+/7y4/705fD2+/L3/PP4/PT5/Pb6/f/58v/68//89/j7/fr8/v/8+f/9/P/+/P3+/v7+/wAAAFY5PcMAAAEAdFJOU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wBT9wclAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGHRFWHRTb2Z0d2FyZQBwYWludC5uZXQgNC4wLjVlhTJlAAAGpklEQVRoQ+2Zd3gURRiHb2MiERIDEj0NEVBaIBpOBSOgB4ooiVgIRTHqKdh7B+wtiiWKiBIQLKBobCiCimADGwlqJCgQxI5SFWJUojLnlN9e9mZ3Lsu5k3sen7z8wXxl92Vv2+zgCzfOOzdfOSbkLY1q3zwXnZ7SiPbts9DnMbG1V6HLc2JqR6PJe2Jp0aKDGNoz0aIDtfYcdGhBqb0VDXpQalHXhEo7HnVNqLQo60KhXYiyLhTasSjrQqFFVRvNWgqq2mjWUlDVhqQd1rdbFmWfveNl3/0PvvcC7DsGVm3fJMMb9rv7DOxeRYO2G7bxhD3viT1JMLVD0O8ZB10BgyPQdkezh+xxPhROCG02Wj2l1YVwOMC1XdCoJCUA2iPhilaXQmKHaQeiTc1AIqjrjIQ7dlFe0EyLphi8CO1JiN1yCCw2qNaPHjVt6oV1DmLXJF8MjQzVoiUGJwrrxkzErsgvLSsrvQ8aGV/YxemqEtrDEbqiVGzzATwSPhcH20HsYRpCd2wUG/3p/KXqRiv+4StSEboijW9Dcf5W9fVDXwxeYZuv27lHip87KZiDvr54CecmEfpc7O0xuvX8dghckiqkhJwnPGGES0Toa4G+GKQWDs3F0D0/Cs3mS4RH1qLLc4qE5v6LhKeptEbO0AceHJZnnC48jWkzggMC0bOMzB6B/ED3tojstM4NDgj26aK40BXaNRzzYZv7xG+09jQiw+hR+kmt6Ccbnitw2POhM2pQ37FySh6SVhRaEW1lz72Wx1WLaJjYwjjicxGbbBmZggo4ZiUq4NMACkZ6MbgsFLq6ZMIdv6KjouSuCRNKSqAls42uZdswJh35lhnPI7Sw3Pre8M9H1sIknKB2iMm4UKgEQwumlizH35Q1fEP/KoRR1DR4O65DLoqnRNGt1kIZ2y5N+v1MqszrbXfHfxYhp/JqHNog2+5JBDbME1+GWKaev9J2XrudXbC5COjVNqOgd4/ehTPrEG8S13O7HYhtPMvLCNxr57LNXkJAprVkIcX/GTIFPJyIiGwv65W1W3r74HR26zHq2S2+M9rK4d0zjL3Ydew3j2USd3AycQeLqY15u26LPK7br0dqMA1ca7c/aplnYBpDNlufELNErpZdVJ3EmJDhosY4EqmpdGzV3rL044rfEf6wtGJpRUVFRDsn6g1YjuzjiDmDkGTT6gKM69JFjbNV5ObRoVXL+B7hYhFGtOyXaQCvLRL1aZSD5FF0PAXj+aIkqBS5L+hQpY1+OErayEu6FxKcDCSH0vEcjCeKkqDwYU4xHcal7YgkyUGCsyuSbLfmw0T1pShrv0MYUxtAkowcbAVJdnVvxpg/WhyI62jzkXTmIdqBIYm8ciTi0gaRdIb+yOkYuta6+pH7IOlMPFpXN1Dk3Doy4j9o3V1SjhTp0nZFkgRzHGij60fORDL6vrWCOslHLBPX0SYhSQ5AwsYmNByNWCYurbEB2f4iBPiR2SzTfErRy6uBEdXV1XT2u5IO49MuQ9acwXBSkDyZjs1pwExREswUuZ/pUKV9T4QKrTlRmoWYY348nkDH5htotSgJ5opcrKN9X4QK7RBk1yPm9EOSvfjM5zOxrN8l4YRX0bFK+5EIFdpsZIn1q3s6cuzyxsICIeWixjAfqS/Qsaz9BuHft/NQoTW+RHoVvUlBFywT1SWzKDJLZmeak2lOrybTQNZ+hZCQX75eu3atSjsKaVIzkFvosfyEzMs8xEoM5bVjO7f2d+o/yXwX8ptK1i5BCFTa9MgHEdk2b3bZ1HJTSsgg3uDHsdupz6BlWXsjQqDSGqchb6MGRz8ZsY1nWFXWhr5FLFBqU/DRaeMwNLQ0T7/EFr64YtPe8A8SHKXWyHL8oLM8lrJXIxXF1p68aNOGFiHBUWuNLKz5WakrRJHR1pw+WliG6bZdG3rjL6QoMbRG8vHSx+aOcmkVKyidiarIjM5BG7r2wz+QDPuKgPOKZ17xq+aXTW3lKIels56PrMDnUm1lsWUVPg27LbocTs6Y6267c9Fb9I+LBaLU7JwDA13Vi7qpnQPB/DzVqjSWTCT0rUuBZm1obGK0CxKjDSdEe01itOGEaMclRDs6nBAt+8/MptcuSIh2IbM2tfZsLm1q7Y2wNql2PJyUptKOvv5dGDnatfBINGs9BR6JZq2XpMEjoVvbBx4J3VpoZP6f2iA0Mpq1sNjQqx0Miw2tWj8kdnRqk+FwQKM2CQon9GlTYXBEm7YDBM5o0rYoxv4VaNG2HYm9K/Fam5LV6xTsWk04/C+LOCax9YczEgAAAABJRU5ErkJggg=="
 };
 var EditorFrame = function (_Component2) {
-  (0, _inherits2["default"])(EditorFrame, _Component2);
-  var _super2 = _createSuper(EditorFrame);
   function EditorFrame() {
     (0, _classCallCheck2["default"])(this, EditorFrame);
-    return _super2.apply(this, arguments);
+    return _callSuper(this, EditorFrame, arguments);
   }
-  (0, _createClass2["default"])(EditorFrame, [{
+  (0, _inherits2["default"])(EditorFrame, _Component2);
+  return (0, _createClass2["default"])(EditorFrame, [{
     key: "render",
     value: function render() {
       var style = {
@@ -366,7 +361,6 @@ var EditorFrame = function (_Component2) {
       return main;
     }
   }]);
-  return EditorFrame;
 }(_react.Component);
 EditorFrame.defaultProps = {
   buttonsBar: null,
@@ -376,23 +370,22 @@ EditorFrame.defaultProps = {
   children: null
 };
 var TextArea = function (_Component3) {
-  (0, _inherits2["default"])(TextArea, _Component3);
-  var _super3 = _createSuper(TextArea);
   function TextArea(props) {
     var _this4;
     (0, _classCallCheck2["default"])(this, TextArea);
-    _this4 = _super3.call(this, props);
-    _this4.onMouseMove = _this4.onMouseMove.bind((0, _assertThisInitialized2["default"])(_this4));
-    _this4.onKeyUp = _this4.onKeyUp.bind((0, _assertThisInitialized2["default"])(_this4));
-    _this4.onClick = _this4.onClick.bind((0, _assertThisInitialized2["default"])(_this4));
-    _this4.setCurrentSelection = _this4.setCurrentSelection.bind((0, _assertThisInitialized2["default"])(_this4));
+    _this4 = _callSuper(this, TextArea, [props]);
+    _this4.onMouseMove = _this4.onMouseMove.bind(_this4);
+    _this4.onKeyUp = _this4.onKeyUp.bind(_this4);
+    _this4.onClick = _this4.onClick.bind(_this4);
+    _this4.setCurrentSelection = _this4.setCurrentSelection.bind(_this4);
     _this4.editorRef = _react["default"].createRef();
     _this4.state = {
       selection: null
     };
     return _this4;
   }
-  (0, _createClass2["default"])(TextArea, [{
+  (0, _inherits2["default"])(TextArea, _Component3);
+  return (0, _createClass2["default"])(TextArea, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.editorRef.current.innerHTML = this.props.value;
@@ -465,7 +458,6 @@ var TextArea = function (_Component3) {
       }
     }
   }]);
-  return TextArea;
 }(_react.Component);
 TextArea.defaultProps = {
   value: "",
@@ -474,19 +466,18 @@ TextArea.defaultProps = {
   onComponentDidMount: null
 };
 var StatusBar = function (_Component4) {
-  (0, _inherits2["default"])(StatusBar, _Component4);
-  var _super4 = _createSuper(StatusBar);
   function StatusBar(props) {
     var _this6;
     (0, _classCallCheck2["default"])(this, StatusBar);
-    _this6 = _super4.call(this, props);
-    _this6.getStatusDesc = _this6.getStatusDesc.bind((0, _assertThisInitialized2["default"])(_this6));
+    _this6 = _callSuper(this, StatusBar, [props]);
+    _this6.getStatusDesc = _this6.getStatusDesc.bind(_this6);
     _this6.state = {
       statusBar: ""
     };
     return _this6;
   }
-  (0, _createClass2["default"])(StatusBar, [{
+  (0, _inherits2["default"])(StatusBar, _Component4);
+  return (0, _createClass2["default"])(StatusBar, [{
     key: "render",
     value: function render() {
       var style = {
@@ -538,7 +529,6 @@ var StatusBar = function (_Component4) {
       return result.reverse().join(" / ");
     }
   }]);
-  return StatusBar;
 }(_react.Component);
 StatusBar.defaultProps = {
   selection: null

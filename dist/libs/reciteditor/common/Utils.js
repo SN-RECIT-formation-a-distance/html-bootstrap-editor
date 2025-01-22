@@ -11,9 +11,10 @@ var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+var _JsNx;
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 /**
  * Atto HTML editor
  *
@@ -21,11 +22,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var JsNx = function () {
+var JsNx = exports.JsNx = function () {
   function JsNx() {
     (0, _classCallCheck2["default"])(this, JsNx);
   }
-  (0, _createClass2["default"])(JsNx, null, [{
+  return (0, _createClass2["default"])(JsNx, null, [{
     key: "at",
     value: function at(arr, index, defaultValue) {
       if (JsNx.exists(arr, index)) {
@@ -72,17 +73,16 @@ var JsNx = function () {
       return result.length > 0 ? result[0] : null;
     }
   }]);
-  return JsNx;
 }();
-exports.JsNx = JsNx;
+_JsNx = JsNx;
 JsNx.removeItem = function (arr, prop, value) {
-  var index = JsNx.getItemIndex(arr, prop, value, -1);
-  return JsNx.remove(arr, index);
+  var index = _JsNx.getItemIndex(arr, prop, value, -1);
+  return _JsNx.remove(arr, index);
 };
 JsNx.getItemIndex = function (arr, prop, value) {
   for (var i = 0; i < arr.length; i++) {
     var item = arr[i];
-    if (JsNx.get(item, prop, null) === value) {
+    if (_JsNx.get(item, prop, null) === value) {
       return i;
     }
   }
@@ -107,15 +107,15 @@ JsNx.clone = function (obj) {
   var result = Object.create(obj.__proto__);
   for (var prop in obj) {
     if (Array.isArray(obj[prop])) {
-      switch ((0, _typeof2["default"])(JsNx.at(obj[prop], 0, null))) {
+      switch ((0, _typeof2["default"])(_JsNx.at(obj[prop], 0, null))) {
         case "object":
-          result[prop] = JsNx.copy(obj[prop], 2);
+          result[prop] = _JsNx.copy(obj[prop], 2);
           break;
         default:
-          result[prop] = JsNx.copy(obj[prop]);
+          result[prop] = _JsNx.copy(obj[prop]);
       }
     } else if ((0, _typeof2["default"])(obj[prop]) === "object" && obj[prop] !== null) {
-      result[prop] = JsNx.clone(obj[prop]);
+      result[prop] = _JsNx.clone(obj[prop]);
     } else {
       result[prop] = obj[prop];
     }
@@ -134,7 +134,7 @@ JsNx.copy = function (arr, level) {
       try {
         for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
           var item = _step7.value;
-          result.push(item !== null ? JsNx.clone(item) : null);
+          result.push(item !== null ? _JsNx.clone(item) : null);
         }
       } catch (err) {
         _iterator7.e(err);
@@ -167,11 +167,11 @@ JsNx.compare = function (obj1, obj2) {
   }
   return true;
 };
-var Storage = function () {
+var Storage = exports.Storage = function () {
   function Storage() {
     (0, _classCallCheck2["default"])(this, Storage);
   }
-  (0, _createClass2["default"])(Storage, null, [{
+  return (0, _createClass2["default"])(Storage, null, [{
     key: "get",
     value: function get(key) {
       return localStorage.getItem(Storage.KEY_PREFIX + key);
@@ -182,15 +182,13 @@ var Storage = function () {
       return localStorage.setItem(Storage.KEY_PREFIX + key, value);
     }
   }]);
-  return Storage;
 }();
-exports.Storage = Storage;
 Storage.KEY_PREFIX = "reciteditor.";
-var Utils = function () {
+var Utils = exports.Utils = function () {
   function Utils() {
     (0, _classCallCheck2["default"])(this, Utils);
   }
-  (0, _createClass2["default"])(Utils, null, [{
+  return (0, _createClass2["default"])(Utils, null, [{
     key: "dateParse",
     value: function dateParse(strDate) {}
   }, {
@@ -346,15 +344,13 @@ var Utils = function () {
       return Math.random().toString(36).replace(/^0\./, '_');
     }
   }]);
-  return Utils;
 }();
-exports.Utils = Utils;
 Utils.version = 1.0;
-var IWrapper = function () {
+var IWrapper = exports.IWrapper = function () {
   function IWrapper() {
     (0, _classCallCheck2["default"])(this, IWrapper);
   }
-  (0, _createClass2["default"])(IWrapper, null, [{
+  return (0, _createClass2["default"])(IWrapper, null, [{
     key: "get_string",
     value: function get_string(str, resource) {
       if (!IWrapper.wrapper.get_string) {
@@ -459,17 +455,15 @@ var IWrapper = function () {
       return true;
     }
   }]);
-  return IWrapper;
 }();
-exports.IWrapper = IWrapper;
 IWrapper.wrapper = null;
-var UploadFile = function () {
+var UploadFile = exports.UploadFile = function () {
   function UploadFile() {
     (0, _classCallCheck2["default"])(this, UploadFile);
     this.onReadyStateChange = this.onReadyStateChange.bind(this);
     this.onUploadDone = null;
   }
-  (0, _createClass2["default"])(UploadFile, [{
+  return (0, _createClass2["default"])(UploadFile, [{
     key: "onReadyStateChange",
     value: function onReadyStateChange(file) {
       if (file) {
@@ -513,10 +507,9 @@ var UploadFile = function () {
   }, {
     key: "slugify",
     value: function slugify(str) {
-      var _map;
-      var map = (_map = {
+      var map = (0, _defineProperty2["default"])((0, _defineProperty2["default"])((0, _defineProperty2["default"])((0, _defineProperty2["default"])((0, _defineProperty2["default"])((0, _defineProperty2["default"])((0, _defineProperty2["default"])((0, _defineProperty2["default"])({
         '-': ' '
-      }, (0, _defineProperty2["default"])(_map, "-", '_'), (0, _defineProperty2["default"])(_map, 'a', 'á|à|ã|â|À|Á|Ã|Â'), (0, _defineProperty2["default"])(_map, 'e', 'é|è|ê|É|È|Ê'), (0, _defineProperty2["default"])(_map, 'i', 'í|ì|î|Í|Ì|Î'), (0, _defineProperty2["default"])(_map, 'o', 'ó|ò|ô|õ|Ó|Ò|Ô|Õ'), (0, _defineProperty2["default"])(_map, 'u', 'ú|ù|û|ü|Ú|Ù|Û|Ü'), (0, _defineProperty2["default"])(_map, 'c', 'ç|Ç'), (0, _defineProperty2["default"])(_map, 'n', 'ñ|Ñ'), _map);
+      }, "-", '_'), 'a', 'á|à|ã|â|À|Á|Ã|Â'), 'e', 'é|è|ê|É|È|Ê'), 'i', 'í|ì|î|Í|Ì|Î'), 'o', 'ó|ò|ô|õ|Ó|Ò|Ô|Õ'), 'u', 'ú|ù|û|ü|Ú|Ù|Û|Ü'), 'c', 'ç|Ç'), 'n', 'ñ|Ñ');
       for (var pattern in map) {
         str = str.replace(new RegExp(map[pattern], 'g'), pattern);
       }
@@ -569,15 +562,13 @@ var UploadFile = function () {
       });
     }
   }]);
-  return UploadFile;
 }();
-exports.UploadFile = UploadFile;
 UploadFile.instance = null;
-var UtilsString = function () {
+var UtilsString = exports.UtilsString = function () {
   function UtilsString() {
     (0, _classCallCheck2["default"])(this, UtilsString);
   }
-  (0, _createClass2["default"])(UtilsString, null, [{
+  return (0, _createClass2["default"])(UtilsString, null, [{
     key: "checkEmail",
     value: function checkEmail(email) {
       email = email || "";
@@ -618,14 +609,12 @@ var UtilsString = function () {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
   }]);
-  return UtilsString;
 }();
-exports.UtilsString = UtilsString;
-var UtilsDateTime = function () {
+var UtilsDateTime = exports.UtilsDateTime = function () {
   function UtilsDateTime() {
     (0, _classCallCheck2["default"])(this, UtilsDateTime);
   }
-  (0, _createClass2["default"])(UtilsDateTime, null, [{
+  return (0, _createClass2["default"])(UtilsDateTime, null, [{
     key: "nbMinSinceSundayToDate",
     value: function nbMinSinceSundayToDate(nbMinSinceSunday) {
       nbMinSinceSunday = parseInt(nbMinSinceSunday, 10);
@@ -663,9 +652,7 @@ var UtilsDateTime = function () {
       return result;
     }
   }]);
-  return UtilsDateTime;
 }();
-exports.UtilsDateTime = UtilsDateTime;
 UtilsDateTime.timeToMin = function (time) {
   var hour, minutes;
   if (time.length !== 5) {
@@ -676,11 +663,11 @@ UtilsDateTime.timeToMin = function (time) {
   return hour * 60 + minutes;
 };
 ;
-var UtilsTreeStruct = function () {
+var UtilsTreeStruct = exports.UtilsTreeStruct = function () {
   function UtilsTreeStruct() {
     (0, _classCallCheck2["default"])(this, UtilsTreeStruct);
   }
-  (0, _createClass2["default"])(UtilsTreeStruct, null, [{
+  return (0, _createClass2["default"])(UtilsTreeStruct, null, [{
     key: "treeWalk",
     value: function treeWalk(tree, propNodes, callback) {
       var i, node;
@@ -762,14 +749,12 @@ var UtilsTreeStruct = function () {
       return false;
     }
   }]);
-  return UtilsTreeStruct;
 }();
-exports.UtilsTreeStruct = UtilsTreeStruct;
-var UtilsHTML = function () {
+var UtilsHTML = exports.UtilsHTML = function () {
   function UtilsHTML() {
     (0, _classCallCheck2["default"])(this, UtilsHTML);
   }
-  (0, _createClass2["default"])(UtilsHTML, null, [{
+  return (0, _createClass2["default"])(UtilsHTML, null, [{
     key: "cssRules2Str",
     value: function cssRules2Str(cssRules) {
       var result = "";
@@ -930,7 +915,7 @@ var UtilsHTML = function () {
         convertToString = true;
       }
       var id = 1;
-      var funcRec = function funcRec(node) {
+      var _funcRec = function funcRec(node) {
         node.setAttribute("data-tag-id", id++);
         var _iterator6 = _createForOfIteratorHelper(node.children),
           _step6;
@@ -938,7 +923,7 @@ var UtilsHTML = function () {
           for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
             var child = _step6.value;
             if (child.children.length > 0) {
-              funcRec(child);
+              _funcRec(child);
             } else {
               child.setAttribute("data-tag-id", id++);
             }
@@ -949,7 +934,7 @@ var UtilsHTML = function () {
           _iterator6.f();
         }
       };
-      funcRec(node);
+      _funcRec(node);
       if (convertToString) {
         node = node.innerHTML;
       }
@@ -1038,14 +1023,12 @@ var UtilsHTML = function () {
       return data;
     }
   }]);
-  return UtilsHTML;
 }();
-exports.UtilsHTML = UtilsHTML;
-var i18n = function () {
+var i18n = exports.i18n = function () {
   function i18n() {
     (0, _classCallCheck2["default"])(this, i18n);
   }
-  (0, _createClass2["default"])(i18n, null, [{
+  return (0, _createClass2["default"])(i18n, null, [{
     key: "get_string",
     value: function get_string(str) {
       var res = "";
@@ -1057,14 +1040,12 @@ var i18n = function () {
       return res;
     }
   }]);
-  return i18n;
 }();
-exports.i18n = i18n;
-var Cookies = function () {
+var Cookies = exports.Cookies = function () {
   function Cookies() {
     (0, _classCallCheck2["default"])(this, Cookies);
   }
-  (0, _createClass2["default"])(Cookies, null, [{
+  return (0, _createClass2["default"])(Cookies, null, [{
     key: "set",
     value: function set(id, value, minutesExpire) {
       value = window.escape(value);
@@ -1074,9 +1055,7 @@ var Cookies = function () {
       document.cookie = id + "=" + value + "; " + expires;
     }
   }]);
-  return Cookies;
 }();
-exports.Cookies = Cookies;
 Cookies.get = function (id, defaultValue) {
   var result = defaultValue;
   var name = id + "=";

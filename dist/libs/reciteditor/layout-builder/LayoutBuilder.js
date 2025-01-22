@@ -9,37 +9,33 @@ exports.LayoutBuilder = void 0;
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _react = _interopRequireWildcard(require("react"));
 var _reactBootstrap = require("react-bootstrap");
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 var _RecitEditor = require("../RecitEditor");
 var _html2canvas = _interopRequireDefault(require("html2canvas"));
-var _LayoutBuilder$defaul;
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /**
  * Atto HTML editor
  *
  * @package    atto_reciteditor
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var LayoutBuilder = function (_Component) {
-  (0, _inherits2["default"])(LayoutBuilder, _Component);
-  var _super = _createSuper(LayoutBuilder);
+var LayoutBuilder = exports.LayoutBuilder = function (_Component) {
   function LayoutBuilder(props) {
     var _this;
     (0, _classCallCheck2["default"])(this, LayoutBuilder);
-    _this = _super.call(this, props);
-    _this.onNavbarSelect = _this.onNavbarSelect.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onSaveAndClose = _this.onSaveAndClose.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onWindowResize = _this.onWindowResize.bind((0, _assertThisInitialized2["default"])(_this));
+    _this = _callSuper(this, LayoutBuilder, [props]);
+    _this.onNavbarSelect = _this.onNavbarSelect.bind(_this);
+    _this.onSaveAndClose = _this.onSaveAndClose.bind(_this);
+    _this.onWindowResize = _this.onWindowResize.bind(_this);
     window.addEventListener("resize", _this.onWindowResize);
     var device = window.screen.width <= LayoutBuilder.properties.maxScreenWidth ? 'lg' : 'xl';
     _this.state = {
@@ -50,7 +46,8 @@ var LayoutBuilder = function (_Component) {
     _this.historyManager = new _RecitEditor.HistoryManager();
     return _this;
   }
-  (0, _createClass2["default"])(LayoutBuilder, [{
+  (0, _inherits2["default"])(LayoutBuilder, _Component);
+  return (0, _createClass2["default"])(LayoutBuilder, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       window.moveTo(0, 0);
@@ -269,15 +266,13 @@ var LayoutBuilder = function (_Component) {
       return device;
     }
   }]);
-  return LayoutBuilder;
 }(_react.Component);
-exports.LayoutBuilder = LayoutBuilder;
-LayoutBuilder.defaultProps = (_LayoutBuilder$defaul = {
+LayoutBuilder.defaultProps = (0, _defineProperty2["default"])((0, _defineProperty2["default"])({
   content: "",
   onSelectBuilder: null,
   onChange: null,
   onSaveAndClose: null
-}, (0, _defineProperty2["default"])(_LayoutBuilder$defaul, "onChange", null), (0, _defineProperty2["default"])(_LayoutBuilder$defaul, "options", {}), _LayoutBuilder$defaul);
+}, "onChange", null), "options", {});
 LayoutBuilder.properties = {
   topNavBar: {
     height: 56
@@ -291,40 +286,38 @@ LayoutBuilder.properties = {
   maxScreenWidth: 1920
 };
 var MainView = function (_Component2) {
-  (0, _inherits2["default"])(MainView, _Component2);
-  var _super2 = _createSuper(MainView);
   function MainView(props) {
     var _this3;
     (0, _classCallCheck2["default"])(this, MainView);
-    _this3 = _super2.call(this, props);
-    _this3.onSelectElement = _this3.onSelectElement.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onUnselectElement = _this3.onUnselectElement.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onDeleteElement = _this3.onDeleteElement.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onMoveNodeUp = _this3.onMoveNodeUp.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onMoveNodeDown = _this3.onMoveNodeDown.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onCloneNode = _this3.onCloneNode.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onAfterInsertNode = _this3.onAfterInsertNode.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onAfterReplaceNode = _this3.onAfterReplaceNode.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onReplaceNode = _this3.onReplaceNode.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onAfterAssignProperty = _this3.onAfterAssignProperty.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onStartEditingNodeText = _this3.onStartEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onFinishEditingNodeText = _this3.onFinishEditingNodeText.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onInsertTemplate = _this3.onInsertTemplate.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onSaveTemplate = _this3.onSaveTemplate.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onDragStart = _this3.onDragStart.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onDragEnd = _this3.onDragEnd.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onDrop = _this3.onDrop.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.getData = _this3.getData.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.setData = _this3.setData.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onKey = _this3.onKey.bind((0, _assertThisInitialized2["default"])(_this3));
-    _this3.onPanelChange = _this3.onPanelChange.bind((0, _assertThisInitialized2["default"])(_this3));
-    var designer = new _RecitEditor.DesignerState((0, _assertThisInitialized2["default"])(_this3), _this3.props.historyManager);
-    var sourceCode = new _RecitEditor.SourceCodeState((0, _assertThisInitialized2["default"])(_this3));
+    _this3 = _callSuper(this, MainView, [props]);
+    _this3.onSelectElement = _this3.onSelectElement.bind(_this3);
+    _this3.onUnselectElement = _this3.onUnselectElement.bind(_this3);
+    _this3.onDeleteElement = _this3.onDeleteElement.bind(_this3);
+    _this3.onMoveNodeUp = _this3.onMoveNodeUp.bind(_this3);
+    _this3.onMoveNodeDown = _this3.onMoveNodeDown.bind(_this3);
+    _this3.onCloneNode = _this3.onCloneNode.bind(_this3);
+    _this3.onAfterInsertNode = _this3.onAfterInsertNode.bind(_this3);
+    _this3.onAfterReplaceNode = _this3.onAfterReplaceNode.bind(_this3);
+    _this3.onReplaceNode = _this3.onReplaceNode.bind(_this3);
+    _this3.onAfterAssignProperty = _this3.onAfterAssignProperty.bind(_this3);
+    _this3.onStartEditingNodeText = _this3.onStartEditingNodeText.bind(_this3);
+    _this3.onFinishEditingNodeText = _this3.onFinishEditingNodeText.bind(_this3);
+    _this3.onInsertTemplate = _this3.onInsertTemplate.bind(_this3);
+    _this3.onSaveTemplate = _this3.onSaveTemplate.bind(_this3);
+    _this3.onDragStart = _this3.onDragStart.bind(_this3);
+    _this3.onDragEnd = _this3.onDragEnd.bind(_this3);
+    _this3.onDrop = _this3.onDrop.bind(_this3);
+    _this3.getData = _this3.getData.bind(_this3);
+    _this3.setData = _this3.setData.bind(_this3);
+    _this3.onKey = _this3.onKey.bind(_this3);
+    _this3.onPanelChange = _this3.onPanelChange.bind(_this3);
+    var designer = new _RecitEditor.DesignerState(_this3, _this3.props.historyManager);
+    var sourceCode = new _RecitEditor.SourceCodeState(_this3);
     _this3.canvasState = {
       designer: designer,
-      preview: new _RecitEditor.PreviewState((0, _assertThisInitialized2["default"])(_this3)),
+      preview: new _RecitEditor.PreviewState(_this3),
       sourceCode: sourceCode,
-      sourceCodeDesigner: new _RecitEditor.SourceCodeDesignerState((0, _assertThisInitialized2["default"])(_this3), designer, sourceCode)
+      sourceCodeDesigner: new _RecitEditor.SourceCodeDesignerState(_this3, designer, sourceCode)
     };
     _this3.state = {
       canvasState: 'designer',
@@ -337,7 +330,8 @@ var MainView = function (_Component2) {
     };
     return _this3;
   }
-  (0, _createClass2["default"])(MainView, [{
+  (0, _inherits2["default"])(MainView, _Component2);
+  return (0, _createClass2["default"])(MainView, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setData(this.props.content);
@@ -729,7 +723,6 @@ var MainView = function (_Component2) {
       });
     }
   }]);
-  return MainView;
 }(_react.Component);
 MainView.defaultProps = {
   content: "",
@@ -738,13 +731,12 @@ MainView.defaultProps = {
   historyManager: null
 };
 var LeftPanelButton = function (_Component3) {
-  (0, _inherits2["default"])(LeftPanelButton, _Component3);
-  var _super3 = _createSuper(LeftPanelButton);
   function LeftPanelButton() {
     (0, _classCallCheck2["default"])(this, LeftPanelButton);
-    return _super3.apply(this, arguments);
+    return _callSuper(this, LeftPanelButton, arguments);
   }
-  (0, _createClass2["default"])(LeftPanelButton, [{
+  (0, _inherits2["default"])(LeftPanelButton, _Component3);
+  return (0, _createClass2["default"])(LeftPanelButton, [{
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -766,7 +758,6 @@ var LeftPanelButton = function (_Component3) {
       return main;
     }
   }]);
-  return LeftPanelButton;
 }(_react.Component);
 LeftPanelButton.defaultProps = {
   checked: false,

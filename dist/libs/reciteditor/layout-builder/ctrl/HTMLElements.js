@@ -6,18 +6,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.HTMLVideoElement = exports.HTMLUListElement = exports.HTMLTableRowElement = exports.HTMLTableHeaderCellElement = exports.HTMLTableElement = exports.HTMLTableDataCellElement = exports.HTMLTabPaneElement = exports.HTMLTabElement = exports.HTMLTabContentElement = exports.HTMLSpanElement = exports.HTMLSectionElement = exports.HTMLRowElement = exports.HTMLParagraphElement = exports.HTMLOListElement = exports.HTMLNavLinkElement = exports.HTMLNavItemElement = exports.HTMLNavElement = exports.HTMLMediaElement = exports.HTMLLinkElement = exports.HTMLLIElement = exports.HTMLImageWithCaptionElement = exports.HTMLImageFigureElement = exports.HTMLImageElement = exports.HTMLIframeElement = exports.HTMLIconElement = exports.HTMLHorizontalBarElement = exports.HTMLHeadingElement = exports.HTMLHRElement = exports.HTMLGridElement = exports.HTMLFlipCardFrontElement = exports.HTMLFlipCardElement = exports.HTMLFlipCardBackElement = exports.HTMLEmbedElement = exports.HTMLDivElement = exports.HTMLColElement = exports.HTMLClickableImageElement = exports.HTMLCarouselNavElement = exports.HTMLCarouselElement = exports.HTMLCardHeaderElement = exports.HTMLCardFooterElement = exports.HTMLCardElement = exports.HTMLCardBodyElement = exports.HTMLButtonVideoElement = exports.HTMLButtonElement = exports.HTMLBodyElement = exports.HTMLAvatarCardElement = exports.HTMLAudioElement = exports.HTMLAlertElement = exports.HTMLAccordionNavElement = exports.HTMLAccordionElement = void 0;
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 var _RecitEditor = require("../../RecitEditor");
 var _HTMLProperties = require("./HTMLProperties");
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /**
  * Atto HTML editor
  *
  * @package    atto_reciteditor
@@ -44,7 +44,7 @@ var HTMLElement = function () {
       treeView: 1
     };
   }
-  (0, _createClass2["default"])(HTMLElement, [{
+  return (0, _createClass2["default"])(HTMLElement, [{
     key: "getDesc",
     value: function getDesc(el) {
       return this.name;
@@ -95,19 +95,17 @@ var HTMLElement = function () {
       el.parentNode.insertBefore(this.createElementDZ(_RecitEditor.i18n.get_string('after') + elName), el.nextSibling);
     }
   }]);
-  return HTMLElement;
 }();
-var HTMLBodyElement = function (_HTMLElement) {
-  (0, _inherits2["default"])(HTMLBodyElement, _HTMLElement);
-  var _super = _createSuper(HTMLBodyElement);
+var HTMLBodyElement = exports.HTMLBodyElement = function (_HTMLElement) {
   function HTMLBodyElement() {
     var _this;
     (0, _classCallCheck2["default"])(this, HTMLBodyElement);
-    _this = _super.call(this, 'Body', 'body', 'native');
+    _this = _callSuper(this, HTMLBodyElement, ['Body', 'body', 'native']);
     _this.visible = false;
     return _this;
   }
-  (0, _createClass2["default"])(HTMLBodyElement, [{
+  (0, _inherits2["default"])(HTMLBodyElement, _HTMLElement);
+  return (0, _createClass2["default"])(HTMLBodyElement, [{
     key: "prepareDroppingZones",
     value: function prepareDroppingZones(el) {
       if (el.children.length > 0) {
@@ -118,23 +116,20 @@ var HTMLBodyElement = function (_HTMLElement) {
       }
     }
   }]);
-  return HTMLBodyElement;
 }(HTMLElement);
-exports.HTMLBodyElement = HTMLBodyElement;
-var HTMLHeadingElement = function (_HTMLElement2) {
-  (0, _inherits2["default"])(HTMLHeadingElement, _HTMLElement2);
-  var _super2 = _createSuper(HTMLHeadingElement);
+var HTMLHeadingElement = exports.HTMLHeadingElement = function (_HTMLElement2) {
   function HTMLHeadingElement(name, tagName, icon) {
     var _this2;
     (0, _classCallCheck2["default"])(this, HTMLHeadingElement);
-    _this2 = _super2.call(this, name, tagName, 'native', {
+    _this2 = _callSuper(this, HTMLHeadingElement, [name, tagName, 'native', {
       min: ['heading', 'bs-text'],
       all: ['heading', 'bs-general', 'bs-text', 'bs-background', 'bs-spacing', 'bs-border', 'font', 'layout', 'background', 'htmlattributes']
-    });
+    }]);
     _this2.icon = icon;
     return _this2;
   }
-  (0, _createClass2["default"])(HTMLHeadingElement, [{
+  (0, _inherits2["default"])(HTMLHeadingElement, _HTMLElement2);
+  return (0, _createClass2["default"])(HTMLHeadingElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -169,17 +164,14 @@ var HTMLHeadingElement = function (_HTMLElement2) {
       return el.tagName;
     }
   }]);
-  return HTMLHeadingElement;
 }(HTMLElement);
-exports.HTMLHeadingElement = HTMLHeadingElement;
-var HTMLParagraphElement = function (_HTMLElement3) {
-  (0, _inherits2["default"])(HTMLParagraphElement, _HTMLElement3);
-  var _super3 = _createSuper(HTMLParagraphElement);
+var HTMLParagraphElement = exports.HTMLParagraphElement = function (_HTMLElement3) {
   function HTMLParagraphElement() {
     (0, _classCallCheck2["default"])(this, HTMLParagraphElement);
-    return _super3.call(this, _RecitEditor.i18n.get_string('paragraph'), 'p', 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.text);
+    return _callSuper(this, HTMLParagraphElement, [_RecitEditor.i18n.get_string('paragraph'), 'p', 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.text]);
   }
-  (0, _createClass2["default"])(HTMLParagraphElement, [{
+  (0, _inherits2["default"])(HTMLParagraphElement, _HTMLElement3);
+  return (0, _createClass2["default"])(HTMLParagraphElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -193,20 +185,17 @@ var HTMLParagraphElement = function (_HTMLElement3) {
       el.parentNode.insertBefore(this.createElementDZ(_RecitEditor.i18n.get_string('after') + this.getDescDZ()), el.nextSibling);
     }
   }]);
-  return HTMLParagraphElement;
 }(HTMLElement);
-exports.HTMLParagraphElement = HTMLParagraphElement;
-var HTMLLinkElement = function (_HTMLElement4) {
-  (0, _inherits2["default"])(HTMLLinkElement, _HTMLElement4);
-  var _super4 = _createSuper(HTMLLinkElement);
+var HTMLLinkElement = exports.HTMLLinkElement = function (_HTMLElement4) {
   function HTMLLinkElement() {
     var _this3;
     (0, _classCallCheck2["default"])(this, HTMLLinkElement);
-    _this3 = _super4.call(this, _RecitEditor.i18n.get_string('link'), "a", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.link);
+    _this3 = _callSuper(this, HTMLLinkElement, [_RecitEditor.i18n.get_string('link'), "a", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.link]);
     _this3.cssProp.prefix = 'btn';
     return _this3;
   }
-  (0, _createClass2["default"])(HTMLLinkElement, [{
+  (0, _inherits2["default"])(HTMLLinkElement, _HTMLElement4);
+  return (0, _createClass2["default"])(HTMLLinkElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -216,33 +205,28 @@ var HTMLLinkElement = function (_HTMLElement4) {
       return el;
     }
   }]);
-  return HTMLLinkElement;
 }(HTMLElement);
-exports.HTMLLinkElement = HTMLLinkElement;
-var HTMLImageFigureElement = function (_HTMLElement5) {
-  (0, _inherits2["default"])(HTMLImageFigureElement, _HTMLElement5);
-  var _super5 = _createSuper(HTMLImageFigureElement);
+var HTMLImageFigureElement = exports.HTMLImageFigureElement = function (_HTMLElement5) {
   function HTMLImageFigureElement() {
     var _this4;
     (0, _classCallCheck2["default"])(this, HTMLImageFigureElement);
-    _this4 = _super5.call(this, _RecitEditor.i18n.get_string('imagewithcaption'), "figure", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general);
+    _this4 = _callSuper(this, HTMLImageFigureElement, [_RecitEditor.i18n.get_string('imagewithcaption'), "figure", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
     _this4.visible = false;
     return _this4;
   }
+  (0, _inherits2["default"])(HTMLImageFigureElement, _HTMLElement5);
   return (0, _createClass2["default"])(HTMLImageFigureElement);
 }(HTMLElement);
-exports.HTMLImageFigureElement = HTMLImageFigureElement;
-var HTMLButtonElement = function (_HTMLElement6) {
-  (0, _inherits2["default"])(HTMLButtonElement, _HTMLElement6);
-  var _super6 = _createSuper(HTMLButtonElement);
+var HTMLButtonElement = exports.HTMLButtonElement = function (_HTMLElement6) {
   function HTMLButtonElement(name, tagName, type, properties) {
     var _this5;
     (0, _classCallCheck2["default"])(this, HTMLButtonElement);
-    _this5 = _super6.call(this, name, tagName, type, properties);
+    _this5 = _callSuper(this, HTMLButtonElement, [name, tagName, type, properties]);
     _this5.cssProp.prefix = 'btn';
     return _this5;
   }
-  (0, _createClass2["default"])(HTMLButtonElement, [{
+  (0, _inherits2["default"])(HTMLButtonElement, _HTMLElement6);
+  return (0, _createClass2["default"])(HTMLButtonElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -261,20 +245,17 @@ var HTMLButtonElement = function (_HTMLElement6) {
       return el;
     }
   }]);
-  return HTMLButtonElement;
 }(HTMLElement);
-exports.HTMLButtonElement = HTMLButtonElement;
-var HTMLButtonVideoElement = function (_HTMLElement7) {
-  (0, _inherits2["default"])(HTMLButtonVideoElement, _HTMLElement7);
-  var _super7 = _createSuper(HTMLButtonVideoElement);
+var HTMLButtonVideoElement = exports.HTMLButtonVideoElement = function (_HTMLElement7) {
   function HTMLButtonVideoElement() {
     (0, _classCallCheck2["default"])(this, HTMLButtonVideoElement);
-    return _super7.call(this, _RecitEditor.i18n.get_string('videobutton'), 'videobtn', 'bootstrap', {
+    return _callSuper(this, HTMLButtonVideoElement, [_RecitEditor.i18n.get_string('videobutton'), 'videobtn', 'bootstrap', {
       all: [].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.buttons.all), ['videobtn']),
       min: ['videobtn']
-    });
+    }]);
   }
-  (0, _createClass2["default"])(HTMLButtonVideoElement, [{
+  (0, _inherits2["default"])(HTMLButtonVideoElement, _HTMLElement7);
+  return (0, _createClass2["default"])(HTMLButtonVideoElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -299,30 +280,25 @@ var HTMLButtonVideoElement = function (_HTMLElement7) {
       return el;
     }
   }]);
-  return HTMLButtonVideoElement;
 }(HTMLElement);
-exports.HTMLButtonVideoElement = HTMLButtonVideoElement;
-var HTMLMediaElement = function (_HTMLElement8) {
-  (0, _inherits2["default"])(HTMLMediaElement, _HTMLElement8);
-  var _super8 = _createSuper(HTMLMediaElement);
+var HTMLMediaElement = exports.HTMLMediaElement = function (_HTMLElement8) {
   function HTMLMediaElement(name, tagName, type, properties) {
     (0, _classCallCheck2["default"])(this, HTMLMediaElement);
-    return _super8.call(this, name, tagName, type, properties);
+    return _callSuper(this, HTMLMediaElement, [name, tagName, type, properties]);
   }
+  (0, _inherits2["default"])(HTMLMediaElement, _HTMLElement8);
   return (0, _createClass2["default"])(HTMLMediaElement);
 }(HTMLElement);
-exports.HTMLMediaElement = HTMLMediaElement;
-var HTMLAudioElement = function (_HTMLMediaElement) {
-  (0, _inherits2["default"])(HTMLAudioElement, _HTMLMediaElement);
-  var _super9 = _createSuper(HTMLAudioElement);
+var HTMLAudioElement = exports.HTMLAudioElement = function (_HTMLMediaElement) {
   function HTMLAudioElement() {
     (0, _classCallCheck2["default"])(this, HTMLAudioElement);
-    return _super9.call(this, _RecitEditor.i18n.get_string('audio'), 'audio', 'native', {
+    return _callSuper(this, HTMLAudioElement, [_RecitEditor.i18n.get_string('audio'), 'audio', 'native', {
       all: ['bs-general', 'bs-spacingborder', 'htmlattributes', 'sourceaudio', 'layout'],
       min: ['sourceaudio']
-    });
+    }]);
   }
-  (0, _createClass2["default"])(HTMLAudioElement, [{
+  (0, _inherits2["default"])(HTMLAudioElement, _HTMLMediaElement);
+  return (0, _createClass2["default"])(HTMLAudioElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -335,17 +311,14 @@ var HTMLAudioElement = function (_HTMLMediaElement) {
       return _RecitEditor.i18n.get_string('audiohelp');
     }
   }]);
-  return HTMLAudioElement;
 }(HTMLMediaElement);
-exports.HTMLAudioElement = HTMLAudioElement;
-var HTMLVideoElement = function (_HTMLMediaElement2) {
-  (0, _inherits2["default"])(HTMLVideoElement, _HTMLMediaElement2);
-  var _super10 = _createSuper(HTMLVideoElement);
+var HTMLVideoElement = exports.HTMLVideoElement = function (_HTMLMediaElement2) {
   function HTMLVideoElement(name, tagName, type) {
     (0, _classCallCheck2["default"])(this, HTMLVideoElement);
-    return _super10.call(this, name, 'video', type, _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.video);
+    return _callSuper(this, HTMLVideoElement, [name, 'video', type, _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.video]);
   }
-  (0, _createClass2["default"])(HTMLVideoElement, [{
+  (0, _inherits2["default"])(HTMLVideoElement, _HTMLMediaElement2);
+  return (0, _createClass2["default"])(HTMLVideoElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -370,30 +343,25 @@ var HTMLVideoElement = function (_HTMLMediaElement2) {
       return el;
     }
   }]);
-  return HTMLVideoElement;
 }(HTMLMediaElement);
-exports.HTMLVideoElement = HTMLVideoElement;
-var HTMLDivElement = function (_HTMLElement9) {
-  (0, _inherits2["default"])(HTMLDivElement, _HTMLElement9);
-  var _super11 = _createSuper(HTMLDivElement);
+var HTMLDivElement = exports.HTMLDivElement = function (_HTMLElement9) {
   function HTMLDivElement(name, tagName, type, properties) {
     (0, _classCallCheck2["default"])(this, HTMLDivElement);
-    return _super11.call(this, name || "Div", tagName || "div", type || 'native', properties || _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers);
+    return _callSuper(this, HTMLDivElement, [name || "Div", tagName || "div", type || 'native', properties || _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
   }
+  (0, _inherits2["default"])(HTMLDivElement, _HTMLElement9);
   return (0, _createClass2["default"])(HTMLDivElement);
 }(HTMLElement);
-exports.HTMLDivElement = HTMLDivElement;
-var HTMLEmbedElement = function (_HTMLElement10) {
-  (0, _inherits2["default"])(HTMLEmbedElement, _HTMLElement10);
-  var _super12 = _createSuper(HTMLEmbedElement);
+var HTMLEmbedElement = exports.HTMLEmbedElement = function (_HTMLElement10) {
   function HTMLEmbedElement() {
     (0, _classCallCheck2["default"])(this, HTMLEmbedElement);
-    return _super12.call(this, _RecitEditor.i18n.get_string('embed'), 'div', 'bootstrap', {
+    return _callSuper(this, HTMLEmbedElement, [_RecitEditor.i18n.get_string('embed'), 'div', 'bootstrap', {
       all: ['bs-general', 'bs-spacingborder', 'marginborderpadding', 'layout', 'embed'],
       min: ['embed']
-    });
+    }]);
   }
-  (0, _createClass2["default"])(HTMLEmbedElement, [{
+  (0, _inherits2["default"])(HTMLEmbedElement, _HTMLElement10);
+  return (0, _createClass2["default"])(HTMLEmbedElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement('div');
@@ -411,23 +379,20 @@ var HTMLEmbedElement = function (_HTMLElement10) {
       return el.classList.contains('embed-element');
     }
   }]);
-  return HTMLEmbedElement;
 }(HTMLElement);
-exports.HTMLEmbedElement = HTMLEmbedElement;
-var HTMLIframeElement = function (_HTMLElement11) {
-  (0, _inherits2["default"])(HTMLIframeElement, _HTMLElement11);
-  var _super13 = _createSuper(HTMLIframeElement);
+var HTMLIframeElement = exports.HTMLIframeElement = function (_HTMLElement11) {
   function HTMLIframeElement() {
     var _this6;
     (0, _classCallCheck2["default"])(this, HTMLIframeElement);
-    _this6 = _super13.call(this, _RecitEditor.i18n.get_string('iframe'), 'iframe', 'native', {
+    _this6 = _callSuper(this, HTMLIframeElement, [_RecitEditor.i18n.get_string('iframe'), 'iframe', 'native', {
       all: ['outerhtml', 'marginborderpadding', 'layout'],
       min: ['outerhtml']
-    });
+    }]);
     _this6.visible = false;
     return _this6;
   }
-  (0, _createClass2["default"])(HTMLIframeElement, [{
+  (0, _inherits2["default"])(HTMLIframeElement, _HTMLElement11);
+  return (0, _createClass2["default"])(HTMLIframeElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement('iframe');
@@ -442,49 +407,42 @@ var HTMLIframeElement = function (_HTMLElement11) {
       return el.tagName == 'IFRAME';
     }
   }]);
-  return HTMLIframeElement;
 }(HTMLElement);
-exports.HTMLIframeElement = HTMLIframeElement;
-var HTMLSpanElement = function (_HTMLElement12) {
-  (0, _inherits2["default"])(HTMLSpanElement, _HTMLElement12);
-  var _super14 = _createSuper(HTMLSpanElement);
+var HTMLSpanElement = exports.HTMLSpanElement = function (_HTMLElement12) {
   function HTMLSpanElement() {
     var _this7;
     (0, _classCallCheck2["default"])(this, HTMLSpanElement);
-    _this7 = _super14.call(this, "Span", "span", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers);
+    _this7 = _callSuper(this, HTMLSpanElement, ["Span", "span", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
     _this7.visible = false;
     return _this7;
   }
+  (0, _inherits2["default"])(HTMLSpanElement, _HTMLElement12);
   return (0, _createClass2["default"])(HTMLSpanElement);
 }(HTMLElement);
-exports.HTMLSpanElement = HTMLSpanElement;
-var HTMLSectionElement = function (_HTMLElement13) {
-  (0, _inherits2["default"])(HTMLSectionElement, _HTMLElement13);
-  var _super15 = _createSuper(HTMLSectionElement);
+var HTMLSectionElement = exports.HTMLSectionElement = function (_HTMLElement13) {
   function HTMLSectionElement() {
     (0, _classCallCheck2["default"])(this, HTMLSectionElement);
-    return _super15.call(this, "Section", "section", 'native', {
+    return _callSuper(this, HTMLSectionElement, ["Section", "section", 'native', {
       min: ['bs-grid', 'modal-grid', 'bs-background', 'bs-border'],
       all: ['bs-grid', 'modal-grid', 'bs-general', 'bs-text', 'bs-background', 'bs-spacing', 'bs-border', 'layout', 'background', 'htmlattributes']
-    });
+    }]);
   }
+  (0, _inherits2["default"])(HTMLSectionElement, _HTMLElement13);
   return (0, _createClass2["default"])(HTMLSectionElement);
 }(HTMLElement);
-exports.HTMLSectionElement = HTMLSectionElement;
-var HTMLGridElement = function (_HTMLElement14) {
-  (0, _inherits2["default"])(HTMLGridElement, _HTMLElement14);
-  var _super16 = _createSuper(HTMLGridElement);
+var HTMLGridElement = exports.HTMLGridElement = function (_HTMLElement14) {
   function HTMLGridElement() {
     var _this8;
     (0, _classCallCheck2["default"])(this, HTMLGridElement);
-    _this8 = _super16.call(this, 'Container', 'grid', 'bootstrap', {
+    _this8 = _callSuper(this, HTMLGridElement, ['Container', 'grid', 'bootstrap', {
       min: ['bs-grid', 'modal-grid', 'bs-background', 'bs-border'],
       all: ['bs-grid', 'modal-grid', 'bs-general', 'bs-text', 'bs-background', 'bs-spacing', 'bs-border', 'layout', 'background', 'htmlattributes']
-    });
+    }]);
     _this8.modalCreation = true;
     return _this8;
   }
-  (0, _createClass2["default"])(HTMLGridElement, [{
+  (0, _inherits2["default"])(HTMLGridElement, _HTMLElement14);
+  return (0, _createClass2["default"])(HTMLGridElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement("div");
@@ -513,23 +471,20 @@ var HTMLGridElement = function (_HTMLElement14) {
       return el.classList.contains('container') || el.classList.contains('container-fluid');
     }
   }]);
-  return HTMLGridElement;
 }(HTMLElement);
-exports.HTMLGridElement = HTMLGridElement;
-var HTMLRowElement = function (_HTMLElement15) {
-  (0, _inherits2["default"])(HTMLRowElement, _HTMLElement15);
-  var _super17 = _createSuper(HTMLRowElement);
+var HTMLRowElement = exports.HTMLRowElement = function (_HTMLElement15) {
   function HTMLRowElement() {
     var _this9;
     (0, _classCallCheck2["default"])(this, HTMLRowElement);
-    _this9 = _super17.call(this, 'Row', 'row', 'bootstrap', {
+    _this9 = _callSuper(this, HTMLRowElement, ['Row', 'row', 'bootstrap', {
       min: ['bs-row', 'bs-background', 'bs-border'],
       all: ['bs-row', 'bs-grid', 'bs-general', 'bs-text', 'bs-background', 'bs-spacing', 'bs-border', 'layout', 'background', 'htmlattributes']
-    });
+    }]);
     _this9.visible = false;
     return _this9;
   }
-  (0, _createClass2["default"])(HTMLRowElement, [{
+  (0, _inherits2["default"])(HTMLRowElement, _HTMLElement15);
+  return (0, _createClass2["default"])(HTMLRowElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -550,23 +505,20 @@ var HTMLRowElement = function (_HTMLElement15) {
       return el;
     }
   }]);
-  return HTMLRowElement;
 }(HTMLElement);
-exports.HTMLRowElement = HTMLRowElement;
-var HTMLColElement = function (_HTMLElement16) {
-  (0, _inherits2["default"])(HTMLColElement, _HTMLElement16);
-  var _super18 = _createSuper(HTMLColElement);
+var HTMLColElement = exports.HTMLColElement = function (_HTMLElement16) {
   function HTMLColElement() {
     var _this10;
     (0, _classCallCheck2["default"])(this, HTMLColElement);
-    _this10 = _super18.call(this, 'Col', 'col', 'bootstrap', {
+    _this10 = _callSuper(this, HTMLColElement, ['Col', 'col', 'bootstrap', {
       min: ['bs-col', 'bs-background', 'bs-border'],
       all: ['bs-col', 'bs-grid', 'bs-general', 'bs-text', 'bs-background', 'bs-spacing', 'bs-border', 'layout', 'background', 'htmlattributes']
-    });
+    }]);
     _this10.visible = false;
     return _this10;
   }
-  (0, _createClass2["default"])(HTMLColElement, [{
+  (0, _inherits2["default"])(HTMLColElement, _HTMLElement16);
+  return (0, _createClass2["default"])(HTMLColElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -598,17 +550,14 @@ var HTMLColElement = function (_HTMLElement16) {
       }
     }
   }]);
-  return HTMLColElement;
 }(HTMLElement);
-exports.HTMLColElement = HTMLColElement;
-var HTMLUListElement = function (_HTMLElement17) {
-  (0, _inherits2["default"])(HTMLUListElement, _HTMLElement17);
-  var _super19 = _createSuper(HTMLUListElement);
+var HTMLUListElement = exports.HTMLUListElement = function (_HTMLElement17) {
   function HTMLUListElement() {
     (0, _classCallCheck2["default"])(this, HTMLUListElement);
-    return _super19.call(this, _RecitEditor.i18n.get_string('list'), "ul", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers);
+    return _callSuper(this, HTMLUListElement, [_RecitEditor.i18n.get_string('list'), "ul", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
   }
-  (0, _createClass2["default"])(HTMLUListElement, [{
+  (0, _inherits2["default"])(HTMLUListElement, _HTMLElement17);
+  return (0, _createClass2["default"])(HTMLUListElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -616,17 +565,14 @@ var HTMLUListElement = function (_HTMLElement17) {
       return el;
     }
   }]);
-  return HTMLUListElement;
 }(HTMLElement);
-exports.HTMLUListElement = HTMLUListElement;
-var HTMLOListElement = function (_HTMLElement18) {
-  (0, _inherits2["default"])(HTMLOListElement, _HTMLElement18);
-  var _super20 = _createSuper(HTMLOListElement);
+var HTMLOListElement = exports.HTMLOListElement = function (_HTMLElement18) {
   function HTMLOListElement() {
     (0, _classCallCheck2["default"])(this, HTMLOListElement);
-    return _super20.call(this, _RecitEditor.i18n.get_string('numberedlist'), "ol", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers);
+    return _callSuper(this, HTMLOListElement, [_RecitEditor.i18n.get_string('numberedlist'), "ol", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
   }
-  (0, _createClass2["default"])(HTMLOListElement, [{
+  (0, _inherits2["default"])(HTMLOListElement, _HTMLElement18);
+  return (0, _createClass2["default"])(HTMLOListElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -634,23 +580,20 @@ var HTMLOListElement = function (_HTMLElement18) {
       return el;
     }
   }]);
-  return HTMLOListElement;
 }(HTMLElement);
-exports.HTMLOListElement = HTMLOListElement;
-var HTMLTableElement = function (_HTMLElement19) {
-  (0, _inherits2["default"])(HTMLTableElement, _HTMLElement19);
-  var _super21 = _createSuper(HTMLTableElement);
+var HTMLTableElement = exports.HTMLTableElement = function (_HTMLElement19) {
   function HTMLTableElement() {
     var _this11;
     (0, _classCallCheck2["default"])(this, HTMLTableElement);
-    _this11 = _super21.call(this, _RecitEditor.i18n.get_string('table'), 'table', 'nativecomponent', {
+    _this11 = _callSuper(this, HTMLTableElement, [_RecitEditor.i18n.get_string('table'), 'table', 'nativecomponent', {
       all: ['bs-table'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
       min: ['bs-table']
-    });
+    }]);
     _this11.cssProp.prefix = 'table';
     return _this11;
   }
-  (0, _createClass2["default"])(HTMLTableElement, [{
+  (0, _inherits2["default"])(HTMLTableElement, _HTMLElement19);
+  return (0, _createClass2["default"])(HTMLTableElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement('table');
@@ -670,23 +613,20 @@ var HTMLTableElement = function (_HTMLElement19) {
       return el;
     }
   }]);
-  return HTMLTableElement;
 }(HTMLElement);
-exports.HTMLTableElement = HTMLTableElement;
-var HTMLTableDataCellElement = function (_HTMLElement20) {
-  (0, _inherits2["default"])(HTMLTableDataCellElement, _HTMLElement20);
-  var _super22 = _createSuper(HTMLTableDataCellElement);
+var HTMLTableDataCellElement = exports.HTMLTableDataCellElement = function (_HTMLElement20) {
   function HTMLTableDataCellElement() {
     var _this12;
     (0, _classCallCheck2["default"])(this, HTMLTableDataCellElement);
-    _this12 = _super22.call(this, _RecitEditor.i18n.get_string('tablecell'), "td", 'native', {
+    _this12 = _callSuper(this, HTMLTableDataCellElement, [_RecitEditor.i18n.get_string('tablecell'), "td", 'native', {
       all: ['bs-tablecell'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
       min: ['bs-tablecell']
-    });
+    }]);
     _this12.visible = false;
     return _this12;
   }
-  (0, _createClass2["default"])(HTMLTableDataCellElement, [{
+  (0, _inherits2["default"])(HTMLTableDataCellElement, _HTMLElement20);
+  return (0, _createClass2["default"])(HTMLTableDataCellElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -694,23 +634,20 @@ var HTMLTableDataCellElement = function (_HTMLElement20) {
       return el;
     }
   }]);
-  return HTMLTableDataCellElement;
 }(HTMLElement);
-exports.HTMLTableDataCellElement = HTMLTableDataCellElement;
-var HTMLTableHeaderCellElement = function (_HTMLElement21) {
-  (0, _inherits2["default"])(HTMLTableHeaderCellElement, _HTMLElement21);
-  var _super23 = _createSuper(HTMLTableHeaderCellElement);
+var HTMLTableHeaderCellElement = exports.HTMLTableHeaderCellElement = function (_HTMLElement21) {
   function HTMLTableHeaderCellElement() {
     var _this13;
     (0, _classCallCheck2["default"])(this, HTMLTableHeaderCellElement);
-    _this13 = _super23.call(this, _RecitEditor.i18n.get_string('tableheader'), "th", 'native', {
+    _this13 = _callSuper(this, HTMLTableHeaderCellElement, [_RecitEditor.i18n.get_string('tableheader'), "th", 'native', {
       all: ['bs-tablecell'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
       min: ['bs-tablecell']
-    });
+    }]);
     _this13.visible = false;
     return _this13;
   }
-  (0, _createClass2["default"])(HTMLTableHeaderCellElement, [{
+  (0, _inherits2["default"])(HTMLTableHeaderCellElement, _HTMLElement21);
+  return (0, _createClass2["default"])(HTMLTableHeaderCellElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -718,43 +655,37 @@ var HTMLTableHeaderCellElement = function (_HTMLElement21) {
       return el;
     }
   }]);
-  return HTMLTableHeaderCellElement;
 }(HTMLElement);
-exports.HTMLTableHeaderCellElement = HTMLTableHeaderCellElement;
-var HTMLTableRowElement = function (_HTMLElement22) {
-  (0, _inherits2["default"])(HTMLTableRowElement, _HTMLElement22);
-  var _super24 = _createSuper(HTMLTableRowElement);
+var HTMLTableRowElement = exports.HTMLTableRowElement = function (_HTMLElement22) {
   function HTMLTableRowElement() {
     var _this14;
     (0, _classCallCheck2["default"])(this, HTMLTableRowElement);
-    _this14 = _super24.call(this, _RecitEditor.i18n.get_string('tablerow'), "tr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers);
+    _this14 = _callSuper(this, HTMLTableRowElement, [_RecitEditor.i18n.get_string('tablerow'), "tr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
     _this14.visible = false;
     return _this14;
   }
-  (0, _createClass2["default"])(HTMLTableRowElement, [{
+  (0, _inherits2["default"])(HTMLTableRowElement, _HTMLElement22);
+  return (0, _createClass2["default"])(HTMLTableRowElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
       return el;
     }
   }]);
-  return HTMLTableRowElement;
 }(HTMLElement);
-exports.HTMLTableRowElement = HTMLTableRowElement;
-var HTMLLIElement = function (_HTMLElement23) {
-  (0, _inherits2["default"])(HTMLLIElement, _HTMLElement23);
-  var _super25 = _createSuper(HTMLLIElement);
+var HTMLLIElement = exports.HTMLLIElement = function (_HTMLElement23) {
   function HTMLLIElement() {
     var _this15;
     (0, _classCallCheck2["default"])(this, HTMLLIElement);
-    _this15 = _super25.call(this, _RecitEditor.i18n.get_string('listitem'), "li", 'native', {
+    _this15 = _callSuper(this, HTMLLIElement, [_RecitEditor.i18n.get_string('listitem'), "li", 'native', {
       all: ['bs-general', 'bs-spacingborder', 'htmlattributes', 'font', 'layout', 'background'],
       min: []
-    });
+    }]);
     _this15.visible = false;
     return _this15;
   }
-  (0, _createClass2["default"])(HTMLLIElement, [{
+  (0, _inherits2["default"])(HTMLLIElement, _HTMLElement23);
+  return (0, _createClass2["default"])(HTMLLIElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement(this.tagName);
@@ -762,20 +693,17 @@ var HTMLLIElement = function (_HTMLElement23) {
       return el;
     }
   }]);
-  return HTMLLIElement;
 }(HTMLElement);
-exports.HTMLLIElement = HTMLLIElement;
-var HTMLAlertElement = function (_HTMLDivElement) {
-  (0, _inherits2["default"])(HTMLAlertElement, _HTMLDivElement);
-  var _super26 = _createSuper(HTMLAlertElement);
+var HTMLAlertElement = exports.HTMLAlertElement = function (_HTMLDivElement) {
   function HTMLAlertElement() {
     var _this16;
     (0, _classCallCheck2["default"])(this, HTMLAlertElement);
-    _this16 = _super26.call(this, _RecitEditor.i18n.get_string('alert'), "div", 'bootstrap');
+    _this16 = _callSuper(this, HTMLAlertElement, [_RecitEditor.i18n.get_string('alert'), "div", 'bootstrap']);
     _this16.cssProp.prefix = "alert";
     return _this16;
   }
-  (0, _createClass2["default"])(HTMLAlertElement, [{
+  (0, _inherits2["default"])(HTMLAlertElement, _HTMLDivElement);
+  return (0, _createClass2["default"])(HTMLAlertElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -795,17 +723,14 @@ var HTMLAlertElement = function (_HTMLDivElement) {
       return el;
     }
   }]);
-  return HTMLAlertElement;
 }(HTMLDivElement);
-exports.HTMLAlertElement = HTMLAlertElement;
-var HTMLAvatarCardElement = function (_HTMLDivElement2) {
-  (0, _inherits2["default"])(HTMLAvatarCardElement, _HTMLDivElement2);
-  var _super27 = _createSuper(HTMLAvatarCardElement);
+var HTMLAvatarCardElement = exports.HTMLAvatarCardElement = function (_HTMLDivElement2) {
   function HTMLAvatarCardElement() {
     (0, _classCallCheck2["default"])(this, HTMLAvatarCardElement);
-    return _super27.call(this, _RecitEditor.i18n.get_string('avatarcard'), "div", 'bootstrap');
+    return _callSuper(this, HTMLAvatarCardElement, [_RecitEditor.i18n.get_string('avatarcard'), "div", 'bootstrap']);
   }
-  (0, _createClass2["default"])(HTMLAvatarCardElement, [{
+  (0, _inherits2["default"])(HTMLAvatarCardElement, _HTMLDivElement2);
+  return (0, _createClass2["default"])(HTMLAvatarCardElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -849,20 +774,17 @@ var HTMLAvatarCardElement = function (_HTMLDivElement2) {
       return card;
     }
   }]);
-  return HTMLAvatarCardElement;
 }(HTMLDivElement);
-exports.HTMLAvatarCardElement = HTMLAvatarCardElement;
-var HTMLCardElement = function (_HTMLDivElement3) {
-  (0, _inherits2["default"])(HTMLCardElement, _HTMLDivElement3);
-  var _super28 = _createSuper(HTMLCardElement);
+var HTMLCardElement = exports.HTMLCardElement = function (_HTMLDivElement3) {
   function HTMLCardElement() {
     (0, _classCallCheck2["default"])(this, HTMLCardElement);
     var properties = Object.assign(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers, {});
     properties.min.splice(1, 0, 'bs-dimension');
     properties.all.splice(2, 0, 'bs-dimension');
-    return _super28.call(this, _RecitEditor.i18n.get_string('card'), "div", 'bootstrap', properties);
+    return _callSuper(this, HTMLCardElement, [_RecitEditor.i18n.get_string('card'), "div", 'bootstrap', properties]);
   }
-  (0, _createClass2["default"])(HTMLCardElement, [{
+  (0, _inherits2["default"])(HTMLCardElement, _HTMLDivElement3);
+  return (0, _createClass2["default"])(HTMLCardElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -897,20 +819,17 @@ var HTMLCardElement = function (_HTMLDivElement3) {
       return card;
     }
   }]);
-  return HTMLCardElement;
 }(HTMLDivElement);
-exports.HTMLCardElement = HTMLCardElement;
-var HTMLCardBodyElement = function (_HTMLDivElement4) {
-  (0, _inherits2["default"])(HTMLCardBodyElement, _HTMLDivElement4);
-  var _super29 = _createSuper(HTMLCardBodyElement);
+var HTMLCardBodyElement = exports.HTMLCardBodyElement = function (_HTMLDivElement4) {
   function HTMLCardBodyElement() {
     var _this17;
     (0, _classCallCheck2["default"])(this, HTMLCardBodyElement);
-    _this17 = _super29.call(this, _RecitEditor.i18n.get_string('cardbody'), "div", 'bootstrap');
+    _this17 = _callSuper(this, HTMLCardBodyElement, [_RecitEditor.i18n.get_string('cardbody'), "div", 'bootstrap']);
     _this17.visible = false;
     return _this17;
   }
-  (0, _createClass2["default"])(HTMLCardBodyElement, [{
+  (0, _inherits2["default"])(HTMLCardBodyElement, _HTMLDivElement4);
+  return (0, _createClass2["default"])(HTMLCardBodyElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -926,20 +845,17 @@ var HTMLCardBodyElement = function (_HTMLDivElement4) {
       return el;
     }
   }]);
-  return HTMLCardBodyElement;
 }(HTMLDivElement);
-exports.HTMLCardBodyElement = HTMLCardBodyElement;
-var HTMLCardHeaderElement = function (_HTMLDivElement5) {
-  (0, _inherits2["default"])(HTMLCardHeaderElement, _HTMLDivElement5);
-  var _super30 = _createSuper(HTMLCardHeaderElement);
+var HTMLCardHeaderElement = exports.HTMLCardHeaderElement = function (_HTMLDivElement5) {
   function HTMLCardHeaderElement() {
     var _this18;
     (0, _classCallCheck2["default"])(this, HTMLCardHeaderElement);
-    _this18 = _super30.call(this, _RecitEditor.i18n.get_string('cardheader'), "div", 'bootstrap');
+    _this18 = _callSuper(this, HTMLCardHeaderElement, [_RecitEditor.i18n.get_string('cardheader'), "div", 'bootstrap']);
     _this18.visible = false;
     return _this18;
   }
-  (0, _createClass2["default"])(HTMLCardHeaderElement, [{
+  (0, _inherits2["default"])(HTMLCardHeaderElement, _HTMLDivElement5);
+  return (0, _createClass2["default"])(HTMLCardHeaderElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -955,20 +871,17 @@ var HTMLCardHeaderElement = function (_HTMLDivElement5) {
       return el;
     }
   }]);
-  return HTMLCardHeaderElement;
 }(HTMLDivElement);
-exports.HTMLCardHeaderElement = HTMLCardHeaderElement;
-var HTMLCardFooterElement = function (_HTMLDivElement6) {
-  (0, _inherits2["default"])(HTMLCardFooterElement, _HTMLDivElement6);
-  var _super31 = _createSuper(HTMLCardFooterElement);
+var HTMLCardFooterElement = exports.HTMLCardFooterElement = function (_HTMLDivElement6) {
   function HTMLCardFooterElement() {
     var _this19;
     (0, _classCallCheck2["default"])(this, HTMLCardFooterElement);
-    _this19 = _super31.call(this, _RecitEditor.i18n.get_string('cardfooter'), "div", 'bootstrap');
+    _this19 = _callSuper(this, HTMLCardFooterElement, [_RecitEditor.i18n.get_string('cardfooter'), "div", 'bootstrap']);
     _this19.visible = false;
     return _this19;
   }
-  (0, _createClass2["default"])(HTMLCardFooterElement, [{
+  (0, _inherits2["default"])(HTMLCardFooterElement, _HTMLDivElement6);
+  return (0, _createClass2["default"])(HTMLCardFooterElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -984,16 +897,12 @@ var HTMLCardFooterElement = function (_HTMLDivElement6) {
       return el;
     }
   }]);
-  return HTMLCardFooterElement;
 }(HTMLDivElement);
-exports.HTMLCardFooterElement = HTMLCardFooterElement;
-var HTMLFlipCardElement = function (_HTMLDivElement7) {
-  (0, _inherits2["default"])(HTMLFlipCardElement, _HTMLDivElement7);
-  var _super32 = _createSuper(HTMLFlipCardElement);
+var HTMLFlipCardElement = exports.HTMLFlipCardElement = function (_HTMLDivElement7) {
   function HTMLFlipCardElement() {
     var _this20;
     (0, _classCallCheck2["default"])(this, HTMLFlipCardElement);
-    _this20 = _super32.call(this, _RecitEditor.i18n.get_string('flipcard'), "div", 'nativecomponent');
+    _this20 = _callSuper(this, HTMLFlipCardElement, [_RecitEditor.i18n.get_string('flipcard'), "div", 'nativecomponent']);
     _this20.panels = {
       components: 0,
       properties: 1,
@@ -1001,7 +910,8 @@ var HTMLFlipCardElement = function (_HTMLDivElement7) {
     };
     return _this20;
   }
-  (0, _createClass2["default"])(HTMLFlipCardElement, [{
+  (0, _inherits2["default"])(HTMLFlipCardElement, _HTMLDivElement7);
+  return (0, _createClass2["default"])(HTMLFlipCardElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1063,16 +973,12 @@ var HTMLFlipCardElement = function (_HTMLDivElement7) {
       return card;
     }
   }]);
-  return HTMLFlipCardElement;
 }(HTMLDivElement);
-exports.HTMLFlipCardElement = HTMLFlipCardElement;
-var HTMLFlipCardFrontElement = function (_HTMLDivElement8) {
-  (0, _inherits2["default"])(HTMLFlipCardFrontElement, _HTMLDivElement8);
-  var _super33 = _createSuper(HTMLFlipCardFrontElement);
+var HTMLFlipCardFrontElement = exports.HTMLFlipCardFrontElement = function (_HTMLDivElement8) {
   function HTMLFlipCardFrontElement() {
     var _this21;
     (0, _classCallCheck2["default"])(this, HTMLFlipCardFrontElement);
-    _this21 = _super33.call(this, _RecitEditor.i18n.get_string('front'), "div", 'nativecomponent');
+    _this21 = _callSuper(this, HTMLFlipCardFrontElement, [_RecitEditor.i18n.get_string('front'), "div", 'nativecomponent']);
     _this21.panels = {
       components: 0,
       properties: 1,
@@ -1081,7 +987,8 @@ var HTMLFlipCardFrontElement = function (_HTMLDivElement8) {
     _this21.visible = false;
     return _this21;
   }
-  (0, _createClass2["default"])(HTMLFlipCardFrontElement, [{
+  (0, _inherits2["default"])(HTMLFlipCardFrontElement, _HTMLDivElement8);
+  return (0, _createClass2["default"])(HTMLFlipCardFrontElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1096,16 +1003,12 @@ var HTMLFlipCardFrontElement = function (_HTMLDivElement8) {
       flipcard.classList.remove('hover');
     }
   }]);
-  return HTMLFlipCardFrontElement;
 }(HTMLDivElement);
-exports.HTMLFlipCardFrontElement = HTMLFlipCardFrontElement;
-var HTMLFlipCardBackElement = function (_HTMLDivElement9) {
-  (0, _inherits2["default"])(HTMLFlipCardBackElement, _HTMLDivElement9);
-  var _super34 = _createSuper(HTMLFlipCardBackElement);
+var HTMLFlipCardBackElement = exports.HTMLFlipCardBackElement = function (_HTMLDivElement9) {
   function HTMLFlipCardBackElement() {
     var _this22;
     (0, _classCallCheck2["default"])(this, HTMLFlipCardBackElement);
-    _this22 = _super34.call(this, _RecitEditor.i18n.get_string('rear'), "div", 'nativecomponent');
+    _this22 = _callSuper(this, HTMLFlipCardBackElement, [_RecitEditor.i18n.get_string('rear'), "div", 'nativecomponent']);
     _this22.visible = false;
     _this22.panels = {
       components: 0,
@@ -1114,7 +1017,8 @@ var HTMLFlipCardBackElement = function (_HTMLDivElement9) {
     };
     return _this22;
   }
-  (0, _createClass2["default"])(HTMLFlipCardBackElement, [{
+  (0, _inherits2["default"])(HTMLFlipCardBackElement, _HTMLDivElement9);
+  return (0, _createClass2["default"])(HTMLFlipCardBackElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1129,16 +1033,12 @@ var HTMLFlipCardBackElement = function (_HTMLDivElement9) {
       flipcard.classList.add('hover');
     }
   }]);
-  return HTMLFlipCardBackElement;
 }(HTMLDivElement);
-exports.HTMLFlipCardBackElement = HTMLFlipCardBackElement;
-var HTMLCarouselElement = function (_HTMLDivElement10) {
-  (0, _inherits2["default"])(HTMLCarouselElement, _HTMLDivElement10);
-  var _super35 = _createSuper(HTMLCarouselElement);
+var HTMLCarouselElement = exports.HTMLCarouselElement = function (_HTMLDivElement10) {
   function HTMLCarouselElement() {
     var _this23;
     (0, _classCallCheck2["default"])(this, HTMLCarouselElement);
-    _this23 = _super35.call(this, _RecitEditor.i18n.get_string('carousel'), "div", 'nativecomponent', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general);
+    _this23 = _callSuper(this, HTMLCarouselElement, [_RecitEditor.i18n.get_string('carousel'), "div", 'nativecomponent', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
     _this23.panels = {
       components: 0,
       properties: 1,
@@ -1146,7 +1046,8 @@ var HTMLCarouselElement = function (_HTMLDivElement10) {
     };
     return _this23;
   }
-  (0, _createClass2["default"])(HTMLCarouselElement, [{
+  (0, _inherits2["default"])(HTMLCarouselElement, _HTMLDivElement10);
+  return (0, _createClass2["default"])(HTMLCarouselElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1194,16 +1095,12 @@ var HTMLCarouselElement = function (_HTMLDivElement10) {
       }
     }
   }]);
-  return HTMLCarouselElement;
 }(HTMLDivElement);
-exports.HTMLCarouselElement = HTMLCarouselElement;
-var HTMLCarouselNavElement = function (_HTMLDivElement11) {
-  (0, _inherits2["default"])(HTMLCarouselNavElement, _HTMLDivElement11);
-  var _super36 = _createSuper(HTMLCarouselNavElement);
+var HTMLCarouselNavElement = exports.HTMLCarouselNavElement = function (_HTMLDivElement11) {
   function HTMLCarouselNavElement() {
     var _this24;
     (0, _classCallCheck2["default"])(this, HTMLCarouselNavElement);
-    _this24 = _super36.call(this, _RecitEditor.i18n.get_string('carouselnav'), "div", 'nativecomponent', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general);
+    _this24 = _callSuper(this, HTMLCarouselNavElement, [_RecitEditor.i18n.get_string('carouselnav'), "div", 'nativecomponent', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
     _this24.visible = false;
     _this24.panels = {
       components: 0,
@@ -1212,7 +1109,8 @@ var HTMLCarouselNavElement = function (_HTMLDivElement11) {
     };
     return _this24;
   }
-  (0, _createClass2["default"])(HTMLCarouselNavElement, [{
+  (0, _inherits2["default"])(HTMLCarouselNavElement, _HTMLDivElement11);
+  return (0, _createClass2["default"])(HTMLCarouselNavElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1221,19 +1119,15 @@ var HTMLCarouselNavElement = function (_HTMLDivElement11) {
       return el.classList.contains('carousel-control-prev') || el.classList.contains('carousel-control-next');
     }
   }]);
-  return HTMLCarouselNavElement;
 }(HTMLDivElement);
-exports.HTMLCarouselNavElement = HTMLCarouselNavElement;
-var HTMLTabElement = function (_HTMLDivElement12) {
-  (0, _inherits2["default"])(HTMLTabElement, _HTMLDivElement12);
-  var _super37 = _createSuper(HTMLTabElement);
+var HTMLTabElement = exports.HTMLTabElement = function (_HTMLDivElement12) {
   function HTMLTabElement() {
     var _this25;
     (0, _classCallCheck2["default"])(this, HTMLTabElement);
-    _this25 = _super37.call(this, _RecitEditor.i18n.get_string('tab'), "div", 'nativecomponent', {
+    _this25 = _callSuper(this, HTMLTabElement, [_RecitEditor.i18n.get_string('tab'), "div", 'nativecomponent', {
       all: ['tab'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
       min: ['tab']
-    });
+    }]);
     _this25.cssProp.prefix = 'tab';
     _this25.panels = {
       components: 0,
@@ -1242,7 +1136,8 @@ var HTMLTabElement = function (_HTMLDivElement12) {
     };
     return _this25;
   }
-  (0, _createClass2["default"])(HTMLTabElement, [{
+  (0, _inherits2["default"])(HTMLTabElement, _HTMLDivElement12);
+  return (0, _createClass2["default"])(HTMLTabElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1262,16 +1157,12 @@ var HTMLTabElement = function (_HTMLDivElement12) {
       return slider;
     }
   }]);
-  return HTMLTabElement;
 }(HTMLDivElement);
-exports.HTMLTabElement = HTMLTabElement;
-var HTMLAccordionElement = function (_HTMLDivElement13) {
-  (0, _inherits2["default"])(HTMLAccordionElement, _HTMLDivElement13);
-  var _super38 = _createSuper(HTMLAccordionElement);
+var HTMLAccordionElement = exports.HTMLAccordionElement = function (_HTMLDivElement13) {
   function HTMLAccordionElement() {
     var _this26;
     (0, _classCallCheck2["default"])(this, HTMLAccordionElement);
-    _this26 = _super38.call(this, _RecitEditor.i18n.get_string('accordion'), "div", 'nativecomponent', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.accordion);
+    _this26 = _callSuper(this, HTMLAccordionElement, [_RecitEditor.i18n.get_string('accordion'), "div", 'nativecomponent', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.accordion]);
     _this26.cssProp.prefix = 'accordion';
     _this26.panels = {
       components: 0,
@@ -1280,7 +1171,8 @@ var HTMLAccordionElement = function (_HTMLDivElement13) {
     };
     return _this26;
   }
-  (0, _createClass2["default"])(HTMLAccordionElement, [{
+  (0, _inherits2["default"])(HTMLAccordionElement, _HTMLDivElement13);
+  return (0, _createClass2["default"])(HTMLAccordionElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1301,16 +1193,12 @@ var HTMLAccordionElement = function (_HTMLDivElement13) {
       return slider;
     }
   }]);
-  return HTMLAccordionElement;
 }(HTMLDivElement);
-exports.HTMLAccordionElement = HTMLAccordionElement;
-var HTMLAccordionNavElement = function (_HTMLElement24) {
-  (0, _inherits2["default"])(HTMLAccordionNavElement, _HTMLElement24);
-  var _super39 = _createSuper(HTMLAccordionNavElement);
+var HTMLAccordionNavElement = exports.HTMLAccordionNavElement = function (_HTMLElement24) {
   function HTMLAccordionNavElement() {
     var _this27;
     (0, _classCallCheck2["default"])(this, HTMLAccordionNavElement);
-    _this27 = _super39.call(this, _RecitEditor.i18n.get_string('accordionitem'), "button", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.accordion);
+    _this27 = _callSuper(this, HTMLAccordionNavElement, [_RecitEditor.i18n.get_string('accordionitem'), "button", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.accordion]);
     _this27.visible = false;
     _this27.panels = {
       components: 0,
@@ -1319,7 +1207,8 @@ var HTMLAccordionNavElement = function (_HTMLElement24) {
     };
     return _this27;
   }
-  (0, _createClass2["default"])(HTMLAccordionNavElement, [{
+  (0, _inherits2["default"])(HTMLAccordionNavElement, _HTMLElement24);
+  return (0, _createClass2["default"])(HTMLAccordionNavElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1331,16 +1220,12 @@ var HTMLAccordionNavElement = function (_HTMLElement24) {
       return el.parentElement.parentElement.parentElement.parentElement.classList.contains('accordion');
     }
   }]);
-  return HTMLAccordionNavElement;
 }(HTMLElement);
-exports.HTMLAccordionNavElement = HTMLAccordionNavElement;
-var HTMLTabContentElement = function (_HTMLDivElement14) {
-  (0, _inherits2["default"])(HTMLTabContentElement, _HTMLDivElement14);
-  var _super40 = _createSuper(HTMLTabContentElement);
+var HTMLTabContentElement = exports.HTMLTabContentElement = function (_HTMLDivElement14) {
   function HTMLTabContentElement() {
     var _this28;
     (0, _classCallCheck2["default"])(this, HTMLTabContentElement);
-    _this28 = _super40.call(this, _RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general);
+    _this28 = _callSuper(this, HTMLTabContentElement, [_RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
     _this28.cssProp.prefix = 'tab';
     _this28.visible = false;
     _this28.panels = {
@@ -1350,7 +1235,8 @@ var HTMLTabContentElement = function (_HTMLDivElement14) {
     };
     return _this28;
   }
-  (0, _createClass2["default"])(HTMLTabContentElement, [{
+  (0, _inherits2["default"])(HTMLTabContentElement, _HTMLDivElement14);
+  return (0, _createClass2["default"])(HTMLTabContentElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1359,16 +1245,12 @@ var HTMLTabContentElement = function (_HTMLDivElement14) {
       return el.classList.contains('tab-content');
     }
   }]);
-  return HTMLTabContentElement;
 }(HTMLDivElement);
-exports.HTMLTabContentElement = HTMLTabContentElement;
-var HTMLTabPaneElement = function (_HTMLDivElement15) {
-  (0, _inherits2["default"])(HTMLTabPaneElement, _HTMLDivElement15);
-  var _super41 = _createSuper(HTMLTabPaneElement);
+var HTMLTabPaneElement = exports.HTMLTabPaneElement = function (_HTMLDivElement15) {
   function HTMLTabPaneElement() {
     var _this29;
     (0, _classCallCheck2["default"])(this, HTMLTabPaneElement);
-    _this29 = _super41.call(this, _RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general);
+    _this29 = _callSuper(this, HTMLTabPaneElement, [_RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
     _this29.cssProp.prefix = 'tab';
     _this29.visible = false;
     _this29.panels = {
@@ -1378,7 +1260,8 @@ var HTMLTabPaneElement = function (_HTMLDivElement15) {
     };
     return _this29;
   }
-  (0, _createClass2["default"])(HTMLTabPaneElement, [{
+  (0, _inherits2["default"])(HTMLTabPaneElement, _HTMLDivElement15);
+  return (0, _createClass2["default"])(HTMLTabPaneElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1395,16 +1278,12 @@ var HTMLTabPaneElement = function (_HTMLDivElement15) {
       return _RecitEditor.i18n.get_string('tabcontent') + ' ' + target.innerText;
     }
   }]);
-  return HTMLTabPaneElement;
 }(HTMLDivElement);
-exports.HTMLTabPaneElement = HTMLTabPaneElement;
-var HTMLNavElement = function (_HTMLElement25) {
-  (0, _inherits2["default"])(HTMLNavElement, _HTMLElement25);
-  var _super42 = _createSuper(HTMLNavElement);
+var HTMLNavElement = exports.HTMLNavElement = function (_HTMLElement25) {
   function HTMLNavElement() {
     var _this30;
     (0, _classCallCheck2["default"])(this, HTMLNavElement);
-    _this30 = _super42.call(this, "Nav", "nav", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general);
+    _this30 = _callSuper(this, HTMLNavElement, ["Nav", "nav", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
     _this30.visible = false;
     _this30.panels = {
       components: 0,
@@ -1413,7 +1292,8 @@ var HTMLNavElement = function (_HTMLElement25) {
     };
     return _this30;
   }
-  (0, _createClass2["default"])(HTMLNavElement, [{
+  (0, _inherits2["default"])(HTMLNavElement, _HTMLElement25);
+  return (0, _createClass2["default"])(HTMLNavElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1422,16 +1302,12 @@ var HTMLNavElement = function (_HTMLElement25) {
       return el.classList.contains('nav');
     }
   }]);
-  return HTMLNavElement;
 }(HTMLElement);
-exports.HTMLNavElement = HTMLNavElement;
-var HTMLNavItemElement = function (_HTMLElement26) {
-  (0, _inherits2["default"])(HTMLNavItemElement, _HTMLElement26);
-  var _super43 = _createSuper(HTMLNavItemElement);
+var HTMLNavItemElement = exports.HTMLNavItemElement = function (_HTMLElement26) {
   function HTMLNavItemElement() {
     var _this31;
     (0, _classCallCheck2["default"])(this, HTMLNavItemElement);
-    _this31 = _super43.call(this, "NavItem", "li", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general);
+    _this31 = _callSuper(this, HTMLNavItemElement, ["NavItem", "li", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
     _this31.visible = false;
     _this31.panels = {
       components: 0,
@@ -1440,7 +1316,8 @@ var HTMLNavItemElement = function (_HTMLElement26) {
     };
     return _this31;
   }
-  (0, _createClass2["default"])(HTMLNavItemElement, [{
+  (0, _inherits2["default"])(HTMLNavItemElement, _HTMLElement26);
+  return (0, _createClass2["default"])(HTMLNavItemElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1449,16 +1326,12 @@ var HTMLNavItemElement = function (_HTMLElement26) {
       return el.classList.contains('nav-item');
     }
   }]);
-  return HTMLNavItemElement;
 }(HTMLElement);
-exports.HTMLNavItemElement = HTMLNavItemElement;
-var HTMLNavLinkElement = function (_HTMLElement27) {
-  (0, _inherits2["default"])(HTMLNavLinkElement, _HTMLElement27);
-  var _super44 = _createSuper(HTMLNavLinkElement);
+var HTMLNavLinkElement = exports.HTMLNavLinkElement = function (_HTMLElement27) {
   function HTMLNavLinkElement() {
     var _this32;
     (0, _classCallCheck2["default"])(this, HTMLNavLinkElement);
-    _this32 = _super44.call(this, "NavLink", "a", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.link);
+    _this32 = _callSuper(this, HTMLNavLinkElement, ["NavLink", "a", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.link]);
     _this32.cssProp.prefix = 'btn';
     _this32.visible = false;
     _this32.panels = {
@@ -1468,7 +1341,8 @@ var HTMLNavLinkElement = function (_HTMLElement27) {
     };
     return _this32;
   }
-  (0, _createClass2["default"])(HTMLNavLinkElement, [{
+  (0, _inherits2["default"])(HTMLNavLinkElement, _HTMLElement27);
+  return (0, _createClass2["default"])(HTMLNavLinkElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1515,27 +1389,22 @@ var HTMLNavLinkElement = function (_HTMLElement27) {
       }
     }
   }]);
-  return HTMLNavLinkElement;
 }(HTMLElement);
-exports.HTMLNavLinkElement = HTMLNavLinkElement;
-var HTMLHRElement = function (_HTMLElement28) {
-  (0, _inherits2["default"])(HTMLHRElement, _HTMLElement28);
-  var _super45 = _createSuper(HTMLHRElement);
+var HTMLHRElement = exports.HTMLHRElement = function (_HTMLElement28) {
   function HTMLHRElement() {
     (0, _classCallCheck2["default"])(this, HTMLHRElement);
-    return _super45.call(this, _RecitEditor.i18n.get_string('split'), "hr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers);
+    return _callSuper(this, HTMLHRElement, [_RecitEditor.i18n.get_string('split'), "hr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
   }
+  (0, _inherits2["default"])(HTMLHRElement, _HTMLElement28);
   return (0, _createClass2["default"])(HTMLHRElement);
 }(HTMLElement);
-exports.HTMLHRElement = HTMLHRElement;
-var HTMLHorizontalBarElement = function (_HTMLElement29) {
-  (0, _inherits2["default"])(HTMLHorizontalBarElement, _HTMLElement29);
-  var _super46 = _createSuper(HTMLHorizontalBarElement);
+var HTMLHorizontalBarElement = exports.HTMLHorizontalBarElement = function (_HTMLElement29) {
   function HTMLHorizontalBarElement() {
     (0, _classCallCheck2["default"])(this, HTMLHorizontalBarElement);
-    return _super46.call(this, _RecitEditor.i18n.get_string('horizontalbar'), "hr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers);
+    return _callSuper(this, HTMLHorizontalBarElement, [_RecitEditor.i18n.get_string('horizontalbar'), "hr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
   }
-  (0, _createClass2["default"])(HTMLHorizontalBarElement, [{
+  (0, _inherits2["default"])(HTMLHorizontalBarElement, _HTMLElement29);
+  return (0, _createClass2["default"])(HTMLHorizontalBarElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement("hr");
@@ -1545,17 +1414,14 @@ var HTMLHorizontalBarElement = function (_HTMLElement29) {
       return el;
     }
   }]);
-  return HTMLHorizontalBarElement;
 }(HTMLElement);
-exports.HTMLHorizontalBarElement = HTMLHorizontalBarElement;
-var HTMLImageElement = function (_HTMLElement30) {
-  (0, _inherits2["default"])(HTMLImageElement, _HTMLElement30);
-  var _super47 = _createSuper(HTMLImageElement);
+var HTMLImageElement = exports.HTMLImageElement = function (_HTMLElement30) {
   function HTMLImageElement() {
     (0, _classCallCheck2["default"])(this, HTMLImageElement);
-    return _super47.call(this, _RecitEditor.i18n.get_string('image'), "img", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image);
+    return _callSuper(this, HTMLImageElement, [_RecitEditor.i18n.get_string('image'), "img", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image]);
   }
-  (0, _createClass2["default"])(HTMLImageElement, [{
+  (0, _inherits2["default"])(HTMLImageElement, _HTMLElement30);
+  return (0, _createClass2["default"])(HTMLImageElement, [{
     key: "create",
     value: function create() {
       var el = document.createElement("img");
@@ -1565,17 +1431,14 @@ var HTMLImageElement = function (_HTMLElement30) {
       return el;
     }
   }]);
-  return HTMLImageElement;
 }(HTMLElement);
-exports.HTMLImageElement = HTMLImageElement;
-var HTMLImageWithCaptionElement = function (_HTMLElement31) {
-  (0, _inherits2["default"])(HTMLImageWithCaptionElement, _HTMLElement31);
-  var _super48 = _createSuper(HTMLImageWithCaptionElement);
+var HTMLImageWithCaptionElement = exports.HTMLImageWithCaptionElement = function (_HTMLElement31) {
   function HTMLImageWithCaptionElement() {
     (0, _classCallCheck2["default"])(this, HTMLImageWithCaptionElement);
-    return _super48.call(this, _RecitEditor.i18n.get_string('imagewithcaption'), "figure", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image);
+    return _callSuper(this, HTMLImageWithCaptionElement, [_RecitEditor.i18n.get_string('imagewithcaption'), "figure", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image]);
   }
-  (0, _createClass2["default"])(HTMLImageWithCaptionElement, [{
+  (0, _inherits2["default"])(HTMLImageWithCaptionElement, _HTMLElement31);
+  return (0, _createClass2["default"])(HTMLImageWithCaptionElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1607,17 +1470,14 @@ var HTMLImageWithCaptionElement = function (_HTMLElement31) {
       return div;
     }
   }]);
-  return HTMLImageWithCaptionElement;
 }(HTMLElement);
-exports.HTMLImageWithCaptionElement = HTMLImageWithCaptionElement;
-var HTMLClickableImageElement = function (_HTMLElement32) {
-  (0, _inherits2["default"])(HTMLClickableImageElement, _HTMLElement32);
-  var _super49 = _createSuper(HTMLClickableImageElement);
+var HTMLClickableImageElement = exports.HTMLClickableImageElement = function (_HTMLElement32) {
   function HTMLClickableImageElement() {
     (0, _classCallCheck2["default"])(this, HTMLClickableImageElement);
-    return _super49.call(this, _RecitEditor.i18n.get_string('clickableimage'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image);
+    return _callSuper(this, HTMLClickableImageElement, [_RecitEditor.i18n.get_string('clickableimage'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image]);
   }
-  (0, _createClass2["default"])(HTMLClickableImageElement, [{
+  (0, _inherits2["default"])(HTMLClickableImageElement, _HTMLElement32);
+  return (0, _createClass2["default"])(HTMLClickableImageElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1654,17 +1514,14 @@ var HTMLClickableImageElement = function (_HTMLElement32) {
       return div;
     }
   }]);
-  return HTMLClickableImageElement;
 }(HTMLElement);
-exports.HTMLClickableImageElement = HTMLClickableImageElement;
-var HTMLIconElement = function (_HTMLElement33) {
-  (0, _inherits2["default"])(HTMLIconElement, _HTMLElement33);
-  var _super50 = _createSuper(HTMLIconElement);
+var HTMLIconElement = exports.HTMLIconElement = function (_HTMLElement33) {
   function HTMLIconElement() {
     (0, _classCallCheck2["default"])(this, HTMLIconElement);
-    return _super50.call(this, _RecitEditor.i18n.get_string('icon'), "i", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.icon);
+    return _callSuper(this, HTMLIconElement, [_RecitEditor.i18n.get_string('icon'), "i", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.icon]);
   }
-  (0, _createClass2["default"])(HTMLIconElement, [{
+  (0, _inherits2["default"])(HTMLIconElement, _HTMLElement33);
+  return (0, _createClass2["default"])(HTMLIconElement, [{
     key: "equal",
     value: function equal(el) {
       if (el === null) {
@@ -1690,6 +1547,4 @@ var HTMLIconElement = function (_HTMLElement33) {
       return el;
     }
   }]);
-  return HTMLIconElement;
 }(HTMLElement);
-exports.HTMLIconElement = HTMLIconElement;

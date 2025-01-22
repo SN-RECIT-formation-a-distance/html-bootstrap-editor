@@ -8,51 +8,49 @@ Object.defineProperty(exports, "__esModule", {
 exports.ButtonsBar = exports.BtnSetCssProp = void 0;
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _react = _interopRequireWildcard(require("react"));
 var _reactBootstrap = require("react-bootstrap");
 var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 var _RecitEditor = require("../RecitEditor");
 var _ScreenCapture = require("../word-processor/ScreenCapture");
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } } /**
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); } /**
  * Atto HTML editor
  *
  * @package    atto_reciteditor
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var ButtonsBar = function (_Component) {
-  (0, _inherits2["default"])(ButtonsBar, _Component);
-  var _super = _createSuper(ButtonsBar);
+var ButtonsBar = exports.ButtonsBar = function (_Component) {
   function ButtonsBar(props) {
     var _this;
     (0, _classCallCheck2["default"])(this, ButtonsBar);
-    _this = _super.call(this, props);
-    _this.onAddLink = _this.onAddLink.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onAddImage = _this.onAddImage.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onAddImageModal = _this.onAddImageModal.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onCloseInputLink = _this.onCloseInputLink.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onRemoveLink = _this.onRemoveLink.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.applyNumerationTypeset = _this.applyNumerationTypeset.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.applyIndentTypeset = _this.applyIndentTypeset.bind((0, _assertThisInitialized2["default"])(_this));
-    _this.onRemoveTypeset = _this.onRemoveTypeset.bind((0, _assertThisInitialized2["default"])(_this));
+    _this = _callSuper(this, ButtonsBar, [props]);
+    _this.onAddLink = _this.onAddLink.bind(_this);
+    _this.onAddImage = _this.onAddImage.bind(_this);
+    _this.onAddImageModal = _this.onAddImageModal.bind(_this);
+    _this.onCloseInputLink = _this.onCloseInputLink.bind(_this);
+    _this.onRemoveLink = _this.onRemoveLink.bind(_this);
+    _this.applyNumerationTypeset = _this.applyNumerationTypeset.bind(_this);
+    _this.applyIndentTypeset = _this.applyIndentTypeset.bind(_this);
+    _this.onRemoveTypeset = _this.onRemoveTypeset.bind(_this);
     _this.state = {
       modalInputLink: false,
       modalInputImage: false
     };
     return _this;
   }
-  (0, _createClass2["default"])(ButtonsBar, [{
+  (0, _inherits2["default"])(ButtonsBar, _Component);
+  return (0, _createClass2["default"])(ButtonsBar, [{
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -485,9 +483,7 @@ var ButtonsBar = function (_Component) {
       }
     }
   }]);
-  return ButtonsBar;
 }(_react.Component);
-exports.ButtonsBar = ButtonsBar;
 ButtonsBar.defaultProps = {
   selection: null,
   history: null,
@@ -507,16 +503,15 @@ ButtonsBar.Layout = {
   btnToggled: "secondary"
 };
 var DropdownSetCssProp = function (_Component2) {
-  (0, _inherits2["default"])(DropdownSetCssProp, _Component2);
-  var _super2 = _createSuper(DropdownSetCssProp);
   function DropdownSetCssProp(props) {
     var _this3;
     (0, _classCallCheck2["default"])(this, DropdownSetCssProp);
-    _this3 = _super2.call(this, props);
-    _this3.onClick = _this3.onClick.bind((0, _assertThisInitialized2["default"])(_this3));
+    _this3 = _callSuper(this, DropdownSetCssProp, [props]);
+    _this3.onClick = _this3.onClick.bind(_this3);
     return _this3;
   }
-  (0, _createClass2["default"])(DropdownSetCssProp, [{
+  (0, _inherits2["default"])(DropdownSetCssProp, _Component2);
+  return (0, _createClass2["default"])(DropdownSetCssProp, [{
     key: "render",
     value: function render() {
       var _this4 = this;
@@ -572,7 +567,6 @@ var DropdownSetCssProp = function (_Component2) {
       }
     }
   }]);
-  return DropdownSetCssProp;
 }(_react.Component);
 DropdownSetCssProp.defaultProps = {
   selection: null,
@@ -582,17 +576,16 @@ DropdownSetCssProp.defaultProps = {
   dataProvider: "",
   title: ""
 };
-var BtnSetCssProp = function (_Component3) {
-  (0, _inherits2["default"])(BtnSetCssProp, _Component3);
-  var _super3 = _createSuper(BtnSetCssProp);
+var BtnSetCssProp = exports.BtnSetCssProp = function (_Component3) {
   function BtnSetCssProp(props) {
     var _this5;
     (0, _classCallCheck2["default"])(this, BtnSetCssProp);
-    _this5 = _super3.call(this, props);
-    _this5.onClick = _this5.onClick.bind((0, _assertThisInitialized2["default"])(_this5));
+    _this5 = _callSuper(this, BtnSetCssProp, [props]);
+    _this5.onClick = _this5.onClick.bind(_this5);
     return _this5;
   }
-  (0, _createClass2["default"])(BtnSetCssProp, [{
+  (0, _inherits2["default"])(BtnSetCssProp, _Component3);
+  return (0, _createClass2["default"])(BtnSetCssProp, [{
     key: "render",
     value: function render() {
       var variant = this.getCurrentValue() === this.props.value ? ButtonsBar.Layout.btnToggled : ButtonsBar.Layout.btnNormal;
@@ -674,9 +667,7 @@ var BtnSetCssProp = function (_Component3) {
       }
     }
   }]);
-  return BtnSetCssProp;
 }(_react.Component);
-exports.BtnSetCssProp = BtnSetCssProp;
 BtnSetCssProp.defaultProps = {
   selection: null,
   window: null,
@@ -690,20 +681,19 @@ BtnSetCssProp.defaultProps = {
   variant: ""
 };
 var BtnColorPicker = function (_Component4) {
-  (0, _inherits2["default"])(BtnColorPicker, _Component4);
-  var _super4 = _createSuper(BtnColorPicker);
   function BtnColorPicker(props) {
     var _this6;
     (0, _classCallCheck2["default"])(this, BtnColorPicker);
-    _this6 = _super4.call(this, props);
-    _this6.onChange = _this6.onChange.bind((0, _assertThisInitialized2["default"])(_this6));
-    _this6.onBlur = _this6.onBlur.bind((0, _assertThisInitialized2["default"])(_this6));
+    _this6 = _callSuper(this, BtnColorPicker, [props]);
+    _this6.onChange = _this6.onChange.bind(_this6);
+    _this6.onBlur = _this6.onBlur.bind(_this6);
     _this6.state = {
       value: _this6.props.defaultValue
     };
     return _this6;
   }
-  (0, _createClass2["default"])(BtnColorPicker, [{
+  (0, _inherits2["default"])(BtnColorPicker, _Component4);
+  return (0, _createClass2["default"])(BtnColorPicker, [{
     key: "render",
     value: function render() {
       var value = this.state.value;
@@ -779,7 +769,6 @@ var BtnColorPicker = function (_Component4) {
       }
     }
   }]);
-  return BtnColorPicker;
 }(_react.Component);
 BtnColorPicker.defaultProps = {
   selection: null,
@@ -790,16 +779,15 @@ BtnColorPicker.defaultProps = {
   title: ""
 };
 var BtnUnsetCssProp = function (_Component5) {
-  (0, _inherits2["default"])(BtnUnsetCssProp, _Component5);
-  var _super5 = _createSuper(BtnUnsetCssProp);
   function BtnUnsetCssProp(props) {
     var _this7;
     (0, _classCallCheck2["default"])(this, BtnUnsetCssProp);
-    _this7 = _super5.call(this, props);
-    _this7.onClick = _this7.onClick.bind((0, _assertThisInitialized2["default"])(_this7));
+    _this7 = _callSuper(this, BtnUnsetCssProp, [props]);
+    _this7.onClick = _this7.onClick.bind(_this7);
     return _this7;
   }
-  (0, _createClass2["default"])(BtnUnsetCssProp, [{
+  (0, _inherits2["default"])(BtnUnsetCssProp, _Component5);
+  return (0, _createClass2["default"])(BtnUnsetCssProp, [{
     key: "render",
     value: function render() {
       return _react["default"].createElement(_reactBootstrap.Button, {
@@ -837,7 +825,6 @@ var BtnUnsetCssProp = function (_Component5) {
       }
     }
   }]);
-  return BtnUnsetCssProp;
 }(_react.Component);
 BtnUnsetCssProp.defaultProps = {
   selection: null,
@@ -848,16 +835,15 @@ BtnUnsetCssProp.defaultProps = {
   title: ""
 };
 var BtnAlignment = function (_Component6) {
-  (0, _inherits2["default"])(BtnAlignment, _Component6);
-  var _super6 = _createSuper(BtnAlignment);
   function BtnAlignment(props) {
     var _this8;
     (0, _classCallCheck2["default"])(this, BtnAlignment);
-    _this8 = _super6.call(this, props);
-    _this8.onClick = _this8.onClick.bind((0, _assertThisInitialized2["default"])(_this8));
+    _this8 = _callSuper(this, BtnAlignment, [props]);
+    _this8.onClick = _this8.onClick.bind(_this8);
     return _this8;
   }
-  (0, _createClass2["default"])(BtnAlignment, [{
+  (0, _inherits2["default"])(BtnAlignment, _Component6);
+  return (0, _createClass2["default"])(BtnAlignment, [{
     key: "render",
     value: function render() {
       var sel = this.props.selection;
@@ -906,7 +892,6 @@ var BtnAlignment = function (_Component6) {
       }
     }
   }]);
-  return BtnAlignment;
 }(_react.Component);
 BtnAlignment.defaultProps = {
   selection: null,
@@ -916,14 +901,12 @@ BtnAlignment.defaultProps = {
   title: ""
 };
 var InputLink = function (_Component7) {
-  (0, _inherits2["default"])(InputLink, _Component7);
-  var _super7 = _createSuper(InputLink);
   function InputLink(props) {
     var _this9;
     (0, _classCallCheck2["default"])(this, InputLink);
-    _this9 = _super7.call(this, props);
-    _this9.onSave = _this9.onSave.bind((0, _assertThisInitialized2["default"])(_this9));
-    _this9.onChange = _this9.onChange.bind((0, _assertThisInitialized2["default"])(_this9));
+    _this9 = _callSuper(this, InputLink, [props]);
+    _this9.onSave = _this9.onSave.bind(_this9);
+    _this9.onChange = _this9.onChange.bind(_this9);
     var url = props.selection.node instanceof HTMLAnchorElement ? props.selection.node.getAttribute("href") : "";
     var target = props.selection.node.getAttribute("target") === "_blank" ? true : false;
     _this9.state = {
@@ -934,7 +917,8 @@ var InputLink = function (_Component7) {
     };
     return _this9;
   }
-  (0, _createClass2["default"])(InputLink, [{
+  (0, _inherits2["default"])(InputLink, _Component7);
+  return (0, _createClass2["default"])(InputLink, [{
     key: "render",
     value: function render() {
       var main = _react["default"].createElement(_reactBootstrap.Modal, {
@@ -996,7 +980,6 @@ var InputLink = function (_Component7) {
       this.setState(data);
     }
   }]);
-  return InputLink;
 }(_react.Component);
 InputLink.defaultProps = {
   selection: null,

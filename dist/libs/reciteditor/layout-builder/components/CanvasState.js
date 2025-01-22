@@ -7,20 +7,20 @@ Object.defineProperty(exports, "__esModule", {
 exports.SourceCodeState = exports.SourceCodeDesignerState = exports.PreviewState = exports.DesignerState = void 0;
 var _get2 = _interopRequireDefault(require("@babel/runtime/helpers/get"));
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
-var _assertThisInitialized2 = _interopRequireDefault(require("@babel/runtime/helpers/assertThisInitialized"));
-var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 var _react = _interopRequireDefault(require("react"));
 var _TextEditor = require("../../common/TextEditor");
 var _RecitEditor = require("../../RecitEditor");
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2["default"])(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; } /**
+function _superPropGet(t, o, e, r) { var p = (0, _get2["default"])((0, _getPrototypeOf2["default"])(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; } /**
  * Atto HTML editor
  *
  * @package    atto_reciteditor
@@ -43,7 +43,7 @@ var CanvasState = function () {
     this.onKey = this.onKey.bind(this);
     this.onLoadFrame();
   }
-  (0, _createClass2["default"])(CanvasState, [{
+  return (0, _createClass2["default"])(CanvasState, [{
     key: "onLoadFrame",
     value: function onLoadFrame() {}
   }, {
@@ -213,20 +213,18 @@ var CanvasState = function () {
       return style;
     }
   }]);
-  return CanvasState;
 }();
-var SourceCodeDesignerState = function (_CanvasState) {
-  (0, _inherits2["default"])(SourceCodeDesignerState, _CanvasState);
-  var _super = _createSuper(SourceCodeDesignerState);
+var SourceCodeDesignerState = exports.SourceCodeDesignerState = function (_CanvasState) {
   function SourceCodeDesignerState(mainView, designerState, sourceCodeState) {
     var _this;
     (0, _classCallCheck2["default"])(this, SourceCodeDesignerState);
-    _this = _super.call(this, mainView);
+    _this = _callSuper(this, SourceCodeDesignerState, [mainView]);
     _this.designer = designerState;
     _this.sourceCode = sourceCodeState;
     return _this;
   }
-  (0, _createClass2["default"])(SourceCodeDesignerState, [{
+  (0, _inherits2["default"])(SourceCodeDesignerState, _CanvasState);
+  return (0, _createClass2["default"])(SourceCodeDesignerState, [{
     key: "render",
     value: function render(view, selectedElement) {
       var col = "";
@@ -330,25 +328,22 @@ var SourceCodeDesignerState = function (_CanvasState) {
       return panels;
     }
   }]);
-  return SourceCodeDesignerState;
 }(CanvasState);
-exports.SourceCodeDesignerState = SourceCodeDesignerState;
-var DesignerState = function (_CanvasState2) {
-  (0, _inherits2["default"])(DesignerState, _CanvasState2);
-  var _super2 = _createSuper(DesignerState);
+var DesignerState = exports.DesignerState = function (_CanvasState2) {
   function DesignerState(mainView, historyManager) {
     var _this2;
     (0, _classCallCheck2["default"])(this, DesignerState);
-    _this2 = _super2.call(this, mainView);
+    _this2 = _callSuper(this, DesignerState, [mainView]);
     _this2.iFrame = null;
     _this2.window = null;
     _this2.historyManager = historyManager;
-    _this2.onKey = _this2.onKey.bind((0, _assertThisInitialized2["default"])(_this2));
+    _this2.onKey = _this2.onKey.bind(_this2);
     _this2.loadCount = 0;
     _this2.editingElement = null;
     return _this2;
   }
-  (0, _createClass2["default"])(DesignerState, [{
+  (0, _inherits2["default"])(DesignerState, _CanvasState2);
+  return (0, _createClass2["default"])(DesignerState, [{
     key: "onLoadFrame",
     value: function onLoadFrame() {
       var iframe = window.document.getElementById("designer-canvas");
@@ -636,7 +631,7 @@ var DesignerState = function (_CanvasState2) {
     value: function setData(value, selectedElement) {
       var that = this;
       var counter = 0;
-      var loading = function loading() {
+      var _loading = function loading() {
         if (that.window) {
           var body = that.window.document.body;
           body.innerHTML = value;
@@ -648,10 +643,10 @@ var DesignerState = function (_CanvasState2) {
             return;
           }
           console.log("Setting data on designer-canvas...");
-          setTimeout(loading, 500);
+          setTimeout(_loading, 500);
         }
       };
-      setTimeout(loading, 500);
+      setTimeout(_loading, 500);
     }
   }, {
     key: "onStartEditingNodeText",
@@ -703,22 +698,19 @@ var DesignerState = function (_CanvasState2) {
       }
     }
   }]);
-  return DesignerState;
 }(CanvasState);
-exports.DesignerState = DesignerState;
-var SourceCodeState = function (_CanvasState3) {
-  (0, _inherits2["default"])(SourceCodeState, _CanvasState3);
-  var _super3 = _createSuper(SourceCodeState);
+var SourceCodeState = exports.SourceCodeState = function (_CanvasState3) {
   function SourceCodeState(mainView) {
     var _this4;
     (0, _classCallCheck2["default"])(this, SourceCodeState);
-    _this4 = _super3.call(this, mainView);
-    _this4.onChange = _this4.onChange.bind((0, _assertThisInitialized2["default"])(_this4));
+    _this4 = _callSuper(this, SourceCodeState, [mainView]);
+    _this4.onChange = _this4.onChange.bind(_this4);
     _this4.queryStr = "";
     _this4.data = "";
     return _this4;
   }
-  (0, _createClass2["default"])(SourceCodeState, [{
+  (0, _inherits2["default"])(SourceCodeState, _CanvasState3);
+  return (0, _createClass2["default"])(SourceCodeState, [{
     key: "render",
     value: function render(show, selectedElement, width, height) {
       var style = {
@@ -744,7 +736,7 @@ var SourceCodeState = function (_CanvasState3) {
     key: "htmlCleaning",
     value: function htmlCleaning() {
       var htmlDoc = new DOMParser().parseFromString(this.data, "text/html");
-      (0, _get2["default"])((0, _getPrototypeOf2["default"])(SourceCodeState.prototype), "htmlCleaning", this).call(this, htmlDoc);
+      _superPropGet(SourceCodeState, "htmlCleaning", this, 3)([htmlDoc]);
       return htmlDoc.body.innerHTML;
     }
   }, {
@@ -787,21 +779,18 @@ var SourceCodeState = function (_CanvasState3) {
       return panels;
     }
   }]);
-  return SourceCodeState;
 }(CanvasState);
-exports.SourceCodeState = SourceCodeState;
-var PreviewState = function (_CanvasState4) {
-  (0, _inherits2["default"])(PreviewState, _CanvasState4);
-  var _super4 = _createSuper(PreviewState);
+var PreviewState = exports.PreviewState = function (_CanvasState4) {
   function PreviewState(mainView) {
     var _this5;
     (0, _classCallCheck2["default"])(this, PreviewState);
-    _this5 = _super4.call(this, mainView);
+    _this5 = _callSuper(this, PreviewState, [mainView]);
     _this5.iFrame = null;
     _this5.loadCount = 0;
     return _this5;
   }
-  (0, _createClass2["default"])(PreviewState, [{
+  (0, _inherits2["default"])(PreviewState, _CanvasState4);
+  return (0, _createClass2["default"])(PreviewState, [{
     key: "onLoadFrame",
     value: function onLoadFrame() {
       var iframe = window.document.getElementById("preview-canvas");
@@ -874,7 +863,7 @@ var PreviewState = function (_CanvasState4) {
   }, {
     key: "htmlCleaning",
     value: function htmlCleaning() {
-      (0, _get2["default"])((0, _getPrototypeOf2["default"])(PreviewState.prototype), "htmlCleaning", this).call(this, this.iFrame.document);
+      _superPropGet(PreviewState, "htmlCleaning", this, 3)([this.iFrame.document]);
       var popup = this.iFrame.document.body.querySelectorAll('.r_popup-overlay');
       var _iterator6 = _createForOfIteratorHelper(popup),
         _step6;
@@ -910,6 +899,4 @@ var PreviewState = function (_CanvasState4) {
       return panels;
     }
   }]);
-  return PreviewState;
 }(CanvasState);
-exports.PreviewState = PreviewState;

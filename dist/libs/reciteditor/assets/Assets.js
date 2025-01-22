@@ -8,6 +8,7 @@ exports.Assets = void 0;
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 var _react = _interopRequireDefault(require("react"));
+var _Assets;
 /**
  * Atto HTML editor
  *
@@ -15,13 +16,13 @@ var _react = _interopRequireDefault(require("react"));
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var Assets = (0, _createClass2["default"])(function Assets() {
+var Assets = exports.Assets = (0, _createClass2["default"])(function Assets() {
   (0, _classCallCheck2["default"])(this, Assets);
 });
-exports.Assets = Assets;
+_Assets = Assets;
 Assets.RecitLogo = require('./images/recit.png');
 Assets.ImageEmpty = 'https://raw.githubusercontent.com/SN-RECIT-formation-a-distance/moodle-atto_reciteditor/master/src/react/build/assets/images/header4.jpg';
-Assets.ImageEmptyHD = Assets.ImageEmpty;
+Assets.ImageEmptyHD = _Assets.ImageEmpty;
 Assets.ImageAvatar = 'https://sn-recit-formation-a-distance.github.io/html-bootstrap-editor-showcase/img/avatar.jpg';
 Assets.CanvasCSS = require('./css/canvas.css.asset');
 Assets.CanvasDesignerCSS = require('./css/designer-canvas.css.asset');

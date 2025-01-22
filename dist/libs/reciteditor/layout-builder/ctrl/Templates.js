@@ -15,11 +15,11 @@ var _RecitEditor = require("../../RecitEditor");
  * @copyright  2019 RECIT
  * @license    {@link http://www.gnu.org/licenses/gpl-3.0.html} GNU GPL v3 or later
  */
-var Templates = function () {
+var Templates = exports.Templates = function () {
   function Templates() {
     (0, _classCallCheck2["default"])(this, Templates);
   }
-  (0, _createClass2["default"])(Templates, null, [{
+  return (0, _createClass2["default"])(Templates, null, [{
     key: "onLoad",
     value: function onLoad() {
       var p = Templates.webApi.getTemplateList();
@@ -89,8 +89,6 @@ var Templates = function () {
       return "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(item));
     }
   }]);
-  return Templates;
 }();
-exports.Templates = Templates;
 Templates.layoutList = [];
 Templates.webApi = _RecitEditor.IWrapper;
