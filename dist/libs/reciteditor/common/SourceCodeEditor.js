@@ -63,7 +63,7 @@ var SourceCodeEditor = exports.SourceCodeEditor = function (_Component) {
     key: "setCursor",
     value: function setCursor(prevProps) {
       var _this3 = this;
-      if (prevProps.queryStr !== this.props.queryStr && this.props.queryStr.length > 0 && this.codeMirror) {
+      if (this.props.queryStr.length > 0 && this.codeMirror) {
         var pos = this.state.data.search("data-tag-id=\"".concat(this.props.queryStr, "\""));
         setTimeout(function () {
           _this3.codeMirror.current.editor.focus();
@@ -71,9 +71,9 @@ var SourceCodeEditor = exports.SourceCodeEditor = function (_Component) {
             _this3.codeMirror.current.view.dispatch({
               selection: {
                 anchor: pos
-              }
+              },
+              scrollIntoView: true
             });
-            _this3.codeMirror.current.view.scrollPosIntoView(pos);
           } catch (e) {}
         }, 500);
       }

@@ -616,6 +616,7 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
       if (htmlCleaning) {
         this.htmlCleaning(this.window.document);
       }
+      _RecitEditor.UtilsHTML.removeTagId(this.window.document.body.innerHTML);
       return this.window.document.body.innerHTML;
     }
   }, {
@@ -624,6 +625,7 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
       if (this.window === null) {
         return null;
       }
+      _RecitEditor.UtilsHTML.removeTagId(this.window.document.body);
       return this.window.document.body;
     }
   }, {
@@ -634,7 +636,7 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
       var _loading = function loading() {
         if (that.window) {
           var body = that.window.document.body;
-          body.innerHTML = value;
+          body.innerHTML = _RecitEditor.UtilsHTML.assignTagId(value);
           _RecitEditor.CanvasElement.create(body, that.mainView.onSelectElement, that.mainView.onDrop, that.mainView.onStartEditingNodeText);
         } else {
           counter++;

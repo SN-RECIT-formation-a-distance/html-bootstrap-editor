@@ -61,14 +61,14 @@ export class SourceCodeEditor extends Component{
     }
 
     setCursor(prevProps){
-        if((prevProps.queryStr !== this.props.queryStr) && (this.props.queryStr.length > 0) && this.codeMirror){
+        if((this.props.queryStr.length > 0) && (this.codeMirror)){            
             let pos = this.state.data.search(`data-tag-id="${this.props.queryStr}"`);
             
             setTimeout(() => {
                 this.codeMirror.current.editor.focus();
                 try {
-                    this.codeMirror.current.view.dispatch({selection: {anchor: pos}});
-                    this.codeMirror.current.view.scrollPosIntoView(pos);
+                    this.codeMirror.current.view.dispatch({selection: {anchor: pos}, scrollIntoView: true});
+                    //this.codeMirror.current.view.scrollPosIntoView(pos);
                 } catch(e){}
             }, 500);
 

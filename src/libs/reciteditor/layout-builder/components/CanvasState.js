@@ -525,12 +525,16 @@ export class DesignerState extends CanvasState{
             this.htmlCleaning(this.window.document);
         }
 
+        UtilsHTML.removeTagId(this.window.document.body.innerHTML);
+
         return this.window.document.body.innerHTML;
     }
 
     getBody(){
         if(this.window === null){ return null; }
 
+        UtilsHTML.removeTagId(this.window.document.body);
+        
         return this.window.document.body;
     }
 
@@ -541,7 +545,7 @@ export class DesignerState extends CanvasState{
         let loading = function(){
             if(that.window){
                 let body = that.window.document.body;
-                body.innerHTML = value;
+                body.innerHTML =  UtilsHTML.assignTagId(value);
                 CanvasElement.create(body, that.mainView.onSelectElement, that.mainView.onDrop, that.mainView.onStartEditingNodeText);
             }            
             else{
