@@ -198,7 +198,7 @@ class FormProperties extends Component{
                 break;
             case 'combobox':
                 result = <ComboBox name={data.name} value={value} options={data.input.options}
-                                onChange={(event) => this.onDataChange(event, data)} />;
+                                onChange={(event) => this.onDataChange(event, data)} placeholder={data.input.placeholder} />;
                 break;
             case 'iconselector':
                 result = <IconSelector name={data.name} value={value} text={data.input.text}
@@ -428,7 +428,7 @@ class TemplateList extends Component{
         if (settings.showcase_url && settings.showcase_url.length > 0){
             url = settings.showcase_url;
         }
-        this.state = {showModal: false, showMenu: false, showImport: false, showShowcase: false, UrlShowcase: url, collapse: {}, hoverimg: false};
+        this.state = {showModal: false, hovering: false, showMenu: false, showImport: false, showShowcase: false, UrlShowcase: url, collapse: {}, hoverimg: false};
     }    
 
     componentDidMount(){
@@ -580,7 +580,7 @@ class TemplateList extends Component{
 
     getToken(item, index, editable){
         if(this.props.type === 'l'){
-            return <TokenTemplate showMenu={this.state.showMenu} data={item} key={index} onDragEnd={this.props.onDragEnd} onInsert={this.props.onInsert} onHover={() => this.setState({hovering: item.id})} onMouseLeave={() => this.setState({hovering: null})}
+            return <TokenTemplate showMenu={(this.state.hovering === item.id)} data={item} key={index} onDragEnd={this.props.onDragEnd} onInsert={this.props.onInsert} onHover={() => this.setState({hovering: item.id})} onMouseLeave={() => this.setState({hovering: null})}
                         onExport={(event) => this.onExport(event, item)} onDelete={(event) => this.onDelete(event, item)}/>
         }
         else{

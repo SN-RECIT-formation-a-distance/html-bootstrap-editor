@@ -75,12 +75,13 @@ var TextInput = function () {
   }]);
 }();
 var ComboBox = function () {
-  function ComboBox(options, onChangeProp) {
+  function ComboBox(options, onChangeProp, placeholder) {
     (0, _classCallCheck2["default"])(this, ComboBox);
     this.type = 'combobox';
     this.defaultValue = '';
     this.options = options;
     this.onChangeProp = onChangeProp;
+    this.placeholder = placeholder || "";
   }
   return (0, _createClass2["default"])(ComboBox, [{
     key: "onChange",
@@ -682,7 +683,7 @@ var HTMLEmbedRatio = exports.HTMLEmbedRatio = function (_HTMLProperty18) {
       text: "1by1",
       value: "embed-responsive-1by1"
     }];
-    _this13.input = new ComboBox(_this13.options, _this13.onChange.bind(_this13));
+    _this13.input = new ComboBox(_this13.options, _this13.onChange.bind(_this13), _RecitEditor.i18n.get_string('none'));
     return _this13;
   }
   (0, _inherits2["default"])(HTMLEmbedRatio, _HTMLProperty18);
@@ -716,7 +717,9 @@ var HTMLEmbedRatio = exports.HTMLEmbedRatio = function (_HTMLProperty18) {
       try {
         for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
           var item = _step3.value;
-          el.classList.remove(item.value);
+          if (el.classList.contains(item.value)) {
+            el.classList.remove(item.value);
+          }
         }
       } catch (err) {
         _iterator3.e(err);

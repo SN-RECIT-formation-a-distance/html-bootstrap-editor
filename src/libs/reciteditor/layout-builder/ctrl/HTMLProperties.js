@@ -69,11 +69,12 @@ class TextInput{
 }
 
 class ComboBox{
-    constructor(options, onChangeProp){
+    constructor(options, onChangeProp, placeholder){
         this.type = 'combobox'; // keep this attribute for backward compatibility
         this.defaultValue = '';
         this.options = options;
         this.onChangeProp = onChangeProp;
+        this.placeholder = placeholder || "";
     }
 
     onChange(el, value, data){
@@ -542,8 +543,7 @@ export class HTMLEmbedRatio extends HTMLProperty{
             {text:"1by1", value: "embed-responsive-1by1"}
         ];
 
-        this.input = new ComboBox(this.options, this.onChange.bind(this));
-        
+        this.input = new ComboBox(this.options, this.onChange.bind(this), i18n.get_string('none'));
     }
 
     getValue(el, data){
@@ -563,7 +563,9 @@ export class HTMLEmbedRatio extends HTMLProperty{
 
     onChange(el, value, data){                       
         for(let item of data.input.options){
-            el.classList.remove(item.value);
+            if(el.classList.contains(item.value)){
+                el.classList.remove(item.value);
+            }
         }
 
         if(value.length > 0){

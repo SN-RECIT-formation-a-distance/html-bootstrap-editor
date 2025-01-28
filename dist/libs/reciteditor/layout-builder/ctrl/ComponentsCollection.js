@@ -246,7 +246,8 @@ var FormProperties = function (_Component2) {
             options: data.input.options,
             onChange: function onChange(event) {
               return _this3.onDataChange(event, data);
-            }
+            },
+            placeholder: data.input.placeholder
           });
           break;
         case 'iconselector':
@@ -552,6 +553,7 @@ var TemplateList = function (_Component5) {
     }
     _this7.state = {
       showModal: false,
+      hovering: false,
       showMenu: false,
       showImport: false,
       showShowcase: false,
@@ -751,7 +753,7 @@ var TemplateList = function (_Component5) {
       var _this9 = this;
       if (this.props.type === 'l') {
         return _react["default"].createElement(TokenTemplate, {
-          showMenu: this.state.showMenu,
+          showMenu: this.state.hovering === item.id,
           data: item,
           key: index,
           onDragEnd: this.props.onDragEnd,
