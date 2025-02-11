@@ -324,7 +324,7 @@ var HTMLVideoElement = exports.HTMLVideoElement = function (_HTMLMediaElement2) 
       if (el === null) {
         return false;
       }
-      return el.classList.contains('video') || el.classList.contains('video-container');
+      return el.classList.contains('video-container');
     }
   }, {
     key: "create",
@@ -337,6 +337,7 @@ var HTMLVideoElement = exports.HTMLVideoElement = function (_HTMLMediaElement2) 
       iframe.classList.add('embed-responsive-item');
       iframe.classList.add('video');
       iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('title', '');
       iframe.setAttribute('allowfullscreen', '1');
       iframe.src = 'https://www.youtube.com/embed/WvljI0VIq-E?rel=0';
       el.appendChild(iframe);
@@ -385,8 +386,8 @@ var HTMLIframeElement = exports.HTMLIframeElement = function (_HTMLElement11) {
     var _this6;
     (0, _classCallCheck2["default"])(this, HTMLIframeElement);
     _this6 = _callSuper(this, HTMLIframeElement, [_RecitEditor.i18n.get_string('iframe'), 'iframe', 'native', {
-      all: ['outerhtml', 'marginborderpadding', 'layout'],
-      min: ['outerhtml']
+      all: ['outerhtml', 'marginborderpadding', 'layout', 'title'],
+      min: ['outerhtml', 'title']
     }]);
     _this6.visible = false;
     return _this6;
@@ -396,6 +397,7 @@ var HTMLIframeElement = exports.HTMLIframeElement = function (_HTMLElement11) {
     key: "create",
     value: function create() {
       var el = document.createElement('iframe');
+      el.setAttribute('title', '');
       return el;
     }
   }, {

@@ -506,6 +506,22 @@ export class HTMLVideoSourceProperty extends HTMLProperty{
     }
 }
 
+export class HTMLTitleProperty extends HTMLProperty{
+    constructor(){
+        super('title',  i18n.get_string('title'));
+        this.input = new TextInput(this.onChange.bind(this));
+    }
+
+    getValue(el, data){
+        return el.getAttribute('title');
+    }
+
+    onChange(el, value, data){
+        el.setAttribute('title', value);
+        return value;
+    }
+}
+
 export class HTMLEmbedProperty extends HTMLProperty{
     constructor(){
         super('src',  i18n.get_string('htmlcode'));

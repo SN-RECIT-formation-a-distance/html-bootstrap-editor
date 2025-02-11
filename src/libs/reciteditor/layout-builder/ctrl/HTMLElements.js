@@ -279,7 +279,7 @@ class HTMLElement{
      equal(el){
          if(el === null){ return false; }
  
-         return (el.classList.contains('video') || el.classList.contains('video-container'));
+         return (el.classList.contains('video-container'));
      }
  
      create(){
@@ -292,6 +292,7 @@ class HTMLElement{
          iframe.classList.add('embed-responsive-item');
          iframe.classList.add('video');
          iframe.setAttribute('frameborder', '0');
+         iframe.setAttribute('title', '');
          iframe.setAttribute('allowfullscreen', '1');
          iframe.src = 'https://www.youtube.com/embed/WvljI0VIq-E?rel=0'
          el.appendChild(iframe)
@@ -328,12 +329,13 @@ class HTMLElement{
  
  export class HTMLIframeElement extends HTMLElement{
      constructor(){
-         super(i18n.get_string('iframe'), 'iframe', 'native', {all: ['outerhtml','marginborderpadding', 'layout'], min: ['outerhtml']});
+         super(i18n.get_string('iframe'), 'iframe', 'native', {all: ['outerhtml','marginborderpadding', 'layout', 'title'], min: ['outerhtml', 'title']});
          this.visible = false;
      }
  
      create(){ 
          let el = document.createElement('iframe');
+         el.setAttribute('title', '');
          return el;
      }
  

@@ -129,6 +129,10 @@ var HTMLElementData = exports.HTMLElementData = function () {
         description: _RecitEditor.i18n.get_string('description'),
         children: [new _HTMLProperties.HTMLAltProperty()]
       }, {
+        name: 'title',
+        description: _RecitEditor.i18n.get_string('description'),
+        children: [new _HTMLProperties.HTMLTitleProperty()]
+      }, {
         name: 'htmlattributes',
         description: _RecitEditor.i18n.get_string('htmlattributes'),
         children: [new _HTMLProperties.HTMLClassProperty(), new _HTMLProperties.HTMLStyleProperty(), new _HTMLProperties.HTMLIdProperty()]
