@@ -46,6 +46,7 @@ export class SourceCodeEditor extends Component{
         this.setCursor = this.setCursor.bind(this);
 
         this.state = {data: ""};
+        this.timer = 0;
 
         this.codeMirror = React.createRef();
     }
@@ -79,16 +80,24 @@ export class SourceCodeEditor extends Component{
         let main = 
             <div style={this.props.style} className="react-codemirror">
                 <CodeMirror ref={this.codeMirror} value={this.state.data} theme="dark" 
-                extensions={[html(), EditorView.lineWrapping, lintGutter(), autoCloseTags, search({caseSensitive:false})]} onChange={this.onChange}/>
+                extensions={[html(), EditorView.lineWrapping, lintGutter(), autoCloseTags, search({caseSensitive:false})]} onChange={this.onChange} />
             </div>;
 
         return main;
     }
 
     onChange(value){
-        this.setState({data: value});
-        if(this.props.onChange){
-            this.props.onChange(value);
-        }
+        let timeoutVal = 1000;  // time it takes to wait for user to stop typing in ms
+        let that = this;
+        
+        window.clearTimeout(this.timer); // prevent errant multiple timeouts from being generated
+            
+        this.timer = window.setTimeout(() => {
+            that.setState({data: value});
+
+            if(that.props.onChange){
+                that.props.onChange(value);
+            }
+        }, timeoutVal);
     }
 }

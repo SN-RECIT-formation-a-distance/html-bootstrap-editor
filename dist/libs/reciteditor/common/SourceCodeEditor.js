@@ -38,6 +38,7 @@ var SourceCodeEditor = exports.SourceCodeEditor = function (_Component) {
     _this.state = {
       data: ""
     };
+    _this.timer = 0;
     _this.codeMirror = _react["default"].createRef();
     return _this;
   }
@@ -98,12 +99,17 @@ var SourceCodeEditor = exports.SourceCodeEditor = function (_Component) {
   }, {
     key: "onChange",
     value: function onChange(value) {
-      this.setState({
-        data: value
-      });
-      if (this.props.onChange) {
-        this.props.onChange(value);
-      }
+      var timeoutVal = 1000;
+      var that = this;
+      window.clearTimeout(this.timer);
+      this.timer = window.setTimeout(function () {
+        that.setState({
+          data: value
+        });
+        if (that.props.onChange) {
+          that.props.onChange(value);
+        }
+      }, timeoutVal);
     }
   }]);
 }(_react.Component);
