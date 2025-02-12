@@ -499,6 +499,7 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
     key: "onDragEnd",
     value: function onDragEnd() {
       this.onBeforeChange();
+      this.mainView.onUnselectElement();
       this.htmlCleaning(this.window.document, true);
       this.onAfterChange();
     }
@@ -635,6 +636,7 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
       var counter = 0;
       var _loading = function loading() {
         if (that.window) {
+          that.mainView.onUnselectElement();
           var body = that.window.document.body;
           body.innerHTML = _RecitEditor.UtilsHTML.assignTagId(value);
           _RecitEditor.CanvasElement.create(body, that.mainView.onSelectElement, that.mainView.onDrop, that.mainView.onStartEditingNodeText);
@@ -756,6 +758,8 @@ var SourceCodeState = exports.SourceCodeState = function (_CanvasState3) {
       selectedElement = selectedElement || null;
       if (selectedElement !== null) {
         this.queryStr = selectedElement.getAttribute("data-tag-id") || "";
+      } else {
+        this.queryStr = "";
       }
       this.data = _RecitEditor.UtilsHTML.assignTagId(value);
     }
@@ -766,10 +770,14 @@ var SourceCodeState = exports.SourceCodeState = function (_CanvasState3) {
         el: el,
         panels: panels
       };
-      if (el === null) {
+      if (Object.is(result.el, selectedElement)) {
+        result.el = null;
+      }
+      if (result.el === null) {
+        this.queryStr = "";
         return result;
       }
-      this.queryStr = el.getAttribute("data-tag-id") || "";
+      this.queryStr = result.el.getAttribute("data-tag-id") || "";
       return result;
     }
   }, {

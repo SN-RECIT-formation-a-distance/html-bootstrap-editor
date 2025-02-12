@@ -1,6 +1,6 @@
 {
   "name": "@recit/html-bootstrap-editor",
-  "version": "1.25.5",
+  "version": "1.25.6",
   "description": "HTML Bootstrap Editor",
   "main": "dist/index.js",
   "module": "dist/index.js",

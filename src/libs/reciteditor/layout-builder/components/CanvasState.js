@@ -420,6 +420,7 @@ export class DesignerState extends CanvasState{
     
     onDragEnd(){
         this.onBeforeChange();
+        this.mainView.onUnselectElement();
         this.htmlCleaning(this.window.document, true);
         this.onAfterChange();
     }
@@ -544,6 +545,8 @@ export class DesignerState extends CanvasState{
         let counter = 0;
         let loading = function(){
             if(that.window){
+                that.mainView.onUnselectElement();
+
                 let body = that.window.document.body;
                 body.innerHTML =  UtilsHTML.assignTagId(value);
                 CanvasElement.create(body, that.mainView.onSelectElement, that.mainView.onDrop, that.mainView.onStartEditingNodeText);
@@ -670,7 +673,10 @@ export class SourceCodeState extends CanvasState{
 
         if(selectedElement !== null){
             this.queryStr = selectedElement.getAttribute("data-tag-id") || "";
-        }        
+        }
+        else{
+            this.queryStr = "";
+        }
         
         this.data = UtilsHTML.assignTagId(value);
     }
@@ -678,9 +684,17 @@ export class SourceCodeState extends CanvasState{
     onSelectElement(el, selectedElement, panels){ 
         let result = {el: el, panels: panels };
 
-        if(el === null){return result;}
+        // if the selected element receives another click then it deselects it
+        if(Object.is(result.el, selectedElement)){
+            result.el = null;
+        }
 
-        this.queryStr = el.getAttribute("data-tag-id") || "";
+        if(result.el === null){
+            this.queryStr = "";
+            return result;
+        }
+
+        this.queryStr = result.el.getAttribute("data-tag-id") || "";
         
         return result;
     }

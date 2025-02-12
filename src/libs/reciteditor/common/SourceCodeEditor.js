@@ -62,7 +62,10 @@ export class SourceCodeEditor extends Component{
     }
 
     setCursor(prevProps){
-        if((this.props.queryStr.length > 0) && (this.codeMirror)){            
+        if(prevProps.queryStr === this.props.queryStr){ return; }
+        if(this.props.queryStr.length === 0){ return; }
+
+        if(this.codeMirror){            
             let pos = this.state.data.search(`data-tag-id="${this.props.queryStr}"`);
             
             setTimeout(() => {
