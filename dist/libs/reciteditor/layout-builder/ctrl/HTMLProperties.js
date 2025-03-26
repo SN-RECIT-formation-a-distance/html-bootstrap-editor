@@ -649,12 +649,20 @@ var HTMLTitleProperty = exports.HTMLTitleProperty = function (_HTMLProperty17) {
   return (0, _createClass2["default"])(HTMLTitleProperty, [{
     key: "getValue",
     value: function getValue(el, data) {
-      return el.getAttribute('title');
+      var iframe = el;
+      if (el.tagName == 'DIV') {
+        iframe = el.querySelector('iframe');
+      }
+      return iframe.getAttribute('title');
     }
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
-      el.setAttribute('title', value);
+      var iframe = el;
+      if (el.tagName == 'DIV') {
+        iframe = el.querySelector('iframe');
+      }
+      iframe.setAttribute('title', value);
       return value;
     }
   }]);
@@ -2801,8 +2809,8 @@ HTMLPropertiesData.propsAssignmentFacade = {
     all: ['source', 'alt', 'bs-general', 'bs-spacing', 'bs-border', 'layout', 'htmlattributes']
   },
   video: {
-    min: ['videosource'],
-    all: ['bs-general', 'bs-spacing', 'bs-border', 'videosource', 'layout', 'background', 'htmlattributes']
+    min: ['videosource', 'title'],
+    all: ['bs-general', 'bs-spacing', 'bs-border', 'videosource', 'title', 'layout', 'background', 'htmlattributes']
   },
   icon: {
     min: ['icon'],

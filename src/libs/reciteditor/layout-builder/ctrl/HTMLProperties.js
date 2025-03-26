@@ -513,11 +513,19 @@ export class HTMLTitleProperty extends HTMLProperty{
     }
 
     getValue(el, data){
-        return el.getAttribute('title');
+        let iframe = el;
+        if (el.tagName == 'DIV'){
+            iframe = el.querySelector('iframe');
+        }
+        return iframe.getAttribute('title');
     }
 
     onChange(el, value, data){
-        el.setAttribute('title', value);
+        let iframe = el;
+        if (el.tagName == 'DIV'){
+            iframe = el.querySelector('iframe');
+        }
+        iframe.setAttribute('title', value);
         return value;
     }
 }
@@ -535,6 +543,7 @@ export class HTMLEmbedProperty extends HTMLProperty{
 
     onChange(el, value, data){  
         value = new DOMParser().parseFromString(value, "text/html").body.firstElementChild;   
+        if (!value) return;
         
         if(!value.classList.contains('embed-responsive-item')){
             value.classList.add('embed-responsive-item');
@@ -1944,8 +1953,8 @@ export class HTMLPropertiesData{
             all:['source', 'alt', 'bs-general', 'bs-spacing', 'bs-border', 'layout', 'htmlattributes']
         },
         video: {
-            min: ['videosource'],
-            all: ['bs-general', 'bs-spacing', 'bs-border', 'videosource', 'layout', 'background', 'htmlattributes']
+            min: ['videosource', 'title'],
+            all: ['bs-general', 'bs-spacing', 'bs-border', 'videosource', 'title', 'layout', 'background', 'htmlattributes']
         },
         icon: {
             min: ['icon'],
