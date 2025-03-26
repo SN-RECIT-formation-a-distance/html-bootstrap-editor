@@ -569,6 +569,7 @@ export class HTMLEmbedRatio extends HTMLProperty{
         ];
 
         this.input = new ComboBox(this.options, this.onChange.bind(this), i18n.get_string('none'));
+        this.baseClass = "embed-responsive";
     }
 
     getValue(el, data){
@@ -586,7 +587,10 @@ export class HTMLEmbedRatio extends HTMLProperty{
         return result;
     }
 
-    onChange(el, value, data){                       
+    onChange(el, value, data){
+        if(el.classList.contains(this.baseClass)){
+            el.classList.remove(this.baseClass);
+        }
         for(let item of data.input.options){
             if(el.classList.contains(item.value)){
                 el.classList.remove(item.value);
@@ -594,6 +598,7 @@ export class HTMLEmbedRatio extends HTMLProperty{
         }
 
         if(value.length > 0){
+            el.classList.add(this.baseClass);
             el.classList.add(value);
         }
     }

@@ -685,6 +685,7 @@ var HTMLEmbedProperty = exports.HTMLEmbedProperty = function (_HTMLProperty18) {
     key: "onChange",
     value: function onChange(el, value, data) {
       value = new DOMParser().parseFromString(value, "text/html").body.firstElementChild;
+      if (!value) return;
       if (!value.classList.contains('embed-responsive-item')) {
         value.classList.add('embed-responsive-item');
       }
@@ -714,6 +715,7 @@ var HTMLEmbedRatio = exports.HTMLEmbedRatio = function (_HTMLProperty19) {
       value: "embed-responsive-1by1"
     }];
     _this14.input = new ComboBox(_this14.options, _this14.onChange.bind(_this14), _RecitEditor.i18n.get_string('none'));
+    _this14.baseClass = "embed-responsive";
     return _this14;
   }
   (0, _inherits2["default"])(HTMLEmbedRatio, _HTMLProperty19);
@@ -742,6 +744,9 @@ var HTMLEmbedRatio = exports.HTMLEmbedRatio = function (_HTMLProperty19) {
   }, {
     key: "onChange",
     value: function onChange(el, value, data) {
+      if (el.classList.contains(this.baseClass)) {
+        el.classList.remove(this.baseClass);
+      }
       var _iterator3 = _createForOfIteratorHelper(data.input.options),
         _step3;
       try {
@@ -757,6 +762,7 @@ var HTMLEmbedRatio = exports.HTMLEmbedRatio = function (_HTMLProperty19) {
         _iterator3.f();
       }
       if (value.length > 0) {
+        el.classList.add(this.baseClass);
         el.classList.add(value);
       }
     }
