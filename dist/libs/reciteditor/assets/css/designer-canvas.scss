@@ -40,6 +40,13 @@ html{
         table{border: $border-invisible-element; border-width: 3px;}
         section:empty::before{content: "Section"; @extend .tag-empty;}
         p:empty::before{content: "P"; @extend .tag-empty;}
+        ul:empty::before{content: "UL"; @extend .tag-empty;}
+        h1:empty::before{content: "H1"; @extend .tag-empty;}
+        h2:empty::before{content: "H2"; @extend .tag-empty;}
+        h3:empty::before{content: "H3"; @extend .tag-empty;}
+        h4:empty::before{content: "H4"; @extend .tag-empty;}
+        h5:empty::before{content: "H5"; @extend .tag-empty;}
+        h6:empty::before{content: "H6"; @extend .tag-empty;}
          
         .container{ border: $border-invisible-element; padding: 1rem; }
         .container-fluid{@extend .container;}
