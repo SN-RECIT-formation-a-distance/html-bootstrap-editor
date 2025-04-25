@@ -526,7 +526,7 @@ export class DesignerState extends CanvasState{
             this.htmlCleaning(this.window.document);
         }
 
-        UtilsHTML.removeTagId(this.window.document.body.innerHTML);
+        UtilsHTML.removeTagId(this.window.document.body);
 
         return this.window.document.body.innerHTML;
     }
