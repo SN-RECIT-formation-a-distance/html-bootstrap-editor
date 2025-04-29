@@ -104,7 +104,7 @@ export class AccessibilityChecker extends Component {
         let body = this.getBody();
         if (!body) return;
 
-        let els = body.querySelectorAll('img:not([alt]), img[alt=""]');//Images with no alt
+        let els = body.querySelectorAll('img:not([alt])');//Images with no alt
         for (let i of els){
             i.setAttribute('data-accessibility', i18n.get_string('imgalterror'));
             i.addEventListener("mouseover", this.onHover);

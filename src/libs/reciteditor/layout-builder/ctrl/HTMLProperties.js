@@ -424,6 +424,40 @@ export class HTMLAltProperty extends HTMLProperty{
     }
 }
 
+export class HTMLDecorativeAltProperty extends HTMLProperty{
+    constructor(){
+        super('altdecorative', <>{i18n.get_string('decorative')}</>);
+
+        this.options = [
+            {text:i18n.get_string('yes'), value: '1'},
+            {text:i18n.get_string('no'), value: ''}
+        ];
+
+        this.input = new RadioButton(this.options, this.onChange.bind(this));
+    }
+ 
+    getValue(el, data){
+        let result = '';
+                        
+        if(el.getAttribute('role') == 'presentation'){
+            result = '1';
+        }
+
+        return result;
+    }
+
+    onChange(el, value, data){
+
+        if(value.length > 0){
+            el.setAttribute('role', 'presentation');
+            el.setAttribute('alt', '');
+        }else{
+            el.removeAttribute('alt');
+            el.removeAttribute('role');
+        }
+    }
+}
+
 export class HTMLOuterHTMLProperty extends HTMLProperty{
     constructor(){
         super('outerhtml', i18n.get_string('sourcecode'));
