@@ -99,9 +99,9 @@ export class TreeView extends Component{
                         {!node.dom.isSameNode(this.props.data) && <> 
                             <Button onClick={() => this.props.onMoveNodeUp(node.dom)}><FontAwesomeIcon icon={faArrowUp} title={i18n.get_string('moveelementup')}/></Button>
                             <Button onClick={() => this.props.onMoveNodeDown(node.dom)}><FontAwesomeIcon icon={faArrowDown} title={i18n.get_string('moveelementdown')}/></Button>
-                            <Button onClick={() => this.props.onDeleteElement(node.dom)}><FontAwesomeIcon icon={faTrashAlt} title={i18n.get_string('delete')}/></Button>
                         </>}
                         <Button onClick={() => this.setState({saveElement:node.dom})}><FontAwesomeIcon icon={faSave} title={i18n.get_string('save')}/></Button>
+                        {!node.dom.isSameNode(this.props.data) && <Button onClick={() => this.props.onDeleteElement(node.dom)}><FontAwesomeIcon icon={faTrashAlt} title={i18n.get_string('delete')}/></Button>}
                     </ButtonGroup>
                 }
                 

@@ -611,11 +611,11 @@ export class DesignerState extends CanvasState{
     }
 
     onKey(e, editingElement) {
-        /*if (e.keyCode === 46) {//del
+        if (e.keyCode === 46) {//del
             if (!editingElement || editingElement.getAttribute('contenteditable') != 'true') {
                 this.mainView.onDeleteElement(null);
             }
-        }*/
+        }
 
         if (e.ctrlKey && e.keyCode == 90){//ctrl z
             this.historyManager.onUndo(this.mainView.setData, this.mainView.getData());
