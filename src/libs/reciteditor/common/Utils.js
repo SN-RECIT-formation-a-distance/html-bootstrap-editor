@@ -1194,3 +1194,22 @@ export class Cookies
         return result;
     };
 };
+
+export class Event {
+    static listeners = {};
+  
+    static listen(event, callback) {
+      if (!this.listeners[event]) {
+        this.listeners[event] = [];
+      }
+      this.listeners[event].push(callback);
+    }
+  
+    static trigger(event, args) {
+      if (this.listeners[event]) {
+        for (const callback of this.listeners[event]) {
+          callback(args);
+        }
+      }
+    }
+}

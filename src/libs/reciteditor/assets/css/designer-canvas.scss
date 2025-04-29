@@ -33,6 +33,10 @@ html{
             padding: 5px;
         }
 
+        *[data-accessibility],*[data-accessibility]:hover {
+            border: 5px solid #d34141 !important;
+        }
+
         div:empty:not(.col):not(.col-auto):not(.row):not(.row-fluid):not(.embed-element):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before{content: "Div"; @extend .tag-empty;}
         .embed-element:empty::before{content: "Embed"; display: inline; @extend .tag-empty;} 
         div:not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer):not(.dropping-zone):not(.carousel-item){ border: $border-invisible-element; }    

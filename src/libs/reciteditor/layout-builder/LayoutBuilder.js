@@ -25,8 +25,9 @@ import React, { Component } from 'react';
 import { Nav, Navbar, Button, ButtonToolbar, ButtonGroup } from 'react-bootstrap';
 import {faMobileAlt, faTabletAlt, faTh, faLaptop, faDesktop, faFileWord, faEye, faCode, faSave, faRedo, faUndo, faColumns, faCloud, faPuzzlePiece,  faFileCode, faSitemap, faObjectGroup, faCubes} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {HTMLElementData, TreeView, CanvasElement, ComponentProperties, VisualComponentList, Assets, $glVars, Templates, HistoryManager, Utils, i18n, DesignerState, PreviewState, SourceCodeDesignerState, SourceCodeState, JsNx, Storage} from '../RecitEditor';
+import {HTMLElementData, TreeView, CanvasElement, ComponentProperties, VisualComponentList, Assets, $glVars, Templates, HistoryManager, Utils, i18n, DesignerState, PreviewState, SourceCodeDesignerState, SourceCodeState, JsNx, Storage, Event} from '../RecitEditor';
 import html2canvas from 'html2canvas';
+import { AccessibilityChecker } from './components/AccessibilityChecker';
 
 export class LayoutBuilder extends Component
 {
@@ -58,7 +59,7 @@ export class LayoutBuilder extends Component
         this.onNavbarSelect = this.onNavbarSelect.bind(this);
         this.onSaveAndClose = this.onSaveAndClose.bind(this);
         this.onWindowResize = this.onWindowResize.bind(this);
-        //this.windowResizeTo = this.windowResizeTo.bind(this);
+        this.windowResizeTo = this.windowResizeTo.bind(this);
 
         window.addEventListener("resize", this.onWindowResize);
 
@@ -71,7 +72,7 @@ export class LayoutBuilder extends Component
     }  
 
     componentDidMount(){
-        //this.windowResizeTo();
+        this.windowResizeTo();
         window.moveTo(0,0);
     }
 
@@ -107,6 +108,9 @@ export class LayoutBuilder extends Component
                             </>
                         }
 
+                        <AccessibilityChecker />
+
+
                         <Nav activeKey={this.state.device}>
                             <Nav.Link eventKey="xs"><FontAwesomeIcon icon={faMobileAlt} title={i18n.get_string('smartphone')}/></Nav.Link>
                             <Nav.Link eventKey="sm"><FontAwesomeIcon icon={faTabletAlt} title={i18n.get_string('verticaltablet')}/></Nav.Link>
@@ -130,6 +134,7 @@ export class LayoutBuilder extends Component
             this.props.onSelectBuilder('word');
         }
         else if(['designer', 'preview', 'sourceCode', 'sourceCodeDesigner'].includes(eventKey)){
+            Event.trigger('onBeforeViewChange', {view: eventKey});
             this.setState({view: eventKey});
         }
         else if(eventKey === 'undo'){
@@ -151,17 +156,22 @@ export class LayoutBuilder extends Component
         });
     }
 
-    /*windowResizeTo(){
-        let device = this.getDeviceDimension();
-        let width = device.width + LayoutBuilder.properties.leftPanel.width + 15 + (this.state.view === 'sourceCodeDesigner' ? 780 : 0);
-        window.resizeTo(Math.min(width, screen.availWidth), screen.availHeight);
-    }*/
+    windowResizeTo(){
+        let oldPos = localStorage.getItem('htmlbseditor.pos');
+        if (oldPos){
+            oldPos = JSON.parse(oldPos);
+            window.moveTo(oldPos.x, oldPos.y);
+            window.resizeTo(oldPos.width, oldPos.height);
+        }
+    }
 
     onWindowResize(){
         this.forceUpdate();
+        localStorage.setItem('htmlbseditor.pos', JSON.stringify({x: window.screenX, y: window.screenY, width: window.outerWidth, height: window.outerHeight}))
     }
 
     onSaveAndClose(){
+        Event.trigger('onSaveAndClose', {view: this.state.view, body: this.mainViewRef.current?.getBody()});
         let content = this.mainViewRef.current.getData();
         this.props.onSaveAndClose(content);
     }
@@ -222,6 +232,7 @@ class MainView extends Component{
         this.onDragStart = this.onDragStart.bind(this);
         this.onDragEnd = this.onDragEnd.bind(this);
         this.onDrop = this.onDrop.bind(this);
+        this.getBody = this.getBody.bind(this);
         this.getData = this.getData.bind(this);
         this.setData = this.setData.bind(this);
         this.onKey = this.onKey.bind(this);
@@ -252,6 +263,7 @@ class MainView extends Component{
         this.props.historyManager.addHistoryItem(this.props.content);
         this.loadTemplates();
         document.body.onkeyup = this.onKey;
+        Event.trigger('onViewChange', {view: this.props.view, getBody: this.getBody}); //Trigger initial view
     }
 
     loadTemplates(){
@@ -275,13 +287,17 @@ class MainView extends Component{
         if(prevProps.view !== this.props.view){
             let data = "";
 
+            
             if (prevProps.view == 'sourceCodeDesigner'){
                 data = this.canvasState.designer.getData(true);
             }else{
                 data = this.canvasState[prevProps.view].getData();
             }
             this.setData(data);
-            this.setState({canvasState: this.props.view},  this.onPanelChange);
+            this.setState({canvasState: this.props.view}, () => {
+                this.onPanelChange();
+                Event.trigger('onViewChange', {view: this.props.view, getBody: this.getBody});
+            });
         }
 
         if((prevProps.device.name !== this.props.device.name) || (prevProps.view !== this.props.view)){
@@ -291,6 +307,10 @@ class MainView extends Component{
         if(prevProps.content !== this.props.content){
             this.setData(this.props.content);
         }
+    }
+
+    getBody(){
+        return this.canvasState[this.props.view].getBody();
     }
 
     getData(){
@@ -377,6 +397,7 @@ class MainView extends Component{
 
     onContentChange(data, origin){
         this.canvasState[this.state.canvasState].onContentChange(data, origin);
+        Event.trigger('onViewUpdate', {data: data, origin: origin});
     }
 
     onDrop(dom, newEl){
@@ -401,6 +422,7 @@ class MainView extends Component{
             this.canvasState.sourceCode.setData(data);
             this.canvasState.sourceCode.refresh();
         }*/
+        Event.trigger('onViewUpdate', {data: this.getData(), origin: this.state.canvasState});
     }
 
     onUnselectElement(){
