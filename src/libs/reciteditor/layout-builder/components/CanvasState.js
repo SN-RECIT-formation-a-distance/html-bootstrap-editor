@@ -90,6 +90,7 @@ class CanvasState{
 
     render(show, selectedElement){}
     onDragEnd(){}
+    getBody(){}
     getData(htmlCleaning){}
     setData(value, selectedElement){}
     onBeforeChange(value, flags){}
@@ -189,6 +190,10 @@ export class SourceCodeDesignerState extends CanvasState{
         }else if (origin == 'sourceCode'){
             this.designer.setData(val)
         }
+    }
+
+    getBody(){
+        return this.designer.getBody();
     }
 
     getData(){
@@ -571,7 +576,7 @@ export class DesignerState extends CanvasState{
             return; 
         }
         
-        if (TextEditorModal.isTagEditable(selectedElement.tagName, selectedElement) && !dbClick){
+        if (TextEditorModal.isTagEditable(selectedElement.tagName, selectedElement, dbClick)){
             this.editingElement = selectedElement;
         }else{
             let that = this;     

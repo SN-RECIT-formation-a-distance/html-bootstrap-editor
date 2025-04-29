@@ -23,6 +23,7 @@ export class TextEditorModal extends React.Component {
         'h6': {content: 'outerHTML'},
         'td': {content: 'innerHTML', stripPTags: true},
         'th': {content: 'innerHTML', stripPTags: true},
+        'button': {content: 'innerHTML', stripPTags: true, dbClick: true},
         'ul': {content: 'outerHTML'},
         'ol': {content: 'outerHTML'},
         //'a': {content: 'innerHTML', stripPTags: true},
@@ -33,7 +34,7 @@ export class TextEditorModal extends React.Component {
 
     };
 
-    static isTagEditable(tag, html = null){
+    static isTagEditable(tag, html = null, dbClick){
         // avoid tag i edition because this editor modifies it from i to em
         if(html !== null){
             let els = html.querySelectorAll("i[class]");
@@ -42,7 +43,13 @@ export class TextEditorModal extends React.Component {
             }
         }
 
-        return TextEditorModal.allowedTags[tag.toLowerCase()] ? true : false;
+        let tags = TextEditorModal.allowedTags[tag.toLowerCase()];
+        if (dbClick && tags && tags.dbClick){
+            return true;
+        } else if (tags && !dbClick && !tags.dbClick){
+            return true;
+        }
+        return false;
     }
 
     constructor(props){
