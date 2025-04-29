@@ -92,7 +92,7 @@ class RadioButton{
     }
 
     onChange(el, value, data){
-        this.onChangeProp(el, value, data);
+        return this.onChangeProp(el, value, data);
     }
 }
 
@@ -1317,12 +1317,12 @@ export class BsHeadingProperty extends HTMLProperty{
         super('headingprop', i18n.get_string('headingstyle'));
 
         this.options = [
-            {text:'h1', value: "h1"},                
-            {text:'h2', value: "h2"},                
-            {text:'h3', value: "h3"},                
-            {text:'h4', value: "h4"},                
-            {text:'h5', value: "h5"},                
-            {text:'h6', value: "h6"},
+            {text:'H1', value: "h1"},                
+            {text:'H2', value: "h2"},                
+            {text:'H3', value: "h3"},                
+            {text:'H4', value: "h4"},                
+            {text:'H5', value: "h5"},                
+            {text:'H6', value: "h6"},
         ];
 
         this.input = new RadioButton(this.options, this.onChange.bind(this));
@@ -1351,6 +1351,37 @@ export class BsHeadingProperty extends HTMLProperty{
         if(value.length > 0){
             el.classList.add(`${value}`);
         }
+    }
+}
+
+export class HeadingProperty extends HTMLProperty{
+    constructor(){
+        super('headingtagprop', i18n.get_string('heading'));
+
+        this.options = [
+            {text:'H1', value: "H1"},                
+            {text:'H2', value: "H2"},                
+            {text:'H3', value: "H3"},                
+            {text:'H4', value: "H4"},                
+            {text:'H5', value: "H5"},
+            {text:'H6', value: "H6"},
+        ];
+
+        this.input = new RadioButton(this.options, this.onChange.bind(this));
+    }
+
+    getValue(el, data){
+        return el.tagName;
+    }
+
+    onChange(el, value, data){   
+        const h = document.createElement(value);
+        h.innerHTML = el.innerHTML; // Copy content
+        // Copy attributes if needed
+        for (const attr of el.attributes) {
+            h.setAttribute(attr.name, attr.value);
+        }
+        return {action: 'replace', newElement: h};
     }
 }
 
