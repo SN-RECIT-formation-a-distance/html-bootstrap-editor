@@ -54,7 +54,7 @@ html{
          
         .container{ border: $border-invisible-element; padding: 1rem; }
         .container-fluid{@extend .container;}
-        .row{ border: $border-invisible-element;  padding: 1rem; }
+        .row, ul, ol{ border: $border-invisible-element;  padding: 1rem; }
         .row:empty::before, .row-fluid:empty::before{content: "Row"; @extend .tag-empty;}
          
         @for $i from 1 through 12 { 

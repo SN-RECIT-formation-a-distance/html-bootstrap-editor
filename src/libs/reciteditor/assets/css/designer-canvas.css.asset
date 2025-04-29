@@ -75,7 +75,7 @@ html {
     html body .container, html body .container-fluid {
       border: 2px dashed #c9c5c5;
       padding: 1rem; }
-    html body .row {
+    html body .row, html body ul, html body ol {
       border: 2px dashed #c9c5c5;
       padding: 1rem; }
     html body .row:empty::before, html body .row-fluid:empty::before {
