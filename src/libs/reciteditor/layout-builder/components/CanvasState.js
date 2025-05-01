@@ -611,7 +611,7 @@ export class DesignerState extends CanvasState{
     }
 
     onKey(e, editingElement) {
-        if (e.keyCode === 46) {//del
+        if (e.keyCode === 46 && document.activeElement.tagName == 'IFRAME') {//del, only if iframe is focused, otherwise they may be editing a property
             if (!editingElement || editingElement.getAttribute('contenteditable') != 'true') {
                 this.mainView.onDeleteElement(null);
             }
