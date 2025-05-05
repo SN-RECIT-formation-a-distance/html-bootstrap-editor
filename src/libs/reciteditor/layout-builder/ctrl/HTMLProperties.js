@@ -1317,6 +1317,7 @@ export class BsHeadingProperty extends HTMLProperty{
         super('headingprop', i18n.get_string('headingstyle'));
 
         this.options = [
+            {text: <FontAwesomeIcon icon={faRemoveFormat} title={i18n.get_string('removeformat')}/>, value:''},
             {text:'H1', value: "h1"},                
             {text:'H2', value: "h2"},                
             {text:'H3', value: "h3"},                
@@ -1345,7 +1346,9 @@ export class BsHeadingProperty extends HTMLProperty{
 
     onChange(el, value, data){                       
         for(let item of data.input.options){
-            el.classList.remove(`${item.value}`);
+            if (item.value.length > 0){
+                el.classList.remove(`${item.value}`);
+            }
         }
 
         if(value.length > 0){
