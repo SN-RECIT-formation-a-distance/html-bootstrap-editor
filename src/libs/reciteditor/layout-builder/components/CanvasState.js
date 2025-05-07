@@ -425,7 +425,6 @@ export class DesignerState extends CanvasState{
     
     onDragEnd(){
         this.onBeforeChange();
-        this.mainView.onUnselectElement();
         this.htmlCleaning(this.window.document, true);
         this.onAfterChange();
     }

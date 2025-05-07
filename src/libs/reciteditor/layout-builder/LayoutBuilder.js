@@ -404,9 +404,9 @@ class MainView extends Component{
         if (newEl){
             let cl = HTMLElementData.getInstance().getElementClass(null, newEl);
             if (cl && cl.modalCreation){
-                setTimeout(() => this.onSelectElement(newEl), 100); //We need to wait a bit because OnMouseClick triggers right after and closes the modal
+                this.onSelectElement(newEl); 
             }else{
-                this.setState({selectedElement: null})
+                this.onUnselectElement();
             }
         }
     }

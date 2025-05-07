@@ -128,9 +128,12 @@ export class AccessibilityChecker extends Component {
             }
             if (i.tagName == 'H3'){
                 h3detected = true;
+                h4detected = false;
+                h5detected = false;
             }
             if (i.tagName == 'H4'){
                 h4detected = true;
+                h5detected = false;
                 if (!h3detected){
                     i.setAttribute('data-accessibility', i18n.get_string('h4error'));
                     i.addEventListener("mouseover", this.onHover);
