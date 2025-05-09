@@ -67,8 +67,10 @@ export class GridBuilder extends Component{
         }
      }
 
-     getPreviewMaxWidth(){
-        switch(this.state.data.responsive){
+     getPreviewMaxWidth(responsive){
+        switch(responsive){
+            case 'sm':
+                return '40%';
             case 'md':
                 return '60%';
             case 'lg':
@@ -79,9 +81,7 @@ export class GridBuilder extends Component{
      }
  
      render(){
-        let numcols = this.state.data.numcols;
-        let cols = this.state.data.cols;
-        
+        let numcols = this.state.data.numcols;        
         
         let modal = 
              <Modal key='3' show={this.state.modal} onHide={() => this.onClose()} size="xl" backdrop="static" keyboard={false} >
@@ -108,13 +108,6 @@ export class GridBuilder extends Component{
                             </select>
                         </div>
                         <div className='col-md-6'>
-
-                            <h5>{i18n.get_string('responsive')}</h5>
-                            <ToggleButtons type="radio" bsSize="sm" className='gridbuilder_toggle' name='responsive' value={this.state.data.responsive} options={[
-                                {text:<><FontAwesomeIcon icon={faTabletAlt} title="MD" style={{transform: 'rotate(90deg)'}}/> md</>, value: 'md'},
-                                {text:<><FontAwesomeIcon icon={faLaptop} title="LG" /> lg</>, value: 'lg'},
-                                {text:<><FontAwesomeIcon icon={faDesktop} title="XL" /> xl</>, value: 'xl'},
-                            ]} onChange={this.onDataChange}/>
                             
                             <h5>{i18n.get_string('verticalspace')}</h5>
                             <ToggleButtons type="radio" bsSize="sm" className='gridbuilder_toggle' name='verticalspace' value={this.state.data.verticalspace} options={[
@@ -124,36 +117,19 @@ export class GridBuilder extends Component{
                         </div>
                     </div>
                      {numcols > 0 && <div className='p-1 mt-2'><h5 className='mt-3'>{i18n.get_string('definecols')}</h5>
-                     <p className='text-muted'>{i18n.get_string('coltotal')}</p>
-                     <div className={'row m-auto'} style={{maxWidth:this.getPreviewMaxWidth(),backgroundColor:'#efefef'}}>
-                        {(() => {
-                            const arr = [];
-                            for (let i = 1; i <= numcols; i++) {
-                                let colNum = cols[i];
-                                arr.push(
-                                    <div key={i} className={'border '+this.getColClasses(i, true)} style={{wordBreak:'break-all',maxHeight:'360px',overflow:'hidden'}}>
-                                        <select className='mt-2' value={colNum[this.state.data.responsive] || 'na'} name={i} onChange={this.onColChange}>
-                                            {(() => {
-                                                const arr = [<option key='0' value='na'>{i18n.get_string('herit')}</option>];
-                                                for (let i = 1; i <= 12; i++) {
-                                                    arr.push(
-                                                        <option key={i} value={i}>{i}</option>
-                                                    );
-                                                }
-                                                return arr;
-                                            })()}
-                                        </select><br/>
-                                        Col #{i}<br/>
-                                        <span className='badge badge-warning'>{this.getColClasses(i)}</span><br/>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqu
-                                    </div>
-                                    
-                                );
-                            }
-                            return arr;
-                        })()}
-                     </div>
-                        </div>}
+                     <p className='text-primary'>{i18n.get_string('coltotal')}</p>
+                     <p>{i18n.get_string('hdscreen')} (1920x1080):</p>
+                     {this.preview('xl')}
+                     <hr/>
+                     <p>{i18n.get_string('horizontaltablet')} (1024x768):</p>
+                     {this.preview('lg')}
+                     <hr/>
+                     <p>{i18n.get_string('verticaltablet')} (768x1024):</p>
+                     {this.preview('md')}
+                     <hr/>
+                     <p>{i18n.get_string('smartphone')} (390x944):</p>
+                     {this.preview('sm', true)}
+                    </div>}
                  </Modal.Body>
                  <Modal.Footer>
                      <Button variant="secondary" onClick={() => this.onClose()}><FontAwesomeIcon icon={faTimes} title={i18n.get_string('cancel')}/> {i18n.get_string('cancel')}</Button>
@@ -162,13 +138,56 @@ export class GridBuilder extends Component{
              </Modal>
          return [modal];
      }
-
-     getColClasses(col, preview){
+     
+     preview(responsive, noEdit){
+        let numcols = this.state.data.numcols;
         let cols = this.state.data.cols;
-        let curDev = this.state.data.responsive;
+        let style = {maxWidth:this.getPreviewMaxWidth(responsive),backgroundColor:'#efefef', border: '10px solid #797970', borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem', justifyContent: 'center'};
+        if (responsive == 'lg'){
+            style.borderLeftWidth = '40px';
+        }else{
+            style.borderBottomWidth = '40px';
+        }
+        return <div className={'row m-auto p-4 ' + (responsive == 'xl' ? '' : 'rounded')} style={style}>
+        {(() => {
+            const arr = [];
+            for (let i = 1; i <= numcols; i++) {
+                let colNum = cols[i];
+                arr.push(
+                    <div key={i} className={'p-4 '+this.getColClasses(i, true, responsive)} style={{wordBreak:'break-all',maxHeight:'360px',overflow:'hidden'}}>
+                    <div className={'p-3 '} style={{border:'1px solid #000', backgroundColor: '#fff'}}>
+                        {!noEdit && <select className='mt-2' value={colNum[responsive] || 'na'} name={i} onChange={(e) => this.onColChange(e, responsive)}>
+                            {(() => {
+                                const arr = [<option key='0' value='na'>{i18n.get_string('herit')}</option>];
+                                for (let i = 1; i <= 12; i++) {
+                                    arr.push(
+                                        <option key={i} value={i}>{i}</option>
+                                    );
+                                }
+                                return arr;
+                            })()}
+                        </select>}<br/>
+                        Col #{i}<br/>
+                        <span className='badge badge-warning'>{this.getColClasses(i, false, responsive)}</span><br/>
+                        Lorem ipsum dolor sit
+                    </div>
+                    </div>
+                    
+                );
+            }
+            return arr;
+        })()}
+     </div>
+     }
+
+     getColClasses(col, preview, responsive){
+        let cols = this.state.data.cols;
+        let curDev = responsive;
 
         if (preview && cols[col][curDev]){
             return "col-12 col-"+curDev+"-"+cols[col][curDev];
+        }else if (preview){
+            return this.getLarger(col, responsive);
         }
         let cl = "col-12";
         if (this.state.data.verticalspace == 1){
@@ -178,6 +197,30 @@ export class GridBuilder extends Component{
             cl = cl + " col-"+dev+"-"+cols[col][dev]+" ";
         }
         return cl;
+     }
+     
+     getLarger(col, responsive){
+        let cls = false;
+        let cols = this.state.data.cols;
+        switch(responsive){
+            case 'xl':
+                cls = ['md', 'lg', 'sm'];
+                break;
+            case 'md':
+                cls = ['sm'];
+                break;
+            case 'lg':
+                cls = ['md','sm'];
+                break;
+        }
+        if (cls){
+            for (let v of cls){
+                if (cols[col][v]){
+                    return "col-"+responsive+"-"+cols[col][v];
+                }
+            }
+        }
+        return "col-12";
      }
 
      getRemainingColSpace(){
@@ -195,6 +238,7 @@ export class GridBuilder extends Component{
         data[event.target.name] = event.target.value;
         if (event.target.name == 'numcols'){
             data.numcols = parseInt(event.target.value)
+            let cols = [];
             switch (data.numcols){
                 case 2:
                     data.responsive = 'md';
@@ -206,10 +250,13 @@ export class GridBuilder extends Component{
                     data.responsive = 'xl';
                     break;
             }
-            let cols = [];
             for (let i = 0; i <= 12; i++){
                 let t = {};
                 t[data.responsive] = Math.floor(12 / data.numcols);
+
+                if (data.numcols == 4){
+                    t['lg'] = 6;
+                }
                 cols.push(t);
             }
             data.cols = cols
@@ -217,13 +264,13 @@ export class GridBuilder extends Component{
         this.setState({data: data});
     }
     
-    onColChange(event){
+    onColChange(event, responsive){
         let data = this.state.data;
         let val = event.target.value;
         if (parseInt(val)){
-            data['cols'][event.target.name][data.responsive] = parseInt(event.target.value);
+            data['cols'][event.target.name][responsive] = parseInt(event.target.value);
         }else{
-            delete data['cols'][event.target.name][data.responsive];
+            delete data['cols'][event.target.name][responsive];
         }
         this.setState({data: data});
     }
@@ -235,7 +282,7 @@ export class GridBuilder extends Component{
         let html = '<div class="row flex-md-row justify-content-md-center">';
         
         for (let i = 1; i <= numcols; i++) {
-            html = html + "<div class='"+this.getColClasses(i)+"'></div>";
+            html = html + "<div class='"+this.getColClasses(i, false, this.state.data.responsive)+"'></div>";
         }
         html = html + "</div>";
         this.props.value.innerHTML = html;
