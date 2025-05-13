@@ -128,13 +128,6 @@ var TreeView = exports.TreeView = function (_Component) {
       }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faArrowDown,
         title: _RecitEditor.i18n.get_string('moveelementdown')
-      })), _react["default"].createElement(_reactBootstrap.Button, {
-        onClick: function onClick() {
-          return _this3.props.onDeleteElement(node.dom);
-        }
-      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
-        icon: _freeSolidSvgIcons.faTrashAlt,
-        title: _RecitEditor.i18n.get_string('delete')
       }))), _react["default"].createElement(_reactBootstrap.Button, {
         onClick: function onClick() {
           return _this3.setState({
@@ -144,6 +137,13 @@ var TreeView = exports.TreeView = function (_Component) {
       }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
         icon: _freeSolidSvgIcons.faSave,
         title: _RecitEditor.i18n.get_string('save')
+      })), !node.dom.isSameNode(this.props.data) && _react["default"].createElement(_reactBootstrap.Button, {
+        onClick: function onClick() {
+          return _this3.props.onDeleteElement(node.dom);
+        }
+      }, _react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
+        icon: _freeSolidSvgIcons.faTrashAlt,
+        title: _RecitEditor.i18n.get_string('delete')
       }))));
       var icon = this.state.notCollapsed[id] || node.dom.contains(this.props.selectedElement) ? _freeSolidSvgIcons.faAngleDown : _freeSolidSvgIcons.faAngleRight;
       if (node.children.length > 0) {

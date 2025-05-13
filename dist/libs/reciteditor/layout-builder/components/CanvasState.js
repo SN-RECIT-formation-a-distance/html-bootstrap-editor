@@ -119,6 +119,9 @@ var CanvasState = function () {
     key: "onDragEnd",
     value: function onDragEnd() {}
   }, {
+    key: "getBody",
+    value: function getBody() {}
+  }, {
     key: "getData",
     value: function getData(htmlCleaning) {}
   }, {
@@ -250,6 +253,11 @@ var SourceCodeDesignerState = exports.SourceCodeDesignerState = function (_Canva
       } else if (origin == 'sourceCode') {
         this.designer.setData(val);
       }
+    }
+  }, {
+    key: "getBody",
+    value: function getBody() {
+      return this.designer.getBody();
     }
   }, {
     key: "getData",
@@ -499,7 +507,6 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
     key: "onDragEnd",
     value: function onDragEnd() {
       this.onBeforeChange();
-      this.mainView.onUnselectElement();
       this.htmlCleaning(this.window.document, true);
       this.onAfterChange();
     }
@@ -617,7 +624,7 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
       if (htmlCleaning) {
         this.htmlCleaning(this.window.document);
       }
-      _RecitEditor.UtilsHTML.removeTagId(this.window.document.body.innerHTML);
+      _RecitEditor.UtilsHTML.removeTagId(this.window.document.body);
       return this.window.document.body.innerHTML;
     }
   }, {
@@ -658,7 +665,7 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
       if (selectedElement === null) {
         return;
       }
-      if (_TextEditor.TextEditorModal.isTagEditable(selectedElement.tagName, selectedElement) && !dbClick) {
+      if (_TextEditor.TextEditorModal.isTagEditable(selectedElement.tagName, selectedElement, dbClick)) {
         this.editingElement = selectedElement;
       } else {
         var that = this;
@@ -691,6 +698,11 @@ var DesignerState = exports.DesignerState = function (_CanvasState2) {
   }, {
     key: "onKey",
     value: function onKey(e, editingElement) {
+      if (e.keyCode === 46 && document.activeElement.tagName == 'IFRAME') {
+        if (!editingElement || editingElement.getAttribute('contenteditable') != 'true') {
+          this.mainView.onDeleteElement(null);
+        }
+      }
       if (e.ctrlKey && e.keyCode == 90) {
         this.historyManager.onUndo(this.mainView.setData, this.mainView.getData());
       }

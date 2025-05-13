@@ -90,7 +90,7 @@ var HTMLElementData = exports.HTMLElementData = function () {
       }, {
         name: 'heading',
         description: _RecitEditor.i18n.get_string('heading'),
-        children: [new _HTMLProperties.BsHeadingProperty()]
+        children: [new _HTMLProperties.HeadingProperty(), new _HTMLProperties.BsHeadingProperty()]
       }, {
         name: 'bs-dimension',
         description: _RecitEditor.i18n.get_string('dimension'),
@@ -127,7 +127,7 @@ var HTMLElementData = exports.HTMLElementData = function () {
       }, {
         name: 'alt',
         description: _RecitEditor.i18n.get_string('description'),
-        children: [new _HTMLProperties.HTMLAltProperty()]
+        children: [new _HTMLProperties.HTMLAltProperty(), new _HTMLProperties.HTMLDecorativeAltProperty()]
       }, {
         name: 'title',
         description: _RecitEditor.i18n.get_string('description'),

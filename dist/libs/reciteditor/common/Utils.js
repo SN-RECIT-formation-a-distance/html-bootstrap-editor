@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.i18n = exports.UtilsTreeStruct = exports.UtilsString = exports.UtilsHTML = exports.UtilsDateTime = exports.Utils = exports.UploadFile = exports.Storage = exports.JsNx = exports.IWrapper = exports.Cookies = void 0;
+exports.i18n = exports.UtilsTreeStruct = exports.UtilsString = exports.UtilsHTML = exports.UtilsDateTime = exports.Utils = exports.UploadFile = exports.Storage = exports.JsNx = exports.IWrapper = exports.Event = exports.Cookies = void 0;
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
@@ -129,17 +129,17 @@ JsNx.copy = function (arr, level) {
       return JSON.parse(JSON.stringify(arr));
     case 2:
       var result = [];
-      var _iterator7 = _createForOfIteratorHelper(arr),
-        _step7;
+      var _iterator8 = _createForOfIteratorHelper(arr),
+        _step8;
       try {
-        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
-          var item = _step7.value;
+        for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+          var item = _step8.value;
           result.push(item !== null ? _JsNx.clone(item) : null);
         }
       } catch (err) {
-        _iterator7.e(err);
+        _iterator8.e(err);
       } finally {
-        _iterator7.f();
+        _iterator8.f();
       }
       return result;
     default:
@@ -1082,3 +1082,36 @@ Cookies.get = function (id, defaultValue) {
   return result;
 };
 ;
+var Event = exports.Event = function () {
+  function Event() {
+    (0, _classCallCheck2["default"])(this, Event);
+  }
+  return (0, _createClass2["default"])(Event, null, [{
+    key: "listen",
+    value: function listen(event, callback) {
+      if (!this.listeners[event]) {
+        this.listeners[event] = [];
+      }
+      this.listeners[event].push(callback);
+    }
+  }, {
+    key: "trigger",
+    value: function trigger(event, args) {
+      if (this.listeners[event]) {
+        var _iterator7 = _createForOfIteratorHelper(this.listeners[event]),
+          _step7;
+        try {
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var callback = _step7.value;
+            callback(args);
+          }
+        } catch (err) {
+          _iterator7.e(err);
+        } finally {
+          _iterator7.f();
+        }
+      }
+    }
+  }]);
+}();
+Event.listeners = {};

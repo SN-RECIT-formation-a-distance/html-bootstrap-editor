@@ -18,6 +18,7 @@ var _freeSolidSvgIcons = require("@fortawesome/free-solid-svg-icons");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 var _RecitEditor = require("../RecitEditor");
 var _html2canvas = _interopRequireDefault(require("html2canvas"));
+var _AccessibilityChecker = require("./components/AccessibilityChecker");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2["default"])(o), (0, _possibleConstructorReturn2["default"])(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2["default"])(t).constructor) : o.apply(t, e)); }
@@ -36,6 +37,7 @@ var LayoutBuilder = exports.LayoutBuilder = function (_Component) {
     _this.onNavbarSelect = _this.onNavbarSelect.bind(_this);
     _this.onSaveAndClose = _this.onSaveAndClose.bind(_this);
     _this.onWindowResize = _this.onWindowResize.bind(_this);
+    _this.windowResizeTo = _this.windowResizeTo.bind(_this);
     window.addEventListener("resize", _this.onWindowResize);
     var device = window.screen.width <= LayoutBuilder.properties.maxScreenWidth ? 'lg' : 'xl';
     _this.state = {
@@ -50,6 +52,7 @@ var LayoutBuilder = exports.LayoutBuilder = function (_Component) {
   return (0, _createClass2["default"])(LayoutBuilder, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      this.windowResizeTo();
       window.moveTo(0, 0);
     }
   }, {
@@ -122,7 +125,7 @@ var LayoutBuilder = exports.LayoutBuilder = function (_Component) {
         title: _RecitEditor.i18n.get_string('redo')
       }))), _react["default"].createElement(_reactBootstrap.Nav, {
         className: "separator"
-      })), _react["default"].createElement(_reactBootstrap.Nav, {
+      })), _react["default"].createElement(_AccessibilityChecker.AccessibilityChecker, null), _react["default"].createElement(_reactBootstrap.Nav, {
         activeKey: this.state.device
       }, _react["default"].createElement(_reactBootstrap.Nav.Link, {
         eventKey: "xs"
@@ -177,6 +180,9 @@ var LayoutBuilder = exports.LayoutBuilder = function (_Component) {
         this.props.onChange(this.mainViewRef.current.getData());
         this.props.onSelectBuilder('word');
       } else if (['designer', 'preview', 'sourceCode', 'sourceCodeDesigner'].includes(eventKey)) {
+        _RecitEditor.Event.trigger('onBeforeViewChange', {
+          view: eventKey
+        });
         this.setState({
           view: eventKey
         });
@@ -199,13 +205,34 @@ var LayoutBuilder = exports.LayoutBuilder = function (_Component) {
       });
     }
   }, {
+    key: "windowResizeTo",
+    value: function windowResizeTo() {
+      var oldPos = localStorage.getItem('htmlbseditor.pos');
+      if (oldPos) {
+        oldPos = JSON.parse(oldPos);
+        window.moveTo(oldPos.x, oldPos.y);
+        window.resizeTo(oldPos.width, oldPos.height);
+      }
+    }
+  }, {
     key: "onWindowResize",
     value: function onWindowResize() {
       this.forceUpdate();
+      localStorage.setItem('htmlbseditor.pos', JSON.stringify({
+        x: window.screenX,
+        y: window.screenY,
+        width: window.outerWidth,
+        height: window.outerHeight
+      }));
     }
   }, {
     key: "onSaveAndClose",
     value: function onSaveAndClose() {
+      var _this$mainViewRef$cur;
+      _RecitEditor.Event.trigger('onSaveAndClose', {
+        view: this.state.view,
+        body: (_this$mainViewRef$cur = this.mainViewRef.current) === null || _this$mainViewRef$cur === void 0 ? void 0 : _this$mainViewRef$cur.getBody()
+      });
       var content = this.mainViewRef.current.getData();
       this.props.onSaveAndClose(content);
     }
@@ -307,6 +334,7 @@ var MainView = function (_Component2) {
     _this3.onDragStart = _this3.onDragStart.bind(_this3);
     _this3.onDragEnd = _this3.onDragEnd.bind(_this3);
     _this3.onDrop = _this3.onDrop.bind(_this3);
+    _this3.getBody = _this3.getBody.bind(_this3);
     _this3.getData = _this3.getData.bind(_this3);
     _this3.setData = _this3.setData.bind(_this3);
     _this3.onKey = _this3.onKey.bind(_this3);
@@ -338,6 +366,10 @@ var MainView = function (_Component2) {
       this.props.historyManager.addHistoryItem(this.props.content);
       this.loadTemplates();
       document.body.onkeyup = this.onKey;
+      _RecitEditor.Event.trigger('onViewChange', {
+        view: this.props.view,
+        getBody: this.getBody
+      });
     }
   }, {
     key: "loadTemplates",
@@ -357,6 +389,7 @@ var MainView = function (_Component2) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      var _this4 = this;
       if (prevProps.view !== this.props.view) {
         var data = "";
         if (prevProps.view == 'sourceCodeDesigner') {
@@ -367,7 +400,13 @@ var MainView = function (_Component2) {
         this.setData(data);
         this.setState({
           canvasState: this.props.view
-        }, this.onPanelChange);
+        }, function () {
+          _this4.onPanelChange();
+          _RecitEditor.Event.trigger('onViewChange', {
+            view: _this4.props.view,
+            getBody: _this4.getBody
+          });
+        });
       }
       if (prevProps.device.name !== this.props.device.name || prevProps.view !== this.props.view) {
         this.onUnselectElement();
@@ -375,6 +414,11 @@ var MainView = function (_Component2) {
       if (prevProps.content !== this.props.content) {
         this.setData(this.props.content);
       }
+    }
+  }, {
+    key: "getBody",
+    value: function getBody() {
+      return this.canvasState[this.props.view].getBody();
     }
   }, {
     key: "getData",
@@ -547,6 +591,10 @@ var MainView = function (_Component2) {
     key: "onContentChange",
     value: function onContentChange(data, origin) {
       this.canvasState[this.state.canvasState].onContentChange(data, origin);
+      _RecitEditor.Event.trigger('onViewUpdate', {
+        data: data,
+        origin: origin
+      });
     }
   }, {
     key: "onDrop",
@@ -556,9 +604,7 @@ var MainView = function (_Component2) {
         if (cl && cl.modalCreation) {
           this.onSelectElement(newEl);
         } else {
-          this.setState({
-            selectedElement: null
-          });
+          this.onUnselectElement();
         }
       }
     }
@@ -569,7 +615,12 @@ var MainView = function (_Component2) {
     }
   }, {
     key: "onAfterAssignProperty",
-    value: function onAfterAssignProperty() {}
+    value: function onAfterAssignProperty() {
+      _RecitEditor.Event.trigger('onViewUpdate', {
+        data: this.getData(),
+        origin: this.state.canvasState
+      });
+    }
   }, {
     key: "onUnselectElement",
     value: function onUnselectElement() {
@@ -739,12 +790,12 @@ var LeftPanelButton = function (_Component3) {
   return (0, _createClass2["default"])(LeftPanelButton, [{
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
       var fontSize = this.props.text ? '1rem' : '2rem';
       var main = _react["default"].createElement(_reactBootstrap.Button, {
         variant: this.props.checked ? 'success' : 'secondary',
         onClick: function onClick(e) {
-          return _this4.props.onClick(_this4.props.value);
+          return _this5.props.onClick(_this5.props.value);
         },
         style: {
           fontSize: fontSize,

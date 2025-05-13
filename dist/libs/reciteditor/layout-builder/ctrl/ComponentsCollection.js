@@ -366,7 +366,10 @@ var FormProperties = function (_Component2) {
         var newEl = componentData.input.onChange(this.props.element, event.target.value, componentData);
         this.props.onReplaceNode(this.props.element, newEl);
       } else if (componentData.input.onChange) {
-        componentData.input.onChange(this.props.element, event.target.value, componentData);
+        var result = componentData.input.onChange(this.props.element, event.target.value, componentData);
+        if (result && result.action == 'replace') {
+          this.props.onReplaceNode(this.props.element, result.newElement);
+        }
         this.forceUpdate();
         this.props.onAfterAssignProperty();
       }

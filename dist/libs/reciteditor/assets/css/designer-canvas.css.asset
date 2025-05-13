@@ -39,6 +39,8 @@ html {
     html body .tag-empty, html body div:empty:not(.col):not(.col-auto):not(.row):not(.row-fluid):not(.embed-element):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before, html body .embed-element:empty::before, html body section:empty::before, html body p:empty::before, html body ul:empty::before, html body h1:empty::before, html body h2:empty::before, html body h3:empty::before, html body h4:empty::before, html body h5:empty::before, html body h6:empty::before, html body .row:empty::before, html body .row-fluid:empty::before, html body .col-1:empty::before, html body .col-md-1:empty::before, html body .col-2:empty::before, html body .col-md-2:empty::before, html body .col-3:empty::before, html body .col-md-3:empty::before, html body .col-4:empty::before, html body .col-md-4:empty::before, html body .col-5:empty::before, html body .col-md-5:empty::before, html body .col-6:empty::before, html body .col-md-6:empty::before, html body .col-7:empty::before, html body .col-md-7:empty::before, html body .col-8:empty::before, html body .col-md-8:empty::before, html body .col-9:empty::before, html body .col-md-9:empty::before, html body .col-10:empty::before, html body .col-md-10:empty::before, html body .col-11:empty::before, html body .col-md-11:empty::before, html body .col-12:empty::before, html body .col-md-12:empty::before, html body .col-auto:empty::before, html body .col:empty::before, html body .alert:empty::after, html body .card-header:empty::before, html body .card-body:empty::before, html body .card-footer:empty::before, html body td:empty::before, html body th:empty::before, html body .attoreciteditor_imgclick a:empty::before, html body .htmlbootstrapeditor_imgclick a:empty::before {
       background-color: #ffd75e;
       padding: 5px; }
+    html body *[data-accessibility], html body *[data-accessibility]:hover {
+      border: 5px solid #d34141 !important; }
     html body div:empty:not(.col):not(.col-auto):not(.row):not(.row-fluid):not(.embed-element):not(.col-12):not(.dropping-zone):not(.alert):not(.card):not(.card-header):not(.card-body):not(.card-footer)::before {
       content: "Div"; }
     html body .embed-element:empty::before {
@@ -73,7 +75,7 @@ html {
     html body .container, html body .container-fluid {
       border: 2px dashed #c9c5c5;
       padding: 1rem; }
-    html body .row {
+    html body .row, html body ul, html body ol {
       border: 2px dashed #c9c5c5;
       padding: 1rem; }
     html body .row:empty::before, html body .row-fluid:empty::before {

@@ -211,13 +211,20 @@ var TextEditorModal = exports.TextEditorModal = function (_React$Component) {
     key: "isTagEditable",
     value: function isTagEditable(tag) {
       var html = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      var dbClick = arguments.length > 2 ? arguments[2] : undefined;
       if (html !== null) {
         var els = html.querySelectorAll("i[class]");
         if (els.length > 0) {
           return false;
         }
       }
-      return TextEditorModal.allowedTags[tag.toLowerCase()] ? true : false;
+      var tags = TextEditorModal.allowedTags[tag.toLowerCase()];
+      if (dbClick && tags && tags.dbClick) {
+        return true;
+      } else if (tags && !dbClick && !tags.dbClick) {
+        return true;
+      }
+      return false;
     }
   }]);
 }(_react["default"].Component);
@@ -255,6 +262,11 @@ TextEditorModal.allowedTags = {
   'th': {
     content: 'innerHTML',
     stripPTags: true
+  },
+  'button': {
+    content: 'innerHTML',
+    stripPTags: true,
+    dbClick: true
   },
   'ul': {
     content: 'outerHTML'
