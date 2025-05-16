@@ -1099,6 +1099,28 @@ class HTMLElement{
  
          return (el.parentElement.parentElement.parentElement.parentElement.classList.contains('accordion'));
      }
+     
+ 
+     onSelect(el){
+        const targetSelector = el.getAttribute('data-target');
+        if (!targetSelector) return;
+        const accordion = el.parentElement.parentElement.parentElement.parentElement;
+        if (!accordion) return;
+        const target = accordion.querySelector(targetSelector);
+        if (!target) return;
+    
+        const isExpanded = el.getAttribute('aria-expanded') === 'true';
+
+        if (!isExpanded) {
+            target.classList.add('show');
+            el.setAttribute('aria-expanded', 'true');
+            el.classList.remove('collapsed');
+        } else {
+            target.classList.remove('show');
+            el.setAttribute('aria-expanded', 'false');
+            el.classList.add('collapsed');
+        }
+    }
  }
  
  export class HTMLTabContentElement extends HTMLDivElement{

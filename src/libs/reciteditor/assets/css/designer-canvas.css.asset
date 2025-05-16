@@ -244,8 +244,6 @@ html {
       pointer-events: none; }
     html body .embed-responsive {
       border: 2px dashed rgba(0, 0, 0, 0.5); }
-    html body .collapse {
-      display: block !important; }
   html .tagName {
     display: inline-flex;
     background-color: #ffd75e !important;
