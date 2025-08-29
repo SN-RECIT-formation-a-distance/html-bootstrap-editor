@@ -1238,9 +1238,9 @@ export class BsAddAccordionProperty extends HTMLProperty{
                     nav.innerHTML = `
                     <div class="card-header" id="heading${id}">
                       <h2 class="mb-0">
-                        <a class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}">
+                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}">
                           Item #${nbItems}
-                        </a>
+                        </button>
                       </h2>
                     </div>
                     <div id="collapse${id}" class="collapse" aria-labelledby="heading${id}" data-parent="#${tab.id}">
