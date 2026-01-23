@@ -1221,6 +1221,26 @@ var HTMLAccordionNavElement = exports.HTMLAccordionNavElement = function (_HTMLE
       }
       return el.parentElement.parentElement.parentElement.parentElement.classList.contains('accordion');
     }
+  }, {
+    key: "onSelect",
+    value: function onSelect(el) {
+      var targetSelector = el.getAttribute('data-target');
+      if (!targetSelector) return;
+      var accordion = el.parentElement.parentElement.parentElement.parentElement;
+      if (!accordion) return;
+      var target = accordion.querySelector(targetSelector);
+      if (!target) return;
+      var isExpanded = el.getAttribute('aria-expanded') === 'true';
+      if (!isExpanded) {
+        target.classList.add('show');
+        el.setAttribute('aria-expanded', 'true');
+        el.classList.remove('collapsed');
+      } else {
+        target.classList.remove('show');
+        el.setAttribute('aria-expanded', 'false');
+        el.classList.add('collapsed');
+      }
+    }
   }]);
 }(HTMLElement);
 var HTMLTabContentElement = exports.HTMLTabContentElement = function (_HTMLDivElement14) {
