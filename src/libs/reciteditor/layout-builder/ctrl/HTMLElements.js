@@ -1125,7 +1125,7 @@ class HTMLElement{
  
  export class HTMLTabContentElement extends HTMLDivElement{
      constructor(){
-         super(i18n.get_string('tabcontent'), "div", 'bootstrap', HTMLPropertiesData.propsAssignmentFacade.general);
+         super(i18n.get_string('tabcontent'), "div", 'bootstrap', {all: ['tab', ...HTMLPropertiesData.propsAssignmentFacade.containers.all], min:['tab']});
          this.cssProp.prefix = 'tab';
          this.visible = false;
          this.panels = {components: 0, properties: 1, treeView: 1};
@@ -1140,7 +1140,7 @@ class HTMLElement{
  
  export class HTMLTabPaneElement extends HTMLDivElement{
      constructor(){
-         super(i18n.get_string('tabcontent'), "div", 'bootstrap', HTMLPropertiesData.propsAssignmentFacade.general);
+         super(i18n.get_string('tabcontent'), "div", 'bootstrap', {all: ['tab', ...HTMLPropertiesData.propsAssignmentFacade.containers.all], min:['tab']});
          this.cssProp.prefix = 'tab';
          this.visible = false;
          this.panels = {components: 0, properties: 1, treeView: 1};
@@ -1158,6 +1158,23 @@ class HTMLElement{
          if (!target) return this.name;
          return i18n.get_string('tabcontent')+' '+target.innerText;
      }
+ }
+ 
+ export class HTMLTabNavElement extends HTMLElement{
+     constructor(){
+         super(i18n.get_string('tabcontent'), "div", 'bootstrap', {all: ['tab', ...HTMLPropertiesData.propsAssignmentFacade.containers.all], min:['tab']});
+         this.visible = false;
+         this.panels = {components: 0, properties: 1, treeView: 1};
+     }
+ 
+     equal(el){
+         if(el === null){ return false; }
+         if(!el.parentElement){ return false; }
+ 
+ 
+         return (el.parentElement.classList.contains('tabs'));
+     }
+
  }
  
  export class HTMLNavElement extends HTMLElement{
