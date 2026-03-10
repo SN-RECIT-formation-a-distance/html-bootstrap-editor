@@ -41,25 +41,30 @@ var IFrame = exports.IFrame = function (_Component) {
   return (0, _createClass2["default"])(IFrame, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var iFrameDocument = this.ref.current.contentDocument;
-      var _iterator = _createForOfIteratorHelper(this.props.head),
-        _step;
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var item = _step.value;
-          var link = iFrameDocument.createElement('link');
-          link.setAttribute('rel', "stylesheet");
-          link.setAttribute('href', item);
-          iFrameDocument.head.append(link);
+      var _this2 = this;
+      var iframe = this.ref.current;
+      iframe.addEventListener("load", function () {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        var _iterator = _createForOfIteratorHelper(_this2.props.head),
+          _step;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var item = _step.value;
+            var link = doc.createElement('link');
+            link.setAttribute('rel', "stylesheet");
+            link.setAttribute('href', item);
+            doc.head.append(link);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
         }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-      this.setState({
-        mountNode: iFrameDocument.body
+        _this2.setState({
+          mountNode: doc.body
+        });
       });
+      iframe.src = "about:blank";
     }
   }, {
     key: "render",

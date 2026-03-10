@@ -42,21 +42,32 @@ export class IFrame extends Component {
     }
 
     componentDidMount(){
-        let iFrameDocument = this.ref.current.contentDocument;
+        const iframe = this.ref.current;
 
-        for(let item of this.props.head){
-            let link = iFrameDocument.createElement('link');
-            link.setAttribute('rel', "stylesheet");
-            link.setAttribute('href', item);
-            iFrameDocument.head.append(link);
-        }
-        
-        this.setState({mountNode: iFrameDocument.body});
+        // Wait for iframe to load its initial blank document
+        iframe.addEventListener("load", () => {
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Inject CSS files
+            for(let item of this.props.head){
+                let link = doc.createElement('link');
+                link.setAttribute('rel', "stylesheet");
+                link.setAttribute('href', item);
+                doc.head.append(link);
+            }
+           
+
+            // Now the iframe document is ready
+            this.setState({ mountNode: doc.body });
+        });
+
+        // Force Firefox + Chrome to load a real document
+        iframe.src = "about:blank";
     }
 
     render() {
         let main = 
-            <iframe ref={this.ref} style={this.props.style}>
+            <iframe ref={this.ref}  style={this.props.style}>
                 {this.state.mountNode && createPortal(this.props.children, this.state.mountNode)}
             </iframe>;
 

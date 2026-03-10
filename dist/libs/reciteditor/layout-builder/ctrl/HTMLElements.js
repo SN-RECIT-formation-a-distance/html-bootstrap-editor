@@ -4,7 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.HTMLVideoElement = exports.HTMLUListElement = exports.HTMLTableRowElement = exports.HTMLTableHeaderCellElement = exports.HTMLTableElement = exports.HTMLTableDataCellElement = exports.HTMLTabPaneElement = exports.HTMLTabElement = exports.HTMLTabContentElement = exports.HTMLSpanElement = exports.HTMLSectionElement = exports.HTMLRowElement = exports.HTMLParagraphElement = exports.HTMLOListElement = exports.HTMLNavLinkElement = exports.HTMLNavItemElement = exports.HTMLNavElement = exports.HTMLMediaElement = exports.HTMLLinkElement = exports.HTMLLIElement = exports.HTMLImageWithCaptionElement = exports.HTMLImageFigureElement = exports.HTMLImageElement = exports.HTMLIframeElement = exports.HTMLIconElement = exports.HTMLHorizontalBarElement = exports.HTMLHeadingElement = exports.HTMLHRElement = exports.HTMLGridElement = exports.HTMLFlipCardFrontElement = exports.HTMLFlipCardElement = exports.HTMLFlipCardBackElement = exports.HTMLEmbedElement = exports.HTMLDivElement = exports.HTMLColElement = exports.HTMLClickableImageElement = exports.HTMLCarouselNavElement = exports.HTMLCarouselElement = exports.HTMLCardHeaderElement = exports.HTMLCardFooterElement = exports.HTMLCardElement = exports.HTMLCardBodyElement = exports.HTMLButtonVideoElement = exports.HTMLButtonElement = exports.HTMLBodyElement = exports.HTMLAvatarCardElement = exports.HTMLAudioElement = exports.HTMLAlertElement = exports.HTMLAccordionNavElement = exports.HTMLAccordionElement = void 0;
+exports.HTMLVideoElement = exports.HTMLUListElement = exports.HTMLTableRowElement = exports.HTMLTableHeaderCellElement = exports.HTMLTableElement = exports.HTMLTableDataCellElement = exports.HTMLTabPaneElement = exports.HTMLTabNavElement = exports.HTMLTabElement = exports.HTMLTabContentElement = exports.HTMLSpanElement = exports.HTMLSectionElement = exports.HTMLRowElement = exports.HTMLParagraphElement = exports.HTMLOListElement = exports.HTMLNavLinkElement = exports.HTMLNavItemElement = exports.HTMLNavElement = exports.HTMLMediaElement = exports.HTMLLinkElement = exports.HTMLLIElement = exports.HTMLImageWithCaptionElement = exports.HTMLImageFigureElement = exports.HTMLImageElement = exports.HTMLIframeElement = exports.HTMLIconElement = exports.HTMLHorizontalBarElement = exports.HTMLHeadingElement = exports.HTMLHRElement = exports.HTMLGridElement = exports.HTMLFlipCardFrontElement = exports.HTMLFlipCardElement = exports.HTMLFlipCardBackElement = exports.HTMLEmbedElement = exports.HTMLDivElement = exports.HTMLColElement = exports.HTMLClickableImageElement = exports.HTMLCarouselNavElement = exports.HTMLCarouselElement = exports.HTMLCardHeaderElement = exports.HTMLCardFooterElement = exports.HTMLCardElement = exports.HTMLCardBodyElement = exports.HTMLButtonVideoElement = exports.HTMLButtonElement = exports.HTMLBodyElement = exports.HTMLAvatarCardElement = exports.HTMLAudioElement = exports.HTMLAlertElement = exports.HTMLAccordionNavElement = exports.HTMLAccordionElement = void 0;
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
 var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
@@ -1247,7 +1247,10 @@ var HTMLTabContentElement = exports.HTMLTabContentElement = function (_HTMLDivEl
   function HTMLTabContentElement() {
     var _this28;
     (0, _classCallCheck2["default"])(this, HTMLTabContentElement);
-    _this28 = _callSuper(this, HTMLTabContentElement, [_RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
+    _this28 = _callSuper(this, HTMLTabContentElement, [_RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', {
+      all: ['tab'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
+      min: ['tab']
+    }]);
     _this28.cssProp.prefix = 'tab';
     _this28.visible = false;
     _this28.panels = {
@@ -1272,7 +1275,10 @@ var HTMLTabPaneElement = exports.HTMLTabPaneElement = function (_HTMLDivElement1
   function HTMLTabPaneElement() {
     var _this29;
     (0, _classCallCheck2["default"])(this, HTMLTabPaneElement);
-    _this29 = _callSuper(this, HTMLTabPaneElement, [_RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
+    _this29 = _callSuper(this, HTMLTabPaneElement, [_RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', {
+      all: ['tab'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
+      min: ['tab']
+    }]);
     _this29.cssProp.prefix = 'tab';
     _this29.visible = false;
     _this29.panels = {
@@ -1301,11 +1307,14 @@ var HTMLTabPaneElement = exports.HTMLTabPaneElement = function (_HTMLDivElement1
     }
   }]);
 }(HTMLDivElement);
-var HTMLNavElement = exports.HTMLNavElement = function (_HTMLElement25) {
-  function HTMLNavElement() {
+var HTMLTabNavElement = exports.HTMLTabNavElement = function (_HTMLElement25) {
+  function HTMLTabNavElement() {
     var _this30;
-    (0, _classCallCheck2["default"])(this, HTMLNavElement);
-    _this30 = _callSuper(this, HTMLNavElement, ["Nav", "nav", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
+    (0, _classCallCheck2["default"])(this, HTMLTabNavElement);
+    _this30 = _callSuper(this, HTMLTabNavElement, [_RecitEditor.i18n.get_string('tabcontent'), "div", 'bootstrap', {
+      all: ['tab'].concat((0, _toConsumableArray2["default"])(_HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers.all)),
+      min: ['tab']
+    }]);
     _this30.visible = false;
     _this30.panels = {
       components: 0,
@@ -1314,7 +1323,34 @@ var HTMLNavElement = exports.HTMLNavElement = function (_HTMLElement25) {
     };
     return _this30;
   }
-  (0, _inherits2["default"])(HTMLNavElement, _HTMLElement25);
+  (0, _inherits2["default"])(HTMLTabNavElement, _HTMLElement25);
+  return (0, _createClass2["default"])(HTMLTabNavElement, [{
+    key: "equal",
+    value: function equal(el) {
+      if (el === null) {
+        return false;
+      }
+      if (!el.parentElement) {
+        return false;
+      }
+      return el.parentElement.classList.contains('tabs');
+    }
+  }]);
+}(HTMLElement);
+var HTMLNavElement = exports.HTMLNavElement = function (_HTMLElement26) {
+  function HTMLNavElement() {
+    var _this31;
+    (0, _classCallCheck2["default"])(this, HTMLNavElement);
+    _this31 = _callSuper(this, HTMLNavElement, ["Nav", "nav", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
+    _this31.visible = false;
+    _this31.panels = {
+      components: 0,
+      properties: 1,
+      treeView: 1
+    };
+    return _this31;
+  }
+  (0, _inherits2["default"])(HTMLNavElement, _HTMLElement26);
   return (0, _createClass2["default"])(HTMLNavElement, [{
     key: "equal",
     value: function equal(el) {
@@ -1325,20 +1361,20 @@ var HTMLNavElement = exports.HTMLNavElement = function (_HTMLElement25) {
     }
   }]);
 }(HTMLElement);
-var HTMLNavItemElement = exports.HTMLNavItemElement = function (_HTMLElement26) {
+var HTMLNavItemElement = exports.HTMLNavItemElement = function (_HTMLElement27) {
   function HTMLNavItemElement() {
-    var _this31;
+    var _this32;
     (0, _classCallCheck2["default"])(this, HTMLNavItemElement);
-    _this31 = _callSuper(this, HTMLNavItemElement, ["NavItem", "li", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
-    _this31.visible = false;
-    _this31.panels = {
+    _this32 = _callSuper(this, HTMLNavItemElement, ["NavItem", "li", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.general]);
+    _this32.visible = false;
+    _this32.panels = {
       components: 0,
       properties: 1,
       treeView: 1
     };
-    return _this31;
+    return _this32;
   }
-  (0, _inherits2["default"])(HTMLNavItemElement, _HTMLElement26);
+  (0, _inherits2["default"])(HTMLNavItemElement, _HTMLElement27);
   return (0, _createClass2["default"])(HTMLNavItemElement, [{
     key: "equal",
     value: function equal(el) {
@@ -1349,21 +1385,21 @@ var HTMLNavItemElement = exports.HTMLNavItemElement = function (_HTMLElement26) 
     }
   }]);
 }(HTMLElement);
-var HTMLNavLinkElement = exports.HTMLNavLinkElement = function (_HTMLElement27) {
+var HTMLNavLinkElement = exports.HTMLNavLinkElement = function (_HTMLElement28) {
   function HTMLNavLinkElement() {
-    var _this32;
+    var _this33;
     (0, _classCallCheck2["default"])(this, HTMLNavLinkElement);
-    _this32 = _callSuper(this, HTMLNavLinkElement, ["NavLink", "a", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.link]);
-    _this32.cssProp.prefix = 'btn';
-    _this32.visible = false;
-    _this32.panels = {
+    _this33 = _callSuper(this, HTMLNavLinkElement, ["NavLink", "a", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.link]);
+    _this33.cssProp.prefix = 'btn';
+    _this33.visible = false;
+    _this33.panels = {
       components: 0,
       properties: 1,
       treeView: 1
     };
-    return _this32;
+    return _this33;
   }
-  (0, _inherits2["default"])(HTMLNavLinkElement, _HTMLElement27);
+  (0, _inherits2["default"])(HTMLNavLinkElement, _HTMLElement28);
   return (0, _createClass2["default"])(HTMLNavLinkElement, [{
     key: "equal",
     value: function equal(el) {
@@ -1412,20 +1448,20 @@ var HTMLNavLinkElement = exports.HTMLNavLinkElement = function (_HTMLElement27) 
     }
   }]);
 }(HTMLElement);
-var HTMLHRElement = exports.HTMLHRElement = function (_HTMLElement28) {
+var HTMLHRElement = exports.HTMLHRElement = function (_HTMLElement29) {
   function HTMLHRElement() {
     (0, _classCallCheck2["default"])(this, HTMLHRElement);
     return _callSuper(this, HTMLHRElement, [_RecitEditor.i18n.get_string('split'), "hr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
   }
-  (0, _inherits2["default"])(HTMLHRElement, _HTMLElement28);
+  (0, _inherits2["default"])(HTMLHRElement, _HTMLElement29);
   return (0, _createClass2["default"])(HTMLHRElement);
 }(HTMLElement);
-var HTMLHorizontalBarElement = exports.HTMLHorizontalBarElement = function (_HTMLElement29) {
+var HTMLHorizontalBarElement = exports.HTMLHorizontalBarElement = function (_HTMLElement30) {
   function HTMLHorizontalBarElement() {
     (0, _classCallCheck2["default"])(this, HTMLHorizontalBarElement);
     return _callSuper(this, HTMLHorizontalBarElement, [_RecitEditor.i18n.get_string('horizontalbar'), "hr", 'native', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.containers]);
   }
-  (0, _inherits2["default"])(HTMLHorizontalBarElement, _HTMLElement29);
+  (0, _inherits2["default"])(HTMLHorizontalBarElement, _HTMLElement30);
   return (0, _createClass2["default"])(HTMLHorizontalBarElement, [{
     key: "create",
     value: function create() {
@@ -1437,12 +1473,12 @@ var HTMLHorizontalBarElement = exports.HTMLHorizontalBarElement = function (_HTM
     }
   }]);
 }(HTMLElement);
-var HTMLImageElement = exports.HTMLImageElement = function (_HTMLElement30) {
+var HTMLImageElement = exports.HTMLImageElement = function (_HTMLElement31) {
   function HTMLImageElement() {
     (0, _classCallCheck2["default"])(this, HTMLImageElement);
     return _callSuper(this, HTMLImageElement, [_RecitEditor.i18n.get_string('image'), "img", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image]);
   }
-  (0, _inherits2["default"])(HTMLImageElement, _HTMLElement30);
+  (0, _inherits2["default"])(HTMLImageElement, _HTMLElement31);
   return (0, _createClass2["default"])(HTMLImageElement, [{
     key: "create",
     value: function create() {
@@ -1454,12 +1490,12 @@ var HTMLImageElement = exports.HTMLImageElement = function (_HTMLElement30) {
     }
   }]);
 }(HTMLElement);
-var HTMLImageWithCaptionElement = exports.HTMLImageWithCaptionElement = function (_HTMLElement31) {
+var HTMLImageWithCaptionElement = exports.HTMLImageWithCaptionElement = function (_HTMLElement32) {
   function HTMLImageWithCaptionElement() {
     (0, _classCallCheck2["default"])(this, HTMLImageWithCaptionElement);
     return _callSuper(this, HTMLImageWithCaptionElement, [_RecitEditor.i18n.get_string('imagewithcaption'), "figure", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image]);
   }
-  (0, _inherits2["default"])(HTMLImageWithCaptionElement, _HTMLElement31);
+  (0, _inherits2["default"])(HTMLImageWithCaptionElement, _HTMLElement32);
   return (0, _createClass2["default"])(HTMLImageWithCaptionElement, [{
     key: "equal",
     value: function equal(el) {
@@ -1493,12 +1529,12 @@ var HTMLImageWithCaptionElement = exports.HTMLImageWithCaptionElement = function
     }
   }]);
 }(HTMLElement);
-var HTMLClickableImageElement = exports.HTMLClickableImageElement = function (_HTMLElement32) {
+var HTMLClickableImageElement = exports.HTMLClickableImageElement = function (_HTMLElement33) {
   function HTMLClickableImageElement() {
     (0, _classCallCheck2["default"])(this, HTMLClickableImageElement);
     return _callSuper(this, HTMLClickableImageElement, [_RecitEditor.i18n.get_string('clickableimage'), "div", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.image]);
   }
-  (0, _inherits2["default"])(HTMLClickableImageElement, _HTMLElement32);
+  (0, _inherits2["default"])(HTMLClickableImageElement, _HTMLElement33);
   return (0, _createClass2["default"])(HTMLClickableImageElement, [{
     key: "equal",
     value: function equal(el) {
@@ -1537,12 +1573,12 @@ var HTMLClickableImageElement = exports.HTMLClickableImageElement = function (_H
     }
   }]);
 }(HTMLElement);
-var HTMLIconElement = exports.HTMLIconElement = function (_HTMLElement33) {
+var HTMLIconElement = exports.HTMLIconElement = function (_HTMLElement34) {
   function HTMLIconElement() {
     (0, _classCallCheck2["default"])(this, HTMLIconElement);
     return _callSuper(this, HTMLIconElement, [_RecitEditor.i18n.get_string('icon'), "i", 'bootstrap', _HTMLProperties.HTMLPropertiesData.propsAssignmentFacade.icon]);
   }
-  (0, _inherits2["default"])(HTMLIconElement, _HTMLElement33);
+  (0, _inherits2["default"])(HTMLIconElement, _HTMLElement34);
   return (0, _createClass2["default"])(HTMLIconElement, [{
     key: "equal",
     value: function equal(el) {
