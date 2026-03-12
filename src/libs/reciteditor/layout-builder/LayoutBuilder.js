@@ -79,7 +79,7 @@ export class LayoutBuilder extends Component
 	render(){
 		let main = 
 			<div className="layout-builder">                
-                <Navbar bg="dark" variant="dark" onSelect={this.onNavbarSelect} expand="sm">
+                <Navbar bg="dark" className='px-3' variant="dark" onSelect={this.onNavbarSelect} expand="sm">
                     <Navbar.Brand>
                         <img alt="RÉCIT" src={Assets.RecitLogo} width="30" height="30" className="d-inline-block align-top" />{' '}
                         {i18n.get_string('pluginname')}
@@ -90,9 +90,9 @@ export class LayoutBuilder extends Component
                             {this.props.options.wordProcessor && <Nav.Link eventKey="wordbuilder"><FontAwesomeIcon icon={faFileWord} title={i18n.get_string('texteditor')}/></Nav.Link>}
                         </Nav>
                         
-                        <Nav className="mr-auto"></Nav>
+                        <Nav className="me-auto"></Nav>
 
-                        <Nav className="mr-auto" activeKey={this.state.view}>
+                        <Nav className="me-auto" activeKey={this.state.view}>
                             <Nav.Link eventKey="designer" ><FontAwesomeIcon icon={faTh} title={i18n.get_string('canvas')}/> <span className='d-mobile-none'>{i18n.get_string('canvas')}</span></Nav.Link>
                             <Nav.Link eventKey="preview" ><FontAwesomeIcon icon={faEye} title={i18n.get_string('preview')}/> <span className='d-mobile-none'>{i18n.get_string('preview')}</span></Nav.Link>
                             <Nav.Link eventKey="sourceCode"><FontAwesomeIcon icon={faCode} title={i18n.get_string('sourcecode')}/> <span className='d-mobile-none'>{i18n.get_string('sourcecode')}</span></Nav.Link>
@@ -483,8 +483,10 @@ class MainView extends Component{
     onDragStart(event){
         event.stopPropagation();
         
-        CanvasElement.draggingItem = this.state.selectedElement;
-        event.dataTransfer.setDragImage(this.state.selectedElement, 0, 0);
+        if(this.state.selectedElement instanceof HTMLElement){
+            CanvasElement.draggingItem = this.state.selectedElement;
+            event.dataTransfer.setDragImage(this.state.selectedElement, 0, 0);
+        }
     }
 
     onStartEditingNodeText(el, dbClick){

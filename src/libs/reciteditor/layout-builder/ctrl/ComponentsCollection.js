@@ -45,13 +45,13 @@ export class ComponentProperties extends Component{
         let title = <></>;
 
         if(this.props.tab === "bs"){
-            title = <><i className='svgicon mr-2'>{Assets.faBootstrap}</i> {i18n.get_string('bootstrap')}</>;
+            title = <><i className='svgicon me-2'>{Assets.faBootstrap}</i> {i18n.get_string('bootstrap')}</>;
         }
         else if(this.props.tab === "html"){
-            title = <><i className='svgicon mr-2'>{Assets.faHtml}</i> {i18n.get_string('htmlproprieties')}</>;
+            title = <><i className='svgicon me-2'>{Assets.faHtml}</i> {i18n.get_string('htmlproprieties')}</>;
         }
         else if(this.props.tab === "bm"){
-            title = <><FontAwesomeIcon icon={faCubes} className='mr-2'/> {i18n.get_string('basic')}</>;
+            title = <><FontAwesomeIcon icon={faCubes} className='me-2'/> {i18n.get_string('basic')}</>;
         }
 
         let header = <div><h5 className="m-0 p-2 d-flex">{title}</h5><hr className='mt-0'/></div>;
@@ -139,7 +139,7 @@ class FormProperties extends Component{
 
                 let form = 
                 <Form key={index} onSubmit={this.onSubmit} className="mb-4">
-                    {/*item.visible != false && <h6  onClick={(event) => this.onCollapse(event, item.name)}><FontAwesomeIcon className="mr-1" icon={icon}/> {item.description}</h6>*/}
+                    {/*item.visible != false && <h6  onClick={(event) => this.onCollapse(event, item.name)}><FontAwesomeIcon className="me-1" icon={icon}/> {item.description}</h6>*/}
                     {/*!collapsed &&*/ item.children.map((item2, index2) => {
                         let formItem = null;
                         let flags = item2.getFlags(this.props.element);
@@ -379,7 +379,7 @@ class TokenList extends Component{
                     let branch = 
                         <ul key={index} className='mt-2'>
                             <li key={index} className='token-section' onClick={(event) => this.onCollapse(event, item.name)}>
-                                <FontAwesomeIcon className="mr-1" icon={icon} /> 
+                                <FontAwesomeIcon className="me-1" icon={icon} /> 
                                 {item.name}
                             </li>
                             {!collapsed && item.children.map((item2, index2) => {
@@ -466,7 +466,7 @@ class TemplateList extends Component{
                 }
                 {this.props.type === 'c' && <>
                     <span onClick={() => this.onCollapse('my')}>
-                        <FontAwesomeIcon className="mr-1" icon={!this.state.collapse['my'] ? faAngleDown : faAngleRight}/> {i18n.get_string('mycomponents')}
+                        <FontAwesomeIcon className="me-1" icon={!this.state.collapse['my'] ? faAngleDown : faAngleRight}/> {i18n.get_string('mycomponents')}
                     </span>
                     <ul className='mt-2 d-flex flex-wrap'>
                     {!this.state.collapse['my'] && this.props.dataProvider.myComponents.map((item, index) => {
@@ -474,7 +474,7 @@ class TemplateList extends Component{
                     })}
                     </ul>
                     <span onClick={() => this.onCollapse('base')}>
-                        <FontAwesomeIcon className="mr-1" icon={!this.state.collapse['base'] ? faAngleDown : faAngleRight}/> {i18n.get_string('basecomponents')}
+                        <FontAwesomeIcon className="me-1" icon={!this.state.collapse['base'] ? faAngleDown : faAngleRight}/> {i18n.get_string('basecomponents')}
                     </span>
                     <ul className='mt-2 d-flex flex-wrap'>
                     {!this.state.collapse['base'] && this.props.dataProvider.components.map((item, index) => {
@@ -738,12 +738,12 @@ export class TemplateForm extends Component{
                 <Modal.Body>
                     <p>{this.props.description}</p>
                     <Form onSubmit={e => { e.preventDefault(); }}>                       
-                        <Form.Row>
+                        <Row>
                             <Form.Group as={Col}>
                                 <Form.Label>{i18n.get_string('name')}</Form.Label>
                                 <Form.Control type="text" required value={this.state.data.name} name="name" onChange={this.onDataChange}/>
                             </Form.Group>
-                        </Form.Row>
+                        </Row>
                         
                     </Form>
                 </Modal.Body>
@@ -752,13 +752,13 @@ export class TemplateForm extends Component{
                     <Button variant="success" onClick={() => this.props.onSave(this.state.data)}><FontAwesomeIcon icon={faSave} title={i18n.get_string('save')}/> {i18n.get_string('save')}</Button>
                 </Modal.Footer>
             </Modal>
-/*<Form.Row>
+/*<Row>
                             <Form.Group as={Col}>
                                 <Form.Label>{"Type"}</Form.Label>
                                 <ToggleButtons type="checkbox" name="type" value={this.state.data.type} bsSize="sm" defaultValue={['l']}
                                 options={[{text:"Composant",  value:"c"}, {text: "Layout", value:'l'}]} onChange={this.onDataChange}/>
                             </Form.Group>                           
-                        </Form.Row>*/
+                        </Row>*/
         return main;
     }
 

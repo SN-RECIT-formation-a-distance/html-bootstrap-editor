@@ -47,24 +47,21 @@ export class ImageSrc extends Component {
     
         this.onUpload = this.onUpload.bind(this);
         this.onUploadDone = this.onUploadDone.bind(this);
+        this.Upload = false;
 
         if (IWrapper.isUploadImplemented()) {
             this.Upload = new UploadFile();
         }
     }
 
-    render() {       
-        let main =
-                <InputGroup className="mb-3">
-                    <InputText name={this.props.name} value={this.props.value} placeholder={this.props.placeholder} onChange={this.props.onChange}
-                            onKeyDown={this.props.onKeyDown} autoFocus={this.props.autoFocus} autoSelect={this.props.autoSelect} onCommit={this.props.onCommit} disabled={this.props.disabled}
-                            size={this.props.size}/>
-                    <InputGroup.Append>
-                        {this.Upload && <BtnUpload id="file-upload" size="btn-sm" accept={this.props.accept} onChange={this.onUpload}/>}
-                        <Button size='sm' onClick={() => this.randomizeImage()}><FontAwesomeIcon icon={faRandom}/></Button>
-                    </InputGroup.Append>
-                </InputGroup>
-        return (main);
+    render() {
+        return <InputGroup className="mb-3">
+            <InputText name={this.props.name} value={this.props.value} placeholder={this.props.placeholder} onChange={this.props.onChange}
+                    onKeyDown={this.props.onKeyDown} autoFocus={this.props.autoFocus} autoSelect={this.props.autoSelect} onCommit={this.props.onCommit} disabled={this.props.disabled}
+                    size={this.props.size}/>
+                {this.Upload && <BtnUpload id="file-upload" size="btn-sm" accept={this.props.accept} onChange={this.onUpload}/>}
+                <Button size='sm' onClick={() => this.randomizeImage()}><FontAwesomeIcon icon={faRandom}/></Button>
+        </InputGroup>;
     }   
 
     onUpload(event){

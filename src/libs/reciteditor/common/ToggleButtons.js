@@ -57,7 +57,7 @@ export class ToggleButtons extends Component {
                             </BsToggleButton>;
                         return (element);
                     })}
-                    <span className='text-muted ml-3'>{this.props.label}</span>
+                    <span className='text-muted ms-3'>{this.props.label}</span>
                 </ToggleButtonGroup>
             </ButtonToolbar>;
         return (main);

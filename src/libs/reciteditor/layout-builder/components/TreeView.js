@@ -95,7 +95,7 @@ export class TreeView extends Component{
                 </ButtonGroup>
                 
                 {selected && 
-                    <ButtonGroup size="sm" className="ml-2 btn-group-actions" style={(selected ? {display: 'flex'} : {})}>
+                    <ButtonGroup size="sm" className="ms-2 btn-group-actions" style={(selected ? {display: 'flex'} : {})}>
                         {!node.dom.isSameNode(this.props.data) && <> 
                             <Button onClick={() => this.props.onMoveNodeUp(node.dom)}><FontAwesomeIcon icon={faArrowUp} title={i18n.get_string('moveelementup')}/></Button>
                             <Button onClick={() => this.props.onMoveNodeDown(node.dom)}><FontAwesomeIcon icon={faArrowDown} title={i18n.get_string('moveelementdown')}/></Button>
@@ -113,7 +113,7 @@ export class TreeView extends Component{
             result = 
                 <li key={key}>
                     <span className="d-flex align-items-center" >
-                        <FontAwesomeIcon className="mr-1" icon={icon} onClick={(event) => this.onCollapse(event, id)}/>
+                        <FontAwesomeIcon className="me-1" icon={icon} onClick={(event) => this.onCollapse(event, id)}/>
                         {btn}
                     </span>
                     {(this.state.notCollapsed[id] || node.dom.contains(this.props.selectedElement)) &&

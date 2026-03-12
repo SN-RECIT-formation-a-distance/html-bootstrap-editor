@@ -53,7 +53,7 @@ export class InputColor extends Component {
             <div style={{display: "inline-flex", width: '100%'}}>
                 <Form.Control size={this.props.size} name={this.props.name} type="color" value={value} 
                                 onChange={this.onChange} onBlur={this.onBlur} disabled={this.props.disabled} style={{width: "80px"}}/>
-                <Button className="ml-1" size='sm' variant={'primary'} onClick={this.onReset} title={i18n.get_string('deleteformat')}><FontAwesomeIcon icon={faRemoveFormat}/></Button>
+                <Button className="ms-1" size='sm' variant={'primary'} onClick={this.onReset} title={i18n.get_string('deleteformat')}><FontAwesomeIcon icon={faRemoveFormat}/></Button>
             </div>
         return (main);
     }   

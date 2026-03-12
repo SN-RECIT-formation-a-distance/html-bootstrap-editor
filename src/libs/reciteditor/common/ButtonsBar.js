@@ -90,11 +90,11 @@ export class ButtonsBar extends Component{
         let main = 
         <div style={{backgroundColor: style.backgroundColor, minHeight: 50, padding: ".5rem"}}>
             <ButtonToolbar>
-                <ButtonGroup className="mr-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}}>
                     {this.props.options.layoutBuilder && <Button variant={ButtonsBar.Layout.btnNormal} onClick={this.props.onShowHtmlEditor}><FontAwesomeIcon icon={faFileCode} title={i18n.get_string('returntohtmleditor')}/></Button>}
                     <Button variant={ButtonsBar.Layout.btnNormal} onClick={this.props.onCodeSource}><FontAwesomeIcon icon={faCode} title={i18n.get_string('htmleditor')}/></Button>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}}>
                     <DropdownSetCssProp selection={selection} cssProp="font-size" defaultValue={"16px"} dataProvider={fontSizes}  />
                     <BtnSetCssProp selection={selection} cssProp="font-weight" defaultValue="normal" value="bold"  icon={faBold}  title={i18n.get_string('bold')}/>
                     <BtnSetCssProp selection={selection} cssProp="font-style" defaultValue="normal" value="italic" icon={faItalic}  title={i18n.get_string('italic')}/>
@@ -102,35 +102,35 @@ export class ButtonsBar extends Component{
                     <BtnSetCssProp selection={selection} cssProp="text-decoration" defaultValue="normal" value="line-through" icon={faStrikethrough}  title={i18n.get_string('strikethrough')}/>
                     <BtnUnsetCssProp selection={selection} cssProp={["fontSize","fontWeight","fontStyle","textDecoration"]} icon={faRemoveFormat} defaultValue=""   title={i18n.get_string('removeformat')}/>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}}>
                     <BtnColorPicker selection={selection} cssProp="backgroundColor" icon={faFillDrip} defaultValue="#FFFFFF"   title={i18n.get_string('bgcolor')}/>
                     <BtnUnsetCssProp selection={selection} cssProp={["backgroundColor"]} icon={faRemoveFormat} defaultValue="#FFFFFF"  title={i18n.get_string('removebgcolor')}/>
                     <BtnColorPicker selection={selection} cssProp="color" icon={faFont} defaultValue="#000000"  title={i18n.get_string('fontcolor')}/>
                     <BtnUnsetCssProp selection={selection} cssProp={["color"]} icon={faRemoveFormat} defaultValue="#000000"   title={i18n.get_string('removefontcolor')}/>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}} >
+                <ButtonGroup className="me-2 mb-2" size="sm" style={{border: style.border, borderRadius: style.borderRadius}} >
                     <Button variant={ButtonsBar.Layout.btnNormal} onClick={() => this.applyNumerationTypeset("ul")}><FontAwesomeIcon icon={faListUl} title={i18n.get_string('list')}/></Button>
                     <Button  variant={ButtonsBar.Layout.btnNormal} onClick={() => this.applyNumerationTypeset("ol")}><FontAwesomeIcon icon={faListOl} title={i18n.get_string('numberedlist')}/></Button>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
                     <BtnAlignment selection={selection} cssProp="left" icon={faAlignLeft}   title={i18n.get_string('alignleft')}/>
                     <BtnAlignment selection={selection} cssProp="center" icon={faAlignCenter}  title={i18n.get_string('aligncenter')}/>
                     <BtnAlignment selection={selection} cssProp="right" icon={faAlignRight}  title={i18n.get_string('alignright')}/>
                     <BtnAlignment selection={selection} cssProp="justify" icon={faAlignJustify}  title={i18n.get_string('justify')}/>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
                     <Button variant={ButtonsBar.Layout.btnNormal} onClick={() => this.applyIndentTypeset("outdent")}  title={i18n.get_string('outdent')}><FontAwesomeIcon icon={faOutdent}/></Button>
                     <Button  variant={ButtonsBar.Layout.btnNormal} onClick={() => this.applyIndentTypeset("indent")}  title={i18n.get_string('indent')}><FontAwesomeIcon icon={faIndent}/></Button>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
                     <Button variant={ButtonsBar.Layout.btnNormal} onClick={this.onAddLink} title={i18n.get_string('link')}><FontAwesomeIcon icon={faLink}/></Button>
                     <Button  variant={ButtonsBar.Layout.btnNormal} onClick={this.onRemoveLink} title={i18n.get_string('removelink')}><FontAwesomeIcon icon={faUnlink}/></Button>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
                     <Button variant={ButtonsBar.Layout.btnNormal} onClick={this.props.onUndo} disabled={history.undo.length === 0} title={i18n.get_string('undo')}><FontAwesomeIcon icon={faUndo}/></Button>
                     <Button  variant={ButtonsBar.Layout.btnNormal} onClick={this.props.onRedo}  disabled={history.redo.length === 0} title={i18n.get_string('redo')}><FontAwesomeIcon icon={faRedo}/></Button>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
                     <Button variant={(this.props.flags.highlighter ? 'warning' : ButtonsBar.Layout.btnNormal)} onClick={this.props.onHighlighter} title={i18n.get_string('highlighttool')}><FontAwesomeIcon icon={faHighlighter}/></Button>
                     <Button variant={(this.props.flags.mathFormula ? 'warning' : ButtonsBar.Layout.btnNormal)} onClick={this.props.onMathFormula} title={i18n.get_string('math')}><i><b>f(x)</b></i></Button>
                     <Button variant={(this.props.flags.mathFormula ? 'warning' : ButtonsBar.Layout.btnNormal)} id="btn-addimg" onClick={() => this.onAddImageModal(true)} title={i18n.get_string('addimage')}><FontAwesomeIcon icon={faImage}/></Button>
@@ -140,7 +140,7 @@ export class ButtonsBar extends Component{
                         )}
                     </ScreenCapture>
                 </ButtonGroup>
-                <ButtonGroup className="mr-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
+                <ButtonGroup className="me-2 mb-2" size="sm"  style={{border: style.border, borderRadius: style.borderRadius}}>
                     <Button variant={ButtonsBar.Layout.btnNormal} onClick={this.onRemoveTypeset} title={i18n.get_string('removeformat')}><FontAwesomeIcon icon={faRemoveFormat}/></Button>
                 </ButtonGroup>
             </ButtonToolbar> 

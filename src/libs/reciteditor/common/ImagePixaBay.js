@@ -24,7 +24,7 @@
 import { faImage, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { Component } from 'react';
-import { Button, Col, Form, FormControl, InputGroup, Modal } from 'react-bootstrap';
+import { Button, Row, Col, Form, FormControl, InputGroup, Modal } from 'react-bootstrap';
 import { i18n, ComboBox, UploadFile, IWrapper, Utils } from '../RecitEditor';
 import { Pagination } from './Pagination';
 
@@ -113,7 +113,7 @@ export class ImagePixaBay extends Component {
         </Modal.Header>
         <Modal.Body>
            
-            <Form.Row>               
+            <Row>               
                 <Form.Group as={Col} className='col-8'>
                     <Form.Label>{i18n.get_string('keyword')}</Form.Label>
                     <FormControl className={"InputText"} type="text" value={this.state.search} onChange={(e) => this.onSearch(e)} onSubmit={() => this.onQuery()} />
@@ -126,7 +126,7 @@ export class ImagePixaBay extends Component {
                     <Form.Label>&nbsp;</Form.Label>
                     <Button onClick={() => this.onQuery()} className='form-control' title= {i18n.get_string('search')}><FontAwesomeIcon icon={faSearch} /></Button>
                 </Form.Group>
-            </Form.Row>
+            </Row>
             <div className='d-flex mb-5' style={{flexWrap:'wrap',maxHeight:'600px',overflowY:'auto'}}>
                 {this.state.data.map((res, i) => {
                     return <div key={i} className='m-2 img-bay' onClick={() => this.onUpload(res.largeImageURL)}><img src={res.previewURL}/></div>

@@ -2,8 +2,8 @@ import { faParagraph, faSave, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
-import ReactQuill, {Quill} from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill, {Quill} from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 import { i18n, IWrapper, UtilsString } from './Utils';
 
 export class TextEditorModal extends React.Component {
@@ -211,11 +211,11 @@ export class FaRule extends Inline {
 }
 
 const Parchment = Quill.import('parchment');
-let Align = new Parchment.Attributor.Class('fa', 'iconrecit');
-Parchment.register(Align);
+let Align = new Parchment.ClassAttributor('fa', 'iconrecit');
+Quill.register(Align);
 Quill.register(FaRule);
 
-class IndentAttributor extends Parchment.Attributor.Style {
+class IndentAttributor extends Parchment.StyleAttributor {
     multiplier = 2;
   
     constructor(name, style, params) {
