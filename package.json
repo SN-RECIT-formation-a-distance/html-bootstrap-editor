@@ -3,12 +3,11 @@
   "version": "1.28.0",
   "description": "HTML Bootstrap Editor",
   "main": "dist/index.js",
-  "module": "dist/index.js",
-  "type": "module",
+  "module": "dist/index.js", 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --progress --entry ./src/test/test.js --static-directory ./src/test --mode development --config ./src/test/webpack.config.js",
-    "build": "babel src/ --out-dir dist --copy-files"
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
