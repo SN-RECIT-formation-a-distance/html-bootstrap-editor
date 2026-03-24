@@ -65,7 +65,7 @@ class HTMLElement{
      }
 
      getDescDZ(el){
-        return "<span class='p-1 disabled badge ml-2 badge-warning nopointerevents'>"+this.getDesc(el)+"</span>";
+        return "<span class='p-1 disabled badge ms-2 badge-warning nopointerevents'>"+this.getDesc(el)+"</span>";
      }
 
      prepareDroppingZones(el){ 
@@ -284,8 +284,8 @@ class HTMLElement{
  
      create(){
          let el = document.createElement("div");
-         el.classList.add('embed-responsive');
-         el.classList.add('embed-responsive-16by9');
+         el.classList.add('ratio');
+         el.classList.add('ratio-16x9');
          el.classList.add('video-container');
          
          let iframe = document.createElement("iframe");
@@ -293,6 +293,7 @@ class HTMLElement{
          iframe.classList.add('video');
          iframe.setAttribute('frameborder', '0');
          iframe.setAttribute('title', '');
+         iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
          iframe.setAttribute('allowfullscreen', '1');
          iframe.src = 'https://www.youtube.com/embed/WvljI0VIq-E?rel=0'
          el.appendChild(iframe)
@@ -314,8 +315,8 @@ class HTMLElement{
      create(){ 
          let el = document.createElement('div');
          el.classList.add('embed-element');
-         el.classList.add('embed-responsive');
-         el.classList.add('embed-responsive-16by9');
+         el.classList.add('ratio');
+         el.classList.add('ratio-16x9');
 
          return el;
      }
@@ -887,9 +888,9 @@ class HTMLElement{
             `
             <div id="${carouselId}" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#${carouselId}" data-slide-to="0" class="active"></li>
-                    <li data-target="#${carouselId}" data-slide-to="1"></li>
-                    <li data-target="#${carouselId}" data-slide-to="2"></li>
+                    <li data-bs-target="#${carouselId}" data-slide-to="0" class="active"></li>
+                    <li data-bs-target="#${carouselId}" data-slide-to="1"></li>
+                    <li data-bs-target="#${carouselId}" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active" >
@@ -915,11 +916,11 @@ class HTMLElement{
                     </div>
                 </div>
                  
-                <button class="carousel-control-prev" type="button" data-target="#${carouselId}" data-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-target="#${carouselId}" data-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </button>
@@ -979,17 +980,17 @@ class HTMLElement{
             `
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#${id1}" role="tab" aria-controls="${id1}">
+                <a class="nav-link active" data-bs-toggle="tab" href="#${id1}" role="tab" aria-controls="${id1}">
                     Onglet 1
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#${id2}" role="tab" aria-controls="${id2}">
+                <a class="nav-link" data-bs-toggle="tab" href="#${id2}" role="tab" aria-controls="${id2}">
                     Onglet 2
                 </a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#${id3}" role="tab" aria-controls="${id3}">
+                <a class="nav-link" data-bs-toggle="tab" href="#${id3}" role="tab" aria-controls="${id3}">
                     Onglet 3
                 </a>
                 </li>
@@ -1034,45 +1035,45 @@ class HTMLElement{
 
         slider.innerHTML = 
             `
-            <div class="card">
-            <div class="card-header" id="headingOne">
+            <div class="accordion-item">
+            <div class="accordion-header" id="headingOne">
                 <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#${id1}" aria-expanded="true" aria-controls="${id1}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#${id1}" aria-expanded="true" aria-controls="${id1}">
                     Item #1
                 </button>
                 </h2>
             </div>
         
             <div id="${id1}" class="collapse show" aria-labelledby="headingOne" data-parent="#${slider.getAttribute('id')}">
-                <div class="card-body">
+                <div class="accordion-body">
                 Item #1
                 </div>
             </div>
             </div>
-            <div class="card">
-            <div class="card-header" id="headingTwo">
+            <div class="accordion-item">
+            <div class="accordion-header" id="headingTwo">
                 <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#${id2}" aria-expanded="false" aria-controls="${id2}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${id2}" aria-expanded="false" aria-controls="${id2}">
                     Item #2
                 </button>
                 </h2>
             </div>
             <div id="${id2}" class="collapse" aria-labelledby="headingTwo" data-parent="#${slider.getAttribute('id')}">
-                <div class="card-body">
+                <div class="accordion-body">
                 Item #2
                 </div>
             </div>
             </div>
-            <div class="card">
-            <div class="card-header" id="headingThree">
+            <div class="accordion-item">
+            <div class="accordion-header" id="headingThree">
                 <h2 class="mb-0">
-                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#${id3}" aria-expanded="false" aria-controls="${id3}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${id3}" aria-expanded="false" aria-controls="${id3}">
                     Item #3
                 </button>
                 </h2>
             </div>
             <div id="${id3}" class="collapse" aria-labelledby="headingThree" data-parent="#${slider.getAttribute('id')}">
-                <div class="card-body">
+                <div class="accordion-body">
                 Item #3
                 </div>
             </div>
@@ -1102,7 +1103,7 @@ class HTMLElement{
      
  
      onSelect(el){
-        const targetSelector = el.getAttribute('data-target');
+        const targetSelector = el.getAttribute('data-bs-target');
         if (!targetSelector) return;
         const accordion = el.parentElement.parentElement.parentElement.parentElement;
         if (!accordion) return;
@@ -1256,6 +1257,7 @@ class HTMLElement{
         el.classList.add("bg-primary");
         el.classList.add("p-2");
         el.classList.add("m-0");
+        el.classList.add("opacity-100");
         return el;
     }
 }

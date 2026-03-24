@@ -50,16 +50,24 @@ export class ColorSelector extends Component {
                 for (let i in this.options){
                     let css = '.' + this.props.flags.prefix+this.options[i].value;
                     if (c.selectorText === css){
+                        let color = null;
                         if(this.props.flags.prefix === 'text-'){
-                            this.options[i].style = {backgroundColor: c.style.color, borderColor: c.style.color};                            
+                            color = c.style['color'];
                         }
                         else{
-                            this.options[i].style = {backgroundColor: c.style['background-color'], borderColor: c.style['background-color']};
+                            color = c.style['background-color'];
+                        }
+                        if (color && !this.isVariable(color)){//Bootstrap 5 is now a variable that we cannot read. If it was overridden, we can read it.
+                            this.options[i].style = {backgroundColor: color, borderColor: color};
                         }
                     }
                 }
             }
         }
+    }
+
+    isVariable(style){
+        return style && style.includes('var(');
     }
     
     render() {

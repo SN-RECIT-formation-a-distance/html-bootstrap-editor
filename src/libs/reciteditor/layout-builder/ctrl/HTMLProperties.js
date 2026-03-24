@@ -156,7 +156,7 @@ class GridBuilder{
     }
 }
 
-class ImageSrc{
+class ImageSrcProp{
     constructor(onChangeProp, accept){
         this.type = 'ImageSrc'; // keep this attribute for backward compatibility
         this.defaultValue = '';
@@ -373,7 +373,7 @@ export class HTMLTargetProperty extends HTMLProperty{
 
 export class HTMLSourceProperty extends HTMLProperty{
     constructor(accept){
-        super('src',  i18n.get_string('source'), new ImageSrc(null, accept));
+        super('src',  i18n.get_string('source'), new ImageSrcProp(null, accept));
     }
 
     getValue(el, data){
@@ -596,14 +596,14 @@ export class HTMLEmbedRatio extends HTMLProperty{
         super('aspectratio',  i18n.get_string('size'));
         
         this.options = [
-            {text:"21by9", value: "embed-responsive-21by9"},
-            {text:"16by9", value: "embed-responsive-16by9"},
-            {text:"4by3", value: "embed-responsive-4by3"},
-            {text:"1by1", value: "embed-responsive-1by1"}
+            {text:"21by9", value: "ratio-21x9"},
+            {text:"16by9", value: "ratio-16x9"},
+            {text:"4by3", value: "ratio-4x3"},
+            {text:"1by1", value: "ratio-1x1"}
         ];
 
         this.input = new ComboBox(this.options, this.onChange.bind(this), i18n.get_string('none'));
-        this.baseClass = "embed-responsive";
+        this.baseClass = "ratio";
     }
 
     getValue(el, data){
@@ -776,7 +776,7 @@ export class BsBackgroundProperty extends HTMLProperty{
 export class BsBackgroundImageProperty extends HTMLProperty{
     constructor(){
        super('backgroundimage',  i18n.get_string('backgroundimage'));
-       this.input = new ImageSrc(this.onChange.bind(this));
+       this.input = new ImageSrcProp(this.onChange.bind(this));
     }
 
     getValue(el, data){
@@ -989,9 +989,9 @@ export class BsMarginProperty extends HTMLProperty{
         let items = [0, 1, 2, 3, 4, 5]
         this.options = [
             {name: "mt", items: items}, 
-            {name: "mr", items: items}, 
+            {name: "me", items: items}, 
             {name: "mb", items: items}, 
-            {name: "ml", items: items}, 
+            {name: "ms", items: items}, 
             {name: "m", items: items}
         ];
 
@@ -1033,9 +1033,9 @@ export class BsPaddingProperty extends HTMLProperty{
         let items = [0, 1, 2, 3, 4, 5];
         this.options = [
             {name: "pt", items: items}, 
-            {name: "pr", items: items}, 
+            {name: "pe", items: items}, 
             {name: "pb", items: items}, 
-            {name: "pl", items: items}, 
+            {name: "ps", items: items}, 
             {name: "p", items: items}
         ];
 
@@ -1186,7 +1186,7 @@ export class BsAddTabProperty extends HTMLProperty{
                     link.innerText = `Onglet ${nbItems}`;
                     tabid = `tab${tabid}`;
 
-                    link.setAttribute('data-toggle', 'tab');
+                    link.setAttribute('data-bs-toggle', 'tab');
                     link.setAttribute('role', 'tab');
                     link.setAttribute('href', '#'+tabid);
                     link.setAttribute('aria-controls', tabid);
@@ -1223,7 +1223,7 @@ export class BsAddAccordionProperty extends HTMLProperty{
                 text: <span><FontAwesomeIcon icon={faPlus} title={i18n.get_string('add')}/>{i18n.get_string('accordion')}</span>,
                 onClick: function(el, value, data){
                     let tab = el;
-                    if (el.classList.contains('btn')) tab = el.parentElement.parentElement.parentElement.parentElement;
+                    if (el.classList.contains('accordion-button')) tab = el.parentElement.parentElement.parentElement.parentElement;
                     
                     let items = tab.parentElement.querySelectorAll('.collapse');
                     for(let it of items){
@@ -1233,18 +1233,18 @@ export class BsAddAccordionProperty extends HTMLProperty{
                     let nbItems = items.length + 1;
                     
                     let nav = document.createElement('div');
-                    nav.classList.add('card');
+                    nav.classList.add('accordion-item');
                     tab.appendChild(nav);
                     nav.innerHTML = `
-                    <div class="card-header" id="heading${id}">
+                    <div class="accordion-header" id="heading${id}">
                       <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}">
                           Item #${nbItems}
                         </button>
                       </h2>
                     </div>
                     <div id="collapse${id}" class="collapse" aria-labelledby="heading${id}" data-parent="#${tab.id}">
-                      <div class="card-body">
+                      <div class="accordion-body">
                         Item #${nbItems}
                       </div>
                     </div>`;
@@ -1271,9 +1271,9 @@ export class BsBorderProperty extends HTMLProperty{
 
         this.options = [
             {name: "-top", items: ['0px','1px','2px','5px','10px','20px']}, 
-            {name: "-right", items: ['0px','1px','2px','5px','10px','20px']}, 
+            {name: "-end", items: ['0px','1px','2px','5px','10px','20px']}, 
             {name: "-bottom", items: ['0px','1px','2px','5px','10px','20px']}, 
-            {name: "-left", items: ['0px','1px','2px','5px','10px','20px']}, 
+            {name: "-start", items: ['0px','1px','2px','5px','10px','20px']}, 
             {name: "", items: ['0px','1px','2px','5px','10px','20px']}
         ];
 
@@ -1443,11 +1443,11 @@ export class BsBorderStyleProperty extends HTMLProperty{
         super('borderstyle',  i18n.get_string('borderstyle'));
 
         this.options = [
-            {text: <FontAwesomeIcon className="mr-1" icon={faRemoveFormat} title="Default"/>, value:''},
-            {text: <FontAwesomeIcon className="mr-1" icon={faSquare} title="Solide"/>, value:'solid'},
-            {text: <FontAwesomeIcon className="mr-1" icon={faRuler} title="Barré"/>, value:'dashed' },
-            {text: <FontAwesomeIcon className="mr-1" icon={faEllipsisH} title="Pointillé"/>, value:'dotted' },
-            {text: <FontAwesomeIcon className="mr-1" icon={faGripLines} title="Double"/>, value:'double' }
+            {text: <FontAwesomeIcon className="me-1" icon={faRemoveFormat} title="Default"/>, value:''},
+            {text: <FontAwesomeIcon className="me-1" icon={faSquare} title="Solide"/>, value:'solid'},
+            {text: <FontAwesomeIcon className="me-1" icon={faRuler} title="Barré"/>, value:'dashed' },
+            {text: <FontAwesomeIcon className="me-1" icon={faEllipsisH} title="Pointillé"/>, value:'dotted' },
+            {text: <FontAwesomeIcon className="me-1" icon={faGripLines} title="Double"/>, value:'double' }
         ];
 
         this.input = new RadioButton(this.options, this.onChange.bind(this));
@@ -1472,9 +1472,9 @@ export class BsBorderRadiusProperty extends HTMLProperty{
         this.options = [
             {text:"Rounded", value: "rounded"},
             {text:"Rounded-Top", value: "rounded-top"},
-            {text:"Rounded-Right", value: "rounded-right"},
+            {text:"Rounded-Right", value: "rounded-end"},
             {text:"Rounded-Bottom", value: "rounded-bottom"},
-            {text:"Rounded-Left", value: "rounded-left"},
+            {text:"Rounded-Left", value: "rounded-start"},
             {text:"Rounded-Circle", value: "rounded-circle"},
             {text:"Rounded-Pill", value: "rounded-pill"},
             {text:"Rounded-0", value: "rounded-0"},
@@ -1566,9 +1566,9 @@ export class BsTextAlignmentProperty extends HTMLProperty{
 
         this.options = [
             {text: <FontAwesomeIcon icon={faRemoveFormat} title={i18n.get_string('default')}/>, value:'default'},
-            {text: <FontAwesomeIcon icon={faAlignLeft} title={i18n.get_string('left')}/>, value:'text-left' },
+            {text: <FontAwesomeIcon icon={faAlignLeft} title={i18n.get_string('left')}/>, value:'text-start' },
             {text: <FontAwesomeIcon icon={faAlignCenter} title={i18n.get_string('center')}/>, value:'text-center' },
-            {text: <FontAwesomeIcon icon={faAlignRight} title={i18n.get_string('right')}/>, value:'text-right' },
+            {text: <FontAwesomeIcon icon={faAlignRight} title={i18n.get_string('right')}/>, value:'text-end' },
             {text: <FontAwesomeIcon icon={faAlignJustify} title={i18n.get_string('justify')}/>, value:'text-justify' }
         ];
 
@@ -1605,7 +1605,7 @@ export class BsBtnBlockProperty extends HTMLProperty{
         super('btnblock',  i18n.get_string('buttonfullwidth'));
 
         this.options = [
-            {text:i18n.get_string('yes'), value: "btn-block"},
+            {text:i18n.get_string('yes'), value: "w-100"},
             {text:i18n.get_string('no'), value: ""}                       
         ];
 
@@ -1615,16 +1615,16 @@ export class BsBtnBlockProperty extends HTMLProperty{
     getValue(el, data){
         let result = "";
                         
-        if(el.classList.contains("btn-block")){
-            result = "btn-block";
+        if(el.classList.contains("w-100")){
+            result = "w-100";
         }
 
         return result;
     }
 
     onChange(el, value, data){                       
-        if(el.classList.contains("btn-block")){
-            el.classList.remove("btn-block");
+        if(el.classList.contains("w-100")){
+            el.classList.remove("w-100");
         }
 
         if(value.length > 0){
@@ -1707,7 +1707,7 @@ export class BsGridPaddingProperty extends HTMLProperty{
         top: ['pt-3', 'pt-md-4', 'pt-lg-5'],
         bottom: ['pb-3', 'pb-md-4', 'pb-lg-5'],
         lateral: ['px-3', 'px-md-4', 'px-lg-5'],
-        remove: ['p-', 'pb-', 'pt-', 'pl-', 'pr-', 'px-', 'py-']
+        remove: ['p-', 'pb-', 'pt-', 'ps-', 'pe-', 'px-', 'py-']
     }
 
     static getPaddingClassList(){
