@@ -28,6 +28,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {HTMLElementData, TreeView, CanvasElement, ComponentProperties, VisualComponentList, Assets, $glVars, Templates, HistoryManager, Utils, i18n, DesignerState, PreviewState, SourceCodeDesignerState, SourceCodeState, JsNx, Storage, Event} from '../RecitEditor';
 import html2canvas from 'html2canvas';
 import { AccessibilityChecker } from './components/AccessibilityChecker';
+import { BootstrapMigrator, BootstrapMigratorBtn } from './components/BootstrapMigrator';
 
 export class LayoutBuilder extends Component
 {
@@ -109,6 +110,7 @@ export class LayoutBuilder extends Component
                         }
 
                         <AccessibilityChecker />
+                        <BootstrapMigratorBtn />
 
 
                         <Nav activeKey={this.state.device}>
