@@ -319,7 +319,6 @@ export class HTMLElementData{
                 name: i18n.get_string('navigation'), 
                 children: [
                     new HTMLButtonElement(i18n.get_string('button'), 'a', 'bootstrap', HTMLPropertiesData.propsAssignmentFacade.buttons),
-                    new HTMLButtonVideoElement(),
                     new HTMLLinkElement(),
                     new HTMLNavElement(),
                     new HTMLNavItemElement(),

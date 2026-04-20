@@ -485,10 +485,10 @@ class MainView extends Component{
     onDragStart(event){
         event.stopPropagation();
         
-        if(this.state.selectedElement instanceof HTMLElement){
+        //if(this.state.selectedElement instanceof HTMLElement){
             CanvasElement.draggingItem = this.state.selectedElement;
             event.dataTransfer.setDragImage(this.state.selectedElement, 0, 0);
-        }
+        //}
     }
 
     onStartEditingNodeText(el, dbClick){
