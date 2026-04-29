@@ -154,6 +154,34 @@ export class AccessibilityChecker extends Component {
             }
         }
 
+    
+        // WCAG color contrast check
+        els = body.querySelectorAll('*');
+        for (let i of els){
+            if (!i.childNodes || ![...i.childNodes].some(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim()))
+                continue; // Skip elements with no direct text content
+
+            const style   = window.getComputedStyle(i);
+            const fgColor = style.color;
+            const bgColor = this._resolveBackground(i, body);
+            if (!fgColor || !bgColor) continue;
+
+            const fg = this._parseRgb(fgColor);
+            const bg = this._parseRgb(bgColor);
+            if (!fg || !bg) continue;
+
+            const ratio    = this._contrastRatio(fg, bg);
+            const fontSize = parseFloat(style.fontSize);
+            const bold     = parseInt(style.fontWeight) >= 700;
+            const isLarge  = fontSize >= 24 || (bold && fontSize >= 18.67); // WCAG "large text"
+            const required = isLarge ? 3.0 : 4.5;                           // AA thresholds
+
+            if (ratio < required){
+                i.setAttribute('data-accessibility', i18n.get_string('colorcontrasterror'));
+                i.addEventListener("mouseover", this.onHover);
+            }
+        }
+
     }
 
     onHover(event){
@@ -194,5 +222,41 @@ export class AccessibilityChecker extends Component {
         event.target.removeEventListener("mouseleave", removeTooltip);
         });
         return tooltip
+    }
+
+    
+    // Walk up the DOM until we find a non-transparent background
+    _resolveBackground(el, boundary){
+        let node = el;
+        while (node && node !== boundary.parentElement){
+            const bg = window.getComputedStyle(node).backgroundColor;
+            if (bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)')
+                return bg;
+            node = node.parentElement;
+        }
+        return 'rgb(255, 255, 255)'; // Assume white if nothing found
+    }
+
+    // Parse "rgb(r, g, b)" or "rgba(r, g, b, a)" into {r,g,b}
+    _parseRgb(color){
+        const m = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        return m ? { r: +m[1], g: +m[2], b: +m[3] } : null;
+    }
+
+    // WCAG relative luminance
+    _luminance({ r, g, b }){
+        return [r, g, b].reduce((sum, c, idx) => {
+            const s = c / 255;
+            const linear = s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+            return sum + linear * [0.2126, 0.7152, 0.0722][idx];
+        }, 0);
+    }
+
+    // WCAG contrast ratio
+    _contrastRatio(fg, bg){
+        const L1 = this._luminance(fg);
+        const L2 = this._luminance(bg);
+        const [lighter, darker] = L1 > L2 ? [L1, L2] : [L2, L1];
+        return (lighter + 0.05) / (darker + 0.05);
     }
 }
