@@ -207,13 +207,15 @@ export class BootstrapMigrator {
             // ===== CREATE NEW STRUCTURE =====
             const item = document.createElement("div");
             item.className = "accordion-item";
+            const item2 = document.createElement("div");
+            item2.className = "accordion-header";
       
             // HEADER
             const headerId = header.id || `heading-${Math.random().toString(36).slice(2)}`;
             const collapseId = collapse.id || `collapse-${Math.random().toString(36).slice(2)}`;
       
             const h2 = document.createElement("h2");
-            h2.className = "accordion-header";
+            h2.className = "mb-0";
             h2.id = headerId;
       
             // Find existing button or create one
@@ -262,7 +264,8 @@ export class BootstrapMigrator {
             collapseDiv.appendChild(bodyDiv);
       
             // FINAL ASSEMBLY
-            item.appendChild(h2);
+            item2.appendChild(h2);
+            item.appendChild(item2);
             item.appendChild(collapseDiv);
       
             // REPLACE OLD CARD
