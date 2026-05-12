@@ -331,7 +331,7 @@ export class BootstrapMigratorBtn extends Component {
                 <><div className="spinner-grow spinner-grow-sm text-primary" role="status">
                 </div></> 
                 : <FontAwesomeIcon icon={faRefresh} title={'migrate'}/> }
-                <span className='d-mobile-none'>{i18n.get_string('migrate')}</span>
+                <span className='d-mobile-none'>{` ${i18n.get_string('migrate')}`}</span>
                 </Button>
         </Nav>
         return (main);
